@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+        <property name="url" value="jdbc:mysql://localhost:3306/franchise_head?useUnicode=true&amp;characterEncoding=utf-8" /> 
+        <property name="username" value="root" /> 
+       <property name="password" value="java0000" />  
+    </bean>
+    
+     <!-- transaction manager -->    
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+    
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+    
+<!-- 	본사 직원관리 --> 
+<!--  	<bean id="sqlSessionFactoryHeadStaff" class="org.mybatis.spring.SqlSessionFactoryBean"> -->
+<!-- 		<property name="dataSource" ref="dataSource" />  -->
+<!-- 		<property name="mapperLocations" value="classpath:org/ksmart02/cafe/headStaff/repository/HeadStaffMapper.xml" />  -->
+<!--  	</bean>  -->
+<!--  	<bean id="sqlSessionHeadStaff" class="org.mybatis.spring.SqlSessionTemplate"> -->
+<!--        <constructor-arg index="0" ref="sqlSessionFactoryHeadStaff" /> -->
+<!--      </bean> -->
+<!--      가맹 Sub -->
+<!--      <bean id="sqlSessionFactorySub" class="org.mybatis.spring.SqlSessionFactoryBean"> -->
+<!-- 		<property name="dataSource" ref="dataSource" />  -->
+<!-- 		<property name="mapperLocations" value="classpath:org/ksmart02/cafe/sub/repository/SubMapper.xml" />  -->
+<!--  	</bean>  -->
+<!--  	<bean id="sqlSessionSub" class="org.mybatis.spring.SqlSessionTemplate"> -->
+<!--        <constructor-arg index="0" ref="sqlSessionFactorySub" /> -->
+<!--      </bean> -->
+<!--      본사거래처 headClient -->
+<!--      <bean id="sqlSessionFactoryHeadClient" class="org.mybatis.spring.SqlSessionFactoryBean"> -->
+<!-- 		<property name="dataSource" ref="dataSource" />  -->
+<!-- 		<property name="mapperLocations" value="classpath:org/ksmart02/cafe/headClient/repository/ClientMapper.xml" />  -->
+<!--  	</bean>  -->
+<!--  	<bean id="sqlSessionHeadClient" class="org.mybatis.spring.SqlSessionTemplate"> -->
+<!--        <constructor-arg index="0" ref="sqlSessionFactoryHeadClient" /> -->
+<!--      </bean> -->
+<!--      계약관리 메퍼 -->
+<!-- 	<bean id="sqlSessionFactoryContract" class="org.mybatis.spring.SqlSessionFactoryBean"> -->
+<!-- 		<property name="dataSource" ref="dataSource" /> -->
+<!-- 		<property name="mapperLocations" value="classpath:org/ksmart02/cafe/contract/repository/ContractMapper.xml" /> -->
+<!-- 	</bean> -->
+<!-- 	<bean id="sqlSessionContract" class="org.mybatis.spring.SqlSessionTemplate"> -->
+<!-- 		<constructor-arg index="0" ref="sqlSessionFactoryContract"/> -->
+<!-- 	</bean> -->
+<!--      상품관리 head_item -->
+<!--  	<bean id="sqlSessionFactoryItem" class="org.mybatis.spring.SqlSessionFactoryBean">  -->
+<!-- 		<property name="dataSource" ref="dataSource" />  -->
+<!-- 		<property name="mapperLocations" value="classpath:org/ksmart02/cafe/item/repository/ItemMapper.xml" />  -->
+<!--  	</bean>  -->
+<!--  	<bean id="sqlSessionItem" class="org.mybatis.spring.SqlSessionTemplate"> -->
+<!--        <constructor-arg index="0" ref="sqlSessionFactoryItem" /> -->
+<!--      </bean> -->
+<!-- 	 가맹직원관련 sessionFactory입니다.--> 
+<!-- 	<bean id="sqlSessionFactorySubStaff" class="org.mybatis.spring.SqlSessionFactoryBean">  -->
+<!-- 		<property name="dataSource" ref="dataSource" />  -->
+<!-- 		<property name="mapperLocations" value="classpath:org/ksmart02/cafe/subStaff/repository/SubStaffMapper.xml" />  -->
+<!-- 	</bean>  -->
+<!-- 	 가맹직원관련 sqlSession 입니다. --> 
+<!--  	<bean id="sqlSessionSubStaff" class="org.mybatis.spring.SqlSessionTemplate"> -->
+<!--        <constructor-arg index="0" ref="sqlSessionFactorySubStaff" /> -->
+<!--  	</bean> -->
+<!--  	 메뉴당 재료랑 가격관리 sessionFactory입니다.--> 
+<!-- 	<bean id="sqlSessionFactoryIngrePrice" class="org.mybatis.spring.SqlSessionFactoryBean">  -->
+<!-- 		<property name="dataSource" ref="dataSource" />  -->
+<!-- 		<property name="mapperLocations" value="classpath:org/ksmart02/cafe/ingrePrice/repository/IngrePriceMapper.xml" />  -->
+<!-- 	</bean>  -->
+<!-- 	 메뉴당 재료랑 가격관리 sqlSession 입니다. --> 
+<!--  	<bean id="sqlSessionIngrePrice" class="org.mybatis.spring.SqlSessionTemplate"> -->
+<!--        <constructor-arg index="0" ref="sqlSessionFactoryIngrePrice" /> -->
+<!--  	</bean> -->
+		
+</beans>
