@@ -20,6 +20,17 @@
     
     <tx:annotation-driven transaction-manager="transactionManager"/>
     
+    
+     	<!-- 재고관리  -->
+ 	<bean id="sqlSessionFactoryStock" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" /> 
+		<property name="mapperLocations" value="classpath:org/ksmart/franchise/head/stock/repository/StockMapper.xml" /> 
+ 	</bean> 
+ 	<bean id="sqlSessionStock" class="org.mybatis.spring.SqlSessionTemplate">
+       <constructor-arg index="0" ref="sqlSessionFactoryStock" />
+     </bean>
+    
+    
 <!-- 	본사 직원관리 --> 
 <!--  	<bean id="sqlSessionFactoryHeadStaff" class="org.mybatis.spring.SqlSessionFactoryBean"> -->
 <!-- 		<property name="dataSource" ref="dataSource" />  -->
@@ -28,6 +39,7 @@
 <!--  	<bean id="sqlSessionHeadStaff" class="org.mybatis.spring.SqlSessionTemplate"> -->
 <!--        <constructor-arg index="0" ref="sqlSessionFactoryHeadStaff" /> -->
 <!--      </bean> -->
+
 <!--      가맹 Sub -->
 <!--      <bean id="sqlSessionFactorySub" class="org.mybatis.spring.SqlSessionFactoryBean"> -->
 <!-- 		<property name="dataSource" ref="dataSource" />  -->
