@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.ksmart02.cafe.headStaff.repository.HeadStaffMapper">
+    <!-- 본사직원 등록하는 쿼리(박종무0722) -->
+	<insert id="insertHeadStaff" parameterType="org.ksmart02.cafe.headStaff.model.HeadStaffCommand" useGeneratedKeys="true" keyProperty="headStaffId" > 
+		<selectKey resultType="hashmap" keyProperty="headStaffId" order="BEFORE">
+		select if(isnull(head_staff_id),'head_staff_id1', concat('head_staff_id', MAX(CONVERT(SUBSTRING(head_staff_id,14), UNSIGNED))+1)) 
+			as headStaffId from head_staff
+		</selectKey>  
+		INSERT INTO head_staff 
+			(head_staff_id,	head_staff_pw, head_staff_name, head_staff_level, head_staff_dep, head_staff_regit_date, head_staff_id_regit)
+		VALUES (#{headStaffId}, '0000', #{headStaffName}, #{headStaffLevel}, #{headStaffDep},  NOW(), 'id001')
+	</insert>
+
+	<!-- resultType="org.ksmart02.cafe.headStaff.model.HeadStaff" -->
+	
+	<!--  직원 로그인 하는 쿼리 -->
+	<select id="selectHeadStaffLogin" parameterType="org.ksmart.franchise.head.headStaff.model.HeadStaffLogin" resultMap="HeadStaffResultMap">
+		SELECT
+			head_staff_id, head_staff_pw, head_staff_name, head_staff_level
+		FROM	
+			head_staff
+		WHERE
+			head_staff_id = #{headStaffId} and head_staff_pw = #{headStaffPw}
+	</select>
+
+	
+	<!-- 본사직원 리스트 조회하는 쿼리  -->  
+	<select id="selectHeadStaffList" resultMap="HeadStaffResultMap" parameterType="java.util.Map">
+		SELECT
+			head_staff_id,
+			head_staff_pw,
+			head_staff_name,
+			head_staff_level,
+			head_staff_dep,
+			head_staff_join,
+<!-- 			head_staff_resign, -->
+			head_staff_regit_date,
+			head_staff_id_regit
+		From head_staff
+
+		<where>
+			<if test='headStaffSearch.searchHeadStaffInfo != null and headStaffSearch.searchHeadStaffInfo != "" '>
+				 ${headStaffSearch.searchHeadStaffKey} like CONCAT('%',#{headStaffSearch.searchHeadStaffInfo},'%')
+			</if>
+		</where>
+		<trim prefix="ORDER BY">
+			<if test="headStaffSearch.criteria == null or headStaffSearch.criteria == ''">
+				head_staff_join DESC
+			</if>
+			<if test="headStaffSearch.criteria != null or headStaffSearch.criteria != ''">
+				${headStaffSearch.criteria} ${headStaffSearch.upDown}
+			</if>
+		</trim>
+	</select>
+	<resultMap id="HeadStaffResultMap" type="org.ksmart02.cafe.headStaff.model.HeadStaff">
+		<result property="headStaffId" column="head_staff_id" />
+		<result property="headStaffPw" column="head_staff_pw" />
+		<result property="headStaffName" column="head_staff_name" />
+		<result property="headStaffLevel" column="head_staff_level" />
+		<result property="headStaffDep" column="head_staff_dep" />
+		<result property="headStaffJoin" column="head_staff_join" />
+	<!-- 	<result property="headStaffResign" column="head_staff_resign" /> -->
+		<result property="headStaffRegitDate" column="head_staff_regit_date" />
+		<result property="headStaffIdRegit" column="head_staff_id_regit" />
+	</resultMap>
+
+	<!-- 본사직원 디테일 정보 가져오는 쿼리  -->
+	<select id="selectHeadStaffDetail" resultMap="HeadStaffResult">
+		SELECT
+			head_staff_id,
+			head_staff_pw,
+			head_staff_name,
+			head_staff_level,
+			head_staff_dep,
+			head_staff_join,
+ 			<if test="head_staff_resign = null">head_staff_resign,</if>
+ 			head_staff_regit_date,
+			head_staff_id_regit
+		From head_staff
+		WHERE head_staff_id = #{headStaffId}
+		ORDER BY head_staff_join DESC	
+	</select>
+	<resultMap id="HeadStaffResult" type="org.ksmart02.cafe.headStaff.model.HeadStaff">
+		<result property="headStaffId" column="head_staff_id" />
+		<result property="headStaffPw" column="head_staff_pw" />
+		<result property="headStaffName" column="head_staff_name" />
+		<result property="headStaffLevel" column="head_staff_level" />
+		<result property="headStaffDep" column="head_staff_dep" />
+		<result property="headStaffJoin" column="head_staff_join" />
+		<result property="headStaffResign" column="head_staff_resign" /> 
+		<result property="headStaffRegitDate" column="head_staff_regit_date" />
+		<result property="headStaffIdRegit" column="head_staff_id_regit" />
+	</resultMap>
+
+	<update id="updateHeadStaff" parameterType="org.ksmart02.cafe.headStaff.model.HeadStaff" >
+	
+		UPDATE
+			head_staff
+		 SET	
+			head_staff_name = #{headStaffName},
+			head_staff_level = #{headStaffLevel},
+			head_staff_dep = #{headStaffDep}
+		<if test="head_staff_resign = null">head_staff_resign = #{headStaffIdRegit}</if> 
+		WHERE  
+			head_staff_id = #{headStaffId}	
+	
+	</update>
+
+
+</mapper>

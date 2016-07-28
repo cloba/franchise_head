@@ -38,14 +38,17 @@
        <constructor-arg index="0" ref="sqlSessionFactoryItem" />
     </bean> 
     
-<!-- 	본사 직원관리 --> 
-<!--  	<bean id="sqlSessionFactoryHeadStaff" class="org.mybatis.spring.SqlSessionFactoryBean"> -->
-<!-- 		<property name="dataSource" ref="dataSource" />  -->
-<!-- 		<property name="mapperLocations" value="classpath:org/ksmart02/cafe/headStaff/repository/HeadStaffMapper.xml" />  -->
-<!--  	</bean>  -->
-<!--  	<bean id="sqlSessionHeadStaff" class="org.mybatis.spring.SqlSessionTemplate"> -->
-<!--        <constructor-arg index="0" ref="sqlSessionFactoryHeadStaff" /> -->
-<!--      </bean> -->
+	<!-- 본사 직원관리  -->
+ 	<bean id="sqlSessionFactoryHeadStaff" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" /> 
+		<property name="mapperLocations" value="classpath:org/ksmart02/cafe/headStaff/repository/HeadStaffMapper.xml" /> 
+ 	</bean> 
+ 	<bean id="sqlSessionHeadStaff" class="org.mybatis.spring.SqlSessionTemplate">
+       <constructor-arg index="0" ref="sqlSessionFactoryHeadStaff" />
+     </bean>
+     
+     
+     
 
 <!--      가맹 Sub -->
 <!--      <bean id="sqlSessionFactorySub" class="org.mybatis.spring.SqlSessionFactoryBean"> -->

@@ -10,9 +10,9 @@
 	$(document).ready(function() {
 		$('#loginBtn').click(function() {
 			console.log('로그인버튼 클릭');
-			if ($('#staffId').val() == "") {
+			if ($('#headStaffId').val() == "") {
 				alert('아이디를 입력하세요.');
-			} else if ($('#staffPw').val() == "") {
+			} else if ($('#headStaffPw').val() == "") {
 				alert('비밀번호를 입력하세요.');
 			}else{
 				$('#loginForm').attr('action','/loginStaff');  //바꿈
@@ -27,20 +27,18 @@
 <a href="/viweHeadStrockList">재고관리</a>
 
 
+	<!-- 로그인 폼 -->
 <div class="join">
-		<form id="loginForm" action="" method="post" >
-		<h2>로그인</h2>
-			<div>
-				<input type="radio" class="login" name="login" value="head"/> 본사
-				<input type="radio" class="login" name="login" value="sub" /> 가맹 
-			</div>
+		<form id="/loginForm" action="" method="post" >
+			<h2>로그인</h2>
+			
 			<div class="form-group">
 				<label for="staffId">아이디 : </label>
-				<input type="text" class="form-control" id="staffId" name ="StaffId" placeholder="Enter ID">
+				<input type="text" class="form-control" id="headStaffId" name ="headStaffId" placeholder="Enter ID">
 			</div>
 			<div class="form-group">
 				<label for="staffPw">비밀번호:</label>
-				<input type="password" class="form-control" id="staffPw" name = "StaffPw" placeholder="Enter password">
+				<input type="password" class="form-control" id="headStaffPw" name = "headStaffPw" placeholder="Enter password">
 			</div>
 			<div id="right">
 				<input type="button" class="btn btn-default" id="loginBtn" value="로그인"/>
