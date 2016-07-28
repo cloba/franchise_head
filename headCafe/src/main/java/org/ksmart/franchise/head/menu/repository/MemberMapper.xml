@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.ksmart02.cafe.subStaff.repository.SubStaffMapper"> 
+	<!--  직원 로그인 하는 쿼리 -->
+	<select id="loginStaff" parameterType="org.ksmart.franchise.head.menu.model.Member" resultMap="staffResultMap">
+		SELECT
+			head_staff_id, head_staff_pw, head_staff_name, head_staff_level, head_staff_dep, head_staff_join, head_staff_resign, head_staff_regit_date, head_staff_regit_id
+		FROM
+			head_staff
+		WHERE
+			head_staff_id = #{headStaffId} and head_staff_pw = #{headStaffPw}
+	
+	</select>
+	
+<!-- 	   가맹 로그인하는 select쿼리 -->
+<!-- 	<select id="loginSubStaff" -->
+<!-- 		parameterType="org.ksmart02.cafe.subStaff.model.SubStaff" -->
+<!-- 		resultMap="subStaffResultMap"> -->
+<!-- 		SELECT sub_staff_id, sub_staff_name, sub_staff_level, sub_code, sub_staff_resign -->
+<!-- 		FROM sub_staff -->
+<!-- 		WHERE  -->
+<!-- 			sub_staff_id = #{subStaffId} and sub_staff_pw = #{subStaffPw} -->
+<!-- 	</select> -->
+
+
+	<resultMap id="staffResultMap" type="org.ksmart.franchise.head.menu.model.Member" >
+      <result property="subStaffPw" column="head_staff_pw"/>
+      <result property="subStaffName" column="head_staff_name"/>
+      <result property="subStaffLevel" column="head_staff_level"/>
+      <result property="subStaffJoin" column="head_staff_dep"/>
+      <result property="subStaffResign" column="head_staff_join"/>
+      <result property="subStaffRegitDate" column="head_staff_regit_date"/>
+      <result property="subStaffSalary" column="head_staff_id_regit"/>
+      <result property="headStaffId" column="head_staff_id"/>
+    </resultMap>
+
+
+</mapper>
