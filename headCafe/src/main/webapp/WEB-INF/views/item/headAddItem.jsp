@@ -19,7 +19,7 @@
 <h1>아이템 등록</h1>
 	<form name="addForm" action="/headAddItem" method="post">
 		<div> 
-		상품명: <input type="text" name="hItemName" required="required" /> 
+		상품명: <input type="text" name="hItemName" id="hItemName" required="required" /> 
 		</div>
 		<div> 
 		아이템 갯수: <input type="text" name="hItemQuantity" required="required"/> 
@@ -40,7 +40,7 @@
 		<div> 
 		매입처: <input type="text" name="headClientCode" required="required" /> 
 		</div>
-		<input type="submit" onclick="sendTxt()" value="저장">
+		<input type="submit" value="저장">
 	</form>
 </body>
 </html>

@@ -52,6 +52,18 @@ public class ItemController {
 		return "/item/viewItemList";
 	}
 	
+	// 상품 상세를 보여줍니다
+		@RequestMapping(value="/viewItemDetail")
+		public String viewItemDetail(ItemSearch itemSearch, Model model){
+			System.out.println("ItemController의 viewItemList 메서드 호출");
+
+			List<Item> itemList = itemService.viewItemListService(itemSearch);
+			model.addAttribute(itemList);
+			model.addAttribute(itemSearch);
+			
+			return "/item/viewItemList";
+		}
+	
 	// 상품을 수정하는 수정 form으로 이동합니다
 	@RequestMapping(value="/headModifyItem", method=RequestMethod.GET)
 	public String modifyItemForm(@RequestParam("hItemCode") String hItemCode, Model model){
@@ -71,7 +83,7 @@ public class ItemController {
 		int result = itemService.headModifyItemService(itemCommand, headLogin);
 		//System.out.println("update 결과: "+result);
 		
-		return "/item/empty";
+		return "redirect:/viewItemList";
 	}
 	
 }

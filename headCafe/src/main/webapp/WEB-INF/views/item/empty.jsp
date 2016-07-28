@@ -6,7 +6,8 @@
 <title>Insert title here</title>
 <script>
 	window.opener.location.reload();
-	opener.document.getElementById("hItemName").value = "c_val"; 
+	window.opener.document.addItemLink.addedItemName.value = document.addForm.hItemName.value;
+	window.opener.document.addItemLink.addedItemName.value.select();
 	window.close();
 </script>
 </head>

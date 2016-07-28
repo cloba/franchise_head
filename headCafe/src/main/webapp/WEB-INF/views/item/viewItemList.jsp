@@ -15,12 +15,11 @@
 </head>
 <body>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-<!-- 상품 더블 클릭시 수정 페이지가 open 되는 함수가 있는 js파일 -->
-<script type="text/javascript" src="resources/js/itemListPop.js"></script>
 <!-- 검색과 정렬 유효성 검사하는 함수가 있는 js파일 -->
 <script type="text/javascript" src="resources/js/validation.js"></script>
+
 <script>
-	
+
 	$(document).ready(function(){
 		
 		/* 검색 버튼 눌렀을 때 유효성 검사 */
@@ -129,11 +128,7 @@
 			</tr>
 		</c:forEach>
 	</table>
-	<form name="addItemLink">
-		<span onclick="addPop()">[신규등록]</span>
-		<br>
-		전달받은 값: <input type="text" id="addedItemName"/>
-	</form>
-	<a href="/">홈으로</a>
+	<a href="/headAddItem">[신규등록]</a>
+	<a href="/">[홈으로]</a>
 </body>
 </html>
