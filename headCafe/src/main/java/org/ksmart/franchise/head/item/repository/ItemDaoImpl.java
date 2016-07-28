@@ -49,8 +49,8 @@ public class ItemDaoImpl implements ItemDao{
 	
 	@Override
 	// head_item의 기존 값을 불러오는 메서드입니다
-	public Item headModifyItemForm(String hItemCode) {
-		System.out.println("ItemDaoImpl의 headModifyItemForm 메서드 호출");
+	public Item getItemDetail(String hItemCode) {
+		System.out.println("ItemDaoImpl의 getItemDetail 메서드 호출");
 		
 		//map을 안써도 되지만 통일성을 위해 씀 (여기는 팀원들에게 물어 볼 것)
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -76,6 +76,5 @@ public class ItemDaoImpl implements ItemDao{
 		
 		return sqlSessionItem.update(NS+".updateItem", map);
 	}
-
 	
 }

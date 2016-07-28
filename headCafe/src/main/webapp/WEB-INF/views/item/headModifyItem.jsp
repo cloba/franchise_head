@@ -56,7 +56,6 @@
 		매입처: <input type="text" name="headClientCode" value="${item.headClientCode}" required="required"/> 
 		</div>
 		<button>저장</button>
-		<!-- <input type="button" id="modifyBtn" value="저장" /> -->
 	</form>
 </body>
 </html>

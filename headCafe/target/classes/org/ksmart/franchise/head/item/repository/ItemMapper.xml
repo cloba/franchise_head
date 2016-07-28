@@ -47,7 +47,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- head_item의 리스트를 봅니다 (검색포함)-->
 	<select id="selectItem" parameterType="java.util.Map" resultMap="itemResultMap">
-		SELECT h_item_code, h_item_name, inte_code, h_item_quantity, h_item_unit, h_item_purchase_price, h_item_margin_percent, h_item_head_profit, h_item_selling_price, h_item_retail_price, h_item_regit_date, head_staff_id, head_client_code 
+		SELECT h_item_code, h_item_name, inte_code, h_item_quantity, h_item_unit, h_item_purchase_price, h_item_regit_date, head_staff_id, head_client_code 
 		FROM head_item
 		<where>
 			<if test="itemSearch.regitDateStart != null and itemSearch.regitDateEnd != null and itemSearch.regitDateStart !='' and itemSearch.regitDateEnd !=''">

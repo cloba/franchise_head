@@ -54,14 +54,13 @@ public class ItemController {
 	
 	// 상품 상세를 보여줍니다
 		@RequestMapping(value="/viewItemDetail")
-		public String viewItemDetail(ItemSearch itemSearch, Model model){
-			System.out.println("ItemController의 viewItemList 메서드 호출");
+		public String viewItemDetail(@RequestParam("hItemCode") String hItemCode, Model model){
+			System.out.println("ItemController의 viewItemDetail 메서드 호출");
 
-			List<Item> itemList = itemService.viewItemListService(itemSearch);
-			model.addAttribute(itemList);
-			model.addAttribute(itemSearch);
+			item = itemService.getItemDetailService(hItemCode);
+			model.addAttribute(item);
 			
-			return "/item/viewItemList";
+			return "/item/viewItemDetail";
 		}
 	
 	// 상품을 수정하는 수정 form으로 이동합니다
@@ -69,7 +68,7 @@ public class ItemController {
 	public String modifyItemForm(@RequestParam("hItemCode") String hItemCode, Model model){
 		System.out.println("ItemController의 modifyItemForm 메서드 호출");
 		
-		item = itemService.headModifyItemFormService(hItemCode);
+		item = itemService.getItemDetailService(hItemCode);
 		model.addAttribute(item);
 		
 		return "/item/headModifyItem";
@@ -83,7 +82,7 @@ public class ItemController {
 		int result = itemService.headModifyItemService(itemCommand, headLogin);
 		//System.out.println("update 결과: "+result);
 		
-		return "redirect:/viewItemList";
+		return "redirect:/viewItemDetail?hItemCode="+itemCommand.gethItemCode();
 	}
 	
 }

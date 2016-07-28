@@ -91,10 +91,6 @@
 			<th>상품 갯수</th>
 			<th>박스/개별 여부</th>
 			<th>매입가</th>
-			<th>마진율</th>
-			<th>본사 이익 금액</th>
-			<th>가맹에 판매하는 가격</th>
-			<th>소비자 가격</th>
 			<th>
 				등록날짜
 				<span id="dateUp">▲</span>
@@ -110,16 +106,12 @@
 		
 		<c:forEach var="itemList" items="${itemList}">
 			<tr ondblclick="modifyPop('${itemList.hItemCode}')">
-				<th>${itemList.hItemName}</th>
+				<th><a href="/viewItemDetail?hItemCode=${itemList.hItemCode}">${itemList.hItemName}</a></th>
 				<th>${itemList.hItemCode}</th>
 				<th>${itemList.inteCode}</th>
 				<th>${itemList.hItemQuantity}</th>
 				<th>${itemList.hItemUnit}</th>
 				<th><fmt:formatNumber value="${itemList.hItemPurchasePrice}" pattern="#,###"/></th>
-				<th><fmt:formatNumber value="${itemList.hItemMarginPercent}" type="percent"/></th>
-				<th><fmt:formatNumber value="${itemList.hItemHeadProfit}" pattern="#,###"/></th>
-				<th><fmt:formatNumber value="${itemList.hItemSellingPrice}" pattern="#,###"/></th>
-				<th><fmt:formatNumber value="${itemList.hItemRetailPrice}" pattern="#,###"/></th>
 				<th><fmt:parseDate value="${itemList.hItemRegitDate}" pattern="yyyy-MM-dd HH:mm:ss" var="date"/>
 					<fmt:formatDate pattern="yyyy-MM-dd" type="both" value="${date}" />
 				</th>

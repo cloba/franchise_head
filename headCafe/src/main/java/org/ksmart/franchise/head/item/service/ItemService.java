@@ -13,7 +13,7 @@ public interface ItemService {
 	
 	public List<Item> viewItemListService(ItemSearch itemSearch);
 	
-	public Item headModifyItemFormService(String hItemCode);
+	public Item getItemDetailService(String hItemCode);
 	
 	public int headModifyItemService(ItemCommand itemCommand, HeadLogin headLogin);
 	

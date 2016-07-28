@@ -31,10 +31,10 @@ public class ItemServiceImpl  implements ItemService {
 	}
 
 	@Override
-	public Item headModifyItemFormService(String hItemCode) {
-		System.out.println("ItemServiceImpl의 viewItemListService메서드 호출");
+	public Item getItemDetailService(String hItemCode) {
+		System.out.println("ItemServiceImpl의 getItemDetailService메서드 호출");
 		
-		return itemDao.headModifyItemForm(hItemCode);
+		return itemDao.getItemDetail(hItemCode);
 	}
 
 	@Override
@@ -43,6 +43,5 @@ public class ItemServiceImpl  implements ItemService {
 		
 		return itemDao.headModifyItem(itemCommand, headLogin);
 	}
-
 
 }
