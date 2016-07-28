@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">			
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>	
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">		
 	<title>Home</title>
 <script>
 	//로그인 메서드
@@ -25,12 +25,11 @@
 <body>
 
 <a href="/viweHeadStrockList">재고관리</a>
-<a href="/viewItemList">상품관리</a>
-
+${headStaffCommand.headStaffId }
 
 	<!-- 로그인 폼 -->
 <div class="join">
-		<form id="/loginForm" action="" method="post" >
+		<form id="loginForm" action="" method="post" >
 			<h2>로그인</h2>
 			
 			<div class="form-group">

@@ -20,11 +20,13 @@ public class HeadStaffController {
 	@Autowired
 	private HeadStaffService headStaffService;
 	
+	//본사직원 로그인 메서드
 	@RequestMapping(value="/loginStaff", method=RequestMethod.POST)
 	public String loginStaff(Model model, HeadStaffCommand headStaffCommand){
 		System.out.println("HeadStaffController의 loginStaff실행");
 		Map<String, Object> map = new HashMap<String, Object>();
 		headStaffService.loginStaffService(headStaffCommand);
+		System.out.println("메서드 성공");
 		if(headStaffCommand.getHeadStaffName() != null){
 			System.out.println("로그인 완료");
 			map.put("headStaffCommand", headStaffCommand);
