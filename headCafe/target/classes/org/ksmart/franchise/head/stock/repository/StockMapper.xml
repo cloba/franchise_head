@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.ksmart.franchise.head.stock.repository.StockMapper">
+
+	<!-- 재고 리스트 조회 메서드 -->
+	<select id="selectStockList" resultMap="StockResultMap" >
+		SELECT
+			specific_item_code,
+			h_item_code,
+			head_buy_code,
+			head_staff_id,
+			head_stock_regit_date,
+			head_stock_item_out,
+			head_stock_in_date,
+			head_stock_in_expiry_date,
+			head_stock_return
+		From head_stock
+	
+	
+	
+	</select>
+	<resultMap type="org.ksmart.franchise.head.stock.model.Stock" id="StockResultMap">
+		<result property="specificItemCode" column="specific_item_code"/>
+		<result property="hItemCode" column="h_item_code"/>
+		<result property="headBuyCode" column="head_buy_code"/>
+		<result property="headStaffId" column="head_staff_id"/>
+		<result property="headStockRegitDate" column="head_stock_regit_date"/>
+		<result property="headStockItemOut" column="head_stock_item_out"/>
+		<result property="headStockInDate" column="head_stock_in_date"/>
+		<result property="headStockInExpiryDate" column="head_stock_in_expiry_date"/>
+		<result property="headStockReturn" column="head_stock_return"/>	
+	</resultMap>
+
+
+</mapper>

@@ -13,6 +13,7 @@ public class StockServiceImpl implements StockService{
 	@Autowired
 	private StockDao stockDao;
 	
+	//재고 리스트 조회 메서드
 	public List<Stock> viweHeadStrockList(){
 		return stockDao.viweHeadStrockList();
 		

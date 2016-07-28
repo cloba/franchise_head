@@ -15,6 +15,7 @@ public class StockDaoImpl implements StockDao {
 	private SqlSessionTemplate sqlSessionStock;
 	
 	
+	//재고 리스트 조회 메서드
 	@Override
 	public List<Stock> viweHeadStrockList() {
 		

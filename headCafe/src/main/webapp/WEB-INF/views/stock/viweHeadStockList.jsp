@@ -6,10 +6,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <title>Insert title here</title>
+
+
 </head>
 <body>
 
- <c:forEach var="Stock" items="${list }">
+ <c:forEach var="Stock" items="${list}">
  	${Stock.hItemCode }
  
  </c:forEach>

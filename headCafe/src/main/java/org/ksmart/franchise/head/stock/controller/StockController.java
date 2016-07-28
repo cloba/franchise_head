@@ -15,15 +15,20 @@ public class StockController {
 	
 	@Autowired
 	private StockService stockService;
-	
+	//재고리스트 조회 메서드
 	@RequestMapping(value="/viweHeadStrockList", method=RequestMethod.GET)
 	public String viweHeadStrockList(Model model){
 		System.out.println("StockController의 viweHeadStrockList 메서드");
+		
+		//재고리스트 받아옴
 		List<Stock> list = stockService.viweHeadStrockList();
 		System.out.println("list size :"+list.size());
 		model.addAttribute("list", list);
 		
+		//리스트 폼으로 이동
 		return "stock/viweHeadStockList";
 	}
+	
+	
 	
 }
