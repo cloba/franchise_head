@@ -25,6 +25,7 @@
 <body>
 
 <a href="/viweHeadStrockList">재고관리</a>
+<a href="/viewItemList">상품관리</a>
 
 
 	<!-- 로그인 폼 -->
