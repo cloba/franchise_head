@@ -19,5 +19,5 @@ public interface HeadStaffDao {
 
 	int headStaffModify(HeadStaff headstaff);
 
-	HeadStaffLogin headStafflogin(HeadStaffCommand headStaffCommand);
+	HeadStaff headStafflogin(HeadStaffCommand headStaffCommand);
 }

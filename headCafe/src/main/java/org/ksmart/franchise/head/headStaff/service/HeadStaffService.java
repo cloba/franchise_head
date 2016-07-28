@@ -19,6 +19,6 @@ public interface HeadStaffService {
 
 	int modifyHeadStaff(HeadStaff headStaff);
 
-	HeadStaffLogin loginStaffService(HeadStaffCommand headStaffCommand);
+	HeadStaff loginStaffService(HeadStaffCommand headStaffCommand);
 
 }

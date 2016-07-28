@@ -48,7 +48,7 @@ public class HeadStaffServiceImpl implements HeadStaffService{
 	}
 
 	@Override
-	public HeadStaffLogin loginStaffService(HeadStaffCommand headStaffCommand) {
+	public HeadStaff loginStaffService(HeadStaffCommand headStaffCommand) {
 		return headStaffDao.headStafflogin(headStaffCommand);
 		
 	}

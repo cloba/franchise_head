@@ -20,21 +20,30 @@ public class HeadStaffController {
 	@Autowired
 	private HeadStaffService headStaffService;
 	
-	//본사직원 로그인 메서드
+	//본사직원 로그인 메서드  
 	@RequestMapping(value="/loginStaff", method=RequestMethod.POST)
 	public String loginStaff(Model model, HeadStaffCommand headStaffCommand){
 		System.out.println("HeadStaffController의 loginStaff실행");
 		Map<String, Object> map = new HashMap<String, Object>();
 		headStaffService.loginStaffService(headStaffCommand);
 		System.out.println("메서드 성공");
-		if(headStaffCommand.getHeadStaffName() != null){
+	
+		
+		if(headStaffCommand == null ){
+			System.out.println("로그인 실패");
+		
+	//		return "redirect:/";    //로그인 성공
+			
+		}else{
+			
 			System.out.println("로그인 완료");
 			map.put("headStaffCommand", headStaffCommand);
-		
-			return "/home";    //로그인 성공
 			
 		}
-		return "redirect:/";   //(로그인 못 했다는 메서지와 함께) 로그인창 다시보여줘야함
+		
+	//	System.out.println("headStaff" +headStaff.getHeadStaffId());
+		System.out.println("headStaffCommand :"+headStaffCommand.getHeadStaffId());
+		return "/home";   //(로그인 못 했다는 메서지와 함께) 로그인창 다시보여줘야함
 		
 	}
 	
@@ -45,7 +54,7 @@ public class HeadStaffController {
 	public String addHeadStaff(){
 		System.out.println("HeadStaffController의 GET 메서드");
 
-		return "/head/headStaff/AddHeadStaff";
+		return "/headStaff/AddHeadStaff";
 	}
 	
 	// AddHeadStaff.jsp의 form에서 넘어오는 데이터를 받아서 처리하는 메서드
@@ -59,7 +68,7 @@ public class HeadStaffController {
 		
 		//System.out.println("headStaffId 확잉: "+headStaffCommand.getHeadStaffId());
 		
-		return "/head/headStaff/AddHeadStaff";
+		return "/headStaff/AddHeadStaff";
 	}
 	
 	 //본사 직원리스트 보는 메서드(박종무 0722) 
@@ -75,7 +84,7 @@ public class HeadStaffController {
 		  System.out.println("list.size:"+ list.size());
 		  model.addAttribute("list", list);
 		  
-	      return "/head/headStaff/ViewHeadStaffList";
+	      return "/headStaff/ViewHeadStaffList";
 	    }
 	
 	  //본사 직원 디테일보는 메서드
@@ -85,7 +94,7 @@ public class HeadStaffController {
 		  HeadStaff headStaff = headStaffService.headStaffDetail(headStaffId);
 		  model.addAttribute("headStaff", headStaff);
 		  
-		return "/head/headStaff/ViewHeadStaffDetail";
+		return "/headStaff/ViewHeadStaffDetail";
 	  }
 	  
 	  //본사직원 정보 수정 폼불러내는 메서드
@@ -96,7 +105,7 @@ public class HeadStaffController {
 		  System.out.println("headStaff.HeadStaffId"+headStaff.getHeadStaffId());
 		  model.addAttribute("headStaff", headStaff);
 		
-		return "/head/headStaff/ViewHeadStaffModifyForm";
+		return "/headStaff/ViewHeadStaffModifyForm";
 		  
 	  }
 	  //본사직원 정보 수정 처리하는 메서드

@@ -10,13 +10,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			as headStaffId from head_staff
 		</selectKey>  
 		INSERT INTO head_staff 
-			(head_staff_id,	head_staff_pw, head_staff_name, head_staff_level, head_staff_dep, head_staff_regit_date, head_staff_id_regit)
-		VALUES (#{headStaffId}, '0000', #{headStaffName}, #{headStaffLevel}, #{headStaffDep},  NOW(), 'id001')
+			(head_staff_id,	head_staff_pw, head_staff_name, head_staff_level, head_staff_dep, head_staff_regit_date, head_staff_regit_id)
+		VALUES (#{headStaffId}, '0000', #{headStaffName}, #{headStaffLevel}, #{headStaffDep},  NOW(), 'id001')      
 	</insert>
 
 	<!-- resultType="org.ksmart02.cafe.headStaff.model.HeadStaff" -->
 	
-	<!--  직원 로그인 하는 쿼리 -->
+	<!--  본사 직원 로그인 하는 쿼리 -->
 	<select id="selectHeadStaffLogin" parameterType="java.util.Map" resultMap="HeadStaffResultMap">
 		SELECT
 			head_staff_id, head_staff_pw, head_staff_name, head_staff_level
@@ -38,7 +38,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			head_staff_join,
 <!-- 			head_staff_resign, -->
 			head_staff_regit_date,
-			head_staff_id_regit
+			head_staff_regit_id
 		From head_staff
 
 		<where>
@@ -54,7 +54,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				${headStaffSearch.criteria} ${headStaffSearch.upDown}
 			</if>
 		</trim>
-	</select>
+	</select>  
 	<resultMap id="HeadStaffResultMap" type="org.ksmart.franchise.head.headStaff.model.HeadStaff">
 		<result property="headStaffId" column="head_staff_id" />
 		<result property="headStaffPw" column="head_staff_pw" />
@@ -62,9 +62,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="headStaffLevel" column="head_staff_level" />
 		<result property="headStaffDep" column="head_staff_dep" />
 		<result property="headStaffJoin" column="head_staff_join" />
-	<!-- 	<result property="headStaffResign" column="head_staff_resign" /> -->
+	 	<result property="headStaffResign" column="head_staff_resign" /> 
 		<result property="headStaffRegitDate" column="head_staff_regit_date" />
-		<result property="headStaffIdRegit" column="head_staff_id_regit" />
+		<result property="headStaffRegitId" column="head_staff_regit_id" />
+
 	</resultMap>
 
 	<!-- 본사직원 디테일 정보 가져오는 쿼리  -->
@@ -78,7 +79,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			head_staff_join,
  			<if test="head_staff_resign = null">head_staff_resign,</if>
  			head_staff_regit_date,
-			head_staff_id_regit
+			head_staff_regit_id
 		From head_staff
 		WHERE head_staff_id = #{headStaffId}
 		ORDER BY head_staff_join DESC	
@@ -91,9 +92,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="headStaffDep" column="head_staff_dep" />
 		<result property="headStaffJoin" column="head_staff_join" />
 		<result property="headStaffResign" column="head_staff_resign" /> 
-		<result property="headStaffRegitDate" column="head_staff_regit_date" />
-		<result property="headStaffIdRegit" column="head_staff_id_regit" />
-	</resultMap>
+		<result property="headStaffRegitDate" column="head_staff_regit_date" />  
+		<result property="headStaffRegitId" column="head_staff_regit_id" />
+	</resultMap>  
 
 	<update id="updateHeadStaff" parameterType="org.ksmart.franchise.head.headStaff.model.HeadStaff" >
 	
@@ -103,7 +104,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			head_staff_name = #{headStaffName},
 			head_staff_level = #{headStaffLevel},
 			head_staff_dep = #{headStaffDep}
-		<if test="head_staff_resign = null">head_staff_resign = #{headStaffIdRegit}</if> 
+		<if test="head_staff_resign = null">head_staff_resign = #{headStaffRegitId}</if> 
 		WHERE  
 			head_staff_id = #{headStaffId}	
 	

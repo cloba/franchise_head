@@ -10,7 +10,7 @@ public class HeadStaff {
 	private String headStaffJoin;
 	private String headStaffResign;
 	private String headStaffRegitDate;
-	private String headStaffIdRegit;
+	private String headStaffRegitId; 
 	private String criteria;
 	private String lineUp;
 	
@@ -63,12 +63,7 @@ public class HeadStaff {
 		this.headStaffJoin = headStaffJoin;
 	}
 	
-	public String getHeadStaffIdRegit() {
-		return headStaffIdRegit;
-	}
-	public void setHeadStaffIdRegit(String headStaffIdRegit) {
-		this.headStaffIdRegit = headStaffIdRegit;
-	}
+
 	public String getHeadStaffRegitDate() {
 		return headStaffRegitDate;
 	}
@@ -80,6 +75,12 @@ public class HeadStaff {
 	}
 	public void setHeadStaffResign(String headStaffResign) {
 		this.headStaffResign = headStaffResign;
+	}
+	public String getHeadStaffRegitId() {
+		return headStaffRegitId;
+	}
+	public void setHeadStaffRegitId(String headStaffRegitId) {
+		this.headStaffRegitId = headStaffRegitId;
 	}
 	
 	

@@ -24,10 +24,10 @@
 </head>
 <body>
 
+로그인 아이디: ${headStaffCommand.headStaffId }
 <a href="/viweHeadStrockList">재고관리</a>
-${headStaffCommand.headStaffId }
 <a href="/viewItemList">상품관리</a>
-
+<a href="/viewHeadStaffList">본사직원조회</a>
 	<!-- 로그인 폼 -->
 <div class="join">
 		<form id="loginForm" action="" method="post" >
