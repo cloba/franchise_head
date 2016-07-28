@@ -20,8 +20,7 @@
     
     <tx:annotation-driven transaction-manager="transactionManager"/>
     
-    
-     	<!-- 재고관리  -->
+    <!-- 재고관리  -->
  	<bean id="sqlSessionFactoryStock" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" /> 
 		<property name="mapperLocations" value="classpath:org/ksmart/franchise/head/stock/repository/StockMapper.xml" /> 
@@ -29,7 +28,15 @@
  	<bean id="sqlSessionStock" class="org.mybatis.spring.SqlSessionTemplate">
        <constructor-arg index="0" ref="sqlSessionFactoryStock" />
      </bean>
-    
+     
+    <!--  상품관리 head_item -->
+ 	<bean id="sqlSessionFactoryItem" class="org.mybatis.spring.SqlSessionFactoryBean">  
+		<property name="dataSource" ref="dataSource" /> 
+		<property name="mapperLocations" value="classpath:org/ksmart/franchise/head/item/repository/ItemMapper.xml" /> 
+	</bean> 
+ 	<bean id="sqlSessionItem" class="org.mybatis.spring.SqlSessionTemplate"> 
+       <constructor-arg index="0" ref="sqlSessionFactoryItem" />
+    </bean> 
     
 <!-- 	본사 직원관리 --> 
 <!--  	<bean id="sqlSessionFactoryHeadStaff" class="org.mybatis.spring.SqlSessionFactoryBean"> -->
@@ -64,14 +71,6 @@
 <!-- 	<bean id="sqlSessionContract" class="org.mybatis.spring.SqlSessionTemplate"> -->
 <!-- 		<constructor-arg index="0" ref="sqlSessionFactoryContract"/> -->
 <!-- 	</bean> -->
-<!--      상품관리 head_item -->
-<!--  	<bean id="sqlSessionFactoryItem" class="org.mybatis.spring.SqlSessionFactoryBean">  -->
-<!-- 		<property name="dataSource" ref="dataSource" />  -->
-<!-- 		<property name="mapperLocations" value="classpath:org/ksmart02/cafe/item/repository/ItemMapper.xml" />  -->
-<!--  	</bean>  -->
-<!--  	<bean id="sqlSessionItem" class="org.mybatis.spring.SqlSessionTemplate"> -->
-<!--        <constructor-arg index="0" ref="sqlSessionFactoryItem" /> -->
-<!--      </bean> -->
 <!-- 	 가맹직원관련 sessionFactory입니다.--> 
 <!-- 	<bean id="sqlSessionFactorySubStaff" class="org.mybatis.spring.SqlSessionFactoryBean">  -->
 <!-- 		<property name="dataSource" ref="dataSource" />  -->
