@@ -6,7 +6,6 @@ import java.util.Map;
 
 import org.ksmart.franchise.head.headStaff.model.HeadStaff;
 import org.ksmart.franchise.head.headStaff.model.HeadStaffCommand;
-import org.ksmart.franchise.head.headStaff.model.HeadStaffLogin;
 import org.ksmart.franchise.head.headStaff.model.HeadStaffSearch;
 import org.ksmart.franchise.head.headStaff.service.HeadStaffService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,17 +45,6 @@ public class HeadStaffController {
 
 		return "/head/headStaff/AddHeadStaff";
 	}
-	
-	//박종무 (0722)  
-	//회원가입을 처리하는 메서드           /headAddHeadStaff
-/*	@RequestMapping(value="/headAddHeadStaff", method=RequestMethod.POST)
-	public String addHeadStaff(HeadStaff headStaff ,Model model){
-		
-		System.out.println("HeadStaffController의 POST 메서드");
-		headStaffService.addHeadStaff(headStaff);
-		return "redirect:/head/headStaff/headViewHeadStaffList";
-		
-	}*/
 	
 	// AddHeadStaff.jsp의 form에서 넘어오는 데이터를 받아서 처리하는 메서드
 	@RequestMapping(value="/addHeadStaff", method=RequestMethod.POST)

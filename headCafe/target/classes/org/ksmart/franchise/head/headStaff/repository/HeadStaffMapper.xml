@@ -4,7 +4,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.ksmart02.cafe.headStaff.repository.HeadStaffMapper">
     <!-- 본사직원 등록하는 쿼리(박종무0722) -->
-	<insert id="insertHeadStaff" parameterType="org.ksmart02.cafe.headStaff.model.HeadStaffCommand" useGeneratedKeys="true" keyProperty="headStaffId" > 
+	<insert id="insertHeadStaff" parameterType="org.ksmart.franchise.head.headStaff.model.HeadStaffCommand" useGeneratedKeys="true" keyProperty="headStaffId" > 
 		<selectKey resultType="hashmap" keyProperty="headStaffId" order="BEFORE">
 		select if(isnull(head_staff_id),'head_staff_id1', concat('head_staff_id', MAX(CONVERT(SUBSTRING(head_staff_id,14), UNSIGNED))+1)) 
 			as headStaffId from head_staff
@@ -17,7 +17,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- resultType="org.ksmart02.cafe.headStaff.model.HeadStaff" -->
 	
 	<!--  직원 로그인 하는 쿼리 -->
-	<select id="selectHeadStaffLogin" parameterType="org.ksmart.franchise.head.headStaff.model.HeadStaffLogin" resultMap="HeadStaffResultMap">
+	<select id="selectHeadStaffLogin" parameterType="java.util.Map" resultMap="HeadStaffResultMap">
 		SELECT
 			head_staff_id, head_staff_pw, head_staff_name, head_staff_level
 		FROM	
@@ -55,7 +55,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			</if>
 		</trim>
 	</select>
-	<resultMap id="HeadStaffResultMap" type="org.ksmart02.cafe.headStaff.model.HeadStaff">
+	<resultMap id="HeadStaffResultMap" type="org.ksmart.franchise.head.headStaff.model.HeadStaff">
 		<result property="headStaffId" column="head_staff_id" />
 		<result property="headStaffPw" column="head_staff_pw" />
 		<result property="headStaffName" column="head_staff_name" />
@@ -83,7 +83,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE head_staff_id = #{headStaffId}
 		ORDER BY head_staff_join DESC	
 	</select>
-	<resultMap id="HeadStaffResult" type="org.ksmart02.cafe.headStaff.model.HeadStaff">
+	<resultMap id="HeadStaffResult" type="org.ksmart.franchise.head.headStaff.model.HeadStaff">
 		<result property="headStaffId" column="head_staff_id" />
 		<result property="headStaffPw" column="head_staff_pw" />
 		<result property="headStaffName" column="head_staff_name" />
@@ -95,7 +95,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="headStaffIdRegit" column="head_staff_id_regit" />
 	</resultMap>
 
-	<update id="updateHeadStaff" parameterType="org.ksmart02.cafe.headStaff.model.HeadStaff" >
+	<update id="updateHeadStaff" parameterType="org.ksmart.franchise.head.headStaff.model.HeadStaff" >
 	
 		UPDATE
 			head_staff
