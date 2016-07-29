@@ -13,6 +13,9 @@ public class HeadStaff {
 	private String headStaffRegitId; 
 	private String criteria;
 	private String lineUp;
+	private String resignIdentify;
+	
+	
 	
 	public String getCriteria() {
 		return criteria;
@@ -82,6 +85,13 @@ public class HeadStaff {
 	public void setHeadStaffRegitId(String headStaffRegitId) {
 		this.headStaffRegitId = headStaffRegitId;
 	}
+	public String getResignIdentify() {
+		return resignIdentify;
+	}
+	public void setResignIdentify(String resignIdentify) {
+		this.resignIdentify = resignIdentify;
+	}
+	
 	
 	
 	

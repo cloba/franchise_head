@@ -6,7 +6,6 @@ import java.util.Map;
 
 import org.ksmart.franchise.head.headStaff.model.HeadStaff;
 import org.ksmart.franchise.head.headStaff.model.HeadStaffCommand;
-import org.ksmart.franchise.head.headStaff.model.HeadStaffLogin;
 import org.ksmart.franchise.head.headStaff.model.HeadStaffSearch;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +14,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class HeadStaffDaoImpl implements HeadStaffDao{
+	
+	//mapper주소 변수로 저장
 	private final String NS = "org.ksmart02.cafe.headStaff.repository.HeadStaffMapper";
 
 	@Autowired
@@ -23,7 +24,7 @@ public class HeadStaffDaoImpl implements HeadStaffDao{
 	
 	//form에서 입력한 headstaff객체를 받아 회원가입처리 하는 메서드.
 	@Override        
-	public Object addHeadStaff(HeadStaffCommand headStaffCommand) {  
+	public int addHeadStaff(HeadStaffCommand headStaffCommand) {  
 		System.out.println("HeadStaffDaoImpl의 addHeadStaff메서드");
 		return sqlSessionHeadStaff.insert(NS+".insertHeadStaff", headStaffCommand);
 	}
@@ -64,6 +65,18 @@ public class HeadStaffDaoImpl implements HeadStaffDao{
 		
 		return sqlSessionHeadStaff.selectOne(NS+".selectHeadStaffLogin", map);
 	}
+
+	//퇴사자 등록 하는 메서드
+	@Override
+	public HeadStaff addResignStaff(HeadStaff headStaff) {
+		System.out.println("HeadStaffDaoImpl의 addResignStaff메서드");
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("headStaff", headStaff);
+		
+		return sqlSessionHeadStaff.selectOne(NS+".selectHeadStaffLogin", map);
+		
+	}
+	
 
 
 	

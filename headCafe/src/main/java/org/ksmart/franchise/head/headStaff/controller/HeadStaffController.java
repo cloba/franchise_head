@@ -19,6 +19,7 @@ public class HeadStaffController {
 	
 	@Autowired
 	private HeadStaffService headStaffService;
+	private String resignIdentify = ""; 
 	
 	//본사직원 로그인 메서드  
 	@RequestMapping(value="/loginStaff", method=RequestMethod.POST)
@@ -77,11 +78,16 @@ public class HeadStaffController {
 		  System.out.println("HeadStaffController의 ViewHeadStaffList메서드 ");
 		  System.out.println("SearchHeadStaffInfo :"+headStaffSearch.getSearchHeadStaffInfo());
 		  System.out.println("SearchHeadStaffKey :"+headStaffSearch.getSearchHeadStaffKey());
+		  resignIdentify = "N";
+		  headStaff.setResignIdentify(resignIdentify);
+		  
 		  List<Object> list =  headStaffService.headStaffList(headStaff, headStaffSearch);
 		  System.out.println("getSearchHeadStaffKey :"+headStaffSearch.getSearchHeadStaffKey());
 		  
-		  model.addAttribute("headStaffSearch", headStaffSearch);
+		//  model.addAttribute("headStaffSearch", headStaffSearch);
+		//  model.addAttribute("headStaff", headStaff);
 		  System.out.println("list.size:"+ list.size());
+		  System.out.println("ResignIdentify()"+headStaff.getResignIdentify());
 		  model.addAttribute("list", list);
 		  
 	      return "/headStaff/ViewHeadStaffList";
@@ -113,11 +119,32 @@ public class HeadStaffController {
 	  public String ModifyHeadStaff(Model model, HeadStaff headStaff){
 		  System.out.println("HeadStaffController의 ModifyHeadStaff메서드 ");
 		  headStaffService.modifyHeadStaff(headStaff);
-		  System.out.println(headStaff.getHeadStaffId());
+		  System.out.println("HeadStaffId() :"+headStaff.getHeadStaffId());
 		  String headStaffId = headStaff.getHeadStaffId();
 		 return "redirect:/headStaffDetail?headStaffId="+headStaffId;
 		 		/*"/headStaffDetail?headStaffId="+headStaffId;*/
 		  
 	  }
+	  //퇴사자 조회하는 메서드
+	  @RequestMapping(value="/viewResignStaffList", method=RequestMethod.GET)
+	  public String viewResignStaffList(Model model, HeadStaffSearch headStaffSearch, HeadStaff headStaff){
+		  System.out.println("HeadStaffController의 viewResignStaffList메서드 ");
+		  resignIdentify = "Y";
+		  headStaff.setResignIdentify(resignIdentify);
+		  List<Object> list =  headStaffService.headStaffList(headStaff, headStaffSearch);
+		  model.addAttribute("list", list);
+		  System.out.println(headStaff.getResignIdentify());
+		  return "/headStaff/ViewHeadStaffList";
+		  
+	  }
 	  
+	  //퇴사 등록 하는 메서드
+	  @RequestMapping(value="/addResignStaff", method=RequestMethod.GET)
+	  public String addResignStaff(Model model, HeadStaff headStaff){
+		  System.out.println("HeadStaffController의 addResignStaff메서드 ");
+		  headStaffService.addResignStaffService(headStaff);
+		  System.out.println(headStaff.getResignIdentify());
+		  return "/headStaff/ViewHeadStaffList";
+		  
+	  }
 }
