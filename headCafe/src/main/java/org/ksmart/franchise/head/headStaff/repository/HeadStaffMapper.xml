@@ -36,14 +36,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			head_staff_level,
 			head_staff_dep,
 			head_staff_join,
-<!-- 			head_staff_resign, -->
+			<if test="head_staff_resign = null">head_staff_resign,</if>
 			head_staff_regit_date,
-			head_staff_regit_id
+			head_staff_regit_id,
+			head_staff_resign_identify
 		From head_staff
-
+		where head_staff_resign_identify = #{headStaff.resignIdentify}
 		<where>
+			
+<!--  			<![CDATA[head_staff_resign2 = Y	]]>  -->
+			
 			<if test='headStaffSearch.searchHeadStaffInfo != null and headStaffSearch.searchHeadStaffInfo != "" '>
-				 ${headStaffSearch.searchHeadStaffKey} like CONCAT('%',#{headStaffSearch.searchHeadStaffInfo},'%')
+				AND ${headStaffSearch.searchHeadStaffKey} like CONCAT('%',#{headStaffSearch.searchHeadStaffInfo},'%')
 			</if>
 		</where>
 		<trim prefix="ORDER BY">
@@ -65,7 +69,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	 	<result property="headStaffResign" column="head_staff_resign" /> 
 		<result property="headStaffRegitDate" column="head_staff_regit_date" />
 		<result property="headStaffRegitId" column="head_staff_regit_id" />
-
+		<result property="resignIdentify" column="head_staff_resign_identify" />
 	</resultMap>
 
 	<!-- 본사직원 디테일 정보 가져오는 쿼리  -->
@@ -94,6 +98,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="headStaffResign" column="head_staff_resign" /> 
 		<result property="headStaffRegitDate" column="head_staff_regit_date" />  
 		<result property="headStaffRegitId" column="head_staff_regit_id" />
+		<result property="resignIdentify" column="head_staff_resign_identify" />
 	</resultMap>  
 
 	<update id="updateHeadStaff" parameterType="org.ksmart.franchise.head.headStaff.model.HeadStaff" >

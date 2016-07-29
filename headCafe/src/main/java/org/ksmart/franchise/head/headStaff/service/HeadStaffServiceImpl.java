@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.ksmart.franchise.head.headStaff.model.HeadStaff;
 import org.ksmart.franchise.head.headStaff.model.HeadStaffCommand;
-import org.ksmart.franchise.head.headStaff.model.HeadStaffLogin;
 import org.ksmart.franchise.head.headStaff.model.HeadStaffSearch;
 import org.ksmart.franchise.head.headStaff.repository.HeadStaffDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,6 +51,18 @@ public class HeadStaffServiceImpl implements HeadStaffService{
 		return headStaffDao.headStafflogin(headStaffCommand);
 		
 	}
+
+	@Override
+	public void addResignStaffService(HeadStaff headStaff) {
+		// TODO Auto-generated method stub
+		
+	}
+
+//	@Override
+//	public void viewResignStaffListService(HeadStaff headStaff) {
+//		headStaffDao.viewResignStaffList(headStaff);
+//		
+//	}
 
 
 }

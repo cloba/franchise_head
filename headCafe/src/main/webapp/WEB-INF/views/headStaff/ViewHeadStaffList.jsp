@@ -72,8 +72,21 @@ tabel , td, th, tr{
 		});
 		
 		$('#joinDown').click(function(){
-			console.log('가입일 내림차ㅜㄴ순 정렬');
+			console.log('가입일 내림차순 정렬');
 			$('#criteria').attr('value','headStaffJoin');
+			$('#upDown').attr('value','DESC');
+			$('#HeadStaffSearchForm').submit();
+		});
+		$('#resignUp').click(function(){
+			console.log('퇴사일 오름차순 정렬');
+			$('#criteria').attr('value','headStaffResign');
+			$('#upDown').attr('value','ASC');
+			$('#HeadStaffSearchForm').submit();
+		});
+		
+		$('#resignDown').click(function(){
+			console.log('퇴사일 내림차순 정렬');
+			$('#criteria').attr('value','headStaffResign');
 			$('#upDown').attr('value','DESC');
 			$('#HeadStaffSearchForm').submit();
 		});
@@ -81,8 +94,6 @@ tabel , td, th, tr{
 	});
 </script>
 <body>
-<h1>본사직원 리스트</h1>
-<div>
 	<form action="/viewHeadStaffList" id="HeadStaffSearchForm">
 		<div> 	
 			<!-- 검색조건 보내는 곳 -->
@@ -104,53 +115,117 @@ tabel , td, th, tr{
 			<!-- 검색어랑 검색버튼 -->
 			<input type="text" name="searchHeadStaffInfo" value="${headStaffSearch.searchHeadStaffInfo}">
 			<input type="submit" id="searchheadStaffBtn" name="searchheadStaffBtn" value="검색">
-
 		</div>
 	</form>
-	<table>
-		<tr>
-			<th><span>아이디</span>
-				<span id="idUp">▲</span>
-				<span id="idDown">▼</span>
-<!-- 			<th>비밀번호</th> -->
-			<th><span>이름</span>
-				<span id="nameUp">▲</span>
-				<span id="nameDown">▼</span>
-				
-			<th><span>직급(권한)</span>
-				<span id="levelUp">▲</span>
-				<span id="levelDown">▼</span>
-				
-			<th><span>부서</span>
-				<span id="DepUp">▲</span>
-				<span id="DepDown">▼</span>
-
-			<th><span>입사일</span>
-				<span id="joinUp">▲</span>
-				<span id="joinDown">▼</span>
-<!-- 			<th>등록일</th> -->
-<!-- 			<th>퇴사일</th> -->
-		</tr>
-		
-		<!-- 리스트 보여주는 화면 -->
-		<c:forEach var="HeadStaff" items="${list}">
-			<tr ondblclick="detailPop('${HeadStaff.headStaffId}')">
-				<td>${HeadStaff.headStaffId }</td>
-<%-- 				<td>${HeadStaff.headStaffPw }</td> --%>
-				<td><a href = "/headStaffDetail?headStaffId=${HeadStaff.headStaffId}">${HeadStaff.headStaffName }</a></td>
-				<td>${HeadStaff.headStaffLevel }</td>
-				<td>${HeadStaff.headStaffDep }</td>
-				<td>${HeadStaff.headStaffJoin }</td> 
-<%-- 				<td>${HeadStaff.headStaffRegitDate }</td> --%>
-<%-- 				<td>${HeadStaff.headStaffRegitId }</td> --%>
-<%-- 				<td>${HeadStaff.headStaffResign }</td> --%>
+	
+<%-- 	<c:choose> --%>
+	<!-- 퇴사자 리스트 보여주는 폼 -->    
+<%-- 	<c:when test="${headStaff.resignIdentify == 'Y'"> --%>
+	<c:if test="${headStaff.resignIdentify == 'Y' }">
+	console.log("퇴사자 리스트 보여주는 폼" );
+	<h1>퇴사자 리스트</h1>
+		<table>
+			<tr>
+				<th><span>아이디</span>
+					<span id="idUp">▲</span>
+					<span id="idDown">▼</span>
+				<th><span>이름</span>
+					<span id="nameUp">▲</span>
+					<span id="nameDown">▼</span>
+					
+				<th><span>직급(권한)</span>
+					<span id="levelUp">▲</span>
+					<span id="levelDown">▼</span>
+					
+				<th><span>부서</span>
+					<span id="DepUp">▲</span>
+					<span id="DepDown">▼</span>
+	
+				<th><span>입사일</span>
+					<span id="joinUp">▲</span>
+					<span id="joinDown">▼</span>
+					
+				<th><span>퇴사일</span>
+					<span id="resignUp">▲</span>
+					<span id="resignDown">▼</span>		
 			</tr>
-		</c:forEach>
-	</table>
+			
+			<!-- 리스트  데이터 -->
+			<c:forEach var="HeadStaff" items="${list}">
+				<tr ondblclick="detailPop('${HeadStaff.headStaffId}')">
+					<td>${HeadStaff.headStaffId }</td>
+					<td><a href = "/headStaffDetail?headStaffId=${HeadStaff.headStaffId}">${HeadStaff.headStaffName }</a></td>
+					<td>${HeadStaff.headStaffLevel }</td>
+					<td>${HeadStaff.headStaffDep }</td>
+					<td>${HeadStaff.headStaffJoin }</td> 
+<%-- 					<c:if test="${HeadStaff.resignIdentify == 'Y' }"> --%>
+					<td>${HeadStaff.headStaffResign }</td> 
+<%-- 					</c:if>  --%>
+				</tr>
+			</c:forEach>
+		</table>
+		<div>		
+			<a href="/viewHeadStaffList"><input id="modifyHeadStaff" type="button" value="현 직원 조회"></a>
+		</div>
+	</c:if> 	
+	<c:if test="${headStaff.resignIdentify == 'N' }">
+	console.log("현 직원 리스트 보여주는 폼" );
+	
+<%-- 	<c:otherwise> --%>
+	<!-- 현 직원 리스트 보여주는 폼 -->
+	<h1>본사직원 리스트</h1>
+	<div>
+		<table>
+			<tr>
+				<th><span>아이디</span>
+					<span id="idUp">▲</span>
+					<span id="idDown">▼</span>
+				<th><span>이름</span>
+					<span id="nameUp">▲</span>
+					<span id="nameDown">▼</span>
+					
+				<th><span>직급(권한)</span>
+					<span id="levelUp">▲</span>
+					<span id="levelDown">▼</span>
+					
+				<th><span>부서</span>
+					<span id="DepUp">▲</span>
+					<span id="DepDown">▼</span>
+	
+				<th><span>입사일</span>
+					<span id="joinUp">▲</span>
+					<span id="joinDown">▼</span>
+			</tr>
+			
+			<!-- 리스트 보여주는 화면 -->
+			<c:forEach var="HeadStaff" items="${list}">
+				<tr ondblclick="detailPop('${HeadStaff.headStaffId}')">
+					<td>${HeadStaff.headStaffId }</td>
+					<td><a href = "/headStaffDetail?headStaffId=${HeadStaff.headStaffId}">${HeadStaff.headStaffName }</a></td>
+					<td>${HeadStaff.headStaffLevel }</td>
+					<td>${HeadStaff.headStaffDep }</td>
+					<td>${HeadStaff.headStaffJoin }</td> 
+					
+			<!--  	<c:if test="${HeadStaff.resignIdentify == 'Y' }">
+						<td>${HeadStaff.headStaffResign }</td> 
+					</c:if>
+			-->		
+				</tr>
+			</c:forEach>
+		</table>
+		<div>
+			<a href="/viewResignStaffList"><input id="modifyHeadStaff" type="button" value="퇴사자 조회"></a>
+		</div>
+	</div>
+	</c:if>
+		
+<%-- 	</c:choose> --%>
+	
+	<!-- 직원등록, 메인화면, 퇴사자조회  버튼 -->
 	<div>
 		<a href="/addHeadStaff"><input type="button" value="직원 등록"></a>
 		<a href="/"><input id="modifyHeadStaff" type="button" value="되돌아 가기"></a>
+<!-- 		<a href="/addResignStaffList"><input id="modifyHeadStaff" type="button" value="퇴사 등록"></a> -->
 	</div>
-</div>
 </body>
 </html>

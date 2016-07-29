@@ -23,7 +23,7 @@ tabel , td, th, tr{
 			<th>부서</th>
 			<th>입사일</th>
 			<th>등록일</th>
-			<th>퇴사일</th>
+			<th>등록한 직원</th>
 		</tr>
 		<tr>
 			<td>${headStaff.headStaffId }</td>
@@ -35,6 +35,7 @@ tabel , td, th, tr{
 			<td>${headStaff.headStaffRegitDate }</td>
 			<td>${headStaff.headStaffRegitId }</td>
 <%-- 				<td>${HeadStaff.headStaffResign }</td> --%>
+			<td><a href = "/addResignStaff?headStaffId=${headStaff.headStaffId}"><input type="button" value="퇴사등록"></a></td>
 		</tr>
 	</table>
 	<div>
