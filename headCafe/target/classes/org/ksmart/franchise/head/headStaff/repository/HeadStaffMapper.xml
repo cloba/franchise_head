@@ -36,7 +36,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			head_staff_level,
 			head_staff_dep,
 			head_staff_join,
-			<if test="head_staff_resign = null">head_staff_resign,</if>
+			head_staff_resign,
 			head_staff_regit_date,
 			head_staff_regit_id,
 			head_staff_resign_identify
@@ -81,9 +81,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			head_staff_level,
 			head_staff_dep,
 			head_staff_join,
- 			<if test="head_staff_resign = null">head_staff_resign,</if>
+ 			head_staff_resign,
  			head_staff_regit_date,
 			head_staff_regit_id
+			
 		From head_staff
 		WHERE head_staff_id = #{headStaffId}
 		ORDER BY head_staff_join DESC	
@@ -113,6 +114,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE  
 			head_staff_id = #{headStaffId}	
 	
+	</update>
+	
+	<update id="updateHeadStaffResign" parameterType="java.util.Map">
+		UPDATE
+			head_staff
+		SET
+			head_staff_resign_identify = 'y',
+			head_staff_resign = now()
+		WHERE
+			head_staff_id = #{headStaff.headStaffId}		
 	</update>
 
 

@@ -28,7 +28,7 @@ public class HeadStaffServiceImpl implements HeadStaffService{
 	
 	//본사 직원 리스트를 호출하는 메서드
 	@Override
-	public List<Object> headStaffList(HeadStaff headStaff, HeadStaffSearch headStaffSearch) {
+	public List<Object> headStaffListService(HeadStaff headStaff, HeadStaffSearch headStaffSearch) {
 		return headStaffDao.headStaffList(headStaff, headStaffSearch);
 	}
 	
@@ -53,9 +53,9 @@ public class HeadStaffServiceImpl implements HeadStaffService{
 	}
 
 	@Override
-	public void addResignStaffService(HeadStaff headStaff) {
-		// TODO Auto-generated method stub
-		
+	public int addResignStaffService(HeadStaff headStaff) {
+		System.out.println("HeadStaffServiceImpl의 addResignStaffService 메서드");
+		return headStaffDao.addResignStaff(headStaff);
 	}
 
 //	@Override
@@ -63,6 +63,4 @@ public class HeadStaffServiceImpl implements HeadStaffService{
 //		headStaffDao.viewResignStaffList(headStaff);
 //		
 //	}
-
-
 }

@@ -81,7 +81,7 @@ public class HeadStaffController {
 		  resignIdentify = "N";
 		  headStaff.setResignIdentify(resignIdentify);
 		  
-		  List<Object> list =  headStaffService.headStaffList(headStaff, headStaffSearch);
+		  List<Object> list =  headStaffService.headStaffListService(headStaff, headStaffSearch);
 		  System.out.println("getSearchHeadStaffKey :"+headStaffSearch.getSearchHeadStaffKey());
 		  
 		//  model.addAttribute("headStaffSearch", headStaffSearch);
@@ -131,7 +131,7 @@ public class HeadStaffController {
 		  System.out.println("HeadStaffController의 viewResignStaffList메서드 ");
 		  resignIdentify = "Y";
 		  headStaff.setResignIdentify(resignIdentify);
-		  List<Object> list =  headStaffService.headStaffList(headStaff, headStaffSearch);
+		  List<Object> list =  headStaffService.headStaffListService(headStaff, headStaffSearch);
 		  model.addAttribute("list", list);
 		  System.out.println(headStaff.getResignIdentify());
 		  return "/headStaff/ViewHeadStaffList";
@@ -142,9 +142,11 @@ public class HeadStaffController {
 	  @RequestMapping(value="/addResignStaff", method=RequestMethod.GET)
 	  public String addResignStaff(Model model, HeadStaff headStaff){
 		  System.out.println("HeadStaffController의 addResignStaff메서드 ");
+		  System.out.println(headStaff.getHeadStaffId());
 		  headStaffService.addResignStaffService(headStaff);
-		  System.out.println(headStaff.getResignIdentify());
-		  return "/headStaff/ViewHeadStaffList";
+		  
+		  
+		  return "redirect:/viewResignStaffList";
 		  
 	  }
 }
