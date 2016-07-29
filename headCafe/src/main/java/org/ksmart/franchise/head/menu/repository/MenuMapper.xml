@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.ksmart.franchise.head.menu.repository.MenuMapper">
+
+	<!-- POJO객체와 DB column명을 맞춰줍니다 -->
+	<resultMap type="org.ksmart.franchise.head.menu.model.Menu" id="menuResultMap">
+		<id property="menuCode" column="menu_code"/>
+		<result property="inteCode" column="inte_code"/>
+		<result property="menuName" column="menu_name"/>
+		<result property="menuIngrePrice" column="menu_ingre_price"/>
+		<result property="menuSellingPrice" column="menu_selling_price"/>
+		<result property="headStaffId" column="head_staff_id"/>
+		<result property="menuRegitDate" column="menu_regit_date"/>
+		<result property="menuStatus" column="menu_status"/>
+	</resultMap>
+	
+	<!-- menu의 리스트를 봅니다 (검색포함)-->
+	<select id="selectMenu" parameterType="java.util.Map" resultMap="menuResultMap">
+		SELECT menu_code, inte_code, menu_name, menu_status 
+		FROM menu
+		<where>
+			<if test="Search.regitDateStart != null and Search.regitDateEnd != null and Search.regitDateStart !='' and Search.regitDateEnd !=''">
+				<![CDATA[date(menu_regit_date) >= #{Search.regitDateStart} and date(menu_regit_date) <= #{Search.regitDateEnd}]]>  
+			</if>
+			<if test="Search.searchKey != null and Search.searchKey != '' and Search.searchItem != null and Search.searchItem != ''">
+				AND  ${Search.searchKey} like CONCAT('%',#{Search.searchItem},'%') 
+			</if> 
+		</where> 
+		<trim prefix="ORDER BY">
+			<if test="Search.criteria == null or Search.criteria == ''">
+				menu_regit_date
+			</if>
+			<if test="Search.criteria != null orSearch.criteria != ''">
+				${Search.criteria} ${Search.upDown}
+			</if>
+		</trim>
+	</select>
+</mapper>
