@@ -68,12 +68,12 @@ public class HeadStaffDaoImpl implements HeadStaffDao{
 
 	//퇴사자 등록 하는 메서드
 	@Override
-	public HeadStaff addResignStaff(HeadStaff headStaff) {
+	public int addResignStaff(HeadStaff headStaff) {
 		System.out.println("HeadStaffDaoImpl의 addResignStaff메서드");
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("headStaff", headStaff);
 		
-		return sqlSessionHeadStaff.selectOne(NS+".selectHeadStaffLogin", map);
+		return sqlSessionHeadStaff.update(NS+".updateHeadStaffResign", map);
 		
 	}
 	

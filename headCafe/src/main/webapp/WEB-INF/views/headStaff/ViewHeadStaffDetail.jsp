@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -24,6 +24,10 @@ tabel , td, th, tr{
 			<th>입사일</th>
 			<th>등록일</th>
 			<th>등록한 직원</th>
+			<!-- 퇴사한 직원에 한해서 퇴사일을 보여줌 -->
+			<c:if test="${HeadStaff.resignIdentify == 'Y' }"> 
+				<th>퇴사일</th>
+			</c:if>
 		</tr>
 		<tr>
 			<td>${headStaff.headStaffId }</td>
@@ -34,12 +38,15 @@ tabel , td, th, tr{
 			<td>${headStaff.headStaffJoin }</td>
 			<td>${headStaff.headStaffRegitDate }</td>
 			<td>${headStaff.headStaffRegitId }</td>
-<%-- 				<td>${HeadStaff.headStaffResign }</td> --%>
-			<td><a href = "/addResignStaff?headStaffId=${headStaff.headStaffId}"><input type="button" value="퇴사등록"></a></td>
+			<!-- 퇴사한 직원에 한해서 퇴사일을 보여줌 -->
+			<c:if test="${HeadStaff.resignIdentify == 'Y' }"> 
+				<td>${HeadStaff.headStaffResign }</td> 
+ 			</c:if>  
 		</tr>
 	</table>
 	<div>
 		<a href="/modifyFormHeadStaff?headStaffId=${headStaff.headStaffId }"><input id="modifyHeadStaff" type="button" value="회원정보 관리"></a>
+		<a href = "/addResignStaff?headStaffId=${headStaff.headStaffId}"><input type="button" value="퇴사등록"></a>
 		<a href="/viewHeadStaffList"><input id="cancel" type="button" value="되돌아가기"></a>
 	</div>	
 </div>

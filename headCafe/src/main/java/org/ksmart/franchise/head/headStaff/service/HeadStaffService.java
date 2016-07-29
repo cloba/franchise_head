@@ -12,7 +12,7 @@ public interface HeadStaffService {
 
 	Object addHeadStaff(HeadStaffCommand headStaffCommand);
 
-	List<Object> headStaffList(HeadStaff headStaff, HeadStaffSearch headStaffSearch);
+	List<Object> headStaffListService(HeadStaff headStaff, HeadStaffSearch headStaffSearch);
 
 	HeadStaff headStaffDetail(String headStaffId);
 
@@ -20,7 +20,8 @@ public interface HeadStaffService {
 
 	HeadStaff loginStaffService(HeadStaffCommand headStaffCommand);
 
-	void addResignStaffService(HeadStaff headStaff);
+	int addResignStaffService(HeadStaff headStaff);
+
 
 //	void viewResignStaffListService(HeadStaff headStaff);
 

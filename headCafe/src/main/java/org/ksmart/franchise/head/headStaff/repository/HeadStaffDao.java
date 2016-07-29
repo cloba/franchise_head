@@ -20,5 +20,5 @@ public interface HeadStaffDao {
 
 	HeadStaff headStafflogin(HeadStaffCommand headStaffCommand);
 
-	public HeadStaff addResignStaff(HeadStaff headStaff);
+	public int addResignStaff(HeadStaff headStaff);
 }
