@@ -15,28 +15,35 @@
 		<label>개별상품코드</label>
 		<label>상품코드</label>
 		<label>본사매입기록</label>
-		<label>유통기한</label>
+		<label>유통기한</label>		
 		<label>입고날짜(권한)</label>
 		<label>출고여부</label>
 		<label>반품상품 해당여부</label>
 		<label>등록일자</label>
 		<label>등록한 본사직원 아이디</label>	
 	</div>
+	
 	<div>
 		<label>${stock.specificItemCode }</label>
 		<label>${stock.hItemCode }</label>
-		<label>${stock.headBuyCode }</label>
-		<label>${stock.headStockInExpiryDate }</label>
+		<label>${stock.headBuyDate }</label>
+		<c:if test="${stock.headStockInExpiryDate != null}">
+			<label>${stock.headStockInExpiryDate }</label>
+		</c:if>
+		<c:if test="${stock.headStockInExpiryDate == null}">
+			유통기한 없음
+		</c:if>
 		<label>${stock.headStockInDate }</label>
 		<label>${stock.headStockItemOut }</label>
 		<label>${stock.headStockReturn }</label>
-		<label>${stock.headStaffId }</label>
 		<label>${stock.headStockRegitDate }</label>
+		<label>${stock.headStaffId }</label>
+
 	</div>
 	
 	<div>
-		<a href= "/viweHeadStrockList"									>[ 재고 리스트 페이지로  ]</a>
-		<a href= "/addResignStaff?headStaffId=${headStaff.headStaffId}">[ 재고 수정 ]</a>
+		<a href= "/viweHeadStockList"									>[ 재고 리스트 페이지로  ]</a>
+		<a href= "/"													>[ 재고 수정 ]</a>
 		<a href= "/"													>[ 되돌아가기]</a>
 	</div>	
 </div>

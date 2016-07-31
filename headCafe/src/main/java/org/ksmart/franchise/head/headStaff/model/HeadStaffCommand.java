@@ -1,5 +1,9 @@
 package org.ksmart.franchise.head.headStaff.model;
 
+/**
+ * @author pjm64
+ *
+ */
 public class HeadStaffCommand {
 	private String headStaffId;
 	private String headStaffPw;
@@ -7,6 +11,12 @@ public class HeadStaffCommand {
 	private String headStaffLevel;
 	private String headStaffDep;
 	private String headStaffJoin;
+	private String headStaffPhone;
+	private String headStaffPhoneSecond;
+	private String headStaffPhoneThird;
+	private String headStaffPost;
+	private String headStaffRoadAddr;
+	private String headStaffParcleAddr;
 	
 	public String getHeadStaffId() {
 		return headStaffId;
@@ -38,15 +48,51 @@ public class HeadStaffCommand {
 	public void setHeadStaffJoin(String headStaffJoin) {
 		this.headStaffJoin = headStaffJoin;
 	}
-	@Override
-	public String toString() {
-		return "HeadStaffCommand [headStaffName=" + headStaffName + ", headStaffLevel=" + headStaffLevel
-				+ ", headStaffDep=" + headStaffDep + ", headStaffJoin=" + headStaffJoin + "]";
-	}
 	public String getHeadStaffPw() {
 		return headStaffPw;
 	}
 	public void setHeadStaffPw(String headStaffPw) {
 		this.headStaffPw = headStaffPw;
 	}
+	public String getHeadStaffPhone() {
+		return headStaffPhone;
+	}
+	public void setHeadStaffPhone(String headStaffPhone) {
+		this.headStaffPhone = headStaffPhone;
+	}
+	public String getHeadStaffPhoneSecond() {
+		return headStaffPhoneSecond;
+	}
+	public void setHeadStaffPhoneSecond(String headStaffPhoneSecond) {
+		this.headStaffPhoneSecond = headStaffPhoneSecond;
+	}
+	public String getHeadStaffPhoneThird() {
+		return headStaffPhoneThird;
+	}
+	public void setHeadStaffPhoneThird(String headStaffPhoneThird) {
+		this.headStaffPhoneThird = headStaffPhoneThird;
+	}
+	public String getHeadStaffPost() {
+		return headStaffPost;
+	}
+	public void setHeadStaffPost(String headStaffPost) {
+		this.headStaffPost = headStaffPost;
+	}
+	public String getHeadStaffRoadAddr() {
+		return headStaffRoadAddr;
+	}
+	public void setHeadStaffRoadAddr(String headStaffRoadAddr) {
+		this.headStaffRoadAddr = headStaffRoadAddr;
+	}
+	public String getHeadStaffParcleAddr() {
+		return headStaffParcleAddr;
+	}
+	public void setHeadStaffParcleAddr(String headStaffParcleAddr) {
+		this.headStaffParcleAddr = headStaffParcleAddr;
+	}
+
+	
+	
+	
+	
 }

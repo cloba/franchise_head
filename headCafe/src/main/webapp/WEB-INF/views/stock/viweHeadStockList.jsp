@@ -64,14 +64,6 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
-private String regitDateStart;
-	private String regitDateEnd;
-	private String searchKey;
-	private String searchItem;
-	private String criteria;
-	private String upDown;
-	
-	
 	<form action="viweHeadStockList" id="HeadStaffStockForm">
 		<div> 	
 			<!-- 검색조건 보내는 곳 -->
