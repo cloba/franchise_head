@@ -4,7 +4,13 @@ public class MenuCommand {
 	private String menuCode;
 	private String inteCode;
 	private String menuName;
-	private char menuStatus;
+	private String menuStatus;
+	public String getMenuStatus() {
+		return menuStatus;
+	}
+	public void setMenuStatus(String menuStatus) {
+		this.menuStatus = menuStatus;
+	}
 	public String getMenuCode() {
 		return menuCode;
 	}
@@ -23,12 +29,7 @@ public class MenuCommand {
 	public void setMenuName(String menuName) {
 		this.menuName = menuName;
 	}
-	public char getMenuStatus() {
-		return menuStatus;
-	}
-	public void setMenuStatus(char menuStatus) {
-		this.menuStatus = menuStatus;
-	}
+	
 	@Override
 	public String toString() {
 		return "MenuSearch [menuCode=" + menuCode + ", inteCode=" + inteCode + ", menuName=" + menuName

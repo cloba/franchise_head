@@ -1,13 +1,13 @@
 package org.ksmart.franchise.head.menu.model;
 
-public class Search {
+public class MenuSearch {
 	private String regitDateStart;
 	private String regitDateEnd;
 	private String searchKey;
 	private String searchItem;
+	private String status;
 	private String criteria;
 	private String upDown;
-	
 	public String getRegitDateStart() {
 		return regitDateStart;
 	}
@@ -32,6 +32,12 @@ public class Search {
 	public void setSearchItem(String searchItem) {
 		this.searchItem = searchItem;
 	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
 	public String getCriteria() {
 		return criteria;
 	}
@@ -46,9 +52,12 @@ public class Search {
 	}
 	@Override
 	public String toString() {
-		return "ItemSearch [regitDateStart=" + regitDateStart + ", regitDateEnd=" + regitDateEnd + ", searchKey="
-				+ searchKey + ", searchItem=" + searchItem + ", criteria=" + criteria + ", upDown=" + upDown + "]";
+		return "MenuSearch [regitDateStart=" + regitDateStart + ", \nregitDateEnd=" + regitDateEnd + ", \nsearchKey="
+				+ searchKey + ", \nsearchItem=" + searchItem + ", \nstatus=" + status + ", \ncriteria=" + criteria
+				+ ", \nupDown=" + upDown + "]";
 	}
+	
+	
 	
 	
 }

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -35,12 +37,13 @@
 			<th>${item.inteCode}</th>	
 			<th>${item.hItemQuantity}</th>
 			<th>${item.hItemUnit}</th>
-			<th>${item.hItemPurchasePrice}</th>
+			<th><fmt:formatNumber value="${item.hItemPurchasePrice}" pattern="#,###"/></th>
 			<th>${item.hItemMarginPercent}</th>
 			<th>${item.hItemHeadProfit}</th>
-			<th>${item.hItemSellingPrice}</th>
-			<th>${item.hItemRetailPrice}</th>
-			<th>${item.hItemRegitDate}</th>
+			<th><fmt:formatNumber value="${item.hItemSellingPrice}" pattern="#,###"/></th>
+			<th><fmt:formatNumber value="${item.hItemRetailPrice}" pattern="#,###"/></th>
+			<th><fmt:parseDate value="${item.hItemRegitDate}" pattern="yyyy-MM-dd HH:mm:ss" var="date"/>
+					<fmt:formatDate pattern="yyyy-MM-dd" type="both" value="${date}" /></th>
 			<th>${item.headStaffId}</th>
 			<th>${item.headClientCode}</th>
 		</tr>

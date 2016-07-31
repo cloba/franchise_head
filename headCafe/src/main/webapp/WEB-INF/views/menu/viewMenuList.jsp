@@ -21,8 +21,31 @@
 
 	$(document).ready(function(){
 		
+		$('#nameUp').click(function(){
+			$('#criteria').val('menu_name');
+			$('#upDown').val('ASC');
+			$('#menuList').submit();
+		});
+		$('#nameDown').click(function(){
+			$('#criteria').val('menu_name');
+			$('#upDown').val('DESC');
+			$('#menuList').submit();
+		});
+		
+		$('#statusUp').click(function(){
+			$('#criteria').val('menu_status');
+			$('#upDown').val('ASC');
+			$('#menuList').submit();
+		});
+		$('#statusDown').click(function(){
+			$('#criteria').val('menu_status');
+			$('#upDown').val('DESC');
+			$('#menuList').submit();
+		});
+		
+		
 		/* 검색 버튼 눌렀을 때 유효성 검사 */
-		$('#searchBtn').click(function(){
+	/* 	$('#searchBtn').click(function(){
 			console.log('버튼클릭');
 			searchValid($('#menuList'));
 		});
@@ -33,7 +56,8 @@
 		
 		$('#nameDown').click(function(){
 			upDown('nameDown',$('#menuList'));
-		});
+		}); */
+		
 	});
 
 </script>
@@ -43,21 +67,33 @@
 		<!-- 오름차/내림차순 정렬을 위한 input 태그 -->
 		<input type="hidden" name="criteria" id="criteria" value=""/>
 		<input type="hidden" name="upDown" id="upDown" value=""/>
+		
+		<!-- 적용/미적용 조건 적용을 위한 input 태그 -->
+		<input type="hidden" name="status" value="${menuSearch.status}"/>
 	
-		등록 날짜: 
-		<input type="date" id="regitDateStart" name="regitDateStart" value="${Search.regitDateStart}"/> ~
-		<input type="date" id="regitDateEnd" name="regitDateEnd" value="${Search.regitDateEnd}"/> 
-		<br/><br/>
 		<select id="searchKey" name="searchKey">
 			<option value="">::선택::</option>
-			<option value="menu_code" <c:if test="${Search.searchKey eq 'menu_code'}">selected="selected"</c:if>>메뉴코드</option>
-			<option value="inte_code" <c:if test="${Search.searchKey eq 'inte_code'}">selected="selected"</c:if>>상품메뉴 통합코드</option>
-			<option value="menu_name" <c:if test="${Search.searchKey eq 'menu_name'}">selected="selected"</c:if>>메뉴이름</option>
-			<option value="menu_status" <c:if test="${Search.searchKey eq 'menu_status'}">selected="selected"</c:if>>적용상태</option>
+			<option value="menu_code" <c:if test="${menuSearch.searchKey eq 'menu_code'}">selected="selected"</c:if>>메뉴코드</option>
+			<option value="inte_code" <c:if test="${menuSearch.searchKey eq 'inte_code'}">selected="selected"</c:if>>상품메뉴 통합코드</option>
+			<option value="menu_name" <c:if test="${menuSearch.searchKey eq 'menu_name'}">selected="selected"</c:if>>메뉴이름</option>
 		</select>
-		<input type="text" id="searchItem" name="searchItem" value="${Search.searchItem}"/>
-		<input type="button" id="searchBtn" value="검색"/>
+		<input type="text" id="searchItem" name="searchItem" value="${menuSearch.searchItem}"/>
+		<input type="submit" id="searchBtn" value="검색"/>
 	</form>
+	
+	<br>
+	<!-- 적용상태에 따른 a태그 분리 -->
+		<c:if test="${menuSearch.status == 'Y'}"> 
+			<a href="/viewMenuList?status=N">[미적용메뉴 보기]</a>
+		</c:if>
+		<c:if test="${menuSearch.status == 'N'}"> 
+			<a href="/viewMenuList?status=Y">[적용메뉴 보기]</a>
+		</c:if>
+		<c:if test="${menuSearch.status == ''}">
+			<a href="/viewMenuList?status=N">[미적용메뉴 보기]</a> 
+			<a href="/viewMenuList?status=Y">[적용메뉴 보기]</a>
+		</c:if>	
+	<a href="/viewMenuList">[전체메뉴 보기]</a>
 	
 	<!-- 조회 결과 -->
 	<table border="1">
@@ -69,19 +105,23 @@
 			</th>
 			<th>메뉴코드</th>
 			<th>상품메뉴 통합코드</th>
-			<th>적용상태</th>
+			<th>
+				적용상태
+				<span id="statusUp">▲</span>
+				<span id="statusDown">▼</span>
+			</th>
 		</tr>
 		
 		<c:forEach var="menuList" items="${menuList}">
 			<tr ondblclick="modifyPop('${menuList.menuCode}')">
-				<th><a href="/viewItemDetail?menuCode=${menuList.menuCode}">${menuList.menuName}</a></th>
+				<th><a href="/viewMenuDetail?menuCode=${menuList.menuCode}">${menuList.menuName}</a></th>
 				<th>${menuList.menuCode}</th>
 				<th>${menuList.inteCode}</th>
 				<th>${menuList.menuStatus}</th>
 			</tr>
 		</c:forEach>
 	</table>
-	<a href="/">[신규등록]</a>
+	<a href="/">[신규등록:미구현]</a>
 	<a href="/">[홈으로]</a>
 </body>
 </html>

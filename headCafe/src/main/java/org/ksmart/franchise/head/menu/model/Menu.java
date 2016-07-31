@@ -1,5 +1,8 @@
 package org.ksmart.franchise.head.menu.model;
 
+import org.springframework.stereotype.Repository;
+
+@Repository
 public class Menu {
 	private String menuCode;
 	private String inteCode;
@@ -8,7 +11,8 @@ public class Menu {
 	private int menuSellingPrice;
 	private String headStaffId;
 	private String menuRegitDate;
-	private char menuStatus;
+	private String menuStatus;
+	private String menuExpiredDate;
 	public String getMenuCode() {
 		return menuCode;
 	}
@@ -51,18 +55,24 @@ public class Menu {
 	public void setMenuRegitDate(String menuRegitDate) {
 		this.menuRegitDate = menuRegitDate;
 	}
-	public char getMenuStatus() {
+	public String getMenuStatus() {
 		return menuStatus;
 	}
-	public void setMenuStatus(char menuStatus) {
+	public void setMenuStatus(String menuStatus) {
 		this.menuStatus = menuStatus;
+	}
+	public String getMenuExpiredDate() {
+		return menuExpiredDate;
+	}
+	public void setMenuExpiredDate(String menuExpiredDate) {
+		this.menuExpiredDate = menuExpiredDate;
 	}
 	@Override
 	public String toString() {
 		return "Menu [menuCode=" + menuCode + ", inteCode=" + inteCode + ", menuName=" + menuName + ", menuIngrePrice="
 				+ menuIngrePrice + ", menuSellingPrice=" + menuSellingPrice + ", headStaffId=" + headStaffId
-				+ ", menuRegitDate=" + menuRegitDate + ", menuStatus=" + menuStatus + "]";
+				+ ", menuRegitDate=" + menuRegitDate + ", menuStatus=" + menuStatus + ", menuExpiredDate="
+				+ menuExpiredDate + "]";
 	}
-	
 	
 }

@@ -3,7 +3,7 @@ package org.ksmart.franchise.head.menu.service;
 import java.util.List;
 
 import org.ksmart.franchise.head.menu.model.Menu;
-import org.ksmart.franchise.head.menu.model.Search;
+import org.ksmart.franchise.head.menu.model.MenuSearch;
 import org.ksmart.franchise.head.menu.repository.MenuDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,10 +15,17 @@ public class MenuServiceImpl implements MenuService {
 	private MenuDao menuDao;
 	
 	@Override
-	public List<Menu> viewMenuListService(Search search) {
+	public List<Menu> viewMenuListService(MenuSearch menuSearch) {
 		System.out.println("MenuServiceImpl의 viewMenuListService메서드 호출");
 		
-		return menuDao.viewMenuList(search);
+		return menuDao.viewMenuList(menuSearch);
+	}
+
+	@Override
+	public Menu getMenuDetailService(String menuCode) {
+		System.out.println("MenuServiceImpl의 getMenuDetailService메서드 호출");
+		
+		return menuDao.getMenuDetail(menuCode);
 	}
 	
 }
