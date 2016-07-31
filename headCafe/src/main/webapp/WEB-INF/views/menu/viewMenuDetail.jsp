@@ -15,6 +15,8 @@
 </head>
 <body>
 <h1>상품 상세</h1>
+${menuDetail.ingrePriceCode}
+
 	<table border="1">
 		<tr>
 			<th>메뉴코드</th>
@@ -28,23 +30,48 @@
 			<th>적용만료날짜</th>
 		</tr>
 		<tr>
-			<th>${menu.menuCode}</th>
-			<th>${menu.menuName}</th>
-			<th>${menu.inteCode}</th>
-			<th><fmt:formatNumber value="${menu.menuIngrePrice}" pattern="#,###"/></th>
-			<th><fmt:formatNumber value="${menu.menuSellingPrice}" pattern="#,###"/></th>
-			<th>${menu.headStaffId}</th>
+			<th>${menuDetail.ingrePriceCode}</th>
+			<th>${menuDetail.menuName}</th>
+			<th>${menuDetail.inteCode}</th>
+			<th><fmt:formatNumber value="${menuDetail.menuIngrePrice}" pattern="#,###"/></th>
+			<th><fmt:formatNumber value="${menuDetail.menuSellingPrice}" pattern="#,###"/></th>
+			<th>${menuDetail.headStaffId}</th>
 			<th>
-				<fmt:parseDate value="${menu.menuRegitDate}" pattern="yyyy-MM-dd HH:mm:ss" var="date"/>
+				<fmt:parseDate value="${menuDetail.menuRegitDate}" pattern="yyyy-MM-dd HH:mm:ss" var="date"/>
 				<fmt:formatDate pattern="yyyy-MM-dd" type="both" value="${date}" /></th>
-			<th>${menu.headStaffId}</th>
-			<th>${menu.menuStatus}</th>
-			<c:if test="${menu.menuStatus eq 'Y'}">
-				<th>${item.menuExpiredDate}</th>
+			<th>${menuDetail.headStaffId}</th>
+			<th>${menuDetail.menuStatus}</th>
+			<c:if test="${menuDetail.menuStatus eq 'Y'}">
+				<th>${menuDetail.menuExpiredDate}</th>
 			</c:if>
 		</tr>
 	</table>
-	<a href="/headModifyMenu?menuCode=${menu.menuCode}">[수정:구현전]</a>
+	
+<h3>[필요한 재료량과 가격계산]</h3>	<a href="#">등록(구현전)</a>
+	<table border="1">
+		<tr>
+			<th>메뉴명(그룹코드)</th>
+			<th>상품코드</th>
+			<th>재료이름</th>
+			<th>사용량</th>
+			<th>가격</th>
+			<th>승인한 직원아이디</th>
+			<th>등록일자</th>
+		</tr>
+		<c:forEach var="menuIngre" items="${menuIngre}">
+			<tr>
+				<th>${menuIngre.menuCode}</th>
+				<th>${menuIngre.headItemCode}</th>
+				<th>${menuIngre.ingreName}</th>
+				<th>${menuIngre.ingreAmount}</th>
+				<th>${menuIngre.ingreMoney}</th>
+				<th>${menuIngre.headStaffId}</th>
+				<th>${menuIngre.ingreRegitDate}</th>
+			</tr>
+		</c:forEach>
+	</table>
+
+	<a href="/headModifyMenu?menuDetail=${menuDetail.menuCode}">[수정:구현전]</a>
 	<a href="/viewMenuList">[메뉴목록]</a>
 </body>
 </html>

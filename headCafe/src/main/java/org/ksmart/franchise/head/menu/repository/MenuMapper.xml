@@ -5,6 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="org.ksmart.franchise.head.menu.repository.MenuMapper">
 
 	<!-- POJO객체와 DB column명을 맞춰줍니다 -->
+	<!-- menu 테이블 -->
 	<resultMap type="org.ksmart.franchise.head.menu.model.Menu" id="menuResultMap">
 		<id property="menuCode" column="menu_code"/>
 		<result property="inteCode" column="inte_code"/>
@@ -15,6 +16,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="menuRegitDate" column="menu_regit_date"/>
 		<result property="menuStatus" column="menu_status"/>
 		<result property="menuExpiredDate" column="menu_expired_date"/>
+	</resultMap>
+	<!-- ingre_price 테이블 -->
+	<resultMap type="org.ksmart.franchise.head.menu.model.MenuIngre" id="menuIngreResultMap">
+		<id property="ingrePriceCode" column="ingre_price_code"/>
+		<result property="menuCode" column="menu_code"/>
+		<result property="hItemCode" column="h_item_code"/>
+		<result property="ingreName" column="ingre_name"/>
+		<result property="ingreAmount" column="ingre_amount"/>
+		<result property="ingreMoney" column="ingre_money"/>
+		<result property="headStaffId" column="head_staff_id"/>
+		<result property="ingreRegitDate" column="ingre_regit_date"/>
+		<result property="menuStatus" column="menu_status"/>
 	</resultMap>
 	
 	<!-- menu의 리스트를 봅니다 (검색포함)-->
@@ -45,4 +58,33 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM menu
 		WHERE menu_code = #{menuCode}
 	</select>
+	
+	<!-- menu별 재료와 재료별 가격을 봅니다 -->
+	<select id="selectIngre" parameterType="java.util.Map" resultMap="menuIngreResultMap">
+		SELECT ingre_price_code, menu_code, h_item_code, ingre_name, ingre_amount, ingre_money, head_staff_id, ingre_regit_date, menu_status
+		FROM ingre_price
+		WHERE menu_code = #{menuCode}
+	</select>
+	
+	<!--  menu별 재료와 재료별 가격을 등록합니다 -->
+	<insert id="insertIngre" parameterType="java.util.Map">
+		<selectKey resultType="hashmap" keyProperty="ingrePriceCode" order="BEFORE">
+			select if(isnull(ingre_price_code),'ingre_price_code1', concat('ingre_price_code', MAX(CONVERT(SUBSTRING(ingre_price_code,17), UNSIGNED))+1)) as ingrePriceCode
+			from ingre_price
+		</selectKey>
+		
+		INSERT ingre_price
+			(ingre_price_code, menu_code, h_item_code, ingre_name, ingre_amount, ingre_money, head_staff_id, ingre_regit_date, menu_status)
+		SELECT #{ingrePriceCode}, 
+				#{menuCode}, 
+				#{hItemCode}, 
+				h_item_name, 
+				#{ingreAmount}, 
+				(h_item_selling_price/h_item_amount)#{ingreAmount}, 
+				#{headLogin.headStaffId}, 
+				NOW(), 
+				'Y'
+		FROM head_item
+		WHERE h_item_code = #{hItemCode}
+	</insert>
 </mapper>

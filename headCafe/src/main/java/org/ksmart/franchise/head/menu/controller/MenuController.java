@@ -1,6 +1,8 @@
 package org.ksmart.franchise.head.menu.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.ksmart.franchise.head.menu.model.Menu;
 import org.ksmart.franchise.head.menu.model.MenuSearch;
@@ -19,7 +21,7 @@ public class MenuController {
 	@Autowired
 	private Menu menu;
 
-	// 상품 리스트를 보여줍니다 (검색포함)
+	// 메뉴 리스트를 보여줍니다 (검색포함)
 	@RequestMapping(value="/viewMenuList")
 	public String viewMenuList(MenuSearch menuSearch, Model model){
 		System.out.println("MenuController의 viewMenuList 메서드 호출");
@@ -32,13 +34,14 @@ public class MenuController {
 		return "/menu/viewMenuList";
 	}
 	
-	// 상품 상세를 보여줍니다
+	// 메뉴 상세를 보여줍니다
 	@RequestMapping(value="/viewMenuDetail")
 	public String viewMenuDetail(@RequestParam("menuCode") String menuCode, Model model){
 		System.out.println("MenuController의 viewMenuDetail 메서드 호출");
 	
-		menu = menuService.getMenuDetailService(menuCode);
-		model.addAttribute(menu);
+		Map<String, Object> menuMap = new HashMap<String, Object>();
+		menuMap = menuService.getMenuDetailService(menuCode);
+		model.addAttribute(menuMap);
 		
 		return "/menu/viewMenuDetail";
 	}
