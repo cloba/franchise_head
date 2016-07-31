@@ -8,6 +8,7 @@ public class HeadStaffSearch {
 	private String lineUp;
 	private String upDown;
 	
+	
 //	public String getSearchHeadStaffInfo() {
 //		return SearchHeadStaffInfo;
 //	}

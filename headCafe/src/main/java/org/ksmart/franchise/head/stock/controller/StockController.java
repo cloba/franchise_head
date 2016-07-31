@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.ksmart.franchise.head.stock.model.Stock;
 import org.ksmart.franchise.head.stock.service.StockService;
+import org.ksmart.franchise.head.util.Search;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,17 +17,30 @@ public class StockController {
 	@Autowired
 	private StockService stockService;
 	//재고리스트 조회 메서드
-	@RequestMapping(value="/viweHeadStrockList", method=RequestMethod.GET)
-	public String viweHeadStrockList(Model model){
+	@RequestMapping(value="/viweHeadStockList", method=RequestMethod.GET)
+	public String viweHeadStrockList(Model model, Search search){
 		System.out.println("StockController의 viweHeadStrockList 메서드");
 		
 		//재고리스트 받아옴
-		List<Stock> list = stockService.viweHeadStrockList();
+		List<Stock> list = stockService.viweHeadStrockList(search);
 		System.out.println("list size :"+list.size());
 		model.addAttribute("list", list);
 		
 		//리스트 폼으로 이동
-		return "stock/viweHeadStockList";
+		return "/stock/viweHeadStockList";
+	}
+	
+	//단일 재고의 자세한 정보를 보는 메서드
+	@RequestMapping(value="/viewHeadStrockDetail", method=RequestMethod.GET)
+	public String viewHeadStrockDetail(Model model, Stock stock){
+		System.out.println("StockController의 viewHeadStrockDetail 메서드");
+		System.out.println("getSpecificItemCode"+stock.getSpecificItemCode());
+		stock = stockService.viewHeadStrockDetailService(stock);
+		model.addAttribute("stock", stock);
+
+		return "/stock/viewHeadStockDetail";
+		
+		
 	}
 	
 	

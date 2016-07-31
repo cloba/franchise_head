@@ -5,8 +5,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="org.ksmart.franchise.head.stock.repository.StockMapper">
 
-	<!-- 재고 리스트 조회 메서드 -->
-	<select id="selectStockList" resultMap="StockResultMap" >
+	<resultMap type="org.ksmart.franchise.head.stock.model.Stock" id="StockResultMap">
+		<id property="specificItemCode" column="specific_item_code"/>
+		<result property="hItemCode" column="h_item_code"/>
+		<result property="headBuyCode" column="head_buy_code"/>
+		<result property="headStaffId" column="head_staff_id"/>
+		<result property="headStockRegitDate" column="head_stock_regit_date"/>
+		<result property="headStockItemOut" column="head_stock_item_out"/>
+		<result property="headStockInDate" column="head_stock_in_date"/>
+		<result property="headStockInExpiryDate" column="head_stock_in_expiry_date"/>
+		<result property="headStockReturn" column="head_stock_return"/>	
+	</resultMap>
+	
+	<!-- 재고 리스트 조회 쿼리 -->
+	<select id="selectStockList" resultMap="StockResultMap" parameterType="java.util.Map">
 		SELECT
 			specific_item_code,
 			h_item_code,
@@ -18,21 +30,37 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			head_stock_in_expiry_date,
 			head_stock_return
 		From head_stock
+		<where>
+			<if test='search.searchItem != null and search.searchItem != "" '>
+				AND ${search.searchKey} like CONCAT('%',#{search.searchItem},'%')
+			</if>
+		</where>
+		<trim prefix="ORDER BY">
+			<if test="search.criteria == null or search.criteria == ''">
+				head_stock_in_date DESC
+			</if>
+			<if test="search.criteria != null or search.criteria != ''">
+				${search.criteria} ${search.upDown}
+			</if>
+		</trim>
+	</select>
 	
-	
+	<!-- 단일의 재고 상세 정보 보여주는 쿼리  -->
+	<select id="selectStockDetail" parameterType="java.util.Map" resultMap="StockResultMap">
+		SELECT
+			specific_item_code,
+			h_item_code,
+			head_buy_code,
+			head_staff_id,
+<!-- 			head_stock_regit_date, -->
+			head_stock_item_out,
+<!-- 			head_stock_in_date, -->
+<!-- 			<if test="head_stock_in_expiry_date != null" >head_stock_in_expiry_date,</if>	 -->
+			head_stock_return
+		FROM
+			head_stock
+		WHERE
+			specific_item_code = #{stock.specificItemCode}
 	
 	</select>
-	<resultMap type="org.ksmart.franchise.head.stock.model.Stock" id="StockResultMap">
-		<result property="specificItemCode" column="specific_item_code"/>
-		<result property="hItemCode" column="h_item_code"/>
-		<result property="headBuyCode" column="head_buy_code"/>
-		<result property="headStaffId" column="head_staff_id"/>
-		<result property="headStockRegitDate" column="head_stock_regit_date"/>
-		<result property="headStockItemOut" column="head_stock_item_out"/>
-		<result property="headStockInDate" column="head_stock_in_date"/>
-		<result property="headStockInExpiryDate" column="head_stock_in_expiry_date"/>
-		<result property="headStockReturn" column="head_stock_return"/>	
-	</resultMap>
-
-
 </mapper>
