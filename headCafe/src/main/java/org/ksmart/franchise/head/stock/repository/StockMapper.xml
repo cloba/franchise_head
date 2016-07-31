@@ -36,9 +36,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			</if>
 		</where>
 		<trim prefix="ORDER BY">
-			<if test="search.criteria == null or search.criteria == ''">
-				head_stock_in_date DESC
-			</if>
+<!-- 			<if test="search.criteria == null or search.criteria == ''"> -->
+<!-- 				head_stock_in_date DESC -->
+<!-- 			</if> -->
 			<if test="search.criteria != null or search.criteria != ''">
 				${search.criteria} ${search.upDown}
 			</if>

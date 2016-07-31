@@ -70,21 +70,21 @@ $(document).ready(function(){
 			<input type="hidden" name="criteria" id="criteria" value=""/>
 			<input type="hidden" name="upDown" id="upDown" value=""/>
 			
-			<input type="text" value="${ Search.searchKey}"><br/><br/>
+			<input type="text" value="${search.searchKey}"><br/><br/>
 			
 			<!-- 검색 조건 선택  -->
 			<select name="searchKey">    
 				<option value="">선택</option>   
-				<option value="specific_item_code" <c:if test="${'specific_item_code' eq Search.searchKey }">selected="selected"</c:if>>개별상품코드</option>
-				<option value="h_item_code"<c:if test="${'h_item_code' eq Search.searchKey }">selected="selected"</c:if>>상품코드</option>
-				<option value="head_stock_in_date" <c:if test="${'head_stock_in_date' eq Search.searchKey }">selected="selected"</c:if>>입고일자</option>
-				<option value="head_stock_item_out" <c:if test="${'head_stock_item_out' eq Search.searchKey }">selected="selected"</c:if>>출고일자</option>
+				<option value="specific_item_code" <c:if test="${'specific_item_code' eq search.searchKey }">selected="selected"</c:if>>개별상품코드</option>
+				<option value="h_item_code"<c:if test="${'h_item_code' eq search.searchKey }">selected="selected"</c:if>>상품코드</option>
+				<option value="head_stock_in_date" <c:if test="${'head_stock_in_date' eq search.searchKey }">selected="selected"</c:if>>입고일자</option>
+				<option value="head_stock_item_out" <c:if test="${'head_stock_item_out' eq search.searchKey }">selected="selected"</c:if>>출고일자</option>
 			
 				
 			</select>
 			
 			<!-- 검색어랑 검색버튼 -->
-			<input type="text" name="searchItem" value="${Search.searchItem}">
+			<input type="text" name="searchItem" value="${search.searchItem}">
 			<input type="submit" id="searchheadStaffBtn" name="searchheadStaffBtn" value="검색">
 		</div>
 	</form>
