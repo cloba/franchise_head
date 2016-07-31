@@ -14,6 +14,12 @@ public class HeadStaff {
 	private String criteria;
 	private String lineUp;
 	private String resignIdentify;
+	private String headStaffPhoneFirst;
+	private String headStaffPhoneSecond;
+	private String headStaffPhoneThird;
+	private String headStaffPost;
+	private String headStaffRoadAddr;
+	private String headStaffParcleAddr;
 	
 	
 	
@@ -65,8 +71,19 @@ public class HeadStaff {
 	public void setHeadStaffJoin(String headStaffJoin) {
 		this.headStaffJoin = headStaffJoin;
 	}
-	
 
+	public String getHeadStaffPhoneSecond() {
+		return headStaffPhoneSecond;
+	}
+	public void setHeadStaffPhoneSecond(String headStaffPhoneSecond) {
+		this.headStaffPhoneSecond = headStaffPhoneSecond;
+	}
+	public String getHeadStaffPhoneThird() {
+		return headStaffPhoneThird;
+	}
+	public void setHeadStaffPhoneThird(String headStaffPhoneThird) {
+		this.headStaffPhoneThird = headStaffPhoneThird;
+	}
 	public String getHeadStaffRegitDate() {
 		return headStaffRegitDate;
 	}
@@ -91,6 +108,32 @@ public class HeadStaff {
 	public void setResignIdentify(String resignIdentify) {
 		this.resignIdentify = resignIdentify;
 	}
+	public String getHeadStaffPost() {
+		return headStaffPost;
+	}
+	public void setHeadStaffPost(String headStaffPost) {
+		this.headStaffPost = headStaffPost;
+	}
+	public String getHeadStaffRoadAddr() {
+		return headStaffRoadAddr;
+	}
+	public void setHeadStaffRoadAddr(String headStaffRoadAddr) {
+		this.headStaffRoadAddr = headStaffRoadAddr;
+	}
+	public String getHeadStaffParcleAddr() {
+		return headStaffParcleAddr;
+	}
+	public void setHeadStaffParcleAddr(String headStaffParcleAddr) {
+		this.headStaffParcleAddr = headStaffParcleAddr;
+	}
+	public String getHeadStaffPhoneFirst() {
+		return headStaffPhoneFirst;
+	}
+	public void setHeadStaffPhoneFirst(String headStaffPhoneFirst) {
+		this.headStaffPhoneFirst = headStaffPhoneFirst;
+	}
+	
+	
 	
 	
 	

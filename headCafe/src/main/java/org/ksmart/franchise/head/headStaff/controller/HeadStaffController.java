@@ -61,7 +61,6 @@ public class HeadStaffController {
 	// AddHeadStaff.jsp의 form에서 넘어오는 데이터를 받아서 처리하는 메서드
 	@RequestMapping(value="/addHeadStaff", method=RequestMethod.POST)
 	public String addHeadStaff1(HeadStaffCommand headStaffCommand, Model model){
-
 		//1. form에서 보낸 데이터가 담긴 headStaff 객체를 매개변수로 하는 메서드를 호출합니당
 		headStaffService.addHeadStaff(headStaffCommand);
 		//2. insert후에 받은 PK값이 담긴 headStaffCommand 객체를 view로 보냅니당
@@ -108,7 +107,7 @@ public class HeadStaffController {
 	  public String ModifyFormHeadStaff(Model model, String headStaffId){
 		  System.out.println("HeadStaffController의 ModifyFormHeadStaff메서드 ");
 		  HeadStaff headStaff =headStaffService.headStaffDetail(headStaffId); 
-		  System.out.println("headStaff.HeadStaffId"+headStaff.getHeadStaffId());
+	//	  System.out.println("headStaff.HeadStaffId"+headStaff.getHeadStaffId());
 		  model.addAttribute("headStaff", headStaff);
 		
 		return "/headStaff/ViewHeadStaffModifyForm";

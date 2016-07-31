@@ -3,7 +3,7 @@ package org.ksmart.franchise.head.stock.model;
 public class Stock {
 	private String specificItemCode;
 	private String hItemCode;
-	private String headBuyCode;
+	private String headBuyDate;
 	private String headStaffId;
 	private String headStockRegitDate;
 	private String headStockItemOut;
@@ -24,12 +24,7 @@ public class Stock {
 	public void sethItemCode(String hItemCode) {
 		this.hItemCode = hItemCode;
 	}
-	public String getHeadBuyCode() {
-		return headBuyCode;
-	}
-	public void setHeadBuyCode(String headBuyCode) {
-		this.headBuyCode = headBuyCode;
-	}
+
 	public String getHeadStaffId() {
 		return headStaffId;
 	}
@@ -65,6 +60,12 @@ public class Stock {
 	}
 	public void setHeadStockReturn(String headStockReturn) {
 		this.headStockReturn = headStockReturn;
+	}
+	public String getHeadBuyDate() {
+		return headBuyDate;
+	}
+	public void setHeadBuyDate(String headBuyDate) {
+		this.headBuyDate = headBuyDate;
 	}
 	
 	

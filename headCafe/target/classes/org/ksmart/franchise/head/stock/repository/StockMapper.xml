@@ -8,7 +8,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<resultMap type="org.ksmart.franchise.head.stock.model.Stock" id="StockResultMap">
 		<id property="specificItemCode" column="specific_item_code"/>
 		<result property="hItemCode" column="h_item_code"/>
-		<result property="headBuyCode" column="head_buy_code"/>
+		<result property="headBuyDate" column="head_buy_date"/>
 		<result property="headStaffId" column="head_staff_id"/>
 		<result property="headStockRegitDate" column="head_stock_regit_date"/>
 		<result property="headStockItemOut" column="head_stock_item_out"/>
@@ -22,7 +22,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT
 			specific_item_code,
 			h_item_code,
-			head_buy_code,
+			head_buy_date,
 			head_staff_id,
 			head_stock_regit_date,
 			head_stock_item_out,
@@ -50,12 +50,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT
 			specific_item_code,
 			h_item_code,
-			head_buy_code,
+			head_buy_date,
 			head_staff_id,
-<!-- 			head_stock_regit_date, -->
+			head_stock_regit_date,
 			head_stock_item_out,
-<!-- 			head_stock_in_date, -->
-<!-- 			<if test="head_stock_in_expiry_date != null" >head_stock_in_expiry_date,</if>	 -->
+			head_stock_in_date,
+			head_stock_in_expiry_date,
+ 			<if test="head_stock_in_expiry_date != null" >head_stock_in_expiry_date,</if>	 
 			head_stock_return
 		FROM
 			head_stock
