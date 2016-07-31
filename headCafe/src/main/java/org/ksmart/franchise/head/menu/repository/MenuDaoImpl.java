@@ -1,5 +1,6 @@
 package org.ksmart.franchise.head.menu.repository;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -51,7 +52,8 @@ public class MenuDaoImpl implements MenuDao {
 		map.put("menuCode", menuCode);
 		
 		//Mapper의 쿼리 실행 결과를 List에 담습니다
-		List<MenuIngre> ingreList = sqlSessionMenu.selectList(NS+".selectIngre", map);
+		List<MenuIngre> ingreList = new ArrayList<MenuIngre>();
+		ingreList = sqlSessionMenu.selectList(NS+".selectIngre", map);
 		
 		return ingreList;
 	}

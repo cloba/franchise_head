@@ -15,7 +15,9 @@
 </head>
 <body>
 <h1>상품 상세</h1>
+${menuMap.menuDetail.ingrePriceCode}
 ${menuDetail.ingrePriceCode}
+${ingrePriceCode}
 
 	<table border="1">
 		<tr>
