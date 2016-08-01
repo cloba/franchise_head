@@ -2,6 +2,7 @@ package org.ksmart.franchise.head.stock.repository;
 
 import java.util.List;
 
+import org.ksmart.franchise.head.recipe.model.Recipe;
 import org.ksmart.franchise.head.stock.model.Stock;
 import org.ksmart.franchise.head.util.Search;
 
@@ -10,4 +11,5 @@ public interface StockDao {
 	List<Stock> viweHeadStrockList(Search search);
 
 	Stock viewHeadStrockDetail(Stock stock);
+
 }

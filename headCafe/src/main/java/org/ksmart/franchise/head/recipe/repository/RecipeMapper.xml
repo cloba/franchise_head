@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.ksmart.franchise.head.recipe.repository.RecipeMapper">
+
+	<resultMap type="org.ksmart.franchise.head.recipe.model.Recipe" id="RecipeResultMap">
+		<id property="recipeCode" column="recipe_code"/>
+		<result property="menuCode" column="menu_code"/>
+		<result property="recipeOrder" column="recipe_order"/>
+		<result property="recipeAct" column="recipe_act"/>
+		<result property="headStaffId" column="head_staff_id"/>
+		<result property="recipeRegitDate" column="recipe_regit_date"/>
+	</resultMap>
+		
+	<select id="selectRecipeList" parameterType="java.util.Map" resultMap="RecipeResultMap">
+		SELECT
+			recipe_code,
+			menu_code,
+			recipe_order,
+			recipe_act,
+			head_staff_id,
+			recipe_regit_date
+		FROM
+			recipe
+		<where>
+			<if test='search.searchItem != null and search.searchItem != "" '>
+				AND ${search.searchKey} like CONCAT('%',#{search.searchItem},'%')
+			</if>
+		</where>
+		<trim prefix="ORDER BY">
+			<if test="search.criteria != null or search.criteria != ''">
+				${search.criteria} ${search.upDown}
+			</if>
+		</trim>	
+			
+	</select>	
+		
+</mapper>

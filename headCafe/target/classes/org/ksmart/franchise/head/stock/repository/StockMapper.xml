@@ -29,7 +29,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			head_stock_in_date,
 			head_stock_in_expiry_date,
 			head_stock_return
-		From head_stock
+		From 
+			head_stock
 		<where>
 			<if test='search.searchItem != null and search.searchItem != "" '>
 				AND ${search.searchKey} like CONCAT('%',#{search.searchItem},'%')
