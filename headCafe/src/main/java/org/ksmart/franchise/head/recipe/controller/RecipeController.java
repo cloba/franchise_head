@@ -28,7 +28,7 @@ public class RecipeController {
 			  System.out.println("list.size:"+ list.size());
 			  model.addAttribute("list", list);
 			  
-		      return "/headStaff/ViewHeadStaffList";
+		      return "/recipe/viewRecipeList";
 	    }
 		
 		

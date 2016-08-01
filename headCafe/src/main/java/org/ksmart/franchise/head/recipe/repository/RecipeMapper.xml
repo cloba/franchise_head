@@ -8,22 +8,33 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<resultMap type="org.ksmart.franchise.head.recipe.model.Recipe" id="RecipeResultMap">
 		<id property="recipeCode" column="recipe_code"/>
 		<result property="menuCode" column="menu_code"/>
-		<result property="recipeOrder" column="recipe_order"/>
 		<result property="recipeAct" column="recipe_act"/>
 		<result property="headStaffId" column="head_staff_id"/>
 		<result property="recipeRegitDate" column="recipe_regit_date"/>
+		<result property="ingreName" column="ingre_name"/>
+		<result property="ingreAmount" column="ingre_amount"/>
+		<result property="hItemCode" column="h_item_code"/>
+		<result property="menuName" column="menu_name"/>
+		<result property="ingreStatus" column="ingre_status"/>
 	</resultMap>
 		
 	<select id="selectRecipeList" parameterType="java.util.Map" resultMap="RecipeResultMap">
-		SELECT
-			recipe_code,
-			menu_code,
-			recipe_order,
-			recipe_act,
-			head_staff_id,
-			recipe_regit_date
-		FROM
-			recipe
+		   SELECT 	
+				r.recipe_code, r.menu_code, r.recipe_act, r.head_staff_id, r.recipe_regit_date,
+				i.ingre_name, i.ingre_amount, i.h_item_code, i.ingre_status, m.menu_name
+			FROM
+				recipe r INNER JOIN ingre_price i
+			ON
+				r.menu_code = i.menu_code  
+				
+			INNER JOIN menu m ON r.menu_code=m.menu_code
+				
+<!-- 			where 	 -->
+<!-- 				m.menu_code = 'menu_code1' -->
+<!-- 			and		 -->
+<!--     				i.menu_code = 'menu_code1' -->
+<!--     				 #{recipe.menuCode}  -->
+		
 		<where>
 			<if test='search.searchItem != null and search.searchItem != "" '>
 				AND ${search.searchKey} like CONCAT('%',#{search.searchItem},'%')

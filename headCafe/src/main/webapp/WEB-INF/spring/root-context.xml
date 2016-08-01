@@ -65,7 +65,6 @@
        <constructor-arg index="0" ref="sqlSessionFactoryRecipe" />
     </bean> 
      
-
 <!--      가맹 Sub -->
 <!--      <bean id="sqlSessionFactorySub" class="org.mybatis.spring.SqlSessionFactoryBean"> -->
 <!-- 		<property name="dataSource" ref="dataSource" />  -->
@@ -99,12 +98,11 @@
 <!--  	<bean id="sqlSessionSubStaff" class="org.mybatis.spring.SqlSessionTemplate"> -->
 <!--        <constructor-arg index="0" ref="sqlSessionFactorySubStaff" /> -->
 <!--  	</bean> -->
-<!--  	 메뉴당 재료랑 가격관리 sessionFactory입니다.--> 
+ 	<!--  메뉴당 재료랑 가격관리 sessionFactory입니다.  -->
 <!-- 	<bean id="sqlSessionFactoryIngrePrice" class="org.mybatis.spring.SqlSessionFactoryBean">  -->
 <!-- 		<property name="dataSource" ref="dataSource" />  -->
-<!-- 		<property name="mapperLocations" value="classpath:org/ksmart02/cafe/ingrePrice/repository/IngrePriceMapper.xml" />  -->
+<!-- 		<property name="mapperLocations" value="classpath:org/ksmart/franchise/head/ingrePrice/IngrePriceMapper.xml" />  -->
 <!-- 	</bean>  -->
-<!-- 	 메뉴당 재료랑 가격관리 sqlSession 입니다. --> 
 <!--  	<bean id="sqlSessionIngrePrice" class="org.mybatis.spring.SqlSessionTemplate"> -->
 <!--        <constructor-arg index="0" ref="sqlSessionFactoryIngrePrice" /> -->
 <!--  	</bean> -->

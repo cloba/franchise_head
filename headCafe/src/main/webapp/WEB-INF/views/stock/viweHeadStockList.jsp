@@ -117,8 +117,5 @@ $(document).ready(function(){
 		 	<label>${Stock.headStockItemOut }</label>
 	 	</div>
 	 </c:forEach>
-
-
-
 </body>
 </html>

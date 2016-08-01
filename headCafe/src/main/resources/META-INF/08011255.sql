@@ -126,20 +126,28 @@ CREATE TABLE IF NOT EXISTS `head_item` (
   `inte_code` varchar(50) NOT NULL COMMENT '상품메뉴통합코드',
   `h_item_name` varchar(50) NOT NULL COMMENT '상품명',
   `h_item_quantity` int(11) NOT NULL COMMENT '개수',
+  `h_item_amount` int(11) DEFAULT NULL COMMENT '양 (n g, n kg)',
+  `h_item_amount_unit` varchar(50) DEFAULT NULL COMMENT '양의 단위 (kg, ml)',
   `h_item_unit` varchar(50) NOT NULL COMMENT '단위',
   `head_client_code` varchar(50) NOT NULL COMMENT '거래처 코드',
   `h_item_purchase_price` int(11) NOT NULL COMMENT '매입가격',
-  `h_item_margin_percent` int(11) NOT NULL COMMENT '이익율',
+  `h_item_margin_percent` float NOT NULL COMMENT '이익율',
   `h_item_head_profit` int(11) NOT NULL COMMENT '이익금액',
   `h_item_selling_price` int(11) NOT NULL COMMENT '판매 가격',
   `h_item_retail_price` int(11) NOT NULL COMMENT '소비자 가격',
   `head_staff_id` varchar(50) NOT NULL COMMENT '등록한 직원 아이디',
-  `h_item_regit_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '등록날짜',
+  `h_item_regit_date` datetime NOT NULL COMMENT '등록날짜',
   PRIMARY KEY (`h_item_code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='상품 리스트 관리';
 
--- Dumping data for table franchise_head.head_item: ~0 rows (대략적)
+-- Dumping data for table franchise_head.head_item: ~5 rows (대략적)
 /*!40000 ALTER TABLE `head_item` DISABLE KEYS */;
+INSERT INTO `head_item` (`h_item_code`, `inte_code`, `h_item_name`, `h_item_quantity`, `h_item_amount`, `h_item_amount_unit`, `h_item_unit`, `head_client_code`, `h_item_purchase_price`, `h_item_margin_percent`, `h_item_head_profit`, `h_item_selling_price`, `h_item_retail_price`, `head_staff_id`, `h_item_regit_date`) VALUES
+	('h_item_code1', 'i1', '머그컵', 10, NULL, NULL, 'BOX', 'head_client_code1', 100000, 0.5, 50000, 150000, 20000, 'head_staff_id1', '2016-07-29 11:47:38'),
+	('h_item_code2', 'i2', '원두', 1, 300, 'g', 'EX', 'head_client_code2', 3000, 0.5, 1500, 4500, 0, 'head_staff_id1', '2016-07-31 13:57:40'),
+	('h_item_code3', 'i3', '일반우유', 1, 1000, 'ml', 'EX', 'head_client_code2', 1000, 0.6, 600, 1600, 0, 'head_staff_id1', '2016-07-31 13:58:37'),
+	('h_item_code4', 'i4', '원두', 10, NULL, NULL, 'BOX', 'head_client_code2', 30000, 0.5, 15000, 45000, 0, 'head_staff_id1', '2016-07-31 13:59:35'),
+	('h_item_code5', 'i5', '일반우유', 20, NULL, NULL, 'BOX', 'head_client_code2', 20000, 0.5, 10000, 35000, 0, 'head_staff_id1', '2016-07-31 14:00:17');
 /*!40000 ALTER TABLE `head_item` ENABLE KEYS */;
 
 
@@ -177,18 +185,37 @@ CREATE TABLE IF NOT EXISTS `head_staff` (
   `head_staff_resign` date DEFAULT NULL COMMENT '퇴사일',
   `head_staff_regit_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '등록일자',
   `head_staff_regit_id` varchar(50) NOT NULL COMMENT '등록한 직원 아이디',
-  `head_staff_resign_identify` char(50) NOT NULL DEFAULT 'N' COMMENT '퇴사여부',
+  `head_staff_resign_identify` char(1) NOT NULL DEFAULT 'N' COMMENT '퇴사여부',
+  `head_staff_phone_first` varchar(50) NOT NULL COMMENT '연락처 첫  번째 자리',
+  `head_staff_phone_second` varchar(50) NOT NULL COMMENT '연락처 두 번째 자리',
+  `head_staff_phone_third` varchar(50) NOT NULL COMMENT '연락처 세  번째 자리',
+  `head_staff_post` varchar(50) NOT NULL COMMENT '우편번호',
+  `head_staff_road_addr` varchar(50) NOT NULL COMMENT '도로명주소',
+  `head_staff_parcle_addr` varchar(50) NOT NULL COMMENT '지번주소',
   PRIMARY KEY (`head_staff_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='본사 직원관리';
 
--- Dumping data for table franchise_head.head_staff: ~5 rows (대략적)
+-- Dumping data for table franchise_head.head_staff: ~18 rows (대략적)
 /*!40000 ALTER TABLE `head_staff` DISABLE KEYS */;
-INSERT INTO `head_staff` (`head_staff_id`, `head_staff_pw`, `head_staff_name`, `head_staff_level`, `head_staff_dep`, `head_staff_join`, `head_staff_resign`, `head_staff_regit_date`, `head_staff_regit_id`, `head_staff_resign_identify`) VALUES
-	('1', '0000', '1', '1', '1', '2016-07-28', '2016-07-10', '2016-07-28 15:39:25', '1', 'Y'),
-	('2', '0000', '2', '2', '2', '2016-07-28', '2016-07-29', '2016-07-28 19:34:11', '2', 'y'),
-	('3', '0000', '3', '3', '3', '2016-07-28', NULL, '2016-07-28 20:10:32', '3', 'N'),
-	('4', '0000', '4', '4', '4', '2016-07-28', '2016-07-28', '2016-07-28 20:10:50', '4', 'Y'),
-	('5', '0000', '5', '5', '5', '2016-07-29', NULL, '2016-07-29 10:08:39', '5', 'y');
+INSERT INTO `head_staff` (`head_staff_id`, `head_staff_pw`, `head_staff_name`, `head_staff_level`, `head_staff_dep`, `head_staff_join`, `head_staff_resign`, `head_staff_regit_date`, `head_staff_regit_id`, `head_staff_resign_identify`, `head_staff_phone_first`, `head_staff_phone_second`, `head_staff_phone_third`, `head_staff_post`, `head_staff_road_addr`, `head_staff_parcle_addr`) VALUES
+	('1', '0000', '1', '1', '1', '2016-07-28', '2016-07-10', '2016-07-28 15:39:25', '1', 'Y', '', '', '', '', '', ''),
+	('2', '0000', '2', '2', '2', '2016-07-28', '2016-07-29', '2016-07-28 19:34:11', '2', 'y', '', '', '', '', '', ''),
+	('3', '0000', '3', '3', '3', '2016-07-28', NULL, '2016-07-28 20:10:32', '3', 'N', '', '', '', '', '', ''),
+	('4', '0000', '4', '4', '4', '2016-07-28', '2016-07-28', '2016-07-28 20:10:50', '4', 'Y', '', '', '', '', '', ''),
+	('5', '0000', '5', '5', '5', '2016-07-29', NULL, '2016-07-29 10:08:39', '5', 'y', '', '', '', '', '', ''),
+	('head_staff_id1', '0000', '1', '관리자', '부서 선택', '2016-07-31', NULL, '2016-07-31 11:51:53', 'id001', 'N', '', '', '', '', '', ''),
+	('head_staff_id10', '0000', '121', '관리자', '0', '2016-07-31', NULL, '2016-07-31 12:41:19', 'id001', 'N', '010', '2321', '1234', '', '', ''),
+	('head_staff_id11', '0000', '12313', '관리자', '영업부', '2016-07-31', NULL, '2016-07-31 12:44:19', 'id001', 'N', '010', '111', '2323', '', '', ''),
+	('head_staff_id12', '0000', '12313', '관리자', '관리부', '2016-07-31', NULL, '2016-07-31 12:52:18', 'id001', 'N', '010', '111', '1212', '', '', ''),
+	('head_staff_id13', '0000', '1111111', '관리자', '영업부', '2016-07-31', NULL, '2016-07-31 13:43:39', 'id001', 'N', '010', '3333', '4444', '04403', '서울 용산구 대사관로 20 (한남동)', '서울 용산구 한남동 686-63'),
+	('head_staff_id2', '0000', '2', '관리자', '영업부', '2016-07-31', NULL, '2016-07-31 11:56:30', 'id001', 'N', '', '', '', '', '', ''),
+	('head_staff_id3', '0000', '121', '관리자', '', '2016-07-31', NULL, '2016-07-31 11:56:49', 'id001', 'N', '', '', '', '', '', ''),
+	('head_staff_id4', '0000', 'sasa', '관리자', '', '2016-07-31', NULL, '2016-07-31 11:57:03', 'id001', 'N', '', '', '', '', '', ''),
+	('head_staff_id5', '0000', 'sasa', '관리자', '', '2016-07-31', NULL, '2016-07-31 12:00:26', 'id001', 'N', '', '', '', '', '', ''),
+	('head_staff_id6', '0000', '1', '관리자', '영업부', '2016-07-31', NULL, '2016-07-31 12:00:48', 'id001', 'N', '', '', '', '', '', ''),
+	('head_staff_id7', '0000', '', '관리자', '0', '2016-07-31', NULL, '2016-07-31 12:09:39', 'id001', 'N', '', '', '', '', '', ''),
+	('head_staff_id8', '0000', '121', '관리자', '0', '2016-07-31', NULL, '2016-07-31 12:31:39', 'id001', 'N', '010nullnull', '', '', '', '', ''),
+	('head_staff_id9', '0000', '1234', '관리자', '0', '2016-07-31', NULL, '2016-07-31 12:40:18', 'id001', 'N', '010nullnull', '', '', '', '', '');
 /*!40000 ALTER TABLE `head_staff` ENABLE KEYS */;
 
 
@@ -197,7 +224,7 @@ DROP TABLE IF EXISTS `head_stock`;
 CREATE TABLE IF NOT EXISTS `head_stock` (
   `specific_item_code` varchar(50) NOT NULL COMMENT '개별상품코드',
   `h_item_code` varchar(50) NOT NULL COMMENT '상품코드',
-  `head_buy_code` varchar(50) NOT NULL COMMENT '본사 매입기록',
+  `head_buy_date` varchar(50) NOT NULL COMMENT '본사 매입날짜',
   `head_staff_id` varchar(50) NOT NULL COMMENT '등록한 직원아이디',
   `head_stock_regit_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '등록일자',
   `head_stock_item_out` varchar(50) NOT NULL COMMENT '출고여부',
@@ -207,11 +234,12 @@ CREATE TABLE IF NOT EXISTS `head_stock` (
   PRIMARY KEY (`specific_item_code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='본사 재고관리';
 
--- Dumping data for table franchise_head.head_stock: ~2 rows (대략적)
+-- Dumping data for table franchise_head.head_stock: ~3 rows (대략적)
 /*!40000 ALTER TABLE `head_stock` DISABLE KEYS */;
-INSERT INTO `head_stock` (`specific_item_code`, `h_item_code`, `head_buy_code`, `head_staff_id`, `head_stock_regit_date`, `head_stock_item_out`, `head_stock_in_date`, `head_stock_in_expiry_date`, `head_stock_return`) VALUES
+INSERT INTO `head_stock` (`specific_item_code`, `h_item_code`, `head_buy_date`, `head_staff_id`, `head_stock_regit_date`, `head_stock_item_out`, `head_stock_in_date`, `head_stock_in_expiry_date`, `head_stock_return`) VALUES
 	('1', '1', '1', '1', '2016-07-28 01:12:33', '1', '2016-07-28 01:12:36', NULL, 'n'),
-	('2', '2', '2', '2', '2016-07-29 11:50:16', '2', '2016-07-29 11:50:17', '2016-07-29 11:50:18', 'n');
+	('2', '2', '2', '2', '2016-07-29 11:50:16', '2', '2016-07-29 11:50:17', '2016-07-29 11:50:18', 'n'),
+	('3', '4', '5', '6', '2016-07-31 11:31:10', '7', '2016-07-31 11:31:09', '2016-07-31 11:40:57', '8');
 /*!40000 ALTER TABLE `head_stock` ENABLE KEYS */;
 
 
@@ -219,19 +247,21 @@ INSERT INTO `head_stock` (`specific_item_code`, `h_item_code`, `head_buy_code`, 
 DROP TABLE IF EXISTS `ingre_price`;
 CREATE TABLE IF NOT EXISTS `ingre_price` (
   `ingre_price_code` varchar(50) NOT NULL COMMENT '재료당 가격계산코드',
-  `menu_name` varchar(50) NOT NULL COMMENT '그룹코드 (메뉴이름)',
-  `head_item_code` varchar(50) NOT NULL COMMENT '상품코드',
+  `menu_code` varchar(50) NOT NULL COMMENT '그룹코드 (메뉴코드)',
+  `h_item_code` varchar(50) NOT NULL COMMENT '상품코드',
   `ingre_name` varchar(50) NOT NULL COMMENT '재료명',
   `ingre_amount` int(11) NOT NULL COMMENT '사용량',
-  `ingre_price` int(11) NOT NULL COMMENT '가격',
+  `ingre_money` int(11) NOT NULL COMMENT '사용량에 따른 가격',
   `head_staff_id` varchar(50) NOT NULL COMMENT '등록한 직원아이디',
-  `ingre_regit_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '등록일자',
-  `menu_status` varchar(50) NOT NULL DEFAULT 'Y' COMMENT '현재적용상태',
+  `ingre_regit_date` datetime NOT NULL COMMENT '등록일자',
+  `ingre_status` char(1) NOT NULL DEFAULT 'Y' COMMENT '현재적용상태',
   PRIMARY KEY (`ingre_price_code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='메뉴당 필요한 재료량과 가격계산을 위한 테이블';
 
--- Dumping data for table franchise_head.ingre_price: ~0 rows (대략적)
+-- Dumping data for table franchise_head.ingre_price: ~1 rows (대략적)
 /*!40000 ALTER TABLE `ingre_price` DISABLE KEYS */;
+INSERT INTO `ingre_price` (`ingre_price_code`, `menu_code`, `h_item_code`, `ingre_name`, `ingre_amount`, `ingre_money`, `head_staff_id`, `ingre_regit_date`, `ingre_status`) VALUES
+	('ingre_price_code1', 'menu_code1', 'h_item_code2', '원두', 30, 600, 'head_staff_id01', '2016-07-31 14:36:00', 'Y');
 /*!40000 ALTER TABLE `ingre_price` ENABLE KEYS */;
 
 
@@ -244,14 +274,19 @@ CREATE TABLE IF NOT EXISTS `menu` (
   `menu_ingre_price` int(11) NOT NULL COMMENT '재료 구입가',
   `menu_selling_price` int(11) NOT NULL COMMENT '소비자 가격',
   `head_staff_id` varchar(50) NOT NULL COMMENT '등록한 직원아이디',
-  `menu_regit_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '등록한 날짜',
-  `menu_status` varchar(50) NOT NULL DEFAULT 'Y' COMMENT '적용상태',
+  `menu_regit_date` datetime NOT NULL COMMENT '등록한 날짜',
+  `menu_status` char(50) NOT NULL DEFAULT 'Y' COMMENT '적용상태',
   `menu_expired_date` date DEFAULT NULL COMMENT '적용만료 날짜',
   PRIMARY KEY (`menu_code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='메뉴 관리';
 
--- Dumping data for table franchise_head.menu: ~0 rows (대략적)
+-- Dumping data for table franchise_head.menu: ~4 rows (대략적)
 /*!40000 ALTER TABLE `menu` DISABLE KEYS */;
+INSERT INTO `menu` (`menu_code`, `inte_code`, `menu_name`, `menu_ingre_price`, `menu_selling_price`, `head_staff_id`, `menu_regit_date`, `menu_status`, `menu_expired_date`) VALUES
+	('menu_code1', 'm1', '카페라떼S', 540, 5000, 'head_staff_id2', '2016-07-29 12:10:37', 'Y', NULL),
+	('menu_code2', 'm2', '요거트스무디', 700, 5500, 'head_staff_id1', '2016-07-29 12:10:57', 'Y', '2016-07-29'),
+	('menu_code3', 'm3', '아메리카노', 300, 4000, 'head_staff_id2', '2016-07-29 12:11:22', 'N', '2016-07-29'),
+	('menu_code4', 'm4', '블루베리요거트스무디', 800, 6500, 'head_staff_id3', '2016-07-31 13:25:58', 'Y', NULL);
 /*!40000 ALTER TABLE `menu` ENABLE KEYS */;
 
 
@@ -277,15 +312,19 @@ DROP TABLE IF EXISTS `recipe`;
 CREATE TABLE IF NOT EXISTS `recipe` (
   `recipe_code` varchar(50) NOT NULL COMMENT '레시피 코드',
   `menu_code` varchar(50) NOT NULL COMMENT '메뉴 코드',
-  `recipe_order` int(11) NOT NULL COMMENT '조리순서',
   `recipe_act` longtext NOT NULL COMMENT '조리내용',
   `head_staff_id` varchar(50) NOT NULL COMMENT '승인한 직원아이디',
   `recipe_regit_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '등록일자',
   PRIMARY KEY (`recipe_code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='레시피';
 
--- Dumping data for table franchise_head.recipe: ~0 rows (대략적)
+-- Dumping data for table franchise_head.recipe: ~4 rows (대략적)
 /*!40000 ALTER TABLE `recipe` DISABLE KEYS */;
+INSERT INTO `recipe` (`recipe_code`, `menu_code`, `recipe_act`, `head_staff_id`, `recipe_regit_date`) VALUES
+	('1', 'menu_code1', '소량컵에 레몬원액을 따르고 시럽2펌프를 넣어 섞어준다음 뜨거운물을 부어 젓는다.', 'id001', '2016-08-01 10:30:12'),
+	('2', '초콜릿밀크', '스팀컵에 우유를 반절 따른다. 초코소스를 1.5펌프 넣는다.  스팀를스팀 한다. 드리즐을 넣는다.', 'id001', '2016-08-01 10:31:03'),
+	('3', '아메리카노', '큰컵에얼음을반절담는다. ESP1샷을뽑는다. 물을선까지넣는다.', 'id002', '2016-08-01 10:31:20'),
+	('4', '아메리카노', '작은컵에얼음을반절답는다. ESP1샷을뽑는다. 물을선까지넣는다.', 'id003', '2016-08-01 10:31:37');
 /*!40000 ALTER TABLE `recipe` ENABLE KEYS */;
 
 

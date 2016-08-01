@@ -15,7 +15,7 @@ public class RecipeDaoImpl implements RecipeDao{
 
 	private final String NS = "org.ksmart.franchise.head.recipe.repository.RecipeMapper";
 	
-	@Autowired
+	@Autowired   
 	private SqlSessionTemplate sqlSessionRecipe;
 	
 	@Override

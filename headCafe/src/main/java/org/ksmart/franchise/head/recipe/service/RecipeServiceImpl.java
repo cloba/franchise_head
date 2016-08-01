@@ -16,7 +16,7 @@ public class RecipeServiceImpl implements RecipeService {
 	
 	@Override
 	public List<Recipe> recipeListService(Recipe recipe, Search search) {
-		
+		System.out.println("RecipeServiceImpl의 recipeListService메서드");
 		
 		return recipeDao.viewRecipeList(recipe, search);
 	}
