@@ -4,6 +4,8 @@ public class HeadStaffLogin {
 
 	private String headStaffId;
 	private String headStaffPw;
+	private String headStaffName;
+	private String headStaffLevel; 
 	
 	public String getHeadStaffId() {
 		return headStaffId;
@@ -17,6 +19,19 @@ public class HeadStaffLogin {
 	public void setHeadStaffPw(String headStaffPw) {
 		this.headStaffPw = headStaffPw;
 	}
+	public String getHeadStaffName() {
+		return headStaffName;
+	}
+	public void setHeadStaffName(String headStaffName) {
+		this.headStaffName = headStaffName;
+	}
+	public String getHeadStaffLevel() {
+		return headStaffLevel;
+	}
+	public void setHeadStaffLevel(String headStaffLevel) {
+		this.headStaffLevel = headStaffLevel;
+	}
+	
 	
 
 }

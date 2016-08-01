@@ -18,15 +18,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- resultType="org.ksmart02.cafe.headStaff.model.HeadStaff" -->
 	
 	<!--  본사 직원 로그인 하는 쿼리 -->
-	<select id="selectHeadStaffLogin" parameterType="java.util.Map" resultMap="HeadStaffResultMap">
+	<select id="selectHeadStaffLogin" parameterType="java.util.Map" resultMap="HeadStaffLoginResultMap">
 		SELECT
 			head_staff_id, head_staff_pw, head_staff_name, head_staff_level
 		FROM	
 			head_staff
 		WHERE
-			head_staff_id = #{headStaffId} and head_staff_pw = #{headStaffPw}
+			head_staff_id = #{headStaffLogin.headStaffId} and head_staff_pw = #{headStaffLogin.headStaffPw}
 	</select>
-
+	<resultMap type="org.ksmart.franchise.head.headStaff.model.HeadStaffLogin" id="HeadStaffLoginResultMap">
+		 <id property="headStaffId" column="head_staff_id"/>
+		 <result property="headStaffName" column="head_staff_name" />
+		 <result property="headStaffLevel" column="head_staff_level" />
+		 <result property="headStaffPw" column="head_staff_pw" />
+		 
+	</resultMap>
 	
 	<!-- 본사직원 리스트 조회하는 쿼리  -->  
 	<select id="selectHeadStaffList" resultMap="HeadStaffResultMap" parameterType="java.util.Map">

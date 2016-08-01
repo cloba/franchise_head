@@ -6,16 +6,26 @@ import java.util.Map;
 
 import org.ksmart.franchise.head.headStaff.model.HeadStaff;
 import org.ksmart.franchise.head.headStaff.model.HeadStaffCommand;
+import org.ksmart.franchise.head.headStaff.model.HeadStaffLogin;
 import org.ksmart.franchise.head.headStaff.model.HeadStaffSearch;
 import org.ksmart.franchise.head.headStaff.service.HeadStaffService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
+@SessionAttributes("headStaffLogin")
 public class HeadStaffController {
+	
+	@ModelAttribute("headStaffLogin")
+	public HeadStaffLogin headStaffLogin(){
+		return new HeadStaffLogin();
+		
+	}
 	
 	@Autowired
 	private HeadStaffService headStaffService;
@@ -23,14 +33,14 @@ public class HeadStaffController {
 	
 	//본사직원 로그인 메서드  
 	@RequestMapping(value="/loginStaff", method=RequestMethod.POST)
-	public String loginStaff(Model model, HeadStaffCommand headStaffCommand){
+	public String loginStaff(Model model, @ModelAttribute HeadStaffLogin headStaffLogin){
 		System.out.println("HeadStaffController의 loginStaff실행");
 		Map<String, Object> map = new HashMap<String, Object>();
-		headStaffService.loginStaffService(headStaffCommand);
+		headStaffService.loginStaffService(headStaffLogin);
 		System.out.println("메서드 성공");
 	
 		
-		if(headStaffCommand == null ){
+		if(headStaffLogin == null ){
 			System.out.println("로그인 실패");
 		
 	//		return "redirect:/";    //로그인 성공
@@ -38,12 +48,12 @@ public class HeadStaffController {
 		}else{
 			
 			System.out.println("로그인 완료");
-			map.put("headStaffCommand", headStaffCommand);
+			map.put("headStaffLogin", headStaffLogin);
 			
 		}
 		
 	//	System.out.println("headStaff" +headStaff.getHeadStaffId());
-		System.out.println("headStaffCommand :"+headStaffCommand.getHeadStaffId());
+		System.out.println("headStaffLogin :"+headStaffLogin.getHeadStaffId());
 		return "/home";   //(로그인 못 했다는 메서지와 함께) 로그인창 다시보여줘야함
 		
 	}

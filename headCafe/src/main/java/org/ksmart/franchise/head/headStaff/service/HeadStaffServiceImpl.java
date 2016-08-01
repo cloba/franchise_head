@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.ksmart.franchise.head.headStaff.model.HeadStaff;
 import org.ksmart.franchise.head.headStaff.model.HeadStaffCommand;
+import org.ksmart.franchise.head.headStaff.model.HeadStaffLogin;
 import org.ksmart.franchise.head.headStaff.model.HeadStaffSearch;
 import org.ksmart.franchise.head.headStaff.repository.HeadStaffDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,8 +48,8 @@ public class HeadStaffServiceImpl implements HeadStaffService{
 	}
 
 	@Override
-	public HeadStaff loginStaffService(HeadStaffCommand headStaffCommand) {
-		return headStaffDao.headStafflogin(headStaffCommand);
+	public HeadStaff loginStaffService(HeadStaffLogin headStaffLogin) {
+		return headStaffDao.headStaffLogin(headStaffLogin);
 		
 	}
 

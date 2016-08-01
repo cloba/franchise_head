@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.ksmart.franchise.head.headStaff.model.HeadStaff;
 import org.ksmart.franchise.head.headStaff.model.HeadStaffCommand;
+import org.ksmart.franchise.head.headStaff.model.HeadStaffLogin;
 import org.ksmart.franchise.head.headStaff.model.HeadStaffSearch;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,10 +59,10 @@ public class HeadStaffDaoImpl implements HeadStaffDao{
 
 	//로그인 하는 메서드
 	@Override
-	public HeadStaff headStafflogin(HeadStaffCommand headStaffCommand) {
+	public HeadStaff headStaffLogin(HeadStaffLogin headStaffLogin) {
 		System.out.println("HeadStaffDaoImpl의 headStafflogin메서드");
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("headStaffLogin", headStaffCommand);
+		map.put("headStaffLogin", headStaffLogin);
 		
 		return sqlSessionHeadStaff.selectOne(NS+".selectHeadStaffLogin", map);
 	}

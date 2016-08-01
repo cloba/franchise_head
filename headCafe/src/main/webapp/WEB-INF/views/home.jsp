@@ -24,7 +24,7 @@
 </head>
 <body>
 
-로그인 아이디: ${headStaffCommand.headStaffId }
+로그인 아이디: ${headStaffLogin.headStaffId }
 <a href="/viweHeadStockList">재고관리</a>
 <a href="/viewItemList">상품관리</a>
 <a href="/viewHeadStaffList">본사직원조회</a>

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.ksmart.franchise.head.headStaff.model.HeadStaff;
 import org.ksmart.franchise.head.headStaff.model.HeadStaffCommand;
+import org.ksmart.franchise.head.headStaff.model.HeadStaffLogin;
 import org.ksmart.franchise.head.headStaff.model.HeadStaffSearch;
 
 
@@ -18,7 +19,7 @@ public interface HeadStaffDao {
 
 	int headStaffModify(HeadStaff headstaff);
 
-	HeadStaff headStafflogin(HeadStaffCommand headStaffCommand);
+	HeadStaff headStaffLogin(HeadStaffLogin headStaffLogin);
 
 	public int addResignStaff(HeadStaff headStaff);
 }
