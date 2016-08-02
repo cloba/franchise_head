@@ -22,8 +22,42 @@
 
 	$(document).ready(function(){
 		
+		$('#nameUp').click(function(){
+			$('#criteria').val('h_item_name');
+			$('#upDown').val('ASC');
+			$('#itemList').submit();
+		});
+		$('#nameDown').click(function(){
+			$('#criteria').val('h_item_name');
+			$('#upDown').val('DESC');
+			$('#itemList').submit();
+		});
+		
+		$('#dateUp').click(function(){
+			$('#criteria').val('h_item_regit_date');
+			$('#upDown').val('ASC');
+			$('#itemList').submit();
+		});
+		$('#dateDown').click(function(){
+			$('#criteria').val('h_item_regit_date');
+			$('#upDown').val('DESC');
+			$('#itemList').submit();
+		});
+		
+		$('#clientUp').click(function(){
+			$('#criteria').val('head_client_code');
+			$('#upDown').val('ASC');
+			$('#itemList').submit();
+		});
+		$('#clientDown').click(function(){
+			$('#criteria').val('head_client_code');
+			$('#upDown').val('DESC');
+			$('#itemList').submit();
+		});
+		
+		
 		/* 검색 버튼 눌렀을 때 유효성 검사 */
-		$('#searchBtn').click(function(){
+		/* $('#searchBtn').click(function(){
 			console.log('버튼클릭');
 			searchValid($('#itemList'));
 		});
@@ -50,7 +84,7 @@
 		
 		$('#clientDown').click(function(){
 			upDown('clientDown',$('#itemList'));
-		});
+		}); */
 		
 	});
 
