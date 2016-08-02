@@ -4,8 +4,7 @@ import java.util.List;
 
 import org.ksmart.franchise.head.accounting.model.Accounting;
 import org.ksmart.franchise.head.accounting.service.AccountingService;
-import org.ksmart.franchise.head.client.model.Client;
-import org.ksmart.franchise.head.client.service.ClientService;
+
 import org.ksmart.franchise.head.util.Search;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
