@@ -84,23 +84,31 @@
     </bean> 
     
     <!-- 계약관리 관리 -->
-     <bean id="sqlSessionFactoryContract" class="org.mybatis.spring.SqlSessionFactoryBean">  
+    <bean id="sqlSessionFactoryContract" class="org.mybatis.spring.SqlSessionFactoryBean">  
 		<property name="dataSource" ref="dataSource" /> 
 		<property name="mapperLocations" value="classpath:org/ksmart/franchise/head/contract/repository/ContractMapper.xml" /> 
 	</bean> 
  	<bean id="sqlSessionContract" class="org.mybatis.spring.SqlSessionTemplate"> 
        <constructor-arg index="0" ref="sqlSessionFactoryContract" />
     </bean> 
-     
 
-	     <!-- 본사거래처 headClient -->
-	     <bean id="sqlSessionFactoryHeadClient" class="org.mybatis.spring.SqlSessionFactoryBean">
-			<property name="dataSource" ref="dataSource" /> 
-			<property name="mapperLocations" value="classpath:org/ksmart/franchise/head/Client/repository/ClientMapper.xml" /> 
-	 	</bean> 
-	 	<bean id="sqlSessionHeadClient" class="org.mybatis.spring.SqlSessionTemplate">
-	       <constructor-arg index="0" ref="sqlSessionFactoryHeadClient" />
-	     </bean>
+    <!-- 본사거래처 headClient -->
+    <bean id="sqlSessionFactoryHeadClient" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" /> 
+		<property name="mapperLocations" value="classpath:org/ksmart/franchise/head/Client/repository/ClientMapper.xml" /> 
+ 	</bean> 
+ 	<bean id="sqlSessionHeadClient" class="org.mybatis.spring.SqlSessionTemplate">
+       <constructor-arg index="0" ref="sqlSessionFactoryHeadClient" />
+    </bean>
+    
+     <!-- 결제방식관리 관리 -->
+    <bean id="sqlSessionFactoryPayment" class="org.mybatis.spring.SqlSessionFactoryBean">  
+		<property name="dataSource" ref="dataSource" /> 
+		<property name="mapperLocations" value="classpath:org/ksmart/franchise/head/payment/repository/PaymentMapper.xml" /> 
+	</bean> 
+ 	<bean id="sqlSessionPayment" class="org.mybatis.spring.SqlSessionTemplate"> 
+       <constructor-arg index="0" ref="sqlSessionFactoryPayment" />
+    </bean> 
 	     
 <!--      가맹 Sub -->
 <!--      <bean id="sqlSessionFactorySub" class="org.mybatis.spring.SqlSessionFactoryBean"> -->

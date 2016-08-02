@@ -14,6 +14,36 @@
 </style>
 </head>
 <body>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<script>
+
+	$(document).ready(function(){
+		
+		$('#conCodeUp').click(function(){
+			$('#criteria').val('contract_code');
+			$('#upDown').val('ASC');
+			$('#contractList').submit();
+		});
+		$('#conCodeDown').click(function(){
+			$('#criteria').val('contract_code');
+			$('#upDown').val('DESC');
+			$('#contractList').submit();
+		});
+		
+		$('#conDateUp').click(function(){
+			$('#criteria').val('contract_actual_date');
+			$('#upDown').val('ASC');
+			$('#contractList').submit();
+		});
+		$('#conDateDown').click(function(){
+			$('#criteria').val('contract_actual_date');
+			$('#upDown').val('DESC');
+			$('#contractList').submit();
+		});
+		
+	});
+
+</script>
 <h1>계약 리스트</h1>
 	<!-- 계약 검색 -->
 	<form name="contractList" id="contractList" action="/viewContractList" method="post">
@@ -40,17 +70,20 @@
 		<tr>
 			<th>
 				계약코드
-				<!-- <span id="nameUp">▲</span>
-				<span id="nameDown">▼</span> -->
+				<span id="conCodeUp">▲</span>
+				<span id="conCodeDown">▼</span>
 			</th>
 			<th>가맹일련번호</th>
-			<th>계약날짜</th>
+			<th>계약날짜
+				<span id="conDateUp">▲</span>
+				<span id="conDateDown">▼</span>
+			</th>
 			<th>점주이름</th>
 		</tr>
 		
 		<c:forEach var="contractList" items="${contractList}">
 			<tr>
-				<th><a href="/viewContractDetail">${contractList.contractCode }</th>
+				<th><a href="/viewContractDetail">${contractList.contractCode }</a></th>
 				<th>${contractList.storeCode }</th>
 				<th><fmt:parseDate value="${contractList.contractActualDate}" pattern="yyyy-MM-dd HH:mm:ss" var="date"/>
 					<fmt:formatDate pattern="yyyy-MM-dd" type="both" value="${date}" />

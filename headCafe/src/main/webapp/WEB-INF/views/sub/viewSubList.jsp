@@ -14,6 +14,36 @@
 </style>
 </head>
 <body>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<script>
+
+	$(document).ready(function(){
+		
+		$('#subCodeUp').click(function(){
+			$('#criteria').val('sub_code');
+			$('#upDown').val('ASC');
+			$('#subList').submit();
+		});
+		$('#subCodeDown').click(function(){
+			$('#criteria').val('sub_code');
+			$('#upDown').val('DESC');
+			$('#subList').submit();
+		});
+		
+		$('#regitDateUp').click(function(){
+			$('#criteria').val('sub_regit_date');
+			$('#upDown').val('ASC');
+			$('#subList').submit();
+		});
+		$('#regitDateDown').click(function(){
+			$('#criteria').val('sub_regit_date');
+			$('#upDown').val('DESC');
+			$('#subList').submit();
+		});
+		
+	});
+
+</script>
 <h1>가맹 리스트</h1>
 	<!-- 상품 검색 -->
 	<form name="subList" id="subList" action="/viewSubList" method="post">
@@ -41,11 +71,14 @@
 		<tr>
 			<th>
 				가맹대표코드
-				<!-- <span id="nameUp">▲</span>
-				<span id="nameDown">▼</span> -->
+				<span id="subCodeUp">▲</span>
+				<span id="subCodeDown">▼</span>
 			</th>
 			<th>등록직원</th>
-			<th>등록날짜</th>
+			<th>등록날짜
+				<span id="regitDateUp">▲</span>
+				<span id="regitDateDown">▼</span>
+			</th>
 			<th>가맹점명</th>
 			<th>주소</th>
 		</tr>
@@ -63,5 +96,6 @@
 			</tr>
 		</c:forEach>
 	</table>
+	<a href="/">[홈으로]</a>
 </body>
 </html>

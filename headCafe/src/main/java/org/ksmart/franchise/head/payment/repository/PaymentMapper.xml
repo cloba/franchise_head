@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.ksmart.franchise.head.payment.repository.PaymentMapper">
+	
+	<!-- POJO객체와 DB column명을 맞춰줍니다 -->
+	<resultMap type="org.ksmart.franchise.head.payment.model.Payment" id="paymentResultMap">
+		<id property="payMethodCode" column="pay_method_code"/>
+		<result property="payMethod" column="pay_method"/>
+		<result property="profitPercent" column="profit_percent"/>
+		<result property="headStaffId" column="head_staff_id"/>
+		<result property="profitRegitDate" column="profit_regit_date"/>
+		<result property="profitStatus" column="profit_status"/>
+	</resultMap>
+	
+	
+	<!-- 결제방식의 리스트를 봅니다 (검색포함)-->
+	<select id="selectPayment" parameterType="java.util.Map" resultMap="paymentResultMap">
+		SELECT pay_method_code, pay_method, profit_percent, head_staff_id, profit_regit_date, profit_status
+		FROM profit_by_pay_method
+		<!-- <where>
+			<if test="contractSearch.regitDateStart != null and contractSearch.regitDateEnd != null and contractSearch.regitDateStart !='' and contractSearch.regitDateEnd !=''">
+				<![CDATA[date(contract_actual_date) >= #{contractSearch.regitDateStart} and date(contract_actual_date) <= #{contractSearch.regitDateEnd}]]>  
+			</if>
+			<if test="contractSearch.searchKey != null and contractSearch.searchKey != '' and contractSearch.searchItem != null and contractSearch.searchItem != ''">
+				AND  ${contractSearch.searchKey} like CONCAT('%',#{contractSearch.searchItem},'%') 
+			</if> 
+		</where> 
+		<trim prefix="ORDER BY">
+			<if test="contractSearch.criteria == null or contractSearch.criteria == ''">
+				contract_actual_date
+			</if>
+			<if test="contractSearch.criteria != null or contractSearch.criteria != ''">
+				${contractSearch.criteria} ${contractSearch.upDown}
+			</if>
+		</trim> -->
+	</select>
+</mapper>
