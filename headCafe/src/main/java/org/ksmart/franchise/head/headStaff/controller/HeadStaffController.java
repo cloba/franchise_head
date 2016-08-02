@@ -98,7 +98,6 @@ public class HeadStaffController {
 		  System.out.println("list.size:"+ list.size());
 		  System.out.println("ResignIdentify()"+headStaff.getResignIdentify());
 		  model.addAttribute("list", list);
-		  
 	      return "/headStaff/ViewHeadStaffList";
 	    }
 	

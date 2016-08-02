@@ -9,4 +9,6 @@ public interface RecipeService {
 
 	List<Recipe> recipeListService(Recipe recipe, Search search);
 
+	List<Recipe> recipeDetail(String menuCode);
+
 }

@@ -9,4 +9,6 @@ public interface RecipeDao {
 
 	List<Recipe> viewRecipeList(Recipe recipe, Search search);
 
+	List<Recipe> viewRecipeDetail(String menuCode);
+
 }

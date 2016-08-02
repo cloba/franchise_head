@@ -2,7 +2,6 @@ package org.ksmart.franchise.head.recipe.controller;
 
 import java.util.List;
 
-
 import org.ksmart.franchise.head.recipe.model.Recipe;
 import org.ksmart.franchise.head.recipe.service.RecipeService;
 import org.ksmart.franchise.head.util.Search;
@@ -30,6 +29,28 @@ public class RecipeController {
 			  
 		      return "/recipe/viewRecipeList";
 	    }
+		
+//		//레시피 상세정보 보여 주는 메서드
+		  @RequestMapping(value="/viewRecipeDetail", method=RequestMethod.GET)
+		  public String ViewRecipeDetail(Model model, String menuCode){
+			  System.out.println("RecipeController의 ViewRecipeDetail메서드 ");
+			  List<Recipe> list = recipeService.recipeDetail(menuCode);
+			  Recipe recipeSecond = new Recipe();
+			  System.out.println(list.get(0));
+			  Recipe recipe = list.get(0);
+			  
+			  System.out.println("1"+recipe.getHeadStaffId());
+			  recipeSecond.setHeadStaffId(recipe.getHeadStaffId());
+			  recipeSecond.setMenuCode(recipe.getMenuName());
+			  recipeSecond.setRecipeRegitDate(recipe.getRecipeRegitDate());
+			  recipeSecond.setMenuName(recipe.getMenuName());
+			  
+			 // System.out.println("list.size:"+ list.size());
+			  
+			  model.addAttribute("list", list);
+			  model.addAttribute("recipe", recipeSecond);
+			return "/recipe/viewRecipeDetail";
+		  }
 		
 		
 		
