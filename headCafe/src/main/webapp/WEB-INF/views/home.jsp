@@ -28,8 +28,9 @@
 <a href="/viweHeadStockList">재고관리</a>
 <a href="/viewItemList">상품관리</a>
 <a href="/viewHeadStaffList">본사직원조회</a>
-<a href="/viewMenuList">메뉴관리</a>
+<a href="/viewMenuList?status=Y">메뉴관리</a>
 <a href="/viewRecipeList">레시피관리</a>
+<a href="/viewSubList">가맹관리</a>
 	<!-- 로그인 폼 -->
 <div class="join">
 		<form id="loginForm" action="" method="post" >
