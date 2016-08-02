@@ -64,7 +64,7 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
-	<form action="viweHeadStockList" id="HeadStaffStockForm">
+	<form action="/viweHeadStockList" id="HeadStaffStockForm">
 		<div> 	
 			<!-- 검색조건 보내는 곳 -->
 			<input type="hidden" name="criteria" id="criteria" value=""/>
