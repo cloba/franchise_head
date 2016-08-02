@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.ksmart.franchise.head.accounting.repository.AccountingMapper">
+
+	<resultMap id="AccountingResultMap" type="org.ksmart.franchise.head.accounting.model.Accounting" >
+		<id property="headAccountCode" column="head_account_code"/>
+		<result property="subject_code" column="subject_code" />
+		<result property="head_client_code" column="head_client_code" />
+		<result property="head_account_flow" column="head_account_flow" />
+		<result property="head_account_group_code" column="head_account_group_code" />
+		<result property="head_account_table" column="head_account_table" />
+		<result property="head_account_sum" column="head_account_sum" />
+		<result property="head_account_request_date" column="head_account_request_date" />
+		<result property="head_staff_id_request" column="head_staff_id_request" />
+		<result property="head_account_detail" column="head_account_detail" />
+		<result property="request_check_date" column="request_check_date" />
+		<result property="head_staff_id_confirm" column="head_staff_id_confirm" />
+	</resultMap>
+
+
+
+</mapper>

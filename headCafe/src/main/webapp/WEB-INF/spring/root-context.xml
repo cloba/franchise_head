@@ -102,7 +102,7 @@
        <constructor-arg index="0" ref="sqlSessionFactoryContract" />
     </bean> 
 
-    <!-- 본사거래처 headClient -->
+    <!-- 본사거래처  -->
     <bean id="sqlSessionFactoryHeadClient" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" /> 
 		<property name="mapperLocations" value="classpath:org/ksmart/franchise/head/client/repository/ClientMapper.xml" /> 
@@ -110,6 +110,17 @@
  	<bean id="sqlSessionHeadClient" class="org.mybatis.spring.SqlSessionTemplate">
        <constructor-arg index="0" ref="sqlSessionFactoryHeadClient" />
     </bean>
+   
+   <!-- 본사 회계관리 -->
+     <bean id="sqlSessionFactoryHeadAccounting" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" /> 
+		<property name="mapperLocations" value="classpath:org/ksmart/franchise/head/accounting/repository/AccountingMapper.xml" /> 
+ 	</bean> 
+ 	<bean id="sqlSessionHeadAccounting" class="org.mybatis.spring.SqlSessionTemplate">
+       <constructor-arg index="0" ref="sqlSessionFactoryHeadAccounting" />
+    </bean>
+   
+   
    
 	     
 <!--      가맹 Sub -->
