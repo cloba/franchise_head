@@ -17,6 +17,8 @@ public class MenuServiceImpl implements MenuService {
 
 	@Autowired
 	private MenuDao menuDao;
+	@Autowired
+	private Menu menu;
 	
 	@Override
 	//menu리스트를 봅니다
@@ -31,24 +33,30 @@ public class MenuServiceImpl implements MenuService {
 	public Map<String, Object> getMenuDetailService(String menuCode) {
 		System.out.println("MenuServiceImpl의 getMenuDetailService메서드 호출");
 		
+		//getMenuDetail메서드의 리턴 데이터를 받습니다		
+		menu = menuDao.getMenuDetail(menuCode);
 		
-		List<Map<String, Object>> ingreList;
-		Map<String, Object> menuMap = new HashMap<String, Object>();
 		
-		for( menuMap : ingreList ){
+		// getIngre메서드의 리턴데이터인 List를 받습니다
+		List<MenuIngre> ingreList = new ArrayList<MenuIngre>();
+		ingreList = menuDao.getIngre(menuCode);
+		
+		/*List<MenuIngre> ingreList = menuDao.getIngre(menuCode);
+		for( Map<String, Object > menuMap : ingreList ){
 			for( Map.Entry<String, Object> entry : menuMap.entrySet()){
 				String key = entry.getKey();
 				Object value = entry.getValue();
 				menuMap.put(key,value);
 			}
-		}
+		}*/
 		
 		
-		
-		menuMap.put("menuDetail", menuDao.getMenuDetail(menuCode));
-		//menuMap.put("menuIngre", menuDao.getIngre(menuCode));
-		
-		return menuMap;
+		//menu객체와 List를 새로운 Map에 담습니다
+		Map<String, Object> inteMap = new HashMap<String, Object>();
+		inteMap.put("menuDetail", menu);
+		inteMap.put("ingreList", ingreList);
+	
+		return inteMap;
 	}
 	
 }

@@ -61,7 +61,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- menu별 재료와 재료별 가격을 봅니다 -->
 	<select id="selectIngre" parameterType="java.util.Map" resultMap="menuIngreResultMap">
-		SELECT ingre_price_code, menu_code, h_item_code, ingre_name, ingre_amount, ingre_money, head_staff_id, ingre_regit_date, menu_status
+		SELECT ingre_price_code, menu_code, h_item_code, ingre_name, ingre_amount, ingre_money, head_staff_id, ingre_regit_date, ingre_status
 		FROM ingre_price
 		WHERE menu_code = #{menuCode}
 	</select>
@@ -74,7 +74,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</selectKey>
 		
 		INSERT ingre_price
-			(ingre_price_code, menu_code, h_item_code, ingre_name, ingre_amount, ingre_money, head_staff_id, ingre_regit_date, menu_status)
+			(ingre_price_code, menu_code, h_item_code, ingre_name, ingre_amount, ingre_money, head_staff_id, ingre_regit_date, ingre_status)
 		SELECT #{ingrePriceCode}, 
 				#{menuCode}, 
 				#{hItemCode}, 
