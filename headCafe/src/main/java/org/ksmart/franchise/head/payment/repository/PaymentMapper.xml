@@ -19,21 +19,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectPayment" parameterType="java.util.Map" resultMap="paymentResultMap">
 		SELECT pay_method_code, pay_method, profit_percent, head_staff_id, profit_regit_date, profit_status
 		FROM profit_by_pay_method
-		<!-- <where>
-			<if test="contractSearch.regitDateStart != null and contractSearch.regitDateEnd != null and contractSearch.regitDateStart !='' and contractSearch.regitDateEnd !=''">
-				<![CDATA[date(contract_actual_date) >= #{contractSearch.regitDateStart} and date(contract_actual_date) <= #{contractSearch.regitDateEnd}]]>  
-			</if>
-			<if test="contractSearch.searchKey != null and contractSearch.searchKey != '' and contractSearch.searchItem != null and contractSearch.searchItem != ''">
-				AND  ${contractSearch.searchKey} like CONCAT('%',#{contractSearch.searchItem},'%') 
+		<where>
+			<if test="search.searchKey != null and search.searchKey != '' and search.searchItem != null and search.searchItem != ''">
+				${search.searchKey} like CONCAT('%',#{search.searchItem},'%') 
+			</if> 
+			<if test="search.status != null and search.status != ''">
+				AND profit_status = #{search.status}
 			</if> 
 		</where> 
 		<trim prefix="ORDER BY">
-			<if test="contractSearch.criteria == null or contractSearch.criteria == ''">
-				contract_actual_date
+			<if test="search.criteria == null or search.criteria == ''">
+				profit_regit_date DESC
 			</if>
-			<if test="contractSearch.criteria != null or contractSearch.criteria != ''">
-				${contractSearch.criteria} ${contractSearch.upDown}
+			<if test="search.criteria != null or search.criteria != ''">
+				${search.criteria} ${search.upDown}
 			</if>
-		</trim> -->
+		</trim>
 	</select>
 </mapper>

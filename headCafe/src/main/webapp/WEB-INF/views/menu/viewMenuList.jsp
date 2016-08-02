@@ -113,7 +113,7 @@
 		</tr>
 		
 		<c:forEach var="menuList" items="${menuList}">
-			<tr ondblclick="modifyPop('${menuList.menuCode}')">
+			<tr>
 				<th><a href="/viewMenuDetail?menuCode=${menuList.menuCode}">${menuList.menuName}</a></th>
 				<th>${menuList.menuCode}</th>
 				<th>${menuList.inteCode}</th>

@@ -17,14 +17,14 @@ public class ContractController {
 	private ContractService contractService;
 	
 	// 계약 리스트를 보여줍니다 (검색포함)
-		@RequestMapping(value="/viewContractList")
-		public String viewContractList(Search contractSearch, Model model){
-			System.out.println("ContractController의 viewContractList 메서드 호출");
+	@RequestMapping(value="/viewContractList")
+	public String viewContractList(Search contractSearch, Model model){
+		System.out.println("ContractController의 viewContractList 메서드 호출");
 
-			List<Contract> contractList = contractService.viewContractListService(contractSearch);
-			model.addAttribute("contractList", contractList);
-			model.addAttribute("conSearch", contractSearch);
-			
-			return "/contract/viewContractList";
-		}
+		List<Contract> contractList = contractService.viewContractListService(contractSearch);
+		model.addAttribute("contractList", contractList);
+		model.addAttribute("conSearch", contractSearch);
+		
+		return "/contract/viewContractList";
+	}
 }

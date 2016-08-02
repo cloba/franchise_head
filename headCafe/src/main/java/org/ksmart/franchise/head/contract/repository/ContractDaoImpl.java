@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class ContractDaoImpl implements ContractDao {
 	
-private final String NS = "org.ksmart.franchise.head.contract.repository.ContractMapper";
+	private final String NS = "org.ksmart.franchise.head.contract.repository.ContractMapper";
 	
 	@Autowired
 	private SqlSessionTemplate sqlSessionContract;
