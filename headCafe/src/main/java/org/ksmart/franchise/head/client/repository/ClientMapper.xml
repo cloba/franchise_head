@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.ksmart.franchise.head.client.repository.ClientMapper">
+
+
+	<resultMap id="ClientResultMap" type="org.ksmart.franchise.head.client.model.Client" >
+		<id property="headClientCode" column="head_client_code"/>
+		<result property="headClientName" column="head_client_name"/>
+		<result property="headClientRegitDate" column="head_client_regit_date"/>
+		<result property="headClientInCharge" column="head_client_in_charge"/>
+		<result property="headClientContract" column="head_client_contract"/>
+		<result property="headClientPhoneFirst" column="head_client_phone_first"/>
+		<result property="headClientPhoneSecond" column="head_client_phone_second"/>
+		<result property="headClientPhoneThird" column="head_client_phone_third"/>
+		<result property="headClientRoadAddr" column="head_client_road_addr"/>
+		<result property="headClientPost" column="head_client_post"/>
+		<result property="headClientParcleAddr" column="head_client_parcle_addr"/>
+		<result property="headStaffId" column="head_staff_id"/>
+	</resultMap>
+	<select id="selectHeadClientList" parameterType="java.util.Map" resultMap="ClientResultMap">
+		SELECT
+			head_client_code, 			head_client_name,       head_client_in_charge, head_client_phone_first, 
+		    head_client_phone_second,   head_client_phone_third
+		FROM
+			head_client
+		<where>  
+			<if test='search.searchItem != null and search.searchItem != "" '>
+				AND ${search.searchKey} like CONCAT('%',#{search.searchItem},'%')
+			</if>
+		</where>
+		<trim prefix="ORDER BY">
+			<if test="search.criteria != null or search.criteria != ''">
+				${search.criteria} ${search.upDown}
+			</if>
+		</trim>	
+	</select>
+	
+	<select id="selectHeadClientdetail" parameterType="java.util.Map" resultMap="ClientResultMap">
+		SELECT 
+			head_client_code, 		 head_client_name,         head_client_regit_date,  head_client_in_charge,  head_client_contract, 
+			head_client_phone_first, head_client_phone_second, head_client_phone_third, head_client_road_addr,  head_client_post, 
+			head_client_parcle_addr, head_staff_id
+		FROM
+		    head_client
+		WHERE
+			head_client_code = #{headClientCode}
+	
+	</select>
+
+
+
+
+
+
+
+</mapper>
