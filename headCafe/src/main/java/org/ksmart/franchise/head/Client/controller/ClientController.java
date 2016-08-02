@@ -16,7 +16,7 @@ public class ClientController {
 	private ClientService clientService;
 
 	
-	@RequestMapping(value="/headViewHeadClientList", method=RequestMethod.GET)
+	@RequestMapping(value="/viewHeadClientList", method=RequestMethod.GET)
 	public String headViewHeadClientList(Model model, Search search){
 		System.out.println("ClientController의 headViewHeadClientList메서드 ");
 		
@@ -25,7 +25,7 @@ public class ClientController {
 		
 		model.addAttribute("list", list);
 		
-		return null;
+		return "/client/viewHeadClientList";
 		
 		
 	}
