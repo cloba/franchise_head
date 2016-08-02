@@ -73,6 +73,15 @@
  	<bean id="sqlSessionSub" class="org.mybatis.spring.SqlSessionTemplate"> 
        <constructor-arg index="0" ref="sqlSessionFactorySub" />
     </bean> 
+    
+     <!-- 계정과목 관리 -->
+     <bean id="sqlSessionFactorySubject" class="org.mybatis.spring.SqlSessionFactoryBean">  
+		<property name="dataSource" ref="dataSource" /> 
+		<property name="mapperLocations" value="classpath:org/ksmart/franchise/head/subject/repository/SubjectMapper.xml" /> 
+	</bean> 
+ 	<bean id="sqlSessionSubject" class="org.mybatis.spring.SqlSessionTemplate"> 
+       <constructor-arg index="0" ref="sqlSessionFactorySubject" />
+    </bean> 
      
 <!--      가맹 Sub -->
 <!--      <bean id="sqlSessionFactorySub" class="org.mybatis.spring.SqlSessionFactoryBean"> -->

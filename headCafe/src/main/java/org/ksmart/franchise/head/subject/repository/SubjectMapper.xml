@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.ksmart.franchise.head.subject.repository.SubjectMapper">
+	
+	<!-- POJO객체와 DB column명을 맞춰줍니다 -->
+	<resultMap type="org.ksmart.franchise.head.subject.model.Subject" id="subjectResultMap">
+		<id property="subjectCode" column="subject_code"/>
+		<result property="subjectName" column="subject_name"/>
+		<result property="subjectContent" column="subject_content"/>
+	</resultMap>
+	
+</mapper>
