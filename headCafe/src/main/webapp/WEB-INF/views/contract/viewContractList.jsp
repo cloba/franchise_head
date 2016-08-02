@@ -39,7 +39,7 @@
 	<table border="1">
 		<tr>
 			<th>
-				<a href="/viewContractDetail">계약번호</a>
+				계약코드
 				<!-- <span id="nameUp">▲</span>
 				<span id="nameDown">▼</span> -->
 			</th>
@@ -50,7 +50,7 @@
 		
 		<c:forEach var="contractList" items="${contractList}">
 			<tr>
-				<th>${contractList.contractCode }</th>
+				<th><a href="/viewContractDetail">${contractList.contractCode }</th>
 				<th>${contractList.storeCode }</th>
 				<th><fmt:parseDate value="${contractList.contractActualDate}" pattern="yyyy-MM-dd HH:mm:ss" var="date"/>
 					<fmt:formatDate pattern="yyyy-MM-dd" type="both" value="${date}" />
@@ -59,5 +59,7 @@
 			</tr>
 		</c:forEach>
 	</table>
+	<a href="/viewContractList">[전체리스트]</a>
+	<a href="/">[홈으로]</a>
 </body>
 </html>

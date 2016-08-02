@@ -13,7 +13,7 @@ public class Contract {
 	private String contractFile;
 	private int contractN;
 	private String contractExpire;
-	private String contractExpireDate;
+	private String contractExpiredDate;
 	private String contractExpireContent;
 	public String getContractCode() {
 		return contractCode;
@@ -87,11 +87,11 @@ public class Contract {
 	public void setContractExpire(String contractExpire) {
 		this.contractExpire = contractExpire;
 	}
-	public String getContractExpireDate() {
-		return contractExpireDate;
+	public String getContractExpiredDate() {
+		return contractExpiredDate;
 	}
-	public void setContractExpireDate(String contractExpireDate) {
-		this.contractExpireDate = contractExpireDate;
+	public void setContractExpiredDate(String contractExpiredDate) {
+		this.contractExpiredDate = contractExpiredDate;
 	}
 	public String getContractExpireContent() {
 		return contractExpireContent;
@@ -106,7 +106,7 @@ public class Contract {
 				+ ", contractRegitDate=" + contractRegitDate + ", contractExpiryDate=" + contractExpiryDate
 				+ ", contractDeposit=" + contractDeposit + ", contractProfitPercent=" + contractProfitPercent
 				+ ", contractFile=" + contractFile + ", contractN=" + contractN + ", contractExpire=" + contractExpire
-				+ ", contractExpireDate=" + contractExpireDate + ", contractExpireContent=" + contractExpireContent
+				+ ", contractExpiredDate=" + contractExpiredDate + ", contractExpireContent=" + contractExpireContent
 				+ "]";
 	}
 	

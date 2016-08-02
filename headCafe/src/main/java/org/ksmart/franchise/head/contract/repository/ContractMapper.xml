@@ -18,14 +18,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="contractFile" column="contract_file"/>
 		<result property="contractN" column="contract_n"/>
 		<result property="contractExpire" column="contract_expire"/>
-		<result property="contractExpireDate" column="contract_expire_date"/>
+		<result property="contractExpiredDate" column="contract_expired_date"/>
 		<result property="contractExpireContent" column="contract_expire_content"/>
 	</resultMap>
 	
 	
 	<!-- contract의 리스트를 봅니다 (검색포함)-->
 	<select id="selectContract" parameterType="java.util.Map" resultMap="contractResultMap">
-		SELECT contract_code, head_staff_id, store_code, contractor_name, `열 12`, contract_actual_date, contract_regit_date, contract_expiry_date, contract_deposit, contract_profit_percent, contract_file, contract_n, contract_expire, contract_expire_date, contract_expire_content
+		SELECT contract_code, head_staff_id, store_code, contractor_name, contract_actual_date, contract_regit_date, contract_expiry_date, contract_deposit, contract_profit_percent, contract_file, contract_n, contract_expire, contract_expired_date, contract_expire_content
 		FROM contract
 		<where>
 			<if test="contractSearch.regitDateStart != null and contractSearch.regitDateEnd != null and contractSearch.regitDateStart !='' and contractSearch.regitDateEnd !=''">
