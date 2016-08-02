@@ -82,6 +82,15 @@
  	<bean id="sqlSessionSubject" class="org.mybatis.spring.SqlSessionTemplate"> 
        <constructor-arg index="0" ref="sqlSessionFactorySubject" />
     </bean> 
+    
+    <!-- 계약관리 관리 -->
+     <bean id="sqlSessionFactoryContract" class="org.mybatis.spring.SqlSessionFactoryBean">  
+		<property name="dataSource" ref="dataSource" /> 
+		<property name="mapperLocations" value="classpath:org/ksmart/franchise/head/contract/repository/ContractMapper.xml" /> 
+	</bean> 
+ 	<bean id="sqlSessionContract" class="org.mybatis.spring.SqlSessionTemplate"> 
+       <constructor-arg index="0" ref="sqlSessionFactoryContract" />
+    </bean> 
      
 <!--      가맹 Sub -->
 <!--      <bean id="sqlSessionFactorySub" class="org.mybatis.spring.SqlSessionFactoryBean"> -->

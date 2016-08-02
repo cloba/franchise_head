@@ -11,4 +11,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="subjectContent" column="subject_content"/>
 	</resultMap>
 	
+	<!-- subject의 리스트를 봅니다 (검색포함)-->
+	<select id="selectSubject" parameterType="java.util.Map" resultMap="subjectResultMap">
+		SELECT subject_code, subject_name, subject_content
+		FROM subject
+		<where>
+			<if test="subjectSearch.searchKey != null and subjectSearch.searchKey != '' and subjectSearch.searchItem != null and subjectSearch.searchItem != ''">
+				AND  ${subjectSearch.searchKey} like CONCAT('%',#{subjectSearch.searchItem},'%') 
+			</if> 
+		</where> 
+		ORDER BY subject_code
+	</select>
 </mapper>

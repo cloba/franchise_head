@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.ksmart.franchise.head.contract.repository.ContractMapper">
+	
+	<!-- POJO객체와 DB column명을 맞춰줍니다 -->
+	<resultMap type="org.ksmart.franchise.head.contract.model.Contract" id="contractResultMap">
+		<id property="contractCode" column="contract_code"/>
+		<result property="headStaffId" column="head_staff_id"/>
+		<result property="storeCode" column="store_code"/>
+		<result property="contractorName" column="contractor_name"/>
+		<result property="contractActualDate" column="contract_actual_date"/>
+		<result property="contractRegitDate" column="contract_regit_date"/>
+		<result property="contractExpiryDate" column="contract_expiry_date"/>
+		<result property="contractDeposit" column="contract_deposit"/>
+		<result property="contractProfitPercent" column="contract_profit_percent"/>
+		<result property="contractFile" column="contract_file"/>
+		<result property="contractN" column="contract_n"/>
+		<result property="contractExpire" column="contract_expire"/>
+		<result property="contractExpireDate" column="contract_expire_date"/>
+		<result property="contractExpireContent" column="contract_expire_content"/>
+	</resultMap>
+	
+	
+	<!-- contract의 리스트를 봅니다 (검색포함)-->
+	<select id="selectContract" parameterType="java.util.Map" resultMap="contractResultMap">
+		SELECT contract_code, head_staff_id, store_code, contractor_name, `열 12`, contract_actual_date, contract_regit_date, contract_expiry_date, contract_deposit, contract_profit_percent, contract_file, contract_n, contract_expire, contract_expire_date, contract_expire_content
+		FROM contract
+		<where>
+			<if test="contractSearch.regitDateStart != null and contractSearch.regitDateEnd != null and contractSearch.regitDateStart !='' and contractSearch.regitDateEnd !=''">
+				<![CDATA[date(contract_actual_date) >= #{contractSearch.regitDateStart} and date(contract_actual_date) <= #{contractSearch.regitDateEnd}]]>  
+			</if>
+			<if test="contractSearch.searchKey != null and contractSearch.searchKey != '' and contractSearch.searchItem != null and contractSearch.searchItem != ''">
+				AND  ${contractSearch.searchKey} like CONCAT('%',#{contractSearch.searchItem},'%') 
+			</if> 
+		</where> 
+		<trim prefix="ORDER BY">
+			<if test="contractSearch.criteria == null or contractSearch.criteria == ''">
+				contract_actual_date
+			</if>
+			<if test="contractSearch.criteria != null or contractSearch.criteria != ''">
+				${contractSearch.criteria} ${contractSearch.upDown}
+			</if>
+		</trim>
+	</select>
+	
+</mapper>
