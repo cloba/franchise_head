@@ -74,6 +74,7 @@
 	</table>
 
 	<a href="/headModifyMenu?menuDetail=${menu.menuCode}">[수정:구현전]</a>
+	<a href="/viewRecipeDetail?menuCode=${menu.menuCode}">[수정:구현전]</a>
 	<a href="/viewMenuList">[메뉴목록]</a>
 </body>
 </html>
