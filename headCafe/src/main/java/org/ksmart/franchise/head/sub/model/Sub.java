@@ -50,5 +50,11 @@ public class Sub {
 	public void setSubAddr(String subAddr) {
 		this.subAddr = subAddr;
 	}
+	@Override
+	public String toString() {
+		return "Sub [subCode=" + subCode + ", headStaffId=" + headStaffId + ", subRegitDate=" + subRegitDate
+				+ ", subName=" + subName + ", subOwner=" + subOwner + ", subTelephone=" + subTelephone + ", subAddr="
+				+ subAddr + "]";
+	}
 	
 }
