@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.ksmart.franchise.head.recipe.repository.RecipeMapper">
+
+	<resultMap type="org.ksmart.franchise.head.recipe.model.Recipe" id="RecipeResultMap">
+		<id property="recipeCode" column="recipe_code"/>
+		<result property="menuCode" column="menu_code"/>
+		<result property="recipeAct" column="recipe_act"/>
+		<result property="headStaffId" column="head_staff_id"/>
+		<result property="recipeRegitDate" column="recipe_regit_date"/>
+		<result property="menuName" column="menu_name"/>
+		<result property="recipeOrder" column="recipe_order"/>
+<!-- 		
+		<RESULT PROPERTY="INGRENAME" COLUMN="INGRE_NAME"/> 
+		<RESULT PROPERTY="INGREAMOUNT" COLUMN="INGRE_AMOUNT"/> 
+ 		<result property="hItemCode" column="h_item_code"/> 
+		<result property="ingreStatus" column="ingre_status"/> -->
+
+	</resultMap>
+		
+		
+<!--   레시피 리스트 구현
+	<select id="selectRecipeList" parameterType="java.util.Map" resultMap="RecipeResultMap">
+		   SELECT 	
+				r.recipe_code, r.menu_code, r.recipe_act, r.head_staff_id, r.recipe_regit_date,
+				i.ingre_name, i.ingre_amount, i.h_item_code, i.ingre_status, m.menu_name
+			FROM
+				recipe r INNER JOIN ingre_price i
+			ON
+				r.menu_code = i.menu_code  
+				
+			INNER JOIN menu m ON r.menu_code=m.menu_code
+				
+			where 	 
+				m.menu_code = 'menu_code1'
+			and		
+    				i.menu_code = 'menu_code1'
+    				 #{recipe.menuCode}  
+		
+		<where>
+			<if test='search.searchItem != null and search.searchItem != "" '>
+				AND ${search.searchKey} like CONCAT('%',#{search.searchItem},'%')
+			</if>
+		</where>
+		<trim prefix="ORDER BY">
+			<if test="search.criteria != null or search.criteria != ''">
+				${search.criteria} ${search.upDown}
+			</if>
+		</trim>	
+			
+	</select>	
+-->		
+	
+	<select id="selectRecipeDetail" parameterType="java.util.Map" resultMap="RecipeResultMap">
+		 SELECT 	
+				r.recipe_code, r.menu_code, r.recipe_act, r.head_staff_id, r.recipe_regit_date, r.recipe_order,
+				m.menu_name
+			FROM
+				recipe r 
+			INNER JOIN menu m ON r.menu_code=m.menu_code
+		
+			where 	 
+				m.menu_code = #{menuCode} 
+			ORDER BY r.recipe_order ASC	
+	</select>
+		
+</mapper>

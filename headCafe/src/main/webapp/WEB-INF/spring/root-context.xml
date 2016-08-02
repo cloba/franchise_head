@@ -96,7 +96,7 @@
 	     <!-- 본사거래처 headClient -->
 	     <bean id="sqlSessionFactoryHeadClient" class="org.mybatis.spring.SqlSessionFactoryBean">
 			<property name="dataSource" ref="dataSource" /> 
-			<property name="mapperLocations" value="classpath:org/ksmart/franchise/head/subject/repository/ClientMapper.xml" /> 
+			<property name="mapperLocations" value="classpath:org/ksmart/franchise/head/Client/repository/ClientMapper.xml" /> 
 	 	</bean> 
 	 	<bean id="sqlSessionHeadClient" class="org.mybatis.spring.SqlSessionTemplate">
 	       <constructor-arg index="0" ref="sqlSessionFactoryHeadClient" />
