@@ -20,8 +20,16 @@
     
     <tx:annotation-driven transaction-manager="transactionManager"/>
     
-     
-     <!-- 결제방식관리 관리 -->
+    <!-- 본사판매관리 -->
+    <bean id="sqlSessionFactorySell" class="org.mybatis.spring.SqlSessionFactoryBean">  
+		<property name="dataSource" ref="dataSource" /> 
+		<property name="mapperLocations" value="classpath:org/ksmart/franchise/head/sell/repository/SellMapper.xml" /> 
+	</bean> 
+ 	<bean id="sqlSessionSell" class="org.mybatis.spring.SqlSessionTemplate"> 
+       <constructor-arg index="0" ref="sqlSessionFactorySell" />
+    </bean> 
+    
+    <!-- 결제방식 관리 -->
     <bean id="sqlSessionFactoryPayment" class="org.mybatis.spring.SqlSessionFactoryBean">  
 		<property name="dataSource" ref="dataSource" /> 
 		<property name="mapperLocations" value="classpath:org/ksmart/franchise/head/payment/repository/PaymentMapper.xml" /> 
@@ -109,7 +117,7 @@
  	</bean> 
  	<bean id="sqlSessionHeadClient" class="org.mybatis.spring.SqlSessionTemplate">
        <constructor-arg index="0" ref="sqlSessionFactoryHeadClient" />
-    </bean>
+    </bean> 
    
    <!-- 본사 회계관리 -->
      <bean id="sqlSessionFactoryHeadAccounting" class="org.mybatis.spring.SqlSessionFactoryBean">

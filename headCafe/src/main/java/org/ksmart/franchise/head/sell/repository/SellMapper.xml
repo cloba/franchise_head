@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.ksmart.franchise.head.sell.repository.SellMapper">
+	
+	<!-- POJO객체와 DB column명을 맞춰줍니다 -->
+	<resultMap type="org.ksmart.franchise.head.sell.model.Sell" id="sellResultMap">
+		<id property="headSellCode" column="head_sell_code"/>
+		<result property="inteCode" column="inte_code"/>
+		<result property="headSellQuantity" column="head_sell_quantity"/>
+		<result property="storeCode" column="store_code"/>
+		<result property="headSellGroup" column="head_sell_group"/>
+		<result property="headSellPurchasePrice" column="head_sell_purchase_price"/>
+		<result property="headSellSellingPrice" column="head_sell_selling_price"/>
+		<result property="headSellDate" column="head_sell_date"/>
+		<result property="totalAccountGroup" column="total_account_group"/>
+		<result property="headSellFinal" column="head_sell_final"/>
+		<result property="headSellFinalStaff" column="head_sell_final_staff"/>
+		<result property="headSellFinalDate" column="head_sell_final_date"/>
+		<result property="headSellDistr" column="head_sell_distr"/>
+		<result property="headSellProfitHead" column="head_sell_profit_head"/>
+		<result property="headSellProfitSub" column="head_sell_profit_sub"/>
+	</resultMap>
+	
+	
+	<!-- 본사의 판매 리스트를 봅니다 (검색포함)-->
+	<select id="selectSell" parameterType="java.util.Map" resultMap="sellResultMap">
+		SELECT head_sell_code, inte_code, store_code, head_sell_group, head_sell_purchase_price, head_sell_selling_price, head_sell_date, total_account_group, head_sell_final, head_sell_final_staff, head_sell_final_date, head_sell_distr, head_sell_profit_head, head_sell_profit_sub
+		FROM head_sell
+		<where>
+			<if test="search.regitDateStart != null and search.regitDateEnd != null and search.regitDateStart !='' and search.regitDateEnd !=''">
+				<![CDATA[date(head_sell_date) >= #{search.regitDateStart} and date(head_sell_date) <= #{search.regitDateEnd}]]>  
+			</if>
+			<if test="search.searchKey != null and search.searchKey != '' and search.searchItem != null and search.searchItem != ''">
+				AND ${search.searchKey} REGEXP #{search.searchItem} 
+			</if> 
+		</where> 
+		<trim prefix="ORDER BY">
+			<if test="search.criteria == null or search.criteria == ''">
+				head_sell_date DESC
+			</if>
+			<if test="search.criteria != null or search.criteria != ''">
+				${search.criteria} ${search.upDown}
+			</if>
+		</trim> 
+	</select>
+</mapper>
