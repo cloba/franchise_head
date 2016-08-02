@@ -11,28 +11,32 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="subRegitDate" column="sub_regit_date"/>
 		<result property="subName" column="sub_name"/>
 		<result property="subOwner" column="sub_owner"/>
-		<result property="subTelephone" column="sub_telephone"/>
-		<result property="subAddr" column="sub_addr"/>
+		<result property="subPhoneFirst" column="sub_phone_first"/>
+		<result property="subPhoneSecond" column="sub_phone_second"/>
+		<result property="subPhoneThird" column="sub_phone_third"/>
+		<result property="subPost" column="sub_post"/>
+		<result property="subRoadAddr" column="sub_road_addr"/>
+		<result property="subParcelAddr" column="sub_parcle_addr"/>
 	</resultMap>
 	
 	<!-- sub의 리스트를 봅니다 (검색포함)-->
 	<select id="selectSub" parameterType="java.util.Map" resultMap="SubResultMap">
-		SELECT menu_code, inte_code, menu_name, menu_ingre_price, menu_selling_price, head_staff_id, menu_regit_date, menu_status, menu_expired_date 
-		FROM menu
+		SELECT sub_code, head_staff_id, sub_regit_date, sub_name, sub_owner, sub_phone_first, sub_phone_second, sub_phone_third, sub_post, sub_road_addr, sub_parcle_addr
+		FROM sub
 		<where>
-			<if test="menuSearch.searchKey != null and menuSearch.searchKey != '' and menuSearch.searchItem != null and menuSearch.searchItem != ''">
-				${menuSearch.searchKey} like CONCAT('%',#{menuSearch.searchItem},'%') 
+			<if test="subSearch.regitDateStart != null and subSearch.regitDateEnd != null and subSearch.regitDateStart !='' and subSearch.regitDateEnd !=''">
+				<![CDATA[date(sub_regit_date) >= #{subSearch.regitDateStart} and date(sub_regit_date) <= #{subSearch.regitDateEnd}]]>  
 			</if>
-			<if test="menuSearch.status != null and menuSearch.status != ''">
-				AND menu_status = #{menuSearch.status}
+			<if test="subSearch.searchKey != null and subSearch.searchKey != '' and subSearch.searchItem != null and subSearch.searchItem != ''">
+				AND  ${subSearch.searchKey} like CONCAT('%',#{subSearch.searchItem},'%') 
 			</if> 
 		</where> 
 		<trim prefix="ORDER BY">
-			<if test="menuSearch.criteria == null or menuSearch.criteria == ''">
-				menu_regit_date
+			<if test="subSearch.criteria == null or subSearch.criteria == ''">
+				sub_regit_date
 			</if>
-			<if test="menuSearch.criteria != null or menuSearch.criteria != ''">
-				${menuSearch.criteria} ${menuSearch.upDown}
+			<if test="subSearch.criteria != null or subSearch.criteria != ''">
+				${subSearch.criteria} ${subSearch.upDown}
 			</if>
 		</trim>
 	</select>

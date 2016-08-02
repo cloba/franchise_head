@@ -6,8 +6,12 @@ public class Sub {
 	private String subRegitDate;
 	private String subName;
 	private String subOwner;
-	private String subTelephone;
-	private String subAddr;
+	private int subPhoneFirst;
+	private int subPhoneSecond;
+	private int subPhoneThird;
+	private int subPost;
+	private String subRoadAddr;
+	private String subParcelAddr;
 	public String getSubCode() {
 		return subCode;
 	}
@@ -38,23 +42,48 @@ public class Sub {
 	public void setSubOwner(String subOwner) {
 		this.subOwner = subOwner;
 	}
-	public String getSubTelephone() {
-		return subTelephone;
+	public int getSubPhoneFirst() {
+		return subPhoneFirst;
 	}
-	public void setSubTelephone(String subTelephone) {
-		this.subTelephone = subTelephone;
+	public void setSubPhoneFirst(int subPhoneFirst) {
+		this.subPhoneFirst = subPhoneFirst;
 	}
-	public String getSubAddr() {
-		return subAddr;
+	public int getSubPhoneSecond() {
+		return subPhoneSecond;
 	}
-	public void setSubAddr(String subAddr) {
-		this.subAddr = subAddr;
+	public void setSubPhoneSecond(int subPhoneSecond) {
+		this.subPhoneSecond = subPhoneSecond;
+	}
+	public int getSubPhoneThird() {
+		return subPhoneThird;
+	}
+	public void setSubPhoneThird(int subPhoneThird) {
+		this.subPhoneThird = subPhoneThird;
+	}
+	public int getSubPost() {
+		return subPost;
+	}
+	public void setSubPost(int subPost) {
+		this.subPost = subPost;
+	}
+	public String getSubRoadAddr() {
+		return subRoadAddr;
+	}
+	public void setSubRoadAddr(String subRoadAddr) {
+		this.subRoadAddr = subRoadAddr;
+	}
+	public String getSubParcelAddr() {
+		return subParcelAddr;
+	}
+	public void setSubParcelAddr(String subParcelAddr) {
+		this.subParcelAddr = subParcelAddr;
 	}
 	@Override
 	public String toString() {
 		return "Sub [subCode=" + subCode + ", headStaffId=" + headStaffId + ", subRegitDate=" + subRegitDate
-				+ ", subName=" + subName + ", subOwner=" + subOwner + ", subTelephone=" + subTelephone + ", subAddr="
-				+ subAddr + "]";
+				+ ", subName=" + subName + ", subOwner=" + subOwner + ", subPhoneFirst=" + subPhoneFirst
+				+ ", subPhoneSecond=" + subPhoneSecond + ", subPhoneThird=" + subPhoneThird + ", subPost=" + subPost
+				+ ", subRoadAddr=" + subRoadAddr + ", subParcelAddr=" + subParcelAddr + "]";
 	}
 	
 }
