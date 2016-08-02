@@ -46,13 +46,13 @@ public class HeadStaffServiceImpl implements HeadStaffService{
 		return headStaffDao.headStaffModify(headstaff);
 		
 	}
-
+	//본사직원 로그인 메서드
 	@Override
 	public HeadStaff loginStaffService(HeadStaffLogin headStaffLogin) {
 		return headStaffDao.headStaffLogin(headStaffLogin);
 		
 	}
-
+	//본사직원 퇴사하는 메서드
 	@Override
 	public int addResignStaffService(HeadStaff headStaff) {
 		System.out.println("HeadStaffServiceImpl의 addResignStaffService 메서드");

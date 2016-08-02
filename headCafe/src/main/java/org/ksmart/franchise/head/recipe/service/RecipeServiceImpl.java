@@ -14,11 +14,19 @@ public class RecipeServiceImpl implements RecipeService {
 	@Autowired
 	private RecipeDao recipeDao;	
 	
+	//레시피 리스트를 보는 메서드
 	@Override
 	public List<Recipe> recipeListService(Recipe recipe, Search search) {
 		System.out.println("RecipeServiceImpl의 recipeListService메서드");
 		
 		return recipeDao.viewRecipeList(recipe, search);
+	}
+
+	//레시피 상세정보를 보는 메서드
+	@Override
+	public List<Recipe> recipeDetail(String menuCode) {
+		System.out.println("RecipeServiceImpl의 recipeDetail메서드");
+		return recipeDao.viewRecipeDetail(menuCode);
 	}
 
 }

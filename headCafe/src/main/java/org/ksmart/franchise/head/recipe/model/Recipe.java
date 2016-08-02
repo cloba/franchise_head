@@ -1,6 +1,5 @@
 package org.ksmart.franchise.head.recipe.model;
 
-import org.ksmart.franchise.head.ingrePrice.model.IngrePrice;
 
 public class Recipe {
 	
@@ -9,37 +8,15 @@ public class Recipe {
 	private String recipeAct; //조리내용
 	private String headStaffId; //등록한 아이디
 	private String recipeRegitDate;  //등록한 날짜
-	private IngrePrice ingrePrice; //메뉴가격
-	private String ingreName;    //재료이름
-	private String ingreAmount;  //재료량
-	private String hItemCode;    //상품 코드
 	private String menuName;     //메뉴 이름
-	private String ingreStatus; //현재적용상태
+	private String recipeOrder; //레시피 순서
+//	private IngrePrice ingrePrice; //메뉴가격
+//	private String ingreName;    //재료이름
+//	private String ingreAmount;  //재료량
+//	private String hItemCode;    //상품 코드
+//	private String ingreStatus; //현재적용상태
 	
-	public String getIngreName() {
-		return ingreName;
-	}
-	public void setIngreName(String ingreName) {
-		this.ingreName = ingreName;
-	}
-	public String getIngreAmount() {
-		return ingreAmount;
-	}
-	public void setIngreAmount(String ingreAmount) {
-		this.ingreAmount = ingreAmount;
-	}
-	public String gethItemCode() {
-		return hItemCode;
-	}
-	public void sethItemCode(String hItemCode) {
-		this.hItemCode = hItemCode;
-	}
-	public String getMenuName() {
-		return menuName;
-	}
-	public void setMenuName(String menuName) {
-		this.menuName = menuName;
-	}
+	
 	public String getRecipeCode() {
 		return recipeCode;
 	}
@@ -70,16 +47,21 @@ public class Recipe {
 	public void setRecipeRegitDate(String recipeRegitDate) {
 		this.recipeRegitDate = recipeRegitDate;
 	}
-	public IngrePrice getIngrePrice() {
-		return ingrePrice;
+	public String getMenuName() {
+		return menuName;
 	}
-	public void setIngrePrice(IngrePrice ingrePrice) {
-		this.ingrePrice = ingrePrice;
+	public void setMenuName(String menuName) {
+		this.menuName = menuName;
 	}
-	public String getIngreStatus() {
-		return ingreStatus;
+	public String getRecipeOrder() {
+		return recipeOrder;
 	}
-	public void setIngreStatus(String ingreStatus) {
-		this.ingreStatus = ingreStatus;
+	public void setRecipeOrder(String recipeOrder) {
+		this.recipeOrder = recipeOrder;
 	}
+	
+	
+	
+	
+	
 }

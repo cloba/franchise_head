@@ -92,6 +92,16 @@
        <constructor-arg index="0" ref="sqlSessionFactoryContract" />
     </bean> 
      
+
+	     <!-- 본사거래처 headClient -->
+	     <bean id="sqlSessionFactoryHeadClient" class="org.mybatis.spring.SqlSessionFactoryBean">
+			<property name="dataSource" ref="dataSource" /> 
+			<property name="mapperLocations" value="classpath:org/ksmart/franchise/head/subject/repository/ClientMapper.xml" /> 
+	 	</bean> 
+	 	<bean id="sqlSessionHeadClient" class="org.mybatis.spring.SqlSessionTemplate">
+	       <constructor-arg index="0" ref="sqlSessionFactoryHeadClient" />
+	     </bean>
+	     
 <!--      가맹 Sub -->
 <!--      <bean id="sqlSessionFactorySub" class="org.mybatis.spring.SqlSessionFactoryBean"> -->
 <!-- 		<property name="dataSource" ref="dataSource" />  -->
@@ -99,14 +109,6 @@
 <!--  	</bean>  -->
 <!--  	<bean id="sqlSessionSub" class="org.mybatis.spring.SqlSessionTemplate"> -->
 <!--        <constructor-arg index="0" ref="sqlSessionFactorySub" /> -->
-<!--      </bean> -->
-<!--      본사거래처 headClient -->
-<!--      <bean id="sqlSessionFactoryHeadClient" class="org.mybatis.spring.SqlSessionFactoryBean"> -->
-<!-- 		<property name="dataSource" ref="dataSource" />  -->
-<!-- 		<property name="mapperLocations" value="classpath:org/ksmart02/cafe/headClient/repository/ClientMapper.xml" />  -->
-<!--  	</bean>  -->
-<!--  	<bean id="sqlSessionHeadClient" class="org.mybatis.spring.SqlSessionTemplate"> -->
-<!--        <constructor-arg index="0" ref="sqlSessionFactoryHeadClient" /> -->
 <!--      </bean> -->
 <!--      계약관리 메퍼 -->
 <!-- 	<bean id="sqlSessionFactoryContract" class="org.mybatis.spring.SqlSessionFactoryBean"> -->

@@ -32,6 +32,9 @@
 <a href="/viewRecipeList">레시피관리</a>
 <a href="/viewSubList">가맹관리</a>
 <a href="/viewSubjectList">계정과목관리</a>
+<a href="/viewHeadClientList">거래처관리</a>
+<a href="/viewContractList">계약관리</a>
+
 	<!-- 로그인 폼 -->
 <div class="join">
 		<form id="loginForm" action="" method="post" >

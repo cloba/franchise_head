@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.ksmart.franchise.head.Client.repository.ClientMapper">
+
+
+	<resultMap id="ClientResultMap" type="org.ksmart.franchise.head.Client.model.Client" >
+		<id property="headClientCode" column="head_client_code"/>
+		<result property="headClientName" column="head_client_name"/>
+		<result property="headClientRegitDate" column="head_client_regit_date"/>
+		<result property="headClientInCharge" column="head_client_in_charge"/>
+		<result property="headClientContract" column="head_client_contract"/>
+		<result property="headClientPhone" column="head_client_phone"/>
+		<result property="headClientDddr" column="head_client_addr"/>
+		<result property="headStaffId" column="head_staff_id"/>
+	</resultMap>
+	
+	<select id="selectHeadClient" parameterType="java.util.Map" resultMap="ClientResultMap">
+	
+	
+	</select>
+	
+
+
+
+
+
+
+
+</mapper>
