@@ -1,6 +1,6 @@
-package org.ksmart.franchise.head.menu.model;
+package org.ksmart.franchise.head.delivery.model;
 
-public class MenuSearch {
+public class Deliverysearch {
 	private String regitDateStart;
 	private String regitDateEnd;
 	private String searchKey;
