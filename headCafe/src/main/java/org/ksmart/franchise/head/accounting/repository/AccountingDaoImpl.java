@@ -20,7 +20,7 @@ public class AccountingDaoImpl implements AccountingDao {
 	private SqlSessionTemplate sqlSessionHeadAccounting;	
 	
 	
-	                            
+	//본사통합회계 리스트 조회 메서드                        
 	@Override
 	public List<Accounting> HeadAccountingList(Search search) {
 	Map<String, Object> map = new HashMap<String, Object>();

@@ -59,7 +59,6 @@ public class HeadStaffController {
 	}
 	
 	
-	//박종무 (0722)
 	//회원가입 form을 보여주는 메서드
 	@RequestMapping(value="/addHeadStaff", method=RequestMethod.GET)
 	public String addHeadStaff(){
@@ -67,6 +66,7 @@ public class HeadStaffController {
 
 		return "/headStaff/AddHeadStaff";
 	}
+	
 	
 	// AddHeadStaff.jsp의 form에서 넘어오는 데이터를 받아서 처리하는 메서드
 	@RequestMapping(value="/addHeadStaff", method=RequestMethod.POST)
@@ -81,6 +81,7 @@ public class HeadStaffController {
 		return "/headStaff/AddHeadStaff";
 	}
 	
+	
 	 //본사 직원리스트 보는 메서드(박종무 0722) 
 	@RequestMapping(value="/viewHeadStaffList", method=RequestMethod.GET)
 	public String ViewHeadStaffList(Model model, HeadStaffSearch headStaffSearch, HeadStaff headStaff) {
@@ -92,9 +93,7 @@ public class HeadStaffController {
 		  
 		  List<Object> list =  headStaffService.headStaffListService(headStaff, headStaffSearch);
 		  System.out.println("getSearchHeadStaffKey :"+headStaffSearch.getSearchHeadStaffKey());
-		  
-		//  model.addAttribute("headStaffSearch", headStaffSearch);
-		//  model.addAttribute("headStaff", headStaff);
+
 		  System.out.println("list.size:"+ list.size());
 		  System.out.println("ResignIdentify()"+headStaff.getResignIdentify());
 		  model.addAttribute("list", list);

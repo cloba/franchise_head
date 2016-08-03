@@ -31,7 +31,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		 <result property="headStaffName" column="head_staff_name" />
 		 <result property="headStaffLevel" column="head_staff_level" />
 		 <result property="headStaffPw" column="head_staff_pw" />
-		 
 	</resultMap>
 	
 	<!-- 본사직원 리스트 조회하는 쿼리  -->  

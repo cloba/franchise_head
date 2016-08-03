@@ -1,5 +1,8 @@
 package org.ksmart.franchise.head.sell.model;
 
+import org.springframework.stereotype.Repository;
+
+@Repository
 public class Sell {
 	private String headSellCode; 
 	private String inteCode;
