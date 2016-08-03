@@ -8,7 +8,7 @@ import org.ksmart.franchise.head.util.Search;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-@Service
+@Service("contractService")
 public class ContractServiceImpl implements ContractService {
 	
 	@Autowired

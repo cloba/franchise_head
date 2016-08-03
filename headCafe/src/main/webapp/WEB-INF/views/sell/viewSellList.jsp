@@ -64,6 +64,8 @@
 		<!-- 오름차/내림차순 정렬을 위한 input 태그 -->
 		<input type="hidden" name="criteria" id="criteria" value=""/>
 		<input type="hidden" name="upDown" id="upDown" value=""/>
+		<!-- 적용/미적용 조건 적용을 위한 input 태그 -->
+		<input type="hidden" name="status" value="${search.status}"/>
 	
 		판매일자: 
 		<input type="date" id="regitDateStart" name="regitDateStart" value="${search.regitDateStart}"/> ~
@@ -78,6 +80,20 @@
 		<input type="text" id="searchItem" name="searchItem" value="${search.searchItem}"/>
 		<input type="submit" id="searchBtn" value="검색"/>
 	</form>
+	
+	<!-- 적용상태에 따른 a태그 분리 -->
+	<c:if test="${search.status == 'Y'}"> 
+		<a href="/viewSellList?status=N">[마감 전 판매내역 보기]</a>
+		<a href="/viewSellList">[전체 판매내역 보기]</a>
+	</c:if>
+	<c:if test="${search.status == 'N'}"> 
+		<a href="/viewSellList?status=Y">[마감 된 판매내역 보기]</a>
+		<a href="/viewSellList">[전체 판매내역 보기]</a>
+	</c:if>
+	<c:if test="${search.status == null}">
+		<a href="/viewSellList?status=N">[마감 전 판매내역 보기]</a> 
+		<a href="/viewSellList?status=Y">[마감 된 판매내역 보기기]</a>
+	</c:if>	
 	
 	<!-- 조회 결과 -->
 	<table border="1">
@@ -104,7 +120,7 @@
 		
 		<c:forEach var="list" items="${sellList}">
 			<tr>
-				<th><a href="/viewSellList?headSellCode=${list.headSellCode}">${list.headSellCode}</a></th>
+				<th><a href="/viewSellDetail?headSellCode=${list.headSellCode}">${list.headSellCode}</a></th>
 				<th>${list.inteCode}</th>
 				<th>${list.headSellQuantity}</th>
 				<th>${list.storeCode}</th>
@@ -116,7 +132,6 @@
 			</tr>
 		</c:forEach>
 	</table>
-	<a href="/viewSellList">[전체보기]</a>
 	<a href="/">[홈으로]</a>
 </body>
 </html>

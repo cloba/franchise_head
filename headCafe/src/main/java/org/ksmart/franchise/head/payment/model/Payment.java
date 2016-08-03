@@ -1,8 +1,5 @@
 package org.ksmart.franchise.head.payment.model;
 
-import org.springframework.stereotype.Repository;
-
-@Repository
 public class Payment {
 	private String payMethodCode;
 	private String payMethod;

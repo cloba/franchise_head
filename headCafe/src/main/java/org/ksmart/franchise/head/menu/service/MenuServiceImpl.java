@@ -12,13 +12,10 @@ import org.ksmart.franchise.head.menu.repository.MenuDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-@Service
+@Service("menuService")
 public class MenuServiceImpl implements MenuService {
 
-	@Autowired
-	private MenuDao menuDao;
-	@Autowired
-	private Menu menu;
+	@Autowired MenuDao menuDao;
 	
 	@Override
 	//menu리스트를 봅니다
@@ -34,6 +31,7 @@ public class MenuServiceImpl implements MenuService {
 		System.out.println("MenuServiceImpl의 getMenuDetailService메서드 호출");
 		
 		//getMenuDetail메서드의 리턴 데이터를 받습니다		
+		Menu menu = new Menu();
 		menu = menuDao.getMenuDetail(menuCode);
 		
 		

@@ -19,8 +19,6 @@ public class ItemController {
 	
 	@Autowired
 	private ItemService itemService;
-	@Autowired
-	private Item item;
 	
 	// 상품을 추가하는 form으로 이동합니다
 	@RequestMapping(value="/headAddItem", method=RequestMethod.GET)
@@ -57,6 +55,7 @@ public class ItemController {
 	public String viewItemDetail(@RequestParam("hItemCode") String hItemCode, Model model){
 		System.out.println("ItemController의 viewItemDetail 메서드 호출");
 
+		Item item = new Item();
 		item = itemService.getItemDetailService(hItemCode);
 		model.addAttribute(item);
 		
@@ -68,6 +67,7 @@ public class ItemController {
 	public String modifyItemForm(@RequestParam("hItemCode") String hItemCode, Model model){
 		System.out.println("ItemController의 modifyItemForm 메서드 호출");
 		
+		Item item = new Item();
 		item = itemService.getItemDetailService(hItemCode);
 		model.addAttribute(item);
 		

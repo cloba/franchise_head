@@ -12,7 +12,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-@Repository
+@Repository("menuDao")
 public class MenuDaoImpl implements MenuDao {
 	
 	private final String NS = "org.ksmart.franchise.head.menu.repository.MenuMapper";

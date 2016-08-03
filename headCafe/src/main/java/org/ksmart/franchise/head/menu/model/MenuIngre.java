@@ -1,8 +1,5 @@
 package org.ksmart.franchise.head.menu.model;
 
-import org.springframework.stereotype.Repository;
-
-@Repository
 public class MenuIngre {
 	private String ingrePriceCode;
 	private String menuCode;

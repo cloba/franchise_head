@@ -25,7 +25,7 @@
 <body>
 
 로그인 아이디: ${headStaffLogin.headStaffId }
-<a href="/viewSellList">본사판매관리</a>
+<a href="/viewSellList?status=Y">본사판매관리</a>
 <a href="/viweHeadStockList">재고관리</a>
 <a href="/viewPaymentList?status=Y">결제방식 관리</a>
 <a href="/viewItemList">상품관리</a>
