@@ -1,8 +1,5 @@
 package org.ksmart.franchise.head.item.model;
 
-import org.springframework.stereotype.Repository;
-
-@Repository
 public class Item {
 	private String hItemCode;
 	private String hItemName;

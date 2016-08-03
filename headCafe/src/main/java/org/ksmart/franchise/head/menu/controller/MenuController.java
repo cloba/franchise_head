@@ -13,15 +13,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class MenuController {
 	
-	@Autowired
+	@Autowired 
 	private MenuService menuService;
-	@Autowired
-	private Menu menu;
 
 	// 메뉴 리스트를 보여줍니다 (검색포함)
 	@RequestMapping(value="/viewMenuList")
@@ -46,6 +43,7 @@ public class MenuController {
 		inteMap = menuService.getMenuDetailService(menuCode);
 		
 		// 2.
+		Menu menu = new Menu();
 		menu = (Menu) inteMap.get("menuDetail");
 		
 		// 3.

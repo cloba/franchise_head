@@ -34,6 +34,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<if test="search.searchKey != null and search.searchKey != '' and search.searchItem != null and search.searchItem != ''">
 				AND ${search.searchKey} REGEXP #{search.searchItem} 
 			</if> 
+			<if test="search.status != null and search.status != ''">
+				AND head_sell_final = #{search.status}
+			</if>
 		</where> 
 		<trim prefix="ORDER BY">
 			<if test="search.criteria == null or search.criteria == ''">
@@ -46,7 +49,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<!-- 판매내역 하나를 봅니다 -->
-	<select id="selectOneSell" parameterType="java.util.Map" resultMap="itemResultMap">
+	<select id="selectOneSell" parameterType="java.util.Map" resultMap="sellResultMap">
 		SELECT head_sell_code, inte_code, head_sell_quantity, store_code, head_sell_group, head_sell_purchase_price, head_sell_selling_price, head_sell_date, total_account_group, head_sell_final, head_sell_final_staff, head_sell_final_date, head_sell_distr, head_sell_profit_head, head_sell_profit_sub
 		FROM head_sell
 		WHERE head_sell_code = #{headSellCode}

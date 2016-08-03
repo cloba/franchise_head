@@ -81,7 +81,7 @@
 	</form>
 	
 	<br>
-	<!-- 적용상태에 따른 a태그 분리 -->
+	<!-- 마감여부에 따른 a태그 분리 -->
 		<c:if test="${search.status == 'Y'}"> 
 			<a href="/viewPaymentList?status=N">[미적용 결제방식 보기]</a>
 			<a href="/viewPaymentList">[전체 결제방식 보기]</a>

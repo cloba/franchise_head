@@ -3,8 +3,8 @@ package org.ksmart.franchise.head.sell.controller;
 import java.util.List;
 
 import org.ksmart.franchise.head.sell.model.Sell;
+import org.ksmart.franchise.head.sell.model.SellSearch;
 import org.ksmart.franchise.head.sell.service.SellService;
-import org.ksmart.franchise.head.util.Search;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,12 +16,10 @@ public class SellController {
 	
 	@Autowired
 	private SellService sellService;
-	@Autowired
-	private Sell sell;
 	
 	// 결제방식 리스트를 보여줍니다 (검색포함)
 	@RequestMapping(value="/viewSellList")
-	public String viewSellList(Search search, Model model){
+	public String viewSellList(SellSearch search, Model model){
 		System.out.println("SellController의 viewSellList 메서드 호출");
 
 		List<Sell> sellList = sellService.viewSellListService(search);
@@ -35,9 +33,10 @@ public class SellController {
 	@RequestMapping(value="/viewSellDetail")
 	public String viewSellDetail(@RequestParam("headSellCode") String headSellCode, Model model){
 		System.out.println("SellController의 viewSellDetail 메서드 호출");
-
-		sell = sellService.getSellDetailService(headSellCode);
-		model.addAttribute(sell);
+		
+		//Sell sell = new Sell();
+		Sell sell = sellService.getSellDetailService(headSellCode);
+		model.addAttribute("sell",sell);
 		
 		return "/sell/viewSellDetail";
 	}

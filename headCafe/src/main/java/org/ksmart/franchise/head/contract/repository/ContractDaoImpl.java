@@ -10,7 +10,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-@Repository
+@Repository("contractDao")
 public class ContractDaoImpl implements ContractDao {
 	
 	private final String NS = "org.ksmart.franchise.head.contract.repository.ContractMapper";
