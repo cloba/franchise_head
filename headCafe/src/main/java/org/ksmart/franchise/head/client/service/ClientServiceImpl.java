@@ -14,14 +14,17 @@ public class ClientServiceImpl implements ClientService {
 	@Autowired
 	private ClientDao clientDao;
 	
+	//
 	@Override
 	public List<Client> HeadClientListService(Search search) {
-
+		System.out.println("ClientServiceImpl의 HeadClientListService메서드");
+		
 		return clientDao.HeadClientList(search);
 	}
 
 	@Override
 	public Client headClientDetailService(String headClientCode) {
+		System.out.println("ClientServiceImpl의 headClientDetailService메서드");
 		
 		return clientDao.HeadClientDetail(headClientCode);
 	}
