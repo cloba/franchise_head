@@ -20,6 +20,15 @@
     
     <tx:annotation-driven transaction-manager="transactionManager"/>
     
+    <!-- 본사출고관리 -->
+    <bean id="sqlSessionFactoryItemOut" class="org.mybatis.spring.SqlSessionFactoryBean">  
+		<property name="dataSource" ref="dataSource" /> 
+		<property name="mapperLocations" value="classpath:org/ksmart/franchise/head/itemOut/repository/ItemOutMapper.xml" /> 
+	</bean> 
+ 	<bean id="sqlSessionItemOut" class="org.mybatis.spring.SqlSessionTemplate"> 
+       <constructor-arg index="0" ref="sqlSessionFactoryItemOut" />
+    </bean> 
+    
     <!-- 본사판매관리 -->
     <bean id="sqlSessionFactorySell" class="org.mybatis.spring.SqlSessionFactoryBean">  
 		<property name="dataSource" ref="dataSource" /> 
