@@ -10,4 +10,6 @@ import org.springframework.stereotype.Service;
 public interface SellService {
 	// 본사의 판매 리스트를 보여줍니다
 	public List<Sell> viewSellListService(Search search);
+	// 본사 판매내역의 상세를 보여줍니다
+	public Sell getSellDetailService(String headSellCode);
 }

@@ -21,4 +21,11 @@ public class SellServiceImpl implements SellService {
 		return sellDao.viewSellList(search);
 	}
 
+	@Override
+	public Sell getSellDetailService(String headSellCode) {
+		System.out.println("SellServiceImpl의 getSellDetailService메서드 호출");
+		
+		return sellDao.getSellDetail(headSellCode);
+	}
+
 }

@@ -9,5 +9,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface SellDao {
 	// 결제방식 리스트를 불러오는 메서드입니다
-		public List<Sell> viewSellList(Search search);
+	public List<Sell> viewSellList(Search search);
+	// 판매내역 하나의 상세를 불러오는 메서드입니다
+	public Sell getSellDetail(String headSellCode);
 }

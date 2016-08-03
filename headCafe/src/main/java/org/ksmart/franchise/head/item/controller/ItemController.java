@@ -53,15 +53,15 @@ public class ItemController {
 	}
 	
 	// 상품 상세를 보여줍니다
-		@RequestMapping(value="/viewItemDetail")
-		public String viewItemDetail(@RequestParam("hItemCode") String hItemCode, Model model){
-			System.out.println("ItemController의 viewItemDetail 메서드 호출");
+	@RequestMapping(value="/viewItemDetail")
+	public String viewItemDetail(@RequestParam("hItemCode") String hItemCode, Model model){
+		System.out.println("ItemController의 viewItemDetail 메서드 호출");
 
-			item = itemService.getItemDetailService(hItemCode);
-			model.addAttribute(item);
-			
-			return "/item/viewItemDetail";
-		}
+		item = itemService.getItemDetailService(hItemCode);
+		model.addAttribute(item);
+		
+		return "/item/viewItemDetail";
+	}
 	
 	// 상품을 수정하는 수정 form으로 이동합니다
 	@RequestMapping(value="/headModifyItem", method=RequestMethod.GET)
