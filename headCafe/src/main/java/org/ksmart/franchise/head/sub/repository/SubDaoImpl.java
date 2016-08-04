@@ -10,7 +10,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-@Repository
+@Repository("SubDao")
 public class SubDaoImpl implements SubDao {
 	
 private final String NS = "org.ksmart.franchise.head.sub.repository.SubMapper";
@@ -26,6 +26,16 @@ private final String NS = "org.ksmart.franchise.head.sub.repository.SubMapper";
 		map.put("subSearch", subSearch);
 		
 		return sqlSessionSub.selectList(NS+".selectSub", map);
+	}
+
+	@Override
+	public Sub getSubDetail(String subCode) {
+		System.out.println("SubDaoImpl의 getSubDetail 메서드 호출");
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("subCode", subCode);
+		
+		return sqlSessionSub.selectOne(NS+".selectOneSub", map);
 	}
 
 }

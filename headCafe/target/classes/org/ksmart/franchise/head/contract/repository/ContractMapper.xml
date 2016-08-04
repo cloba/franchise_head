@@ -34,6 +34,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<if test="contractSearch.searchKey != null and contractSearch.searchKey != '' and contractSearch.searchItem != null and contractSearch.searchItem != ''">
 				AND  ${contractSearch.searchKey} like CONCAT('%',#{contractSearch.searchItem},'%') 
 			</if> 
+			<if test="contractSearch.status != null and contractSearch.status != ''">
+				AND  contract_expire = #{contractSearch.status}
+			</if> 
 		</where> 
 		<trim prefix="ORDER BY">
 			<if test="contractSearch.criteria == null or contractSearch.criteria == ''">
@@ -43,6 +46,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				${contractSearch.criteria} ${contractSearch.upDown}
 			</if>
 		</trim>
+	</select>
+	
+	<!-- contract 하나를 봅니다  -->
+	<select id="selectOneContract" parameterType="java.util.Map" resultMap="contractResultMap">
+		SELECT contract_code, head_staff_id, store_code, contractor_name, contract_actual_date, contract_regit_date, contract_expiry_date, contract_deposit, contract_profit_percent, contract_file, contract_n, contract_expire, contract_expired_date, contract_expire_content
+		FROM contract
+		WHERE contract_code = #{contractCode}
 	</select>
 	
 </mapper>

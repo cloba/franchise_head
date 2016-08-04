@@ -8,7 +8,7 @@ import org.ksmart.franchise.head.payment.repository.PaymentDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-@Service
+@Service("paymentService")
 public class PaymentServiceImpl implements PaymentService {
 	
 	@Autowired
@@ -19,6 +19,13 @@ public class PaymentServiceImpl implements PaymentService {
 		System.out.println("PaymentServiceImpl의 viewPaymentListService메서드 호출");
 		
 		return paymentDao.viewPaymentList(search);
+	}
+
+	@Override
+	public Payment getPaymentDetailService(String payMethodCode) {
+		System.out.println("PaymentServiceImpl의 getPaymentDetailService메서드 호출");
+		
+		return paymentDao.getPaymentDetail(payMethodCode);	
 	}
 
 }

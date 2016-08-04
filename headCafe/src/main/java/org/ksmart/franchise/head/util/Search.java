@@ -7,7 +7,14 @@ public class Search {
 	private String searchItem;
 	private String criteria;
 	private String upDown;
+	private String status;
 	
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
 	public String getRegitDateStart() {
 		return regitDateStart;
 	}
@@ -46,9 +53,11 @@ public class Search {
 	}
 	@Override
 	public String toString() {
-		return "ItemSearch [regitDateStart=" + regitDateStart + ", regitDateEnd=" + regitDateEnd + ", searchKey="
-				+ searchKey + ", searchItem=" + searchItem + ", criteria=" + criteria + ", upDown=" + upDown + "]";
+		return "Search [regitDateStart=" + regitDateStart + ", regitDateEnd=" + regitDateEnd + ", searchKey="
+				+ searchKey + ", searchItem=" + searchItem + ", criteria=" + criteria + ", upDown=" + upDown
+				+ ", status=" + status + "]";
 	}
+	
 	
 	
 }

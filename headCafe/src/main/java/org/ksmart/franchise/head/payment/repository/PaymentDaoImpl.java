@@ -10,7 +10,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-@Repository
+@Repository("paymentDao")
 public class PaymentDaoImpl implements PaymentDao {
 	
 	private final String NS = "org.ksmart.franchise.head.payment.repository.PaymentMapper";
@@ -26,6 +26,16 @@ public class PaymentDaoImpl implements PaymentDao {
 		map.put("search", search);
 		
 		return sqlSessionPayment.selectList(NS+".selectPayment", map);
+	}
+
+	@Override
+	public Payment getPaymentDetail(String payMethodCode) {
+		System.out.println("PaymentDaoImpl의 getPaymentDetail 메서드 호출");
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("payMethodCode", payMethodCode);
+		
+		return sqlSessionPayment.selectOne(NS+".selectOnePayment", map);
 	}
 
 }

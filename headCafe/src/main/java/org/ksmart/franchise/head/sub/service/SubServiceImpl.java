@@ -8,7 +8,7 @@ import org.ksmart.franchise.head.util.Search;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-@Service
+@Service("SubService")
 public class SubServiceImpl implements SubService {
 	
 	@Autowired
@@ -20,5 +20,13 @@ public class SubServiceImpl implements SubService {
 		System.out.println("SubServiceImpl의 viewSubListService메서드 호출");
 		
 		return subDao.viewSubList(subSearch);
+	}
+
+	@Override
+	//sub하나의 상세를 보여줍니다
+	public Sub getSubDetailService(String subCode) {
+		System.out.println("SubServiceImpl의 getSubDetailService메서드 호출");
+		
+		return subDao.getSubDetail(subCode);	
 	}
 }

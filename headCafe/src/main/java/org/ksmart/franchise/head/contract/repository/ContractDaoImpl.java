@@ -28,4 +28,14 @@ public class ContractDaoImpl implements ContractDao {
 		return sqlSessionContract.selectList(NS+".selectContract", map);
 	}
 
+	@Override
+	public Contract getContractDetail(String contractCode) {
+			System.out.println("ContractDaoImpl의 getContractDetail 메서드 호출");
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("contractCode", contractCode);
+		
+		return sqlSessionContract.selectOne(NS+".selectOneContract", map);
+	}
+
 }

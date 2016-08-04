@@ -45,6 +45,7 @@
 
 </script>
 <h1>계약 리스트</h1>
+
 	<!-- 계약 검색 -->
 	<form name="contractList" id="contractList" action="/viewContractList" method="post">
 		<!-- 오름차/내림차순 정렬을 위한 input 태그 -->
@@ -61,9 +62,20 @@
 			<option value="store_code" <c:if test="${conSearch.searchKey eq 'store_code'}">selected="selected"</c:if>>가맹대표코드</option>
 			<option value="contractor_name" <c:if test="${conSearch.searchKey eq 'contractor_name'}">selected="selected"</c:if>>가맹점주 이름</option>
 		</select>
+		
+		<!-- 파기여부선택 -->
+		<select id="status" name="status">
+			<option value="">::파기여부 검색::</option>
+			<option value="Y" <c:if test="${search.status eq 'Y'}">selected="selected"</c:if>>파기된 계약</option>
+			<option value="N" <c:if test="${search.status eq 'N'}">selected="selected"</c:if>>유효한 계약</option>
+		</select>
+		
 		<input type="text" id="searchItem" name="searchItem" value="${conSearch.searchItem}"/>
 		<button>검색</button>
 	</form>
+	
+	<br>
+	<a href="/viewContractList">[계약 리스트 전체보기]</a>
 
 	<!-- 조회 결과 -->
 	<table border="1">
@@ -79,16 +91,18 @@
 				<span id="conDateDown">▼</span>
 			</th>
 			<th>점주이름</th>
+			<th>파기여부</th>
 		</tr>
 		
 		<c:forEach var="contractList" items="${contractList}">
 			<tr>
-				<th><a href="/viewContractDetail">${contractList.contractCode }</a></th>
+				<th><a href="/viewContractDetail?contractCode=${contractList.contractCode }">${contractList.contractCode }</a></th>
 				<th>${contractList.storeCode }</th>
 				<th><fmt:parseDate value="${contractList.contractActualDate}" pattern="yyyy-MM-dd HH:mm:ss" var="date"/>
 					<fmt:formatDate pattern="yyyy-MM-dd" type="both" value="${date}" />
 				</th>
 				<th>${contractList.contractorName }</th>
+				<th>${contractList.contractExpire }</th>
 			</tr>
 		</c:forEach>
 	</table>

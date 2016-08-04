@@ -27,4 +27,15 @@ public class PaymentController {
 		
 		return "/payment/viewPaymentList";
 	}
+	
+	//결제방식의 상세내용를 보여줍니다
+	@RequestMapping(value="/viewPaymentDetail")
+	public String viewPaymentDetail(String payMethodCode, Model model){
+		System.out.println("PaymentController의 viewPaymentDetail 메서드 호출");
+
+		Payment payment = paymentService.getPaymentDetailService(payMethodCode);
+		model.addAttribute("payment", payment);
+		
+		return "/payment/viewPaymentDetail";
+	}
 }

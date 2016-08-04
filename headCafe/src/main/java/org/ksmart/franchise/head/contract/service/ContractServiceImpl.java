@@ -21,4 +21,11 @@ public class ContractServiceImpl implements ContractService {
 		return contractDao.viewContractList(contractSearch);
 	}
 
+	@Override
+	public Contract getContractDetailService(String contractCode) {
+		System.out.println("ContractServiceImpl의 getContractDetailService메서드 호출");
+		
+		return contractDao.getContractDetail(contractCode);	
+	}
+
 }

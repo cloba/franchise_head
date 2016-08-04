@@ -85,7 +85,7 @@
 		
 		<c:forEach var="subList" items="${subList}">
 			<tr>
-				<th>${subList.subCode }</th>
+				<th><a href="/viewSubDetail?subCode=${subList.subCode}">${subList.subCode}</a></th>
 				<th>${subList.headStaffId }</th>
 				<th><fmt:parseDate value="${subList.subRegitDate}" pattern="yyyy-MM-dd HH:mm:ss" var="date"/>
 					<fmt:formatDate pattern="yyyy-MM-dd" type="both" value="${date}" />
@@ -96,6 +96,7 @@
 			</tr>
 		</c:forEach>
 	</table>
+	<a href="/">[신규등록:미구현]</a>
 	<a href="/">[홈으로]</a>
 </body>
 </html>

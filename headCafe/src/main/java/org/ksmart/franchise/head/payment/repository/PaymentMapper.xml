@@ -36,4 +36,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			</if>
 		</trim>
 	</select>
+	
+	<!-- 결제방식 하나를 봅니다  -->
+	<select id="selectOnePayment" parameterType="java.util.Map" resultMap="paymentResultMap">
+		SELECT pay_method_code, pay_method, profit_percent, head_staff_id, profit_regit_date, profit_status
+		FROM profit_by_pay_method
+		WHERE pay_method_code = #{payMethodCode}
+	</select>
 </mapper>

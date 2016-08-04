@@ -40,4 +40,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			</if>
 		</trim>
 	</select>
+	
+	<!-- sub 하나의 상세를 봅니다  -->
+	<select id="selectOneSub" parameterType="java.util.Map" resultMap="SubResultMap">
+		SELECT sub_code, head_staff_id, sub_regit_date, sub_name, sub_owner, sub_phone_first, sub_phone_second, sub_phone_third, sub_post, sub_road_addr, sub_parcle_addr
+		FROM sub
+		WHERE sub_code = #{subCode}
+	</select>
 </mapper>

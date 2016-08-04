@@ -17,14 +17,25 @@ public class SubController {
 	private SubService subService;
 	
 	// 상품 리스트를 보여줍니다 (검색포함)
-		@RequestMapping(value="/viewSubList")
-		public String viewSubList(Search subSearch, Model model){
-			System.out.println("SubController의 viewSubList 메서드 호출");
+	@RequestMapping(value="/viewSubList")
+	public String viewSubList(Search subSearch, Model model){
+		System.out.println("SubController의 viewSubList 메서드 호출");
 
-			List<Sub> subList = subService.viewSubListService(subSearch);
-			model.addAttribute("subList",subList);
-			model.addAttribute("subSearch",subSearch);
-			
-			return "/sub/viewSubList";
-		}
+		List<Sub> subList = subService.viewSubListService(subSearch);
+		model.addAttribute("subList",subList);
+		model.addAttribute("subSearch",subSearch);
+		
+		return "/sub/viewSubList";
+	}
+	
+	//가맹의 상세내용를 보여줍니다
+	@RequestMapping(value="/viewSubDetail")
+	public String viewSubDetail(String subCode, Model model){
+		System.out.println("SubController의 viewSubDetail 메서드 호출");
+
+		Sub sub= subService.getSubDetailService(subCode);
+		model.addAttribute("sub", sub);
+		
+		return "/sub/viewSubDetail";
+	}
 }
