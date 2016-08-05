@@ -22,28 +22,41 @@ public class RoyaltyController {
 	@Autowired
 	private RoyaltyService royaltyService;
 
-	//레시피 리스트 조회하는 메서드
-			@RequestMapping(value="/viewRoyaltyList", method=RequestMethod.GET)
-			public String viewRoyaltyList(Model model, Royalty Royalty, Search search) {
-				  System.out.println("RecipeController의 viewRecipeList메서드 ");
-				  
-				  //전 달 구하기
-				  Calendar cal = new GregorianCalendar(Locale.KOREA);
-				  cal.setTime(new Date());
-				  cal.add(Calendar.YEAR, 0); // 1년을 더한다.
-				  cal.add(Calendar.MONTH, -1); // 한달을 더한다. 
-				     
-				  SimpleDateFormat Month = new SimpleDateFormat("yyyy-MM");
-				  String lastMonth = Month.format(cal.getTime());
-				  System.out.println(lastMonth);
-				  Royalty.setLastMonth(lastMonth);
-	
-				  
-				  List<Royalty> list =  royaltyService.royaltyListService(Royalty, search);
-				  
-				  System.out.println("list.size:"+ list.size());
-				  model.addAttribute("list", list);
-				  
-			      return "/Royalty/viewRoyaltyList";
-		    }
+	//전가맹 로얄티 리스트 조회하는 메서드
+	@RequestMapping(value="/viewRoyaltyList", method=RequestMethod.GET)
+	public String viewRoyaltyList(Model model, Royalty royalty, Search search) {
+		  System.out.println("RecipeController의 viewRecipeList메서드 ");
+		  
+		  //지난 달 구하기
+		  Calendar cal = new GregorianCalendar(Locale.KOREA);
+		  cal.setTime(new Date());
+		  cal.add(Calendar.MONTH, -1); // 한달을 뺀다. 
+		     
+		  SimpleDateFormat Month = new SimpleDateFormat("yyyy-MM");
+		  String lastMonth = Month.format(cal.getTime());
+		  
+		  royalty.setLastMonth(lastMonth);
+		  
+		  royalty = royaltyService.currentlypaiedMonthService();
+		  String identify = royalty.getRoyaltyMonth();
+		  System.out.println("lastMonth :"+lastMonth);
+		  System.out.println("identify :"+identify);
+
+		  if(lastMonth.equals(identify)){
+			  System.out.println("lastMonth와 identify는 같은 값이다.");
+			  List<Royalty> list =  royaltyService.royaltyListService(royalty, search);
+			  System.out.println("list.size:"+ list.size());
+			  model.addAttribute("list", list);
+			  
+		  }else{
+			  System.out.println("인설트 추가해야함");
+			  
+		  }
+		  
+		  
+	      return "/royalty/viewRoyaltyList";
+    }
+			
+			
+		
 }

@@ -9,4 +9,6 @@ public interface RoyaltyService {
 
 	List<Royalty> royaltyListService(Royalty Royalty, Search search);
 
+	Royalty currentlypaiedMonthService();
+
 }

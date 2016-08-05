@@ -9,4 +9,6 @@ public interface RoyaltyDao {
 
 	List<Royalty> RoyaltyList(Royalty Royalty, Search search);
 
+	Royalty currentlypaiedMonth();
+
 }
