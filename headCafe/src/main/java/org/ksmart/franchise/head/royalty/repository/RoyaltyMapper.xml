@@ -15,6 +15,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<result property="headSellProfitBySubMonth"  column="head_sell_profit_by_sub_month"/>
 	<result property="royaltyPayActualDate"  column="royalty_pay_actual_date"/>
 	<result property="royaltyActualAmount"  column="royalty_actual_amount"/>
+	<result property="subName" column="sub_name"/>
 </resultMap>
 
 <!-- <resultMap id="selectRoyaltyList" type="" >
@@ -27,9 +28,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <select id="selectRoyaltyList" resultMap="RoyaltyResultMap">
 	SELECT
 		royalty_code, contract_code, royalty_month, royalty_dealine, royalty_paid, sub_practical_sell_price_month, 
-		sub_sell_profit_month, head_sell_profit_by_sub_month, royalty_pay_actual_date, royalty_actual_amount
+		sub_sell_profit_month, head_sell_profit_by_sub_month, royalty_pay_actual_date, royalty_actual_amount, sub_name
 	FROM
-		royalty
+		royalty 
 	<where>
 			<if test='search.searchItem != null and search.searchItem != "" '>
 				AND ${search.searchKey} like CONCAT('%',#{search.searchItem},'%')

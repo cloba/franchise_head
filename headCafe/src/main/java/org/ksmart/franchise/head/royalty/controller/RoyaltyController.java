@@ -34,7 +34,7 @@ public class RoyaltyController {
 		     
 		  SimpleDateFormat Month = new SimpleDateFormat("yyyy-MM");
 		  String lastMonth = Month.format(cal.getTime());
-		  
+		  //2016-07
 		  royalty.setLastMonth(lastMonth);
 		  
 		  royalty = royaltyService.currentlypaiedMonthService();
@@ -46,16 +46,16 @@ public class RoyaltyController {
 			  System.out.println("lastMonth와 identify는 같은 값이다.");
 			  List<Royalty> list =  royaltyService.royaltyListService(royalty, search);
 			  System.out.println("list.size:"+ list.size());
-			  model.addAttribute("list", list);
-			  
+			  model.addAttribute("list", list);	  
 		  }else{
-			  System.out.println("인설트 추가해야함");
+			  System.out.println("인설트 추가해야함");		
 			  
-		  }
-		  
-		  
+			  
+		  }  
 	      return "/royalty/viewRoyaltyList";
     }
+	
+/*	public String view*/
 			
 			
 		

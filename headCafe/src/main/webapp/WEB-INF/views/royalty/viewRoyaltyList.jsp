@@ -47,6 +47,18 @@ $(document).ready(function(){
 		$('#upDown').attr('value','ASC');
 		$('#royaltyForm').submit();
 	});
+	$('#subNameUp').click(function(){
+		console.log('점포명 내림차순 정렬');
+		$('#criteria').attr('value','sub_name');
+		$('#upDown').attr('value','DESC');
+		$('#royaltyForm').submit();
+	});
+	$('#subNameDown').click(function(){
+		console.log('점포명 오름차순 정렬');
+		$('#criteria').attr('value','sub_name');
+		$('#upDown').attr('value','ASC');
+		$('#royaltyForm').submit();
+	});
 });	
 	
 </script>
@@ -109,7 +121,10 @@ $(document).ready(function(){
 			<span id="royaltyPayActualDateDown"></span></label>	
 		<label>해당월에 실제 지급한 금액
 			<span id="royaltyActualAmountUp"></span>
-			<span id="royaltyActualAmountDown"></span></label>			
+			<span id="royaltyActualAmountDown"></span></label>	
+		<label>가맹 점포 명
+			<span id="subNameUp">▲</span>
+			<span id="subNameDown">▼</span></label>			
 	</div>
 
 	
@@ -125,6 +140,7 @@ $(document).ready(function(){
 				<label>${Royalty.headSellProfitBySubMonth}</label>
 				<label>${Royalty.royaltyPayActualDate}</label>
 				<label>${Royalty.royaltyActualAmount}</label>
+				<label>${Royalty.subName}</label>
 			</div>
 		</c:forEach>
 

@@ -13,6 +13,7 @@ public class Royalty {
 	private String headSellProfitBySubMonth;
 	private String royaltyPayActualDate;
 	private String royaltyActualAmount;
+	private String subName;
 	
 	public String getLastMonth() {
 		return lastMonth;
@@ -89,6 +90,12 @@ public class Royalty {
 				+ subSellProfitMonth + ", headSellProfitBySubMonth=" + headSellProfitBySubMonth
 				+ ", royaltyPayActualDate=" + royaltyPayActualDate + ", royaltyActualAmount=" + royaltyActualAmount
 				+ "]";
+	}
+	public String getSubName() {
+		return subName;
+	}
+	public void setSubName(String subName) {
+		this.subName = subName;
 	}
 
 	
