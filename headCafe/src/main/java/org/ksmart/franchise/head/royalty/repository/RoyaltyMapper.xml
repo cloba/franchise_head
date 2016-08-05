@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.ksmart.franchise.head.royalty.repository.RoyaltyMapper">
+
+<resultMap id="RoyaltyResultMap" type="org.ksmart.franchise.head.royalty.model.Royalty" >
+	<id property="royaltyCode" column="royalty_expected_code"/>
+	<result property="contractCode" column="contract_code"/>
+	<result property="royaltyStatus" column="royalty_expected_status"/>
+	<result property="royaltyPaid" column="royalty_expected_paid"/>
+	<result property="royaltyPayDate" column="royalty_expected_pay_date"/>
+	<result property="royaltyRest" column="royalty_expected_rest"/>
+</resultMap>
+
+<resultMap id="" type="" >
+	<result property="" column="sub_sell_profit_head"/>
+	<result property="" column="sub_sell_practical_selling_price"/>
+	<result property="" column="sub_sell_profit_sub"/>
+</resultMap>
+
+
+<select id="" resultMap="">
+
+</select>
+
+
+
+
+
+<select id="selectRoyaltyList" parameterType="java.util.Map" resultMap="RoyaltyResultMap">
+
+		SELECT 
+			sum(sub_sell_profit_head), sum(sub_sell_practical_selling_price), sum(sub_sell_profit_sub), total_account_group, store_code
+		FROM	
+			sub_sell
+		<where>
+			<if test='search.searchItem != null and search.searchItem != "" '>
+				AND ${search.searchKey} like CONCAT('%',#{search.searchItem},'%')
+			</if>
+			<if test="Royalty.lastMonth != null" >
+				AND sub_sell_date like CONCAT('%',#{royalty.lastMonth},'%')
+			</if>
+		</where>
+		<trim prefix="ORDER BY">
+			<if test="search.criteria != null or search.criteria != ''">
+				${search.criteria} ${search.upDown}
+			</if>
+		</trim>
+
+
+
+
+</select>
+
+</mapper>
