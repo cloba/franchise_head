@@ -23,7 +23,7 @@
     <!-- 로얄티 지불 예정관리 -->
     <bean id="sqlSessionFactoryRoyaltyExpected" class="org.mybatis.spring.SqlSessionFactoryBean">  
 		<property name="dataSource" ref="dataSource" /> 
-		<property name="mapperLocations" value="classpath:org/ksmart/franchise/head/delivery/repository/RoyaltyExpectedMapper.xml" /> 
+		<property name="mapperLocations" value="classpath:org/ksmart/franchise/head/royaltyExpected/repository/RoyaltyExpectedMapper.xml" /> 
 	</bean> 
  	<bean id="sqlSessionRoyaltyExpected" class="org.mybatis.spring.SqlSessionTemplate"> 
        <constructor-arg index="0" ref="sqlSessionFactoryRoyaltyExpected" />
