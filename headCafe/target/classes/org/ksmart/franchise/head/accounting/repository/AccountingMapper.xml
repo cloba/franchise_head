@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.ksmart.franchise.head.accounting.repository.AccountingMapper">
+
+	<resultMap id="AccountingResultMap" type="org.ksmart.franchise.head.accounting.model.Accounting" >
+		<id property="headAccountCode" column="head_account_code"/>
+		<result property="subjectCode" column="subject_code" />
+		<result property="headClientCode" column="head_client_code" />
+		<result property="headAccountFlow" column="head_account_flow" />
+		<result property="headAccountGroupCode" column="head_account_group_code" />
+		<result property="headAccountTable" column="head_account_table" />
+		<result property="headAccountSum" column="head_account_sum" />
+		<result property="headAccountRequestDate" column="head_account_request_date" />
+		<result property="headStaffIdRequest" column="head_staff_id_request" />
+		<result property="headAccountDetail" column="head_account_detail" />
+		<result property="requestCheckDate" column="request_check_date" />
+		<result property="headStaffIdConfirm" column="head_staff_id_confirm" />
+	</resultMap>
+
+	<select id="selectHeadAccountingList" parameterType="java.util.Map" resultMap="AccountingResultMap">
+		SELECT 
+			head_account_code,   subject_code, 		    head_client_code,           head_account_flow,      head_account_group_code, 
+			head_account_table,  head_account_sum,      head_account_request_date,  head_staff_id_request,  head_account_detail,
+            request_check_date,  head_staff_id_confirm
+		FROM	
+			head_account
+		
+		<where>
+			<if test='search.searchItem != null and search.searchItem != "" '>
+				AND ${search.searchKey} like CONCAT('%',#{search.searchItem},'%')
+			</if>
+		</where>
+		<trim prefix="ORDER BY">
+			<if test="search.criteria != null or search.criteria != ''">
+				${search.criteria} ${search.upDown}
+			</if>
+		</trim>	
+	
+	
+	</select>
+
+
+
+</mapper>
