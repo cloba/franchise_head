@@ -21,12 +21,12 @@
     <tx:annotation-driven transaction-manager="transactionManager"/>
     
     <!-- 로얄티 지불 예정관리 -->
-    <bean id="sqlSessionFactoryRoyaltyExpected" class="org.mybatis.spring.SqlSessionFactoryBean">  
+    <bean id="sqlSessionFactoryRoyalty" class="org.mybatis.spring.SqlSessionFactoryBean">  
 		<property name="dataSource" ref="dataSource" /> 
-		<property name="mapperLocations" value="classpath:org/ksmart/franchise/head/royaltyExpected/repository/RoyaltyExpectedMapper.xml" /> 
+		<property name="mapperLocations" value="classpath:org/ksmart/franchise/head/royalty/repository/RoyaltyMapper.xml" /> 
 	</bean> 
- 	<bean id="sqlSessionRoyaltyExpected" class="org.mybatis.spring.SqlSessionTemplate"> 
-       <constructor-arg index="0" ref="sqlSessionFactoryRoyaltyExpected" />
+ 	<bean id="sqlSessionRoyalty" class="org.mybatis.spring.SqlSessionTemplate"> 
+       <constructor-arg index="0" ref="sqlSessionFactoryRoyalty" />
     </bean> 
     
     

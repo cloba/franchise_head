@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.ksmart.franchise.head.royalty.repository.RoyaltyMapper">
+
+<resultMap id="RoyaltyResultMap" type="org.ksmart.franchise.head.royalty.model.Royalty" >
+	<id property="royaltyCode" column="royalty_code"/>
+	<result property="contractCode" column="contract_code"/>
+	<result property="royaltyMonth"  column="royalty_month"/>
+	<result property="royaltyDealine"  column="royalty_dealine"/>
+	<result property="royaltyPaid"  column="royalty_paid"/>
+	<result property="subPracticalSellPriceMonth"  column="sub_practical_sell_price_month"/>
+	<result property="subSellProfitMonth"  column="sub_sell_profit_month"/>
+	<result property="headSellProfitBySubMonth"  column="head_sell_profit_by_sub_month"/>
+	<result property="royaltyPayActualDate"  column="royalty_pay_actual_date"/>
+	<result property="royaltyActualAmount"  column="royalty_actual_amount"/>
+	<result property="subName" column="sub_name"/>
+</resultMap>
+
+<!-- <resultMap id="selectRoyaltyList" type="" >
+	<result property="" column="sub_sell_profit_head"/>
+	<result property="" column="sub_sell_practical_selling_price"/>
+	<result property="" column="sub_sell_profit_sub"/>
+</resultMap> -->
+
+
+<select id="selectRoyaltyList" resultMap="RoyaltyResultMap">
+	SELECT
+		royalty_code, contract_code, royalty_month, royalty_dealine, royalty_paid, sub_practical_sell_price_month, 
+		sub_sell_profit_month, head_sell_profit_by_sub_month, royalty_pay_actual_date, royalty_actual_amount, sub_name
+	FROM
+		royalty 
+	<where>
+			<if test='search.searchItem != null and search.searchItem != "" '>
+				AND ${search.searchKey} like CONCAT('%',#{search.searchItem},'%')
+			</if>
+			<if test="Royalty.lastMonth != null" >
+				AND sub_sell_date like CONCAT('%',#{royalty.lastMonth},'%')
+			</if>
+		</where>
+		<trim prefix="ORDER BY">
+			<if test="search.criteria != null or search.criteria != ''">
+				${search.criteria} ${search.upDown}
+			</if>
+		</trim>
+
+</select>
+
+
+
+
+
+<select id="selectRoyaltyListadd" parameterType="java.util.Map" resultMap="RoyaltyResultMap">
+
+		SELECT 
+			sum(sub_sell_profit_head), sum(sub_sell_practical_selling_price), sum(sub_sell_profit_sub), total_account_group, store_code
+		FROM	
+			sub_sell
+		<where>
+			<if test='search.searchItem != null and search.searchItem != "" '>
+				AND ${search.searchKey} like CONCAT('%',#{search.searchItem},'%')
+			</if>
+			<if test="Royalty.lastMonth != null" >
+				AND sub_sell_date like CONCAT('%',#{royalty.lastMonth},'%')
+			</if>
+		</where>
+		<trim prefix="ORDER BY">
+			<if test="search.criteria != null or search.criteria != ''">
+				${search.criteria} ${search.upDown}
+			</if>
+		</trim>
+
+</select>
+
+<select id="selectCurrentlypaiedMonth" resultMap="RoyaltyResultMap">
+	
+	SELECT 
+		royalty_month 
+	FROM
+		 royalty
+	WHERE 
+		 royalty_code 
+	IN 
+		(select max(royalty_code) from royalty where contract_code = 'contract_code1')
+		<!-- (select max(royalty_code) from royalty where contract_code = 'contract_code1') -->
+</select>
+
+</mapper>
