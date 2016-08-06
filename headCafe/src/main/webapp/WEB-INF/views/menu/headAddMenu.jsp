@@ -5,9 +5,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<style>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css"/>
+</style>
 </head>
 <body>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css"/>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
  <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
 <script>
@@ -40,7 +42,7 @@
 								ingreName: $('#'+id).val()
 							},
 							success : function(json) {
-								console.log('성공');
+							//	console.log('성공');
 								response($.map(json, function(data){
 									return{
 										label : data.ingreName,

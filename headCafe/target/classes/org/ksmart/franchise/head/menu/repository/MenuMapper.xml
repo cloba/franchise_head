@@ -127,12 +127,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 					#{menuCode},
 					h_item_code,
 					h_item_name,
-					'0',
-					'0',
-					'0',
+					#{menu.ingreAmount},
+					h_item_selling_price/h_item_amount,
+					<!-- 임시 값 -->
+					'head_staff_id1',
 					NOW(),
 					'Y'
 			FROM head_item
-			WHERE h_item_name = '머그컵'
+			WHERE h_item_code in
+				(SELECT h_item_code
+				FROM head_item
+				WHERE h_item_name = #{menu.ingreName})
 	</insert> 
 </mapper>

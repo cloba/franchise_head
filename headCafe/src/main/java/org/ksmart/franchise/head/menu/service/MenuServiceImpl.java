@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.ksmart.franchise.head.menu.model.Menu;
-import org.ksmart.franchise.head.menu.model.MenuCommand;
 import org.ksmart.franchise.head.menu.model.MenuDomain;
 import org.ksmart.franchise.head.menu.model.MenuIngre;
 import org.ksmart.franchise.head.menu.repository.MenuDao;
@@ -57,7 +56,7 @@ public class MenuServiceImpl implements MenuService {
 		//1. menu테이블에 menu를 추가합니다
 		String menuCode = menuDao.addMenu(menu);
 		
-		//2. ingre_price테이블에 해당 메뉴에 필요한 재료와 제료량을 입력합니다
+		//2. ingre_price테이블에 해당 메뉴에 필요한 재료와 재료량을 입력합니다
 		menuDao.addIngre(menu, menuCode);
 		
 		
