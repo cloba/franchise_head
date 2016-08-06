@@ -6,9 +6,11 @@ import java.util.List;
 import java.util.Map;
 
 import org.ksmart.franchise.head.menu.model.Menu;
+import org.ksmart.franchise.head.menu.model.MenuCommand;
+import org.ksmart.franchise.head.menu.model.MenuDomain;
 import org.ksmart.franchise.head.menu.model.MenuIngre;
-import org.ksmart.franchise.head.menu.model.MenuSearch;
 import org.ksmart.franchise.head.menu.repository.MenuDao;
+import org.ksmart.franchise.head.util.Search;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +21,7 @@ public class MenuServiceImpl implements MenuService {
 	
 	@Override
 	//menu리스트를 봅니다
-	public List<Menu> viewMenuListService(MenuSearch menuSearch) {
+	public List<Menu> viewMenuListService(Search menuSearch) {
 		System.out.println("MenuServiceImpl의 viewMenuListService메서드 호출");
 		
 		return menuDao.viewMenuList(menuSearch);
@@ -39,22 +41,33 @@ public class MenuServiceImpl implements MenuService {
 		List<MenuIngre> ingreList = new ArrayList<MenuIngre>();
 		ingreList = menuDao.getIngre(menuCode);
 		
-		/*List<MenuIngre> ingreList = menuDao.getIngre(menuCode);
-		for( Map<String, Object > menuMap : ingreList ){
-			for( Map.Entry<String, Object> entry : menuMap.entrySet()){
-				String key = entry.getKey();
-				Object value = entry.getValue();
-				menuMap.put(key,value);
-			}
-		}*/
-		
-		
 		//menu객체와 List를 새로운 Map에 담습니다
 		Map<String, Object> inteMap = new HashMap<String, Object>();
 		inteMap.put("menuDetail", menu);
 		inteMap.put("ingreList", ingreList);
 	
 		return inteMap;
+	}
+
+	@Override
+	//menu를 추가합니다
+	public void addMenuService(MenuDomain menu) {
+		System.out.println("MenuServiceImpl의 addMenuService메서드 호출");
+		
+		//1. menu테이블에 menu를 추가합니다
+		String menuCode = menuDao.addMenu(menu);
+		
+		//2. ingre_price테이블에 해당 메뉴에 필요한 재료와 제료량을 입력합니다
+		menuDao.addIngre(menu, menuCode);
+		
+		
+	}
+
+	@Override
+	public List<MenuIngre> searchIngreService(String ingreName) {
+		System.out.println("MenuServiceImpl의 searchIngreService메서드 호출");		
+		
+		return menuDao.searchIngre(ingreName);
 	}
 	
 }

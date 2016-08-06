@@ -6,13 +6,16 @@ import java.util.List;
 import java.util.Map;
 
 import org.ksmart.franchise.head.menu.model.Menu;
+import org.ksmart.franchise.head.menu.model.MenuDomain;
 import org.ksmart.franchise.head.menu.model.MenuIngre;
-import org.ksmart.franchise.head.menu.model.MenuSearch;
 import org.ksmart.franchise.head.menu.service.MenuService;
+import org.ksmart.franchise.head.util.Search;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class MenuController {
@@ -22,7 +25,7 @@ public class MenuController {
 
 	// 메뉴 리스트를 보여줍니다 (검색포함)
 	@RequestMapping(value="/viewMenuList")
-	public String viewMenuList(MenuSearch menuSearch, Model model){
+	public String viewMenuList(Search menuSearch, Model model){
 		System.out.println("MenuController의 viewMenuList 메서드 호출");
 
 		List<Menu> menuList = menuService.viewMenuListService(menuSearch);
@@ -60,6 +63,34 @@ public class MenuController {
 		model.addAttribute("ingreList",ingreList);
 
 		return "/menu/viewMenuDetail";
+	}
+	
+	// 메뉴를 추가하는 form으로 이동합니다
+	@RequestMapping(value="/headAddMenu", method=RequestMethod.GET)
+	public String addMenuForm(){
+		System.out.println("MenuController의 addMenuForm메서드 호출");
+		
+		return "/menu/headAddMenu";
+	}
+	
+	// 메뉴를 추가하는 프로그램을 실행합니다
+	@RequestMapping(value="/headAddMenu", method=RequestMethod.POST)
+	public String addMenu(MenuDomain menu){
+		System.out.println("MenuController의 addMenu 메서드 호출");
+
+		menuService.addMenuService(menu);
+		
+		return "redirect:/viewMenuList";
+	}
+	
+	//재료를 검색합니다
+	@RequestMapping(value="/searchIngre")
+	public @ResponseBody List<MenuIngre> searchIngre(String ingreName) {
+		System.out.println("MenuController의 searchIngre 메서드 호출");
+		
+		List<MenuIngre> menuIngre = menuService.searchIngreService(ingreName);
+		
+		return menuIngre;
 	}
 	
 }

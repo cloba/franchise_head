@@ -87,4 +87,52 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM head_item
 		WHERE h_item_code = #{hItemCode}
 	</insert>
+	
+	<!-- menu을 추가합니다 -->
+	<insert id="insertMenu" parameterType="java.util.Map">
+		<selectKey resultType="hashmap" keyProperty="menuCode,inteCode" order="BEFORE" >
+			SELECT if(isnull(menu_code),'menu_code1', concat('menu_code', MAX(CONVERT(SUBSTRING(menu_code,10), UNSIGNED))+1)) as menuCode, if(isnull(inte_code),'m1', concat('m', MAX(CONVERT(SUBSTRING(inte_code,2), UNSIGNED))+1)) as inteCode
+			FROM menu
+		</selectKey>
+		
+		INSERT INTO menu
+			(menu_code, inte_code, menu_name, menu_ingre_price, menu_selling_price, head_staff_id, menu_regit_date, menu_status)
+		VALUES (#{menuCode}, 
+				#{inteCode}, 
+				#{menu.menuName}, 
+				#{menu.menuIngrePrice}, 
+				#{menu.menuSellingPrice},
+				<!-- 시큐리티 적용 전 임시값 --> 
+				'head_staff_id1', 
+				NOW(), 
+				'Y')
+	</insert>
+	
+	<!-- ingre_price에서 ingre_name을 기준으로 검색합니다 -->
+	<select id="selectIngreByName" parameterType="java.util.Map" resultMap="menuIngreResultMap">
+		SELECT ingre_price_code, menu_code, h_item_code, ingre_name, ingre_amount, ingre_money, head_staff_id, ingre_regit_date, ingre_status 
+		FROM ingre_price
+		where ingre_name like CONCAT('%',#{ingreName},'%') 
+	</select>
+	
+	<!-- 추가한menu와 함께 ingre_price를 추가합니다 -->
+	<insert id="insertIngreWithMenu" parameterType="java.util.Map">
+		<selectKey resultType="hashmap" keyProperty="ingrePriceCode" order="BEFORE" >
+			SELECT if(isnull(ingre_price_code),'ingre_price_code1', concat('ingre_price_code', MAX(CONVERT(SUBSTRING(ingre_price_code,17), UNSIGNED))+1)) as ingrePriceCode 
+			FROM ingre_price
+		</selectKey>
+		INSERT INTO ingre_price
+			(ingre_price_code, menu_code, h_item_code, ingre_name, ingre_amount, ingre_money, head_staff_id, ingre_regit_date, ingre_status)
+			SELECT #{ingrePriceCode},
+					#{menuCode},
+					h_item_code,
+					h_item_name,
+					'0',
+					'0',
+					'0',
+					NOW(),
+					'Y'
+			FROM head_item
+			WHERE h_item_name = '머그컵'
+	</insert> 
 </mapper>

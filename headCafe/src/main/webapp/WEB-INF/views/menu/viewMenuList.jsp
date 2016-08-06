@@ -121,7 +121,7 @@
 			</tr>
 		</c:forEach>
 	</table>
-	<a href="/">[신규등록:미구현]</a>
+	<a href="/headAddMenu">[신규등록]</a>
 	<a href="/">[홈으로]</a>
 </body>
 </html>

@@ -6,8 +6,9 @@ import java.util.List;
 import java.util.Map;
 
 import org.ksmart.franchise.head.menu.model.Menu;
+import org.ksmart.franchise.head.menu.model.MenuDomain;
 import org.ksmart.franchise.head.menu.model.MenuIngre;
-import org.ksmart.franchise.head.menu.model.MenuSearch;
+import org.ksmart.franchise.head.util.Search;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -22,7 +23,7 @@ public class MenuDaoImpl implements MenuDao {
 
 	@Override
 	// menu의 정보를 보여주는 메서드입니다
-	public List<Menu> viewMenuList(MenuSearch menuSearch) {
+	public List<Menu> viewMenuList(Search menuSearch) {
 		System.out.println("MenuDaoImpl의 viewItemList 메서드 호출");
 		
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -57,5 +58,47 @@ public class MenuDaoImpl implements MenuDao {
 		
 		return ingreList;
 	}
+
+	@Override
+	// menu를 추가하는 메서드입니다
+	public String addMenu(MenuDomain menu) {
+		System.out.println("MenuDaoImpl의 addMenu 메서드 호출");
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("menu", menu);
+		
+		sqlSessionMenu.insert(NS+".insertMenu", map);
+		
+		//menu에 추가된 데이터의 PK값을 받습니다
+		String menuCode = (String) map.get("menuCode");
+		
+		return menuCode;
+	}
+
+
+	@Override
+	//재료를 검색합니다
+	public List<MenuIngre> searchIngre(String ingreName) {
+		System.out.println("MenuDaoImpl의 searchIngre 메서드 호출");
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("ingreName", ingreName);
+		
+		return sqlSessionMenu.selectList(NS+".selectIngreByName", map);
+	}
+
+	@Override
+	// menu에 따른 재료를 추가하는 메서드입니다
+	public void addIngre(MenuDomain menu, String menuCode) {
+		System.out.println("MenuDaoImpl의 addIngre 메서드 호출");
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("menu", menu);
+		map.put("menuCode", menuCode);
+		
+		sqlSessionMenu.insert(NS+".insertIngreWithMenu", map);
+	}
+	
+	
 
 }
