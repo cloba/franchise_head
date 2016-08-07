@@ -9,6 +9,11 @@ public interface RoyaltyService {
 
 	List<Royalty> royaltyListService(Royalty Royalty, Search search);
 
-	Royalty currentlypaiedMonthService();
+//	List<Royalty> currentlypaiedMonthService(String lastMonth);
+
+	List<Royalty> currentlypaiedMonthService(Royalty royalty);
+
+
+
 
 }

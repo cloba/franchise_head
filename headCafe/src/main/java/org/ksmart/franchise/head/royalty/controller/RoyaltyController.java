@@ -37,8 +37,10 @@ public class RoyaltyController {
 		  //2016-07
 		  royalty.setLastMonth(lastMonth);
 		  
-		  royalty = royaltyService.currentlypaiedMonthService();
-		  String identify = royalty.getRoyaltyMonth();
+		  List<Royalty> royaltyList = royaltyService.currentlypaiedMonthService(royalty);
+		  System.out.println("royaltyList: "+royaltyList.toString());
+		  
+		/*  String identify = royalty.getRoyaltyMonth();
 		  System.out.println("lastMonth :"+lastMonth);
 		  System.out.println("identify :"+identify);
 
@@ -48,10 +50,10 @@ public class RoyaltyController {
 			  System.out.println("list.size:"+ list.size());
 			  model.addAttribute("list", list);	  
 		  }else{
-			  System.out.println("인설트 추가해야함");		
+			  System.out.println("인설트 추가해야함");	*/	
 			  
 			  
-		  }  
+		  /*}  */
 	      return "/royalty/viewRoyaltyList";
     }
 	

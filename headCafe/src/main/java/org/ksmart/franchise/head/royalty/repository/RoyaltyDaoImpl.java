@@ -32,10 +32,32 @@ public class RoyaltyDaoImpl implements RoyaltyDao{
 
 	//가장 최근에 로얄티를 지불한 월 구하는 메서드
 	@Override
-	public Royalty currentlypaiedMonth() {
+	public String currentlypaiedMonth(String contractCode) {
 		System.out.println("RoyaltyDaoImpl의 currentlypaiedMonth메서드");
 		
-		return sqlSessionRoyalty.selectOne(NS+".selectCurrentlypaiedMonth");
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("contractCode", contractCode);
+		
+		System.out.println("String resultType확인: "+sqlSessionRoyalty.selectList(NS+".selectCurrentlypaiedMonth", map));
+		
+		return sqlSessionRoyalty.selectOne(NS+".selectCurrentlypaiedMonth", map);
+		/*return sqlSessionRoyalty.selectList(NS+".selectCurrentlypaiedMonth", contractCode);*/
+	}
+
+	@Override
+	public String getContractCount() {
+		return sqlSessionRoyalty.selectOne(NS+".selectContractCount");
+	}
+
+	@Override
+	public int insertRoyalty(Royalty royalty) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("royalty", royalty);
+		sqlSessionRoyalty.insert(NS+".insertRoyalty", map);
+		
+		return 2;
+				
+		
 	}
 
 }

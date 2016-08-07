@@ -9,8 +9,10 @@ public interface RoyaltyDao {
 
 	List<Royalty> RoyaltyList(Royalty Royalty, Search search);
 
-	Royalty currentlypaiedMonth();
+	String currentlypaiedMonth(String contractCode);
 	
-	
+	String getContractCount();
+
+	int insertRoyalty(Royalty royalty);
 
 }
