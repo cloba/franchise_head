@@ -6,7 +6,7 @@ public class Royalty {
 	private String RoyaltyCode;
 	private String contractCode;
 	private String royaltyMonth;
-	private String royaltyDealine;
+	private String royaltyDeadline;
 	private String royaltyPaid;
 	private String subPracticalSellPriceMonth;
 	private String subSellProfitMonth;
@@ -39,12 +39,7 @@ public class Royalty {
 	public void setRoyaltyMonth(String royaltyMonth) {
 		this.royaltyMonth = royaltyMonth;
 	}
-	public String getRoyaltyDealine() {
-		return royaltyDealine;
-	}
-	public void setRoyaltyDealine(String royaltyDealine) {
-		this.royaltyDealine = royaltyDealine;
-	}
+	
 	public String getRoyaltyPaid() {
 		return royaltyPaid;
 	}
@@ -81,24 +76,26 @@ public class Royalty {
 	public void setRoyaltyActualAmount(String royaltyActualAmount) {
 		this.royaltyActualAmount = royaltyActualAmount;
 	}
-	
-	@Override
-	public String toString() {
-		return "Royalty [lastMonth=" + lastMonth + ", RoyaltyCode=" + RoyaltyCode + ", contractCode=" + contractCode
-				+ ", royaltyMonth=" + royaltyMonth + ", royaltyDealine=" + royaltyDealine + ", royaltyPaid="
-				+ royaltyPaid + ", subPracticalSellPriceMonth=" + subPracticalSellPriceMonth + ", subSellProfitMonth="
-				+ subSellProfitMonth + ", headSellProfitBySubMonth=" + headSellProfitBySubMonth
-				+ ", royaltyPayActualDate=" + royaltyPayActualDate + ", royaltyActualAmount=" + royaltyActualAmount
-				+ "]";
-	}
+
 	public String getSubName() {
 		return subName;
 	}
 	public void setSubName(String subName) {
 		this.subName = subName;
 	}
-
-	
-
-	
+	public String getRoyaltyDeadline() {
+		return royaltyDeadline;
+	}
+	public void setRoyaltyDeadline(String royaltyDeadline) {
+		this.royaltyDeadline = royaltyDeadline;
+	}
+	@Override
+	public String toString() {
+		return "Royalty [lastMonth=" + lastMonth + ", RoyaltyCode=" + RoyaltyCode + ", contractCode=" + contractCode
+				+ ", royaltyMonth=" + royaltyMonth + ", royaltyDeadline=" + royaltyDeadline + ", royaltyPaid="
+				+ royaltyPaid + ", subPracticalSellPriceMonth=" + subPracticalSellPriceMonth + ", subSellProfitMonth="
+				+ subSellProfitMonth + ", headSellProfitBySubMonth=" + headSellProfitBySubMonth
+				+ ", royaltyPayActualDate=" + royaltyPayActualDate + ", royaltyActualAmount=" + royaltyActualAmount
+				+ ", subName=" + subName + "]";
+	}	
 }	

@@ -4,121 +4,84 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.ksmart.franchise.head.royalty.repository.RoyaltyMapper">
 
-<resultMap id="RoyaltyResultMap" type="org.ksmart.franchise.head.royalty.model.Royalty" >
-	<id property="royaltyCode" column="royalty_code"/>
-	<result property="contractCode" column="contract_code"/>
-	<result property="royaltyMonth"  column="royalty_month"/>
-	<result property="royaltyDealine"  column="royalty_dealine"/>
-	<result property="royaltyPaid"  column="royalty_paid"/>
-	<result property="subPracticalSellPriceMonth"  column="sub_practical_sell_price_month"/>
-	<result property="subSellProfitMonth"  column="sub_sell_profit_month"/>
-	<result property="headSellProfitBySubMonth"  column="head_sell_profit_by_sub_month"/>
-	<result property="royaltyPayActualDate"  column="royalty_pay_actual_date"/>
-	<result property="royaltyActualAmount"  column="royalty_actual_amount"/>
-	<result property="subName" column="sub_name"/>
-</resultMap>
-
-<!-- <resultMap id="selectRoyaltyList" type="" >
-	<result property="" column="sub_sell_profit_head"/>
-	<result property="" column="sub_sell_practical_selling_price"/>
-	<result property="" column="sub_sell_profit_sub"/>
-</resultMap> -->
+	<resultMap id="RoyaltyResultMap" type="org.ksmart.franchise.head.royalty.model.Royalty" >
+		<id property="royaltyCode" column="royalty_code"/>
+		<result property="contractCode" column="contract_code"/>
+		<result property="royaltyMonth"  column="royalty_month"/>
+		<result property="royaltyDeadline"  column="royalty_deadline"/>
+		<result property="royaltyPaid"  column="royalty_paid"/>
+		<result property="subPracticalSellPriceMonth"  column="sub_practical_sell_price_month"/>
+		<result property="subSellProfitMonth"  column="sub_sell_profit_month"/>
+		<result property="headSellProfitBySubMonth"  column="head_sell_profit_by_sub_month"/>
+		<result property="royaltyPayActualDate"  column="royalty_pay_actual_date"/>
+		<result property="royaltyActualAmount"  column="royalty_actual_amount"/>
+		<result property="subName" column="sub_name"/>
+	</resultMap>
 
 
-<select id="selectRoyaltyList" resultMap="RoyaltyResultMap">
-	SELECT
-		royalty_code, contract_code, royalty_month, royalty_dealine, royalty_paid, sub_practical_sell_price_month, 
-		sub_sell_profit_month, head_sell_profit_by_sub_month, royalty_pay_actual_date, royalty_actual_amount, sub_name
-	FROM
-		royalty 
-	<where>
-			<if test='search.searchItem != null and search.searchItem != "" '>
-				AND ${search.searchKey} like CONCAT('%',#{search.searchItem},'%')
-			</if>
-			<if test="Royalty.lastMonth != null" >
-				AND sub_sell_date like CONCAT('%',#{royalty.lastMonth},'%')
-			</if>
-		</where>
-		<trim prefix="ORDER BY">
-			<if test="search.criteria != null or search.criteria != ''">
-				${search.criteria} ${search.upDown}
-			</if>
-		</trim>
-
-</select>
-
-<!-- 
-
-
-INSERT INTO royalty(royalty_code, sub_name, contract_code, royalty_month, royalty_dealine, head_sell_profit_by_sub_month, sub_practical_sell_price_month, sub_sell_profit_month)
-SELECT '123', sub_name, '111', '05' , 15, sum(sub_sell_profit_head), sum(sub_sell_practical_selling_price), sum(sub_sell_profit_sub)
-FROM sub_sell WHERE PERIOD_DIFF( date_format( now( ) , '%Y%m' ) , date_format (sub_sell_date, '%Y%m' ) ) = 1
-
- -->
-
-
-<!-- <insert id="insertHeadStaff" parameterType="org.ksmart.franchise.head.headStaff.model.HeadStaffCommand" useGeneratedKeys="true" keyProperty="headStaffId" > 
-	<selectKey resultType="hashmap" keyProperty="headStaffId" order="BEFORE">
-	select if(isnull(head_staff_id),'head_staff_id1', concat('head_staff_id', MAX(CONVERT(SUBSTRING(head_staff_id,14), UNSIGNED))+1)) 
-		as headStaffId from head_staff
-	</selectKey>  
-	INSERT INTO head_staff 
-		(head_staff_id,	head_staff_pw, head_staff_name, head_staff_level, head_staff_dep, head_staff_regit_date, head_staff_regit_id, 
-		 head_staff_join, head_staff_phone_first, head_staff_phone_second, head_staff_phone_third, head_staff_post, head_staff_road_addr, head_staff_parcle_addr)
-	VALUES (#{headStaffId}, '0000', #{headStaffName}, '관리자', #{headStaffDep},  NOW(), 'id001', NOW(), #{headStaffPhoneFirst},#{headStaffPhoneSecond}, #{headStaffPhoneThird}, #{headStaffPost}, #{headStaffRoadAddr}, #{headStaffParcleAddr})      
-</insert> -->
-
-<insert id="insertRoyalty" parameterType="java.util.Map" > 
-	<!-- <selectKey resultType="hashmap" keyProperty="royaltyCode" order="BEFORE">                        
-		select if(isnull(royalty_code),'royalty_code1', concat('royalty_code', MAX(CONVERT(SUBSTRING(royalty_code,1), UNSIGNED))+1)) 
-			as royaltyCode from royalty
-	</selectKey> -->
+	<!-- 로얄티 리스트구 하는메서드 -->
+	<select id="selectRoyaltyList" resultMap="RoyaltyResultMap">
+		SELECT
+			royalty_code, contract_code, royalty_month, royalty_deadline, royalty_paid, sub_practical_sell_price_month, 
+			sub_sell_profit_month, head_sell_profit_by_sub_month, royalty_pay_actual_date, royalty_actual_amount, sub_name
+		FROM
+			royalty 
+			<where>
+				<if test='search.searchItem != null and search.searchItem != "" '>
+					AND ${search.searchKey} like CONCAT('%',#{search.searchItem},'%')
+				</if>
+				<!-- <if test="Royalty.lastMonth != null" >
+					AND sub_sell_date like CONCAT('%',#{royalty.lastMonth},'%')
+				</if> -->
+			</where>
+			<trim prefix="ORDER BY">
+				<if test="search.criteria != null or search.criteria != ''">
+					${search.criteria} ${search.upDown}
+				</if>
+			</trim>
 	
-	INSERT INTO royalty(
-			 royalty_code,             sub_name,   contract_code,            royalty_month,   royalty_dealine,                                                                       head_sell_profit_by_sub_month,   sub_practical_sell_price_month,          sub_sell_profit_month)
-	SELECT   #{royaltyCode},            sub_name,  #{royalty.contractCode},  #{lastMonth},   (select royalty_dealine from contract where contract_code = #{royalty.contractCode}),   sum(sub_sell_profit_head),       sum(sub_sell_practical_selling_price),   sum(sub_sell_profit_sub)
+	</select>
+
+	<!-- sub_sell과 다른 데이터들로 지난달 로얄티 추가하는 메서드  -->
+	<insert id="insertRoyalty" parameterType="java.util.Map" > 
+		 <selectKey resultType="hashmap" keyProperty="royaltyCode" order="BEFORE">                        
+			select if(isnull(royalty_code),'royalty_code1', concat('royalty_code', MAX(CONVERT(SUBSTRING(royalty_code,13), UNSIGNED))+1)) 
+				as royaltyCode from royalty
+	     </selectKey> 
+		
+		INSERT INTO royalty(
+				 royalty_code,    sub_name,   contract_code,             royalty_month,          royalty_deadline,                                                                        head_sell_profit_by_sub_month,   sub_practical_sell_price_month,          sub_sell_profit_month,    sub_code)
+		SELECT   #{royaltyCode},  sub_name,   #{royalty.contractCode},   #{royalty.lastMonth},   (select royalty_deadline from contract where contract_code = #{royalty.contractCode}),   sum(sub_sell_profit_head),       sum(sub_sell_practical_selling_price),   sum(sub_sell_profit_sub), sub_code 
+		
+		FROM     sub_sell WHERE PERIOD_DIFF( date_format( now( ) , '%Y%m' ) , date_format (sub_sell_date, '%Y%m' ) ) = 1 and  sub_code IN  (select sub_code from contract where contract_code = #{royalty.contractCode})
 	
-	FROM     sub_sell WHERE PERIOD_DIFF( date_format( now( ) , '%Y%m' ) , date_format (sub_sell_date, '%Y%m' ) ) = 1 and sub_code = 'sub_code1'  
+	</insert>
 
-</insert>
-
-
-<select id="selectRoyaltyListadd" parameterType="java.util.Map" resultMap="RoyaltyResultMap">
-
+	<!-- contract_code 가지고 최근 로얄티를 지불한 월 구하는 메서드 -->
+	<select id="selectCurrentlypaiedMonth" parameterType="java.util.Map" resultType="java.lang.String">
+		
 		SELECT 
-			sum(sub_sell_profit_head), sum(sub_sell_practical_selling_price), sum(sub_sell_profit_sub), total_account_group, store_code
-		FROM	
-			sub_sell
-		<where>
-			<if test='search.searchItem != null and search.searchItem != "" '>
-				AND ${search.searchKey} like CONCAT('%',#{search.searchItem},'%')
-			</if>
-			<if test="Royalty.lastMonth != null" >
-				AND sub_sell_date like CONCAT('%',#{royalty.lastMonth},'%')
-			</if>
-		</where>
-		<trim prefix="ORDER BY">
-			<if test="search.criteria != null or search.criteria != ''">
-				${search.criteria} ${search.upDown}
-			</if>
-		</trim>
-
-</select>
-
-<select id="selectCurrentlypaiedMonth" parameterType="java.util.Map" resultType="java.lang.String">
+			royalty_month
+		FROM
+			 royalty
+		WHERE 
+			 royalty_code 
+		IN 
+			(select max(royalty_code) from royalty where contract_code = #{contractCode})
+	</select>
 	
-	SELECT 
-		royalty_month
-	FROM
-		 royalty
-	WHERE 
-		 royalty_code 
-	IN 
-		(select max(royalty_code) from royalty where contract_code = #{contractCode})
-</select>
-
-<select id="selectContractCount" resultType="java.lang.String">
-	select count(contract_code) from contract where contract_expire = 'N'
-</select>
+	<!-- 본사 가맹간의 현재 계약 건수 구하는 메서드 -->
+	<select id="selectContractCount" resultType="java.lang.String">
+		select count(contract_code) from contract where contract_expire = 'N'
+	</select>
+	
+	<select id="selectRoyaltyDetail" parameterType="java.util.Map" resultMap="RoyaltyResultMap">
+		SELECT
+			royalty_code, contract_code, royalty_month, royalty_deadline, royalty_paid, sub_practical_sell_price_month, 
+			sub_sell_profit_month, head_sell_profit_by_sub_month, royalty_pay_actual_date, royalty_actual_amount, sub_name
+		FROM
+			royalty 
+		WHERE royalty_code = #{royalty.RoyaltyCode}
+	</select>
 
 </mapper>

@@ -25,39 +25,31 @@ public class RoyaltyController {
 	//전가맹 로얄티 리스트 조회하는 메서드
 	@RequestMapping(value="/viewRoyaltyList", method=RequestMethod.GET)
 	public String viewRoyaltyList(Model model, Royalty royalty, Search search) {
-		  System.out.println("RecipeController의 viewRecipeList메서드 ");
+		  System.out.println("RoyaltyController의 viewRecipeList메서드 ");
 		  
 		  //지난 달 구하기
 		  Calendar cal = new GregorianCalendar(Locale.KOREA);
 		  cal.setTime(new Date());
-		  cal.add(Calendar.MONTH, -1); // 한달을 뺀다. 
-		     
-		  SimpleDateFormat Month = new SimpleDateFormat("yyyy-MM");
+		  cal.add(Calendar.MONTH, -1); // 한달을 뺀다.  
+		  SimpleDateFormat Month = new SimpleDateFormat("yyyy-MM");  //데이터 포맷 형태
 		  String lastMonth = Month.format(cal.getTime());
-		  //2016-07
 		  royalty.setLastMonth(lastMonth);
 		  
-		  List<Royalty> royaltyList = royaltyService.currentlypaiedMonthService(royalty);
-		  System.out.println("royaltyList: "+royaltyList.toString());
+		  //리스트 불러오는 쿼리(만약 최근 지불해야할 데이터가 입력안되있다면 추가해서 보여줌)  
+		  List<Royalty> royaltyList = royaltyService.currentlypaiedMonthService(royalty, search);
 		  
-		/*  String identify = royalty.getRoyaltyMonth();
-		  System.out.println("lastMonth :"+lastMonth);
-		  System.out.println("identify :"+identify);
+		  model.addAttribute("royaltyList", royaltyList);
 
-		  if(lastMonth.equals(identify)){
-			  System.out.println("lastMonth와 identify는 같은 값이다.");
-			  List<Royalty> list =  royaltyService.royaltyListService(royalty, search);
-			  System.out.println("list.size:"+ list.size());
-			  model.addAttribute("list", list);	  
-		  }else{
-			  System.out.println("인설트 추가해야함");	*/	
-			  
-			  
-		  /*}  */
 	      return "/royalty/viewRoyaltyList";
     }
-	
-/*	public String view*/
+	@RequestMapping(value="/viewRoyaltyDetail", method= RequestMethod.GET)
+	public String viewRoyaltyDetail(Model model, Royalty royalty){
+		System.out.println("RoyaltyController의 viewRoyaltyDetail메서드 ");
+		royalty = royaltyService.royaltyDetailService(royalty);
+		model.addAttribute("royalty", royalty);
+		return "/royalty/viewRoyaltyDetail";
+		
+	}
 			
 			
 		

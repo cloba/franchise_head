@@ -20,12 +20,12 @@ public class RoyaltyDaoImpl implements RoyaltyDao{
 	
 	//로얄티 리스트 구하는 메서드
 	@Override
-	public List<Royalty> RoyaltyList(Royalty Royalty, Search search) {
+	public List<Royalty> royaltyList(Royalty royalty, Search search) {
 		System.out.println("RoyaltyDaoImpl의 RoyaltyList메서드");
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("search", search);
-		map.put("Royalty", Royalty);
+		map.put("royalty", royalty);
 		
 		return sqlSessionRoyalty.selectList(NS+".selectRoyaltyList", map);
 	}
@@ -38,26 +38,35 @@ public class RoyaltyDaoImpl implements RoyaltyDao{
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("contractCode", contractCode);
 		
-		System.out.println("String resultType확인: "+sqlSessionRoyalty.selectList(NS+".selectCurrentlypaiedMonth", map));
+	//	System.out.println("String resultType확인: "+sqlSessionRoyalty.selectList(NS+".selectCurrentlypaiedMonth", map));
 		
 		return sqlSessionRoyalty.selectOne(NS+".selectCurrentlypaiedMonth", map);
-		/*return sqlSessionRoyalty.selectList(NS+".selectCurrentlypaiedMonth", contractCode);*/
 	}
 
+	//본사와 가맹의 계약돼 있는 계약 건수 구하는 메서드 
 	@Override
 	public String getContractCount() {
 		return sqlSessionRoyalty.selectOne(NS+".selectContractCount");
 	}
 
+	//지난달 지불할 로얄티가 입력하는 메서드
 	@Override
 	public int insertRoyalty(Royalty royalty) {
+		System.out.println("RoyaltyDaoImpl의 insertRoyalty");
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("royalty", royalty);
-		sqlSessionRoyalty.insert(NS+".insertRoyalty", map);
-		
-		return 2;
+		return sqlSessionRoyalty.insert(NS+".insertRoyalty", map);
 				
 		
+	}
+
+	@Override
+	public Royalty royaltyDetail(Royalty royalty) {
+		System.out.println("RoyaltyDaoImpl의 royaltyDetail");
+		System.out.println("RoyaltyCode :"+royalty.getRoyaltyCode());
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("royalty", royalty);
+		return sqlSessionRoyalty.selectOne(NS+".selectRoyaltyDetail", map);
 	}
 
 }

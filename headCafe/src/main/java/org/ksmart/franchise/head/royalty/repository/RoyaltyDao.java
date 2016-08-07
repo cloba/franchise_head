@@ -7,12 +7,14 @@ import org.ksmart.franchise.head.util.Search;
 
 public interface RoyaltyDao {
 
-	List<Royalty> RoyaltyList(Royalty Royalty, Search search);
+	List<Royalty> royaltyList(Royalty Royalty, Search search);
 
 	String currentlypaiedMonth(String contractCode);
 	
 	String getContractCount();
 
 	int insertRoyalty(Royalty royalty);
+
+	Royalty royaltyDetail(Royalty royalty);
 
 }

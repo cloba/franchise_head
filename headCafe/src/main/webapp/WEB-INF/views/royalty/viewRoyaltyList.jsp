@@ -87,60 +87,63 @@ $(document).ready(function(){
 		<input type="text" name="searchItem" value="${search.searchItem}">
 		<input type="submit" id="searchheadStaffBtn" name="searchheadStaffBtn" value="검색">
 	</div>
-
-
-
 </form>
+
+	<!-- 로얄티 상단 메뉴 -->
 	<div>  
 		<label>로열티지불 코드
 			<span id="royaltyCodeUp">▲</span>
-			<span id="royaltyCodeDown">▼</span></label>
-		<label>계약코드
-			<span id="contractCodeUp">▲</span>
-			<span id="contractCodeDown">▼</span></label>
-		<label>해당 월
-			<span id="royaltyMonthUp">▲</span>
-			<span id="royaltyMonthDown">▼</span></label>
-		<label>로열티 지급 기일
-			<span id="royaltyDealineUp"></span>
-			<span id="royaltyDealineDown"></span></label>	
-		<label>로열티 지급 여부
-			<span id="royaltyPaidUp"></span>
-			<span id="royaltyPaidDown"></span></label>		
-		<label>해당 월 실제 판매 금액
-			<span id="subPracticalSellPriceMonthUp"></span>
-			<span id="subPracticalSellPriceMonthDown"></span></label>		
-		<label>해당 월 가맹의 이익 금액
-			<span id="subSellProfitMonthUp"></span>
-			<span id="subSellProfitMonthDown"></span></label>	
-		<label>해당 월 이 가맹에 대한본사 로얄티
-			<span id="headSellProfitBySubMonthUp"></span>
-			<span id="headSellProfitBySubMonthDown"></span></label>	
-		<label>실제 지급 날짜
-			<span id="royaltyPayActualDateUp"></span>
-			<span id="royaltyPayActualDateDown"></span></label>	
-		<label>해당월에 실제 지급한 금액
-			<span id="royaltyActualAmountUp"></span>
-			<span id="royaltyActualAmountDown"></span></label>	
+			<span id="royaltyCodeDown">▼/</span></label>
 		<label>가맹 점포 명
 			<span id="subNameUp">▲</span>
-			<span id="subNameDown">▼</span></label>			
+			<span id="subNameDown">▼/</span></label>			
+<!-- 		<label>계약코드/
+			<span id="contractCodeUp">▲</span>
+			<span id="contractCodeDown">▼</span></label> -->
+		<label>해당 월
+			<span id="royaltyMonthUp">▲</span>
+			<span id="royaltyMonthDown">▼/</span></label>
+		<!-- <label>로열티 지급 기일/
+			<span id="royaltyDealineUp"></span>
+			<span id="royaltyDealineDown"></span></label> -->	
+		<!-- <label>로열티 지급 여부/
+			<span id="royaltyPaidUp"></span>
+			<span id="royaltyPaidDown"></span></label> -->		
+<!-- 		<label>월 실제 판매 금액/
+			<span id="subPracticalSellPriceMonthUp"></span>
+			<span id="subPracticalSellPriceMonthDown"></span></label>		
+		<label>월 가맹의 이익 금액/
+			<span id="subSellProfitMonthUp"></span>
+			<span id="subSellProfitMonthDown"></span></label>	 -->
+		<label>월 본사 로얄티/
+			<span id="headSellProfitBySubMonthUp"></span>
+			<span id="headSellProfitBySubMonthDown"></span></label>	
+		<label>실제 지급 날짜/
+			<span id="royaltyPayActualDateUp"></span>
+			<span id="royaltyPayActualDateDown"></span></label>	
+		<label>월 실제 지급한 금액
+			<span id="royaltyActualAmountUp"></span>
+			<span id="royaltyActualAmountDown"></span></label>	
 	</div>
 
 	
-	
-		<c:forEach var="Royalty" items="${list }">
+		<!-- 로얄티 실제 보여주는 정보 -->
+		<c:forEach var="Royalty" items="${royaltyList}">
 			<div>
-				<label>${Royalty.royaltyCode}</label>
-				<label>${Royalty.contractCode }</label>
-				<label>${Royalty.royaltyMonth}</label>
-				<label>${Royalty.royaltyDealine}</label>
-				<label>${Royalty.subPracticalSellPriceMonth}</label>
-				<label>${Royalty.subSellProfitMonth}</label>
-				<label>${Royalty.headSellProfitBySubMonth}</label>
-				<label>${Royalty.royaltyPayActualDate}</label>
-				<label>${Royalty.royaltyActualAmount}</label>
-				<label>${Royalty.subName}</label>
+				<label>${Royalty.royaltyCode}																</label>
+				<label><a href="/viewRoyaltyDetail?royaltyCode=${Royalty.royaltyCode}">${Royalty.subName}</a>	</label>
+		<%--    <label>${Royalty.contractCode}																</label> --%>
+				<label>${Royalty.royaltyMonth}월																</label>
+		<%--    <label>${Royalty.royaltyDeadline}															</label>
+				<label>${Royalty.royaltyPaid} 																</label> --%>
+		<%--    <label>${Royalty.subPracticalSellPriceMonth}												</label>
+				<label>${Royalty.subSellProfitMonth}														</label> --%>
+				<label>${Royalty.headSellProfitBySubMonth}													</label>
+				<label>
+					<c:if test="${Royalty.royaltyPayActualDate eq null}">미지급							</c:if>
+					<c:if test="${Royalty.royaltyPayActualDate ne null}">${Royalty.royaltyPayActualDate}</c:if></label>
+				<%-- 	${Royalty.royaltyPayActualDate} --%>
+				<label>${Royalty.royaltyActualAmount}														</label>
 			</div>
 		</c:forEach>
 
