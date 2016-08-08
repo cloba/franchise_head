@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.ksmart.franchise.head.item.model.Item;
 import org.ksmart.franchise.head.menu.model.Menu;
 import org.ksmart.franchise.head.menu.model.MenuDomain;
 import org.ksmart.franchise.head.menu.model.MenuIngre;
@@ -57,13 +58,15 @@ public class MenuServiceImpl implements MenuService {
 		String menuCode = menuDao.addMenu(menu);
 		
 		//2. ingre_price테이블에 해당 메뉴에 필요한 재료와 재료량을 입력합니다
-		menuDao.addIngre(menu, menuCode);
+		menu.setMenuCode(menuCode);
+		menuDao.addIngre(menu);
 		
 		
 	}
 
 	@Override
-	public List<MenuIngre> searchIngreService(String ingreName) {
+	//재료를 검색합니다
+	public List<Item> searchIngreService(String ingreName) {
 		System.out.println("MenuServiceImpl의 searchIngreService메서드 호출");		
 		
 		return menuDao.searchIngre(ingreName);

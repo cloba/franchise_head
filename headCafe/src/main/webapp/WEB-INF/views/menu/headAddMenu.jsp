@@ -22,15 +22,17 @@
 		$('#addIngreBtn').click(function(){
 			
 			if( $('.ingreName').length < 1 ){
-				var ingreNameOrderTemp = 0;
+				var orderTemp = 0;
 			}else{
-				var ingreNameOrder = eval($(".ingreName:last").attr('id').replace("ingreName",""));
-				var ingreNameOrderTemp = ingreNameOrder+1;
+				var orderTemp = eval($(".ingreName:last").attr('id').replace("ingreName",""));
+				var order = orderTemp+1;
+				
 			}
 			
-			$('#addIngreDiv').append('재료명: <input type="text" id="ingreName'+ingreNameOrderTemp+'" class="ingreName" name="ingreName" required="required" /> 사용량: <input type="text" name="ingreAmount" required="required"/> <br/>');
+			$('#addIngreDiv').append('<div> 재료명: <input type="text" id="ingreName'+order+'" class="ingreName" name="hItemCodeArr" required="required" /> 사용량: <input type="text" name="ingreAmountArr" required="required"/> <p id="unit'+order+'"></p></div>');
 			
-			var id = 'ingreName'+ingreNameOrderTemp;
+			var id = 'ingreName'+order;
+			var unit = 'unit'+order;
 			
 			$(function() {
 				$('#'+id).autocomplete({
@@ -42,11 +44,14 @@
 								ingreName: $('#'+id).val()
 							},
 							success : function(json) {
-							//	console.log('성공');
+								console.log('성공');
 								response($.map(json, function(data){
+									
+									//재료에 따른 단위를 표시합니다
+									$('#'+unit).text(data.hItemAmountUnit);
 									return{
-										label : data.ingreName,
-										value : data.ingreName
+										label : data.hItemName,
+										value : data.hItemCode
 									};
 								}));
 							},
@@ -69,9 +74,9 @@
 		<div> 
 		메뉴이름: <input type="text" name="menuName" id="menuName" required="required" /> 
 		</div>
-		<div> 
+		<!-- <div> 
 		재료구입가: <input type="text" name="menuIngrePrice" required="required"/> 
-		</div>
+		</div> -->
 		<div> 
 		소비자가격: <input type="text" name="menuSellingPrice" required="required"/> 
 		</div>

@@ -4,6 +4,8 @@ public class Item {
 	private String hItemCode;
 	private String hItemName;
 	private String inteCode;
+	private int hItemAmount;
+	private String hItemAmountUnit;
 	private int hItemQuantity;
 	private String hItemUnit;
 	private int hItemPurchasePrice;
@@ -31,6 +33,18 @@ public class Item {
 	}
 	public void setInteCode(String inteCode) {
 		this.inteCode = inteCode;
+	}
+	public int gethItemAmount() {
+		return hItemAmount;
+	}
+	public void sethItemAmount(int hItemAmount) {
+		this.hItemAmount = hItemAmount;
+	}
+	public String gethItemAmountUnit() {
+		return hItemAmountUnit;
+	}
+	public void sethItemAmountUnit(String hItemAmountUnit) {
+		this.hItemAmountUnit = hItemAmountUnit;
 	}
 	public int gethItemQuantity() {
 		return hItemQuantity;
@@ -92,14 +106,6 @@ public class Item {
 	public void setHeadClientCode(String headClientCode) {
 		this.headClientCode = headClientCode;
 	}
-	@Override
-	public String toString() {
-		return "Item [hItemCode=" + hItemCode + ", hItemName=" + hItemName + ", inteCode=" + inteCode
-				+ ", hItemQuantity=" + hItemQuantity + ", hItemUnit=" + hItemUnit + ", hItemPurchasePrice="
-				+ hItemPurchasePrice + ", hItemMarginPercent=" + hItemMarginPercent + ", hItemHeadProfit="
-				+ hItemHeadProfit + ", hItemSellingPrice=" + hItemSellingPrice + ", hItemRetailPrice="
-				+ hItemRetailPrice + ", hItemRegitDate=" + hItemRegitDate + ", headStaffId=" + headStaffId
-				+ ", headClientCode=" + headClientCode + "]";
-	}
+	
 	
 }

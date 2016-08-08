@@ -109,34 +109,32 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	
 	<!-- ingre_price에서 ingre_name을 기준으로 검색합니다 -->
-	<select id="selectIngreByName" parameterType="java.util.Map" resultMap="menuIngreResultMap">
-		SELECT ingre_price_code, menu_code, h_item_code, ingre_name, ingre_amount, ingre_money, head_staff_id, ingre_regit_date, ingre_status 
-		FROM ingre_price
-		where ingre_name like CONCAT('%',#{ingreName},'%') 
+	<select id="selectIngreByName" parameterType="java.util.Map" resultType="org.ksmart.franchise.head.item.model.Item">
+		SELECT h_item_code as hItemCode, h_item_name as hItemName, h_item_amount_unit as hItemAmountUnit
+		FROM head_item
+		WHERE h_item_name LIKE CONCAT('%',#{itemName},'%') and h_item_unit = 'EX'
 	</select>
+	
 	
 	<!-- 추가한menu와 함께 ingre_price를 추가합니다 -->
 	<insert id="insertIngreWithMenu" parameterType="java.util.Map">
 		<selectKey resultType="hashmap" keyProperty="ingrePriceCode" order="BEFORE" >
 			SELECT if(isnull(ingre_price_code),'ingre_price_code1', concat('ingre_price_code', MAX(CONVERT(SUBSTRING(ingre_price_code,17), UNSIGNED))+1)) as ingrePriceCode 
 			FROM ingre_price
-		</selectKey>
+		</selectKey> 
 		INSERT INTO ingre_price
 			(ingre_price_code, menu_code, h_item_code, ingre_name, ingre_amount, ingre_money, head_staff_id, ingre_regit_date, ingre_status)
 			SELECT #{ingrePriceCode},
-					#{menuCode},
+					#{menu.menuCode},
 					h_item_code,
 					h_item_name,
 					#{menu.ingreAmount},
-					h_item_selling_price/h_item_amount,
+					((h_item_selling_price/h_item_amount)*#{menu.ingreAmount}),
 					<!-- 임시 값 -->
 					'head_staff_id1',
 					NOW(),
 					'Y'
 			FROM head_item
-			WHERE h_item_code in
-				(SELECT h_item_code
-				FROM head_item
-				WHERE h_item_name = #{menu.ingreName})
+			WHERE h_item_code = #{menu.hItemCode}
 	</insert> 
 </mapper>

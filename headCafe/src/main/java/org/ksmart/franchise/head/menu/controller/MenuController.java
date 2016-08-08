@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.ksmart.franchise.head.item.model.Item;
 import org.ksmart.franchise.head.menu.model.Menu;
 import org.ksmart.franchise.head.menu.model.MenuDomain;
 import org.ksmart.franchise.head.menu.model.MenuIngre;
@@ -85,12 +86,12 @@ public class MenuController {
 	
 	//재료를 검색합니다
 	@RequestMapping(value="/searchIngre")
-	public @ResponseBody List<MenuIngre> searchIngre(String ingreName) {
+	public @ResponseBody List<Item> searchIngre(String ingreName) {
 		System.out.println("MenuController의 searchIngre 메서드 호출");
 		
-		List<MenuIngre> menuIngre = menuService.searchIngreService(ingreName);
+		List<Item> Item = menuService.searchIngreService(ingreName);
 		
-		return menuIngre;
+		return Item;
 	}
 	
 }

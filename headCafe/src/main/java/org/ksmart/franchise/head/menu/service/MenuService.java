@@ -3,6 +3,7 @@ package org.ksmart.franchise.head.menu.service;
 import java.util.List;
 import java.util.Map;
 
+import org.ksmart.franchise.head.item.model.Item;
 import org.ksmart.franchise.head.menu.model.Menu;
 import org.ksmart.franchise.head.menu.model.MenuDomain;
 import org.ksmart.franchise.head.menu.model.MenuIngre;
@@ -16,5 +17,5 @@ public interface MenuService {
 	//menu를 추가합니다
 	public void addMenuService(MenuDomain menu);
 	//재료를 검색합니다
-	public List<MenuIngre> searchIngreService(String ingreName);
+	public List<Item> searchIngreService(String ingreName);
 }

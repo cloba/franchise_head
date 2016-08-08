@@ -85,15 +85,17 @@
 	<!-- 적용상태에 따른 a태그 분리 -->
 		<c:if test="${menuSearch.status == 'Y'}"> 
 			<a href="/viewMenuList?status=N">[미적용메뉴 보기]</a>
+			<a href="/viewMenuList">[전체메뉴 보기]</a>
 		</c:if>
 		<c:if test="${menuSearch.status == 'N'}"> 
 			<a href="/viewMenuList?status=Y">[적용메뉴 보기]</a>
+			<a href="/viewMenuList">[전체메뉴 보기]</a>
 		</c:if>
-		<c:if test="${menuSearch.status == ''}">
+		<c:if test="${menuSearch.status == null}">
 			<a href="/viewMenuList?status=N">[미적용메뉴 보기]</a> 
 			<a href="/viewMenuList?status=Y">[적용메뉴 보기]</a>
 		</c:if>	
-	<a href="/viewMenuList">[전체메뉴 보기]</a>
+	
 	
 	<!-- 조회 결과 -->
 	<table border="1">

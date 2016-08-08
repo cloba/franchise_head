@@ -2,6 +2,7 @@ package org.ksmart.franchise.head.menu.repository;
 
 import java.util.List;
 
+import org.ksmart.franchise.head.item.model.Item;
 import org.ksmart.franchise.head.menu.model.Menu;
 import org.ksmart.franchise.head.menu.model.MenuDomain;
 import org.ksmart.franchise.head.menu.model.MenuIngre;
@@ -17,7 +18,7 @@ public interface MenuDao {
 	// menu를 추가하는 메서드입니다
 	public String addMenu(MenuDomain menu);
 	// menu에 따른 재료를 추가하는 메서드입니다
-	public void addIngre(MenuDomain menu, String menuCode);
+	public void addIngre(MenuDomain menu);
 	//재료를 검색합니다
-	public List<MenuIngre> searchIngre(String ingreName);
+	public List<Item> searchIngre(String ingreName);
 }

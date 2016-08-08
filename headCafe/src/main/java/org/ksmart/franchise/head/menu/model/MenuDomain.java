@@ -1,15 +1,22 @@
 package org.ksmart.franchise.head.menu.model;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
 public class MenuDomain {
 	private String menuCode;
 	private String menuName;
 	private int menuIngrePrice;
 	private int menuSellingPrice;
-	private ArrayList<Object>[] ingreName;
-	private ArrayList<Object>[] ingreAmount;
+	private String ingrePriceCode;
+	private String ingreName;
+	private String hItemCode;
+	private String[] hItemCodeArr;
+	private String ingreAmount;
+	private String[] ingreAmountArr;
+	public String getMenuCode() {
+		return menuCode;
+	}
+	public void setMenuCode(String menuCode) {
+		this.menuCode = menuCode;
+	}
 	public String getMenuName() {
 		return menuName;
 	}
@@ -28,28 +35,42 @@ public class MenuDomain {
 	public void setMenuSellingPrice(int menuSellingPrice) {
 		this.menuSellingPrice = menuSellingPrice;
 	}
-	public ArrayList<Object>[] getIngreName() {
+	public String getIngrePriceCode() {
+		return ingrePriceCode;
+	}
+	public void setIngrePriceCode(String ingrePriceCode) {
+		this.ingrePriceCode = ingrePriceCode;
+	}
+	public String getIngreName() {
 		return ingreName;
 	}
-	public void setIngreName(ArrayList<Object>[] ingreName) {
+	public void setIngreName(String ingreName) {
 		this.ingreName = ingreName;
 	}
-	public ArrayList<Object>[] getIngreAmount() {
+	public String gethItemCode() {
+		return hItemCode;
+	}
+	public void sethItemCode(String hItemCode) {
+		this.hItemCode = hItemCode;
+	}
+	public String[] gethItemCodeArr() {
+		return hItemCodeArr;
+	}
+	public void sethItemCodeArr(String[] hItemCodeArr) {
+		this.hItemCodeArr = hItemCodeArr;
+	}
+	public String getIngreAmount() {
 		return ingreAmount;
 	}
-	public void setIngreAmount(ArrayList<Object>[] ingreAmount) {
+	public void setIngreAmount(String ingreAmount) {
 		this.ingreAmount = ingreAmount;
 	}
-	@Override
-	public String toString() {
-		return "MenuDomain [menuName=" + menuName + ", menuIngrePrice=" + menuIngrePrice + ", menuSellingPrice="
-				+ menuSellingPrice + ", ingreName=" + Arrays.toString(ingreName) + ", ingreAmount="
-				+ Arrays.toString(ingreAmount) + "]";
+	public String[] getIngreAmountArr() {
+		return ingreAmountArr;
 	}
-	public String getMenuCode() {
-		return menuCode;
+	public void setIngreAmountArr(String[] ingreAmountArr) {
+		this.ingreAmountArr = ingreAmountArr;
 	}
-	public void setMenuCode(String menuCode) {
-		this.menuCode = menuCode;
-	}
+	
+	
 }
