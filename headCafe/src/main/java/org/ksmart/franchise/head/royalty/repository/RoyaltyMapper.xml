@@ -16,6 +16,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="royaltyPayActualDate"  column="royalty_pay_actual_date"/>
 		<result property="royaltyActualAmount"  column="royalty_actual_amount"/>
 		<result property="subName" column="sub_name"/>
+		<result property="subCode" column="sub_code"/>
 	</resultMap>
 
 
@@ -77,7 +78,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="selectRoyaltyDetail" parameterType="java.util.Map" resultMap="RoyaltyResultMap">
 		SELECT
-			royalty_code, contract_code, royalty_month, royalty_deadline, royalty_paid, sub_practical_sell_price_month, 
+			royalty_code, contract_code, royalty_month, royalty_deadline, royalty_paid, sub_practical_sell_price_month, sub_code,
 			sub_sell_profit_month, head_sell_profit_by_sub_month, royalty_pay_actual_date, royalty_actual_amount, sub_name
 		FROM
 			royalty 

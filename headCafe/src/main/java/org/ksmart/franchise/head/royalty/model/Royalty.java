@@ -14,6 +14,7 @@ public class Royalty {
 	private String royaltyPayActualDate;
 	private String royaltyActualAmount;
 	private String subName;
+	private String subCode;
 	
 	public String getLastMonth() {
 		return lastMonth;
@@ -97,5 +98,11 @@ public class Royalty {
 				+ subSellProfitMonth + ", headSellProfitBySubMonth=" + headSellProfitBySubMonth
 				+ ", royaltyPayActualDate=" + royaltyPayActualDate + ", royaltyActualAmount=" + royaltyActualAmount
 				+ ", subName=" + subName + "]";
+	}
+	public String getSubCode() {
+		return subCode;
+	}
+	public void setSubCode(String subCode) {
+		this.subCode = subCode;
 	}	
 }	

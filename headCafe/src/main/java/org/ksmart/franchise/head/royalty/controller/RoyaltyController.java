@@ -42,6 +42,8 @@ public class RoyaltyController {
 
 	      return "/royalty/viewRoyaltyList";
     }
+	
+	// 가맹 디테일 조회하는 메서드
 	@RequestMapping(value="/viewRoyaltyDetail", method= RequestMethod.GET)
 	public String viewRoyaltyDetail(Model model, Royalty royalty){
 		System.out.println("RoyaltyController의 viewRoyaltyDetail메서드 ");
@@ -49,8 +51,7 @@ public class RoyaltyController {
 		model.addAttribute("royalty", royalty);
 		return "/royalty/viewRoyaltyDetail";
 		
-	}
-			
+	}		
 			
 		
 }

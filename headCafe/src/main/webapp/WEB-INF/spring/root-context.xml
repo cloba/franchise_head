@@ -155,7 +155,14 @@
  	<bean id="sqlSessionHeadAccounting" class="org.mybatis.spring.SqlSessionTemplate">
        <constructor-arg index="0" ref="sqlSessionFactoryHeadAccounting" />
     </bean>
-   
+    <!-- 로얄티 연체관리 -->
+   <bean id="sqlSessionFactioyRoyaltyOverdue" class="org.mybatis.spring.SqlSessionFactoryBean">
+   		<property name="dataSource" ref="dataSource" />
+   		<property name="mapperLocations" value="classpath:org/ksmart/franchise/head/royaltyOverdue/repository/RoyaltyOverdueMapper.xml" />
+   </bean>
+   <bean id="sqlSessionRoyaltyOverdue" class="org.mybatis.spring.SqlSessionTemplate">
+   		<constructor-arg index="0" ref="sqlSessionFactioyRoyaltyOverdue" />
+   </bean>
    
    
 	     
