@@ -1,6 +1,11 @@
 package org.ksmart.franchise.head.royaltyOverdue.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.Locale;
 
 import org.ksmart.franchise.head.royaltyOverdue.model.RoyaltyOverdue;
 import org.ksmart.franchise.head.royaltyOverdue.service.RoyaltyOverdueService;
@@ -23,6 +28,12 @@ public class RoyaltyOverdueController {
 	public String viewRoyaltyList(Model model, Search search) {
 		  System.out.println("RoyaltyOverdueController의 viewRoyaltyList메서드 ");
 		  
+		//지난 달 구하기
+		  Calendar cal = new GregorianCalendar(Locale.KOREA);
+		  cal.setTime(new Date());
+		  cal.add(Calendar.MONTH, -1); // 한달을 뺀다.  
+		  SimpleDateFormat Month = new SimpleDateFormat("yyyy-MM");  //데이터 포맷 형태
+		  String lastMonth = Month.format(cal.getTime());
 		  
 		  List<RoyaltyOverdue> list =  royaltyOverdueService.royaltyOverdueListService(search);
 		  

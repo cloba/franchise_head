@@ -13,6 +13,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="royaltyOverdueRest" column="royalty_overdue_rest"/>
 	</resultMap>
 	
+	
+<!--  0808/17:30 학원마지막 쿼리  	
+
+select * from royalty where royalty_code IN (select royalty_code from royalty where royalty_month = '2016-07' and royalty_code IN (select royalty_code from royalty where royalty_deadline > date_format(now(),'%d') )) -->
+	
 	<!--로얄티 연체 리스트 조회 쿼리 -->
 	<select id="selectRoyaltyOverdueList" parameterType="java.util.Map" resultMap="RoyaltyOverdueRoyaltyResultMap"> 
 		SELECT
