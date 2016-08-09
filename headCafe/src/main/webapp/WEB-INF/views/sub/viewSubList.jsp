@@ -96,7 +96,8 @@
 			</tr>
 		</c:forEach>
 	</table>
-	<a href="/">[신규등록:미구현]</a>
+	<a href="/viewSubList">[전체보기]</a>
+	<a href="/addSub">[가맹등록]</a>
 	<a href="/">[홈으로]</a>
 </body>
 </html>

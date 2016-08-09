@@ -3,6 +3,7 @@ package org.ksmart.franchise.head.sub.service;
 import java.util.List;
 
 import org.ksmart.franchise.head.sub.model.Sub;
+import org.ksmart.franchise.head.sub.model.SubCommand;
 import org.ksmart.franchise.head.sub.repository.SubDao;
 import org.ksmart.franchise.head.util.Search;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,5 +29,20 @@ public class SubServiceImpl implements SubService {
 		System.out.println("SubServiceImpl의 getSubDetailService메서드 호출");
 		
 		return subDao.getSubDetail(subCode);	
+	}
+
+	@Override
+	public void addSubService(SubCommand subCommand) {
+		System.out.println("SubServiceImpl의 addSub메서드 호출");
+		
+		subDao.addSub(subCommand);
+	}
+
+	@Override
+	public void modifySubService(SubCommand subCommand) {
+		System.out.println("SubServiceImpl의 modifySubService메서드 호출");
+		
+		subDao.modifySub(subCommand);
+		
 	}
 }

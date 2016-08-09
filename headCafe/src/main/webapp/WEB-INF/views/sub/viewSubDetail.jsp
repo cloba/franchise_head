@@ -44,7 +44,7 @@
 		</tr>
 	</table>
 
-	<a href="/modifySub?subCode=${sub.subCode}">[수정:구현전]</a>
+	<a href="/modifySub?subCode=${sub.subCode}">[수정]</a>
 	<a href="/viewSubList">[돌아가기]</a>
 </body>
 </html>

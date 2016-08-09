@@ -4,7 +4,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.ksmart.franchise.head.sub.repository.SubMapper">
 <!-- POJO객체와 DB column명을 맞춰줍니다 -->
-	<!-- menu 테이블 -->
+	<!-- sub 테이블 -->
 	<resultMap type="org.ksmart.franchise.head.sub.model.Sub" id="SubResultMap">
 		<id property="subCode" column="sub_code"/>
 		<result property="headStaffId" column="head_staff_id"/>
@@ -47,4 +47,31 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM sub
 		WHERE sub_code = #{subCode}
 	</select>
+	
+	<!-- sub을 추가합니다 -->
+	<insert id="insertSub" parameterType="java.util.Map">
+		<selectKey resultType="hashmap" keyProperty="subCode" order="BEFORE">
+			SELECT if(isnull(sub_code),'sub_code1', concat('sub_code', MAX(CONVERT(SUBSTRING(sub_code,9), UNSIGNED))+1)) AS subCode
+			FROM sub
+		</selectKey>
+		<!-- 임시 등록 아이디 지정함 -->
+		INSERT INTO sub
+			(sub_code, sub_name, sub_regit_date, sub_owner, sub_phone_first, sub_phone_second, sub_phone_third, sub_post, sub_road_addr, sub_parcle_addr, head_staff_id)
+			VALUES (#{subCode}, #{sub.subName}, NOW(), #{sub.subOwner}, #{sub.subPhoneFirst}, #{sub.subPhoneSecond}, #{sub.subPhoneThird}, #{sub.subPost}, #{sub.subRoadAddr}, #{sub.subParcelAddr}, 'head_staff_id1')
+	</insert>
+	
+	<!-- sub을 수정합니다 -->
+	<update id="updateSub" parameterType="java.util.Map">
+		UPDATE sub
+		SET
+			sub_name=#{sub.subName},
+			sub_owner=#{sub.subOwner},
+			sub_phone_first=#{sub.subPhoneFirst},
+			sub_phone_second=#{sub.subPhoneSecond},
+			sub_phone_third=#{sub.subPhoneThird},
+			sub_post=#{sub.subPost},  
+			sub_road_addr=#{sub.subRoadAddr},
+			sub_parcle_addr=#{sub.subParcelAddr}
+		WHERE sub_code=#{sub.subCode}
+	</update>
 </mapper>

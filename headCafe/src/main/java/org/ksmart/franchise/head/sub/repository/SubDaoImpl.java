@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.ksmart.franchise.head.sub.model.Sub;
+import org.ksmart.franchise.head.sub.model.SubCommand;
 import org.ksmart.franchise.head.util.Search;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,27 @@ private final String NS = "org.ksmart.franchise.head.sub.repository.SubMapper";
 		map.put("subCode", subCode);
 		
 		return sqlSessionSub.selectOne(NS+".selectOneSub", map);
+	}
+
+	@Override
+	public void addSub(SubCommand subCommand) {
+		System.out.println("SubDaoImpl의 addSub 메서드 호출");
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("sub", subCommand);
+		
+		sqlSessionSub.insert(NS+".insertSub", map);		
+	}
+
+	@Override
+	//
+	public void modifySub(SubCommand subCommand) {
+		System.out.println("SubDaoImpl의 modifySub 메서드 호출");
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("sub", subCommand);
+		
+		sqlSessionSub.update(NS+".updateSub", map);				
 	}
 
 }
