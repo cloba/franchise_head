@@ -7,6 +7,6 @@ import org.ksmart.franchise.head.util.Search;
 
 public interface RoyaltyOverdueService {
 
-	List<RoyaltyOverdue> royaltyOverdueListService(Search search);
+	List<RoyaltyOverdue> royaltyOverdueListService(Search search, RoyaltyOverdue royaltyOverdue);
 
 }

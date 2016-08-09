@@ -25,17 +25,17 @@ public class RoyaltyOverdueController {
 	
 	//연체리스트 조회 하는 메서드
 	@RequestMapping(value="/viewRoyaltyOverdueList", method=RequestMethod.GET)
-	public String viewRoyaltyList(Model model, Search search) {
+	public String viewRoyaltyList(Model model, Search search, RoyaltyOverdue royaltyOverdue) {
 		  System.out.println("RoyaltyOverdueController의 viewRoyaltyList메서드 ");
 		  
 		//지난 달 구하기
 		  Calendar cal = new GregorianCalendar(Locale.KOREA);
 		  cal.setTime(new Date());
 		  cal.add(Calendar.MONTH, -1); // 한달을 뺀다.  
-		  SimpleDateFormat Month = new SimpleDateFormat("yyyy-MM");  //데이터 포맷 형태
-		  String lastMonth = Month.format(cal.getTime());
+		  SimpleDateFormat Month = new SimpleDateFormat("yyyy-MM");  //데이터 포맷 형태.
+		  royaltyOverdue.setLastMonth(Month.format(cal.getTime()));  //royaltyOverdue객체에 지난 달 입력.
 		  
-		  List<RoyaltyOverdue> list =  royaltyOverdueService.royaltyOverdueListService(search);
+		  List<RoyaltyOverdue> list =  royaltyOverdueService.royaltyOverdueListService(search, royaltyOverdue);
 		  
 		  System.out.println("list.size:"+ list.size());
 		  model.addAttribute("list", list);
