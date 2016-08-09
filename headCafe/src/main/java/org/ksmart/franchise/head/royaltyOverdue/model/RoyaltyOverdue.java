@@ -52,6 +52,6 @@ public class RoyaltyOverdue {
 	public void setLastMonth(String lastMonth) {
 		this.lastMonth = lastMonth;
 	}
-	
+
 	
 }

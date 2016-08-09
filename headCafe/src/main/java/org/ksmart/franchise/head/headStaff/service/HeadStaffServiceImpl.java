@@ -48,7 +48,7 @@ public class HeadStaffServiceImpl implements HeadStaffService{
 	}
 	//본사직원 로그인 메서드
 	@Override
-	public HeadStaff loginStaffService(HeadStaffLogin headStaffLogin) {
+	public HeadStaffLogin loginStaffService(HeadStaffLogin headStaffLogin) {
 		return headStaffDao.headStaffLogin(headStaffLogin);
 		
 	}

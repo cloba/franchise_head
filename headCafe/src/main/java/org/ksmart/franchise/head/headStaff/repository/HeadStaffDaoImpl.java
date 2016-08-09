@@ -59,11 +59,10 @@ public class HeadStaffDaoImpl implements HeadStaffDao{
 
 	//로그인 하는 메서드
 	@Override
-	public HeadStaff headStaffLogin(HeadStaffLogin headStaffLogin) {
+	public HeadStaffLogin headStaffLogin(HeadStaffLogin headStaffLogin) {
 		System.out.println("HeadStaffDaoImpl의 headStafflogin메서드");
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("headStaffLogin", headStaffLogin);
-		
 		return sqlSessionHeadStaff.selectOne(NS+".selectHeadStaffLogin", map);
 	}
 

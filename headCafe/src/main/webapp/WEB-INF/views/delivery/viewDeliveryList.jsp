@@ -58,6 +58,7 @@
 
 </script>
 <h1>배송 리스트</h1>
+	<div>로그인 아이디: ${headStaffLogin.headStaffId}</div>
 	<!-- 배송 검색 -->
 	<form name="delList" id="delList" action="/viewDeliveryList" method="post">
 		<!-- 오름차/내림차순 정렬을 위한 input 태그 -->

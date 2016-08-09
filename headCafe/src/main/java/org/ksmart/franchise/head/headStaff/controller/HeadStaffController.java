@@ -1,9 +1,7 @@
 package org.ksmart.franchise.head.headStaff.controller;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
+import java.util.List;
 import org.ksmart.franchise.head.headStaff.model.HeadStaff;
 import org.ksmart.franchise.head.headStaff.model.HeadStaffCommand;
 import org.ksmart.franchise.head.headStaff.model.HeadStaffLogin;
@@ -42,9 +40,10 @@ public class HeadStaffController {
 	
 	//본사직원 로그인 메서드  
 	@RequestMapping(value="/loginStaff", method=RequestMethod.POST)
+	
 	public String loginStaff(Model model, @ModelAttribute HeadStaffLogin headStaffLogin){
+	/*public String loginStaff(Model model, HeadStaffLogin headStaffLogin){*/
 		System.out.println("HeadStaffController의 loginStaff실행");
-		Map<String, Object> map = new HashMap<String, Object>();
 		headStaffService.loginStaffService(headStaffLogin);
 		System.out.println("메서드 성공");
 	
@@ -57,12 +56,11 @@ public class HeadStaffController {
 		}else{
 			
 			System.out.println("로그인 완료");
-			map.put("headStaffLogin", headStaffLogin);
-			
+			model.addAttribute("headStaffLogin", headStaffLogin);
 		}
 		
 	//	System.out.println("headStaff" +headStaff.getHeadStaffId());
-		System.out.println("headStaffLogin :"+headStaffLogin.getHeadStaffId());
+	//	System.out.println("headStaffLogin :"+headStaffLogin.getHeadStaffId());
 		return "/home";   //(로그인 못 했다는 메서지와 함께) 로그인창 다시보여줘야함
 		
 	}

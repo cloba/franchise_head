@@ -19,7 +19,7 @@ public interface HeadStaffDao {
 
 	int headStaffModify(HeadStaff headstaff);
 
-	HeadStaff headStaffLogin(HeadStaffLogin headStaffLogin);
+	HeadStaffLogin headStaffLogin(HeadStaffLogin headStaffLogin);
 
 	public int addResignStaff(HeadStaff headStaff);
 }

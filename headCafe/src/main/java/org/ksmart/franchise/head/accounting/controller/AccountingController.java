@@ -22,6 +22,7 @@ public class AccountingController {
 	@RequestMapping(value="/viewHeadAccountingList", method=RequestMethod.GET)
 	public String viewHeadAccountingList(Model model, Search search){
 		System.out.println("AccountingController의 viewHeadAccountingList메서드");
+	
 		
 		List<Accounting> list = accountingService.headAccountingListService(search);
 		model.addAttribute("list", list);

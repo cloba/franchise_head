@@ -23,8 +23,7 @@
 </script>	
 </head>
 <body>
-
-로그인 아이디: ${headStaffLogin.headStaffId }
+로그인 아이디: ${headStaffLogin.headStaffId}
 <a href="/viewDeliveryList">배송관리</a>
 <a href="/viewItemOutList">출고관리</a>
 <a href="/viewSellList?status=Y">본사판매관리</a>
@@ -41,8 +40,12 @@
 <a href="/viewHeadAccountingList">회계관리</a>
 <a href="/viewRoyaltyList">로얄티관리</a>
 <a href="/viewRoyaltyOverdueList">로얄티 연체관리</a>
+
+<c:choose>
+<c:when test="${headStaffLogin.headStaffId == null or headStaffLogin.headStaffId == '' }">
+
 	<!-- 로그인 폼 -->
-<div class="join">
+	<div class="join">
 		<form id="loginForm" action="" method="post" >
 			<h2>로그인</h2>
 			
@@ -59,5 +62,10 @@
 			</div>
 		</form>
 	</div>
+</c:when>
+	<c:otherwise>
+	아이디: ${headStaffLogin.headStaffId}
+	</c:otherwise>
+</c:choose>
 </body>
 </html>

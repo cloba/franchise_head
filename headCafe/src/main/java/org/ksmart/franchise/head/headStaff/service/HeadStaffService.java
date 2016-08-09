@@ -19,7 +19,7 @@ public interface HeadStaffService {
 
 	int modifyHeadStaff(HeadStaff headStaff);
 
-	HeadStaff loginStaffService(HeadStaffLogin headStaffLogin);
+	HeadStaffLogin loginStaffService(HeadStaffLogin headStaffLogin);
 
 	int addResignStaffService(HeadStaff headStaff);
 
