@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 @Controller
 @SessionAttributes("headStaffLogin")
@@ -30,6 +31,14 @@ public class HeadStaffController {
 	@Autowired
 	private HeadStaffService headStaffService;
 	private String resignIdentify = ""; 
+	
+	//로그아웃 메서드
+	public String logout(SessionStatus sessionStatus){
+		
+		sessionStatus.setComplete();
+		
+		return "/";
+	}
 	
 	//본사직원 로그인 메서드  
 	@RequestMapping(value="/loginStaff", method=RequestMethod.POST)

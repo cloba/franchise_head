@@ -106,6 +106,7 @@
 			</tr>
 		</c:forEach>
 	</table>
+	<a href="/addContractForm">[신규등록]</a>
 	<a href="/viewContractList">[전체리스트]</a>
 	<a href="/">[홈으로]</a>
 </body>

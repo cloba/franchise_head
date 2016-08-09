@@ -3,6 +3,7 @@ package org.ksmart.franchise.head.contract.repository;
 import java.util.List;
 
 import org.ksmart.franchise.head.contract.model.Contract;
+import org.ksmart.franchise.head.contract.model.ContractCommand;
 import org.ksmart.franchise.head.util.Search;
 
 public interface ContractDao {
@@ -12,4 +13,7 @@ public interface ContractDao {
 	Contract getContractDetail(String contractCode);
 	//contract를 수정하는 메서드입니다
 	void modifyContract(Contract contract);
+	//contract를 추가하는 메서드입니다
+	void addContract(ContractCommand contractCommand);
 }
+

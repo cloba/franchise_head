@@ -1,33 +1,21 @@
 package org.ksmart.franchise.head.contract.model;
 
-public class Contract {
+public class ContractCommand {
 	private String contractCode;
-	private String headStaffId;
 	private String subCode;
 	private String contractorName;
 	private String contractActualDate;
-	private String contractRegitDate;
 	private String contractExpiryDate;
 	private int contractDeposit;
 	private int contractProfitPercent;
 	private String contractFile;
 	private int contractN;
-	private String contractExpire;
-	private String contractExpiredDate;
-	private String contractExpireContent;
-	private int royalty_deadline;
-	
+	private int royaltyDeadline;
 	public String getContractCode() {
 		return contractCode;
 	}
 	public void setContractCode(String contractCode) {
 		this.contractCode = contractCode;
-	}
-	public String getHeadStaffId() {
-		return headStaffId;
-	}
-	public void setHeadStaffId(String headStaffId) {
-		this.headStaffId = headStaffId;
 	}
 	public String getSubCode() {
 		return subCode;
@@ -46,12 +34,6 @@ public class Contract {
 	}
 	public void setContractActualDate(String contractActualDate) {
 		this.contractActualDate = contractActualDate;
-	}
-	public String getContractRegitDate() {
-		return contractRegitDate;
-	}
-	public void setContractRegitDate(String contractRegitDate) {
-		this.contractRegitDate = contractRegitDate;
 	}
 	public String getContractExpiryDate() {
 		return contractExpiryDate;
@@ -83,29 +65,10 @@ public class Contract {
 	public void setContractN(int contractN) {
 		this.contractN = contractN;
 	}
-	public String getContractExpire() {
-		return contractExpire;
+	public int getRoyaltyDeadline() {
+		return royaltyDeadline;
 	}
-	public void setContractExpire(String contractExpire) {
-		this.contractExpire = contractExpire;
+	public void setRoyaltyDeadline(int royaltyDeadline) {
+		this.royaltyDeadline = royaltyDeadline;
 	}
-	public String getContractExpiredDate() {
-		return contractExpiredDate;
-	}
-	public void setContractExpiredDate(String contractExpiredDate) {
-		this.contractExpiredDate = contractExpiredDate;
-	}
-	public String getContractExpireContent() {
-		return contractExpireContent;
-	}
-	public void setContractExpireContent(String contractExpireContent) {
-		this.contractExpireContent = contractExpireContent;
-	}
-	public int getRoyalty_deadline() {
-		return royalty_deadline;
-	}
-	public void setRoyalty_deadline(int royalty_deadline) {
-		this.royalty_deadline = royalty_deadline;
-	}
-	
 }

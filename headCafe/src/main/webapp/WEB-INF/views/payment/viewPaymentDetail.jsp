@@ -37,8 +37,10 @@
 			<th>${payment.profitStatus}</th>
 		</tr>
 	</table>
-
-	<a href="/modifyPayment?payMethodCode=${payment.payMethodCode}">[수정:구현전]</a>
+	
+	<c:if test="${payment.profitStatus eq 'Y'}">
+		<a href="/invalidPayment?payMethodCode=${payment.payMethodCode}">[미적용으로 변경]</a>
+	</c:if>
 	<a href="/viewPaymentList">[돌아가기]</a>
 </body>
 </html>

@@ -3,6 +3,7 @@ package org.ksmart.franchise.head.contract.service;
 import java.util.List;
 
 import org.ksmart.franchise.head.contract.model.Contract;
+import org.ksmart.franchise.head.contract.model.ContractCommand;
 import org.ksmart.franchise.head.contract.repository.ContractDao;
 import org.ksmart.franchise.head.util.Search;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,12 @@ public class ContractServiceImpl implements ContractService {
 		System.out.println("ContractServiceImpl의 ModifyContractService메서드 호출");		
 		
 		contractDao.modifyContract(contract);
+	}
+
+	@Override
+	public void addContractService(ContractCommand contractCommand) {
+		System.out.println("ContractServiceImpl의 addContractService메서드 호출");		
+		contractDao.addContract(contractCommand);
 	}
 
 }

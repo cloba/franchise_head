@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.ksmart.franchise.head.contract.model.Contract;
+import org.ksmart.franchise.head.contract.model.ContractCommand;
 import org.ksmart.franchise.head.util.Search;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,9 +44,15 @@ public class ContractDaoImpl implements ContractDao {
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("contract", contract);
-		System.out.println(contract.getContractCode() +"<==== contractCode");
 		
 		sqlSessionContract.update(NS+".updateContract", map);		
+	}
+
+	@Override
+	public void addContract(ContractCommand contractCommand) {
+		System.out.println("ContractDaoImpl의 addContract 메서드 호출");
+
+		sqlSessionContract.insert(NS+".addContract", contractCommand);
 	}
 
 }

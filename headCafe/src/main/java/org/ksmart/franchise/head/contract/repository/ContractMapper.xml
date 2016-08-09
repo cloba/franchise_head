@@ -20,6 +20,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="contractExpire" column="contract_expire"/>
 		<result property="contractExpiredDate" column="contract_expired_date"/>
 		<result property="contractExpireContent" column="contract_expire_content"/>
+		<result property="royaltyDeadline" column="royalty_deadline"/>
 	</resultMap>
 	
 	
@@ -64,4 +65,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			contract_expire_content=#{contract.contractExpireContent}
 		WHERE contract_code = #{contract.contractCode}
 	</update>
+	
+	<!-- contract를 등록합니다 -->
+	<insert id="addContract" parameterType="org.ksmart.franchise.head.contract.model.ContractCommand">
+		<selectKey resultType="hashmap" keyProperty="contractCode" order="BEFORE">
+			SELECT IF( EXISTS(
+	             SELECT contract_code
+	             FROM contract), concat('contract_code', MAX(CONVERT(SUBSTRING(contract_code,14), UNSIGNED))+1), 'contract_code1') as contractCode
+			FROM contract
+		</selectKey>
+		INSERT INTO contract
+			(contract_code, head_staff_id, sub_code, contractor_name, contract_actual_date, contract_regit_date, contract_expiry_date, contract_deposit, contract_profit_percent, contract_file, contract_n, contract_expire,  royalty_deadline)
+			VALUES (#{contractCode}, 'head_staff_id1', #{subCode}, #{contractorName}, #{contractActualDate}, NOW(), #{contractExpiryDate}, #{contractDeposit}, #{contractProfitPercent}, #{contractFile}, #{contractN}, 'N', #{royaltyDeadline})
+	</insert>
+	
 </mapper>
