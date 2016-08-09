@@ -52,8 +52,8 @@ public class MenuController {
 		
 		// 3.
 		List<MenuIngre> ingreList = new ArrayList<MenuIngre>();
-		ingreList = (List<MenuIngre>) inteMap.get("ingreList");
-		System.out.println("List확인: "+ingreList.toString());
+	//	ingreList = (List<MenuIngre>) inteMap.get("ingreList");
+	//	System.out.println("List확인: "+ingreList.toString());
 		
 		// 4. List를 Map으로 변환합니다
 		Map<String, Object> ingreMap = new HashMap<String, Object>();
@@ -78,8 +78,17 @@ public class MenuController {
 	@RequestMapping(value="/headAddMenu", method=RequestMethod.POST)
 	public String addMenu(MenuDomain menu){
 		System.out.println("MenuController의 addMenu 메서드 호출");
-
-		menuService.addMenuService(menu);
+		
+		try {
+			int result = menuService.addMenuService(menu);
+			System.out.println("controller의 result: "+result);
+			if(result == 2){
+				return "/error/error";
+			}
+		} catch (Exception e) {
+			System.out.println("addMenu Exception 실행");
+			return "/error/error";
+		}
 		
 		return "redirect:/viewMenuList";
 	}

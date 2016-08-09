@@ -104,9 +104,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				#{menu.menuSellingPrice},
 				<!-- 시큐리티 적용 전 임시값 --> 
 				'head_staff_id1', 
-				NOW(), 
+				NOW(),
 				'Y')
 	</insert>
+	
+	<!-- menu를 삭제합니다 -->
+	<delete id="deleteMenu" parameterType="java.lang.String">
+		DELETE FROM menu WHERE menu_code= #{menuCode}
+	</delete>
 	
 	<!-- ingre_price에서 ingre_name을 기준으로 검색합니다 -->
 	<select id="selectIngreByName" parameterType="java.util.Map" resultType="org.ksmart.franchise.head.item.model.Item">
@@ -137,4 +142,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			FROM head_item
 			WHERE h_item_code = #{menu.hItemCode}
 	</insert> 
+	
+	<!-- ingre를 삭제합니다 -->
+	<delete id="deleteIngre" parameterType="java.lang.String">
+		DELETE FROM ingre_price WHERE menu_code=#{menuCode}
+	</delete>
+	
+	<!-- 재료 추가후 재료 값을 해당 menu에 업데이트 합니다 -->
+	<update id="updateMenuIngrePrice" parameterType="java.lang.String">
+		UPDATE menu
+		SET
+			menu_ingre_price= (SELECT sum(ingre_money)
+								FROM ingre_price
+								WHERE menu_code = #{menuCode})
+		WHERE menu_code = #{menuCode}
+	</update>
 </mapper>

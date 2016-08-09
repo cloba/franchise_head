@@ -49,7 +49,7 @@
 			</c:choose>
 		</tr>
 	</table>
-<h3>[필요한 재료량과 가격계산]</h3>	<a href="#">등록(구현전)</a>
+<h3>[필요한 재료량과 가격계산]</h3>	<a href="#">재료등록(구현전)</a>
 	<table border="1">
 		<tr>
 			<th>메뉴명(그룹코드)</th>
@@ -73,7 +73,7 @@
 		</c:forEach>
 	</table>
 
-	<a href="/headModifyMenu?menuDetail=${menu.menuCode}">[수정:구현전]</a>
+	<a href="/headModifyMenu?menuDetail=${menu.menuCode}">[메뉴수정]</a>
 	<a href="/viewRecipeDetail?menuCode=${menu.menuCode}">[레시피보기]</a>
 	<a href="/viewMenuList">[메뉴목록]</a>
 </body>

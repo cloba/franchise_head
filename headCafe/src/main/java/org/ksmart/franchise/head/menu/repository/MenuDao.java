@@ -18,7 +18,13 @@ public interface MenuDao {
 	// menu를 추가하는 메서드입니다
 	public String addMenu(MenuDomain menu);
 	// menu에 따른 재료를 추가하는 메서드입니다
-	public void addIngre(MenuDomain menu);
+	public int addIngre(MenuDomain menu);
 	//재료를 검색합니다
 	public List<Item> searchIngre(String ingreName);
+	// menu에 따른 재료의 재료값을 업데이트 하는 메서드입니다
+	public int updateMenuIngrePrice(String menuCode);
+	// 추가된 메뉴를 삭제하는 메서드입니다
+	public void deleteMenu(String menuCode);
+	// 추가된 재료를 삭제하는 메서드입니다
+	public void deleteIngre(String menuCode);
 }
