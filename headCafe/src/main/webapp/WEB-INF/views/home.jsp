@@ -65,6 +65,7 @@
 </c:when>
 	<c:otherwise>
 	아이디: ${headStaffLogin.headStaffId}
+	<a href="/logout">로그아웃</a>
 	</c:otherwise>
 </c:choose>
 </body>
