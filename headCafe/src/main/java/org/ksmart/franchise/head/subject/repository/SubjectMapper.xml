@@ -22,4 +22,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</where> 
 		ORDER BY subject_code
 	</select>
+	
+	<!-- subject를 추가합니다 -->
+	<insert id="insertSubject" parameterType="java.util.Map">
+		<selectKey resultType="hashmap" keyProperty="subjectCode" order="BEFORE">
+			SELECT if(isnull(subject_code),'subject_code1', concat('subject_code', MAX(CONVERT(SUBSTRING(subject_code,13), UNSIGNED))+1)) AS subjectCode
+			FROM subject
+		</selectKey>
+		INSERT INTO subject
+			(subject_code, subject_name, subject_content)
+			VALUES (#{subjectCode}, #{subject.subjectName}, #{subject.subjectContent})
+	</insert>
 </mapper>

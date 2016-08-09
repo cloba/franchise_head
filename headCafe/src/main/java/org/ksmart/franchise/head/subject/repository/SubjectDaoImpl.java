@@ -29,4 +29,16 @@ private final String NS = "org.ksmart.franchise.head.subject.repository.SubjectM
 		return sqlSessionSubject.selectList(NS+".selectSubject", map);
 	}
 
+	@Override
+	//subject를 추가하는 메서드
+	public void addSubject(Subject subject) {
+		System.out.println("SubjectDaoImpl의 addSubject 메서드 호출");
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("subject", subject);
+		
+		sqlSessionSubject.insert(NS+".insertSubject", map);
+		
+		System.out.println(subject.getSubjectCode() +"<===== subjectCode");
+	}
 }

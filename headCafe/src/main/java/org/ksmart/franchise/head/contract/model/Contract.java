@@ -3,7 +3,7 @@ package org.ksmart.franchise.head.contract.model;
 public class Contract {
 	private String contractCode;
 	private String headStaffId;
-	private String storeCode;
+	private String subCode;
 	private String contractorName;
 	private String contractActualDate;
 	private String contractRegitDate;
@@ -27,11 +27,11 @@ public class Contract {
 	public void setHeadStaffId(String headStaffId) {
 		this.headStaffId = headStaffId;
 	}
-	public String getStoreCode() {
-		return storeCode;
+	public String getSubCode() {
+		return subCode;
 	}
-	public void setStoreCode(String storeCode) {
-		this.storeCode = storeCode;
+	public void setSubCode(String subCode) {
+		this.subCode = subCode;
 	}
 	public String getContractorName() {
 		return contractorName;
@@ -101,7 +101,7 @@ public class Contract {
 	}
 	@Override
 	public String toString() {
-		return "Contract [contractCode=" + contractCode + ", headStaffId=" + headStaffId + ", storeCode=" + storeCode
+		return "Contract [contractCode=" + contractCode + ", headStaffId=" + headStaffId + ", subCode=" + subCode
 				+ ", contractorName=" + contractorName + ", contractActualDate=" + contractActualDate
 				+ ", contractRegitDate=" + contractRegitDate + ", contractExpiryDate=" + contractExpiryDate
 				+ ", contractDeposit=" + contractDeposit + ", contractProfitPercent=" + contractProfitPercent

@@ -97,7 +97,7 @@
 		<c:forEach var="contractList" items="${contractList}">
 			<tr>
 				<th><a href="/viewContractDetail?contractCode=${contractList.contractCode }">${contractList.contractCode }</a></th>
-				<th>${contractList.storeCode }</th>
+				<th>${contractList.subCode }</th>
 				<th><fmt:parseDate value="${contractList.contractActualDate}" pattern="yyyy-MM-dd HH:mm:ss" var="date"/>
 					<fmt:formatDate pattern="yyyy-MM-dd" type="both" value="${date}" />
 				</th>

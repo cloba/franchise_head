@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class ContractController {
@@ -37,5 +38,25 @@ public class ContractController {
 		model.addAttribute("contract", contract);
 		
 		return "/contract/viewContractDetail";
+	}
+	
+	//계약파기 사유를 기입하는 form으로 이동합니다
+	@RequestMapping(value="/expireContract", method=RequestMethod.GET)
+	public String expireContractForm(String contractCode, Model model){
+		System.out.println("ContractController의 expireContractForm 메서드 호출");
+		
+		model.addAttribute("code", contractCode);
+		
+		return "/contract/expireContract";
+	}
+	
+	//계약을 파기합니다
+	@RequestMapping(value="/expireContract", method=RequestMethod.POST)
+	public String expireContract(Contract contract){
+		System.out.println("ContractController의 expireContract 메서드 호출");
+		
+		contractService.modifyContractService(contract);
+		
+		return "redirect:/viewContractDetail?contractCode="+contract.getContractCode();
 	}
 }

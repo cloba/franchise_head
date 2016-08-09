@@ -8,5 +8,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 public interface SubjectService {
+	//계정과목 리스트를 보여주는 메서드
 	public List<Subject> viewSubjectListService(Search subjectSearch);
+	//계정과목을 추가하는 메서드
+	public void addSubjectService(Subject subject);
 }

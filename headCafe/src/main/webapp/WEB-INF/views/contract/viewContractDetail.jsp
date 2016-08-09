@@ -34,7 +34,7 @@
 		</tr>
 		<tr>
 			<th>${contract.contractCode}</th>
-			<th>${contract.storeCode}</th>
+			<th>${contract.subCode}</th>
 			<th>${contract.contractorName}</th>
 			<th>
 				<fmt:parseDate value="${contract.contractActualDate}" pattern="yyyy-MM-dd HH:mm:ss" var="date"/>
@@ -54,8 +54,9 @@
 			<th>${contract.contractExpireContent}</th>
 		</tr>
 	</table>
-
-	<a href="/modifyContract?contractCode=${contract.contractCode}">[수정:구현전]</a>
+	<c:if test="${contract.contractExpire eq 'N'}">
+		<a href="/expireContract?contractCode=${contract.contractCode}">[계약파기]</a>
+	</c:if>
 	<a href="/viewContractList">[돌아가기]</a>
 </body>
 </html>

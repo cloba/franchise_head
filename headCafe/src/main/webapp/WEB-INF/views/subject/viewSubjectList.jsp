@@ -51,6 +51,7 @@
 		</c:forEach>
 	</table>
 <a href="/viewSubjectList">전체리스트보기</a>
+<a href="/addSubject">등록</a>
 <a href="/">홈으로</a>
 </body>
 </html>

@@ -28,4 +28,12 @@ public class ContractServiceImpl implements ContractService {
 		return contractDao.getContractDetail(contractCode);	
 	}
 
+	@Override
+	//contract를 수정합니다 (계약 파기시 사용)
+	public void modifyContractService(Contract contract) {
+		System.out.println("ContractServiceImpl의 ModifyContractService메서드 호출");		
+		
+		contractDao.modifyContract(contract);
+	}
+
 }

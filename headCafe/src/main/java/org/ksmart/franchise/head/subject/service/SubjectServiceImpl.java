@@ -21,4 +21,12 @@ public class SubjectServiceImpl implements SubjectService {
 		return subjectDao.viewSubjectList(subjectSearch);
 	}
 
+	@Override
+	//계정과목을 추가하는 메서드
+	public void addSubjectService(Subject subject) {
+		System.out.println("SubjectServiceImpl의 addSubjectService메서드 호출");
+		
+		subjectDao.addSubject(subject);
+	}
+
 }

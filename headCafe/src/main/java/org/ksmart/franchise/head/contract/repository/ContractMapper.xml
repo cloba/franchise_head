@@ -8,7 +8,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<resultMap type="org.ksmart.franchise.head.contract.model.Contract" id="contractResultMap">
 		<id property="contractCode" column="contract_code"/>
 		<result property="headStaffId" column="head_staff_id"/>
-		<result property="storeCode" column="store_code"/>
+		<result property="subCode" column="sub_code"/>
 		<result property="contractorName" column="contractor_name"/>
 		<result property="contractActualDate" column="contract_actual_date"/>
 		<result property="contractRegitDate" column="contract_regit_date"/>
@@ -25,7 +25,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- contract의 리스트를 봅니다 (검색포함)-->
 	<select id="selectContract" parameterType="java.util.Map" resultMap="contractResultMap">
-		SELECT contract_code, head_staff_id, store_code, contractor_name, contract_actual_date, contract_regit_date, contract_expiry_date, contract_deposit, contract_profit_percent, contract_file, contract_n, contract_expire, contract_expired_date, contract_expire_content
+		SELECT contract_code, head_staff_id, sub_code, contractor_name, contract_actual_date, contract_regit_date, contract_expiry_date, contract_deposit, contract_profit_percent, contract_file, contract_n, contract_expire, contract_expired_date, contract_expire_content
 		FROM contract
 		<where>
 			<if test="contractSearch.regitDateStart != null and contractSearch.regitDateEnd != null and contractSearch.regitDateStart !='' and contractSearch.regitDateEnd !=''">
@@ -49,10 +49,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<!-- contract 하나를 봅니다  -->
-	<select id="selectOneContract" parameterType="java.util.Map" resultMap="contractResultMap">
-		SELECT contract_code, head_staff_id, store_code, contractor_name, contract_actual_date, contract_regit_date, contract_expiry_date, contract_deposit, contract_profit_percent, contract_file, contract_n, contract_expire, contract_expired_date, contract_expire_content
+	<select id="selectOneContract" parameterType="java.lang.String" resultMap="contractResultMap">
+		SELECT contract_code, head_staff_id, sub_code, contractor_name, contract_actual_date, contract_regit_date, contract_expiry_date, contract_deposit, contract_profit_percent, contract_file, contract_n, contract_expire, contract_expired_date, contract_expire_content
 		FROM contract
 		WHERE contract_code = #{contractCode}
 	</select>
 	
+	<!-- contract를 수정합니다 (계약파기시) -->
+	<update id="updateContract">
+		UPDATE contract
+		SET
+			contract_expire='Y',
+			contract_expired_date=NOW(),
+			contract_expire_content=#{contract.contractExpireContent}
+		WHERE contract_code = #{contract.contractCode}
+	</update>
 </mapper>

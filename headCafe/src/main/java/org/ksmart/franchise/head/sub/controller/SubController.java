@@ -2,9 +2,6 @@ package org.ksmart.franchise.head.sub.controller;
 
 import java.util.List;
 
-import org.ksmart.franchise.head.item.model.HeadLogin;
-import org.ksmart.franchise.head.item.model.Item;
-import org.ksmart.franchise.head.item.model.ItemCommand;
 import org.ksmart.franchise.head.sub.model.Sub;
 import org.ksmart.franchise.head.sub.model.SubCommand;
 import org.ksmart.franchise.head.sub.service.SubService;
@@ -14,7 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class SubController {

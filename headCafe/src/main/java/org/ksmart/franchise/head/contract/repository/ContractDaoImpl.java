@@ -29,13 +29,23 @@ public class ContractDaoImpl implements ContractDao {
 	}
 
 	@Override
+	//contract하나의 상세를 봅니다
 	public Contract getContractDetail(String contractCode) {
-			System.out.println("ContractDaoImpl의 getContractDetail 메서드 호출");
+		System.out.println("ContractDaoImpl의 getContractDetail 메서드 호출");
+		
+		return sqlSessionContract.selectOne(NS+".selectOneContract", contractCode);
+	}
+
+	@Override
+	//contract를 수정하는 메서드입니다
+	public void modifyContract(Contract contract) {
+		System.out.println("ContractDaoImpl의 modifyContract 메서드 호출");
 		
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("contractCode", contractCode);
+		map.put("contract", contract);
+		System.out.println(contract.getContractCode() +"<==== contractCode");
 		
-		return sqlSessionContract.selectOne(NS+".selectOneContract", map);
+		sqlSessionContract.update(NS+".updateContract", map);		
 	}
 
 }
