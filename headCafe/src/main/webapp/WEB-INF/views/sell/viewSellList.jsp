@@ -75,7 +75,7 @@
 			<option value="">::선택::</option>
 			<option value="head_sell_code" <c:if test="${search.searchKey eq 'head_sell_code'}">selected="selected"</c:if>>판매코드</option>
 			<option value="inte_code" <c:if test="${search.searchKey eq 'inte_code'}">selected="selected"</c:if>>상품 통합코드</option>
-			<option value="store_code" <c:if test="${search.searchKey eq 'store_code'}">selected="selected"</c:if>>가맹일련번호</option>
+			<option value="sub_code" <c:if test="${search.searchKey eq 'store_code'}">selected="selected"</c:if>>가맹일련번호</option>
 		</select>
 		<input type="text" id="searchItem" name="searchItem" value="${search.searchItem}"/>
 		<input type="submit" id="searchBtn" value="검색"/>
@@ -123,7 +123,7 @@
 				<th><a href="/viewSellDetail?headSellCode=${list.headSellCode}">${list.headSellCode}</a></th>
 				<th>${list.inteCode}</th>
 				<th>${list.headSellQuantity}</th>
-				<th>${list.storeCode}</th>
+				<th>${list.subCode}</th>
 				<th>${list.headSellGroup}</th>
 				<th><fmt:formatNumber value="${list.headSellSellingPrice}" pattern="#,###"/></th>
 				<th><fmt:parseDate value="${list.headSellDate}" pattern="yyyy-MM-dd HH:mm:ss" var="date"/>

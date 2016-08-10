@@ -7,7 +7,7 @@ public class Sell {
 	private String headSellCode; 
 	private String inteCode;
 	private int headSellQuantity;
-	private String storeCode;
+	private String subCode;
 	private String headSellGroup;
 	private int headSellPurchasePrice;
 	private int headSellSellingPrice;
@@ -37,11 +37,11 @@ public class Sell {
 	public void setHeadSellQuantity(int headSellQuantity) {
 		this.headSellQuantity = headSellQuantity;
 	}
-	public String getStoreCode() {
-		return storeCode;
+	public String getSubCode() {
+		return subCode;
 	}
-	public void setStoreCode(String storeCode) {
-		this.storeCode = storeCode;
+	public void setSubCode(String subCode) {
+		this.subCode = subCode;
 	}
 	public String getHeadSellGroup() {
 		return headSellGroup;
@@ -109,15 +109,6 @@ public class Sell {
 	public void setHeadSellProfitSub(int headSellProfitSub) {
 		this.headSellProfitSub = headSellProfitSub;
 	}
-	@Override
-	public String toString() {
-		return "Sell [headSellCode=" + headSellCode + ", inteCode=" + inteCode + ", headSellQuantity="
-				+ headSellQuantity + ", storeCode=" + storeCode + ", headSellGroup=" + headSellGroup
-				+ ", headSellPurchasePrice=" + headSellPurchasePrice + ", headSellSellingPrice=" + headSellSellingPrice
-				+ ", headSellDate=" + headSellDate + ", totalAccountGroup=" + totalAccountGroup + ", headSellFinal="
-				+ headSellFinal + ", headSellFinalStaff=" + headSellFinalStaff + ", headSellFinalDate="
-				+ headSellFinalDate + ", headSellDistr=" + headSellDistr + ", headSellProfitHead=" + headSellProfitHead
-				+ ", headSellProfitSub=" + headSellProfitSub + "]";
-	}
+	
 	
 }

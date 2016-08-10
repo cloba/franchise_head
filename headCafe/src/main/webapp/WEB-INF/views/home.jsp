@@ -24,6 +24,7 @@
 </head>
 <body>
 로그인 아이디: ${headStaffLogin.headStaffId}
+<a href="/viewReceivedOrder">들어온 주문 확인</a>
 <a href="/viewDeliveryList">배송관리</a>
 <a href="/viewItemOutList">출고관리</a>
 <a href="/viewSellList?status=Y">본사판매관리</a>

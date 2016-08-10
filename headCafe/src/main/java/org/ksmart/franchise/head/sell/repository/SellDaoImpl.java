@@ -4,8 +4,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.ksmart.franchise.head.sell.model.ReceivedOrder;
 import org.ksmart.franchise.head.sell.model.Sell;
 import org.ksmart.franchise.head.sell.model.SellSearch;
+import org.ksmart.franchise.head.util.Search;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -19,7 +21,7 @@ public class SellDaoImpl implements SellDao {
 	private SqlSessionTemplate sqlSessionSell;
 
 	@Override
-	// 본사의 판매 내역 리스트를 불러오는 메서드입니다
+	//본사의 판매 내역 리스트를 불러오는 메서드입니다
 	public List<Sell> viewSellList(SellSearch search) {
 		System.out.println("SellDaoImpl의 viewSellList 메서드 호출");
 		
@@ -30,7 +32,7 @@ public class SellDaoImpl implements SellDao {
 	}
 
 	@Override
-	// 본사의 판매내역 하나의 상세내역을 불러오는 메서드입니다
+	//본사의 판매내역 하나의 상세내역을 불러오는 메서드입니다
 	public Sell getSellDetail(String headSellCode) {
 		System.out.println("SellDaoImpl의 getSellDetail 메서드 호출");
 		
@@ -38,6 +40,40 @@ public class SellDaoImpl implements SellDao {
 		map.put("headSellCode", headSellCode);
 		
 		return sqlSessionSell.selectOne(NS+".selectOneSell", map);
+	}
+
+	@Override
+	//본사가 받은 주문 리스트를 불러오는 메서드입니다
+	public List<ReceivedOrder> viewReceivedOrder(Search search) {
+		System.out.println("SellDaoImpl의 viewReceivedOrder 메서드 호출");
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("search", search);
+		
+		return sqlSessionSell.selectList(NS+".selectReceivedOrder", map);
+	}
+
+	@Override
+	//본사가 주문을 승인하는 메서드입니다
+	public int confirmOrder(String code) {
+		System.out.println("SellDaoImpl의 confirmOrder 메서드 호출");
+		int result = sqlSessionSell.update(NS+".confirmOrder", code);
+		
+		return result;
+	}
+
+	@Override
+	public int cancelConfirm(String code) {
+		System.out.println("SellDaoImpl의 cancelConfirm 메서드 호출");
+		int result = sqlSessionSell.update(NS+".cancelConfirm", code);
+		
+		return result;
+	}
+
+	@Override
+	public int addSell() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

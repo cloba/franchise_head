@@ -9,7 +9,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<id property="headSellCode" column="head_sell_code"/>
 		<result property="inteCode" column="inte_code"/>
 		<result property="headSellQuantity" column="head_sell_quantity"/>
-		<result property="storeCode" column="store_code"/>
+		<result property="subCode" column="sub_code"/>
 		<result property="headSellGroup" column="head_sell_group"/>
 		<result property="headSellPurchasePrice" column="head_sell_purchase_price"/>
 		<result property="headSellSellingPrice" column="head_sell_selling_price"/>
@@ -23,9 +23,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="headSellProfitSub" column="head_sell_profit_sub"/>
 	</resultMap>
 	
+	<resultMap type="org.ksmart.franchise.head.sell.model.ReceivedOrder" id="ReceivedOrderResultMap">
+		<id property="code" column="received_order_code"/>
+		<result property="date" column="received_order_date"/>
+		<result property="check" column="received_order_check"/>
+		<result property="staff" column="received_order_staff"/>
+		<result property="item" column="received_order_item"/>
+		<result property="subCode" column="received_order_sub_code"/>
+		<result property="group" column="received_order_group"/>
+		<result property="quantity" column="received_order_quantity"/>
+		<result property="amount" column="received_order_amount"/>
+	</resultMap>
+	
 	<!-- 본사의 판매 리스트를 봅니다 (검색포함)-->
 	<select id="selectSell" parameterType="java.util.Map" resultMap="sellResultMap">
-		SELECT head_sell_code, inte_code, store_code, head_sell_group, head_sell_purchase_price, head_sell_selling_price, head_sell_date, total_account_group, head_sell_final, head_sell_final_staff, head_sell_final_date, head_sell_distr, head_sell_profit_head, head_sell_profit_sub
+		SELECT head_sell_code, inte_code, sub_code, head_sell_group, head_sell_purchase_price, head_sell_selling_price, head_sell_date, total_account_group, head_sell_final, head_sell_final_staff, head_sell_final_date, head_sell_distr, head_sell_profit_head, head_sell_profit_sub
 		FROM head_sell
 		<where>
 			<if test="search.regitDateStart != null and search.regitDateEnd != null and search.regitDateStart !='' and search.regitDateEnd !=''">
@@ -50,9 +62,55 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 판매내역 하나를 봅니다 -->
 	<select id="selectOneSell" parameterType="java.util.Map" resultMap="sellResultMap">
-		SELECT head_sell_code, inte_code, head_sell_quantity, store_code, head_sell_group, head_sell_purchase_price, head_sell_selling_price, head_sell_date, total_account_group, head_sell_final, head_sell_final_staff, head_sell_final_date, head_sell_distr, head_sell_profit_head, head_sell_profit_sub
+		SELECT head_sell_code, inte_code, head_sell_quantity, sub_code, head_sell_group, head_sell_purchase_price, head_sell_selling_price, head_sell_date, total_account_group, head_sell_final, head_sell_final_staff, head_sell_final_date, head_sell_distr, head_sell_profit_head, head_sell_profit_sub
 		FROM head_sell
 		WHERE head_sell_code = #{headSellCode}
 	</select>
 	
+	<!-- 주문받은 내역 리스트를 봅니다 -->
+	<select id="selectReceivedOrder" parameterType="java.util.Map" resultMap="ReceivedOrderResultMap">
+		SELECT received_order_code, received_order_date, received_order_check, received_order_staff, received_order_item, received_order_sub_code, received_order_group, received_order_quantity, received_order_amount
+		FROM received_order
+		<where>
+			<if test="search.regitDateStart != null and search.regitDateEnd != null and search.regitDateStart !='' and search.regitDateEnd !=''">
+				<![CDATA[date(received_order_date) >= #{search.regitDateStart} and date(received_order_date) <= #{search.regitDateEnd}]]>  
+			</if>
+			<if test="search.searchKey != null and search.searchKey != '' and search.searchItem != null and search.searchItem != ''">
+				AND ${search.searchKey} REGEXP #{search.searchItem} 
+			</if> 
+			<if test="search.status != null and search.status != ''">
+				AND received_order_check = #{search.status}
+			</if>
+		</where> 
+		<trim prefix="ORDER BY">
+			<if test="search.criteria != null or search.criteria != ''">
+				${search.criteria} ${search.upDown}
+			</if>
+		</trim> 
+	</select>
+	
+	<!-- 들어온 주문을 승인합니다 -->
+	<update id="confirmOrder" parameterType="java.lang.String">
+		UPDATE received_order
+		SET
+			received_order_check='Y',
+			received_order_date=NOW(),
+			received_order_staff='head_staff_id1'
+		WHERE received_order_code = #{code}
+	</update>
+	
+	<!-- 주문 승인을 취소합니다 -->
+	<update id="cancelConfirm" parameterType="java.lang.String">
+		UPDATE received_order
+		SET
+			received_order_check='N',
+			received_order_date=null,
+			received_order_staff='head_staff_id1'
+		WHERE received_order_code = #{code}
+	</update>
+	
+	<!-- 승인한 주문건을 판매내역에 추가합니다 -->
+	<!-- <insert id="">
+		
+	</insert> -->
 </mapper>
