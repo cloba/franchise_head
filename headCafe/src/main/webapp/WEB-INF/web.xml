@@ -26,6 +26,7 @@
     <servlet-name>appServlet</servlet-name>
     <url-pattern>/</url-pattern>
   </servlet-mapping>
+  
   <filter>
     <display-name>CharacterEncodingFilter</display-name>
     <filter-name>CharacterEncodingFilter</filter-name>

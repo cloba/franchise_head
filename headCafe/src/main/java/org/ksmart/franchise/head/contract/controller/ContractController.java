@@ -5,26 +5,20 @@ import java.util.List;
 import org.ksmart.franchise.head.contract.model.Contract;
 import org.ksmart.franchise.head.contract.model.ContractCommand;
 import org.ksmart.franchise.head.contract.service.ContractService;
+import org.ksmart.franchise.head.item.model.HeadLogin;
 import org.ksmart.franchise.head.util.Search;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
-@SessionAttributes("loginId")
 public class ContractController {
 	
 	@Autowired
 	private ContractService contractService;
 	
-	/*@ModelAttribute("command")
-    public CommandObject commandObject() {
-        return new CommandObject();
-    }
-	*/
 	//계약 리스트를 보여줍니다 (검색포함)
 	@RequestMapping(value="/viewContractList")
 	public String viewContractList(Search contractSearch, Model model){
@@ -58,7 +52,7 @@ public class ContractController {
 	
 	//계약을 등록합니다
 	@RequestMapping(value="/addContract", method=RequestMethod.POST)
-	public String addContract(ContractCommand contractCommand){
+	public String addContract(ContractCommand contractCommand, HeadLogin headStaffLogin){
 		System.out.println("PaymentController의 addContract 메서드 호출");
 		
 		contractService.addContractService(contractCommand);
