@@ -12,13 +12,13 @@
 $(document).ready(function(){
 	/* 오름차/내림차순 정렬 설정 */
 	$('#royaltyCodeUp').click(function(){
-		console.log('>로열티지불 코드 내림차순 정렬');
+		console.log('로열티지불 코드 내림차순 정렬');
 		$('#criteria').attr('value','royalty_code');
 		$('#upDown').attr('value','DESC');
 		$('#royaltyForm').submit();
 	});
 	$('#royaltyCodeDown').click(function(){
-		console.log('>로열티지불 코드 오름차순 정렬');
+		console.log('로열티지불 코드 오름차순 정렬');
 		$('#criteria').attr('value','royalty_code');
 		$('#upDown').attr('value','ASC');
 		$('#royaltyForm').submit();

@@ -24,16 +24,12 @@ public class RoyaltyOverdueDaoImpl implements RoyaltyOverdueDao{
 	
 	//로얄티 연체 리스트 조회 메서드
 	@Override
-	public List<RoyaltyOverdue> royaltyOverdueList(Search search, List<RoyaltyOverdueAdd> list) {
+	public List<RoyaltyOverdue> royaltyOverdueList(Search search) {
 		System.out.println("RoyaltyOverdueDaoImpl의 royaltyOverdueList메서드");
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("search", search);
-		for(int i=0; i<list.size(); i++){
-			System.out.println("list22:"+list.get(i));
-			sqlSessionRoyaltyOverdue.selectList(NS+".selectRoyaltyOverdueList", map);
-		}
 		
-		return null;
+		return sqlSessionRoyaltyOverdue.selectList(NS+".selectRoyaltyOverdueList", map);
 	
 	 
 	}
@@ -52,7 +48,6 @@ public class RoyaltyOverdueDaoImpl implements RoyaltyOverdueDao{
 	public void royaltyOverdueAdd(List<RoyaltyOverdueAdd> list) {
 		System.out.println("RoyaltyOverdueDaoImpl의 royaltyOverdueAdd메서드");
 		String OverdueIdentify= null;
-		
 		for(int i=0; i<list.size(); i++){
 			System.out.println("list22:"+list.get(i));
 			System.out.println("royaltyCode :"+list.get(0).getRoyaltyCode());
@@ -60,7 +55,6 @@ public class RoyaltyOverdueDaoImpl implements RoyaltyOverdueDao{
 			//메서드가 몇 번 실행됐는지 확인하는 변수
 			int queryIdentify = sqlSessionRoyaltyOverdue.insert(NS+".insertRoyaltyOverdue", list.get(i));
 			
-			System.out.println("aaaaaaaaaaaaaa :"+queryIdentify);
 			//메서드가 한 번 이상 실행 됐다면 
 			if(queryIdentify != 0){
 				// 메서드를 실행한 RoyaltyCode를 가져온다.
@@ -69,10 +63,5 @@ public class RoyaltyOverdueDaoImpl implements RoyaltyOverdueDao{
 				sqlSessionRoyalty.update(S+".updateRoyaltyOverdueIdentify", OverdueIdentify);
 			}
 		}	
-	}
-	@Override
-	public void royaltyIdentifyUpdate() {
-		
-		
 	}
 }

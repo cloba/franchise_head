@@ -34,11 +34,13 @@ public class RoyaltyOverdueController {
 		  cal.add(Calendar.MONTH, -1); // 한달을 뺀다.  
 		  SimpleDateFormat Month = new SimpleDateFormat("yyyy-MM");  //데이터 포맷 형태.
 		  royaltyOverdue.setLastMonth(Month.format(cal.getTime()));  //royaltyOverdue객체에 지난 달 입력.
-		  
-		  List<RoyaltyOverdue> list =  royaltyOverdueService.royaltyOverdueListService(search, royaltyOverdue);
-		  
-		  System.out.println("list.size:"+ list.size());
-		  model.addAttribute("list", list);
+		  List<RoyaltyOverdue> royaltyOverduelist =  royaltyOverdueService.royaltyOverdueListService(search, royaltyOverdue);
+
+		  for(RoyaltyOverdue a:royaltyOverduelist){
+			  System.out.println("getRoyaltyPayActualDate"+a.getRoyaltyOverduePayDate()); 
+		  }
+		  System.out.println("royaltyOverduelist.size:"+ royaltyOverduelist.size());
+		  model.addAttribute("royaltyOverduelist", royaltyOverduelist);
 		  
 	      return "/royaltyOverdue/viewRoyaltyOverdueList";
     }

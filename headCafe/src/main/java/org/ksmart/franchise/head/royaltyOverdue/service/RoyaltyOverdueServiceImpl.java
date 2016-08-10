@@ -18,21 +18,13 @@ public class RoyaltyOverdueServiceImpl implements RoyaltyOverdueService {
 	//로얄티 연체 리스트 조회 메서드
 	public List<RoyaltyOverdue> royaltyOverdueListService(Search search, RoyaltyOverdue royaltyOverdue) {
 		System.out.println("RoyaltyOverdueServiceImpl의 royaltyOverdueListService메서드");
-		
+		//로얄티 연체에 추가할 로우가 있는지 확인하는 메서드
 		List<RoyaltyOverdueAdd> list = royaltyOverdueDao.royaltyOverdueIdentify(royaltyOverdue);
-		System.out.println("getRoyaltyCode :"+list.get(0).getRoyaltyCode());
-		System.out.println(list.get(0));
+		
+		//로얄티 연체를 추가하는 메서드
 		royaltyOverdueDao.royaltyOverdueAdd(list);
 		
-		/*if(list!=null){
-	  
-			int identifyMethod = 
-			if(identifyMethod==1){
-				royaltyOverdueDao.royaltyIdentifyUpdate();
-			}
-		}*/
-		
-		return royaltyOverdueDao.royaltyOverdueList(search, list);
+		return royaltyOverdueDao.royaltyOverdueList(search);
 	}
 
 }

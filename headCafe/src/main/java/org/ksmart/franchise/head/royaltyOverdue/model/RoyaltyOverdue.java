@@ -2,7 +2,7 @@ package org.ksmart.franchise.head.royaltyOverdue.model;
 
 public class RoyaltyOverdue {
 
-	private String royaltyOverdueCode;
+	private String royaltyOverdueCode;  
 	private String contractCode;
 	private String royaltyOverdueStatus;
 	private String royaltyOverduePaid;
@@ -10,6 +10,8 @@ public class RoyaltyOverdue {
 	private String royaltyOverdueRest;
 	private String lastMonth;
 	private String royaltyTotalOverduePay;
+	private String royaltyCode;
+	private String subName;
 	
 	
 	public String getRoyaltyOverdueCode() {
@@ -59,6 +61,18 @@ public class RoyaltyOverdue {
 	}
 	public void setRoyaltyTotalOverduePay(String royaltyTotalOverduePay) {
 		this.royaltyTotalOverduePay = royaltyTotalOverduePay;
+	}
+	public String getRoyaltyCode() {
+		return royaltyCode;
+	}
+	public void setRoyaltyCode(String royaltyCode) {
+		this.royaltyCode = royaltyCode;
+	}
+	public String getSubName() {
+		return subName;
+	}
+	public void setSubName(String subName) {
+		this.subName = subName;
 	}
 
 	

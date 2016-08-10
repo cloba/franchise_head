@@ -37,19 +37,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			sub_sell_profit_month, head_sell_profit_by_sub_month, royalty_pay_actual_date, royalty_actual_amount, sub_name
 		FROM
 			royalty 
-			<where>
-				<if test='search.searchItem != null and search.searchItem != "" '>
-					AND ${search.searchKey} like CONCAT('%',#{search.searchItem},'%')
-				</if>
-				<!-- <if test="Royalty.lastMonth != null" >
-					AND sub_sell_date like CONCAT('%',#{royalty.lastMonth},'%')
-				</if> -->
-			</where>
-			<trim prefix="ORDER BY">
-				<if test="search.criteria != null or search.criteria != ''">
-					${search.criteria} ${search.upDown}
-				</if>
-			</trim>
+		<where>
+			<if test='search.searchItem != null and search.searchItem != "" '>
+				AND ${search.searchKey} like CONCAT('%',#{search.searchItem},'%')
+			</if>
+		</where>
+		<trim prefix="ORDER BY">
+			<if test="search.criteria != null or search.criteria != ''">
+				${search.criteria} ${search.upDown}
+			</if>
+		</trim>
 	
 	</select>
 
@@ -103,7 +100,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	    	 royalty 
 	    WHERE royalty_paid = 'N' AND royalty_overdue_identify='N' AND royalty_code 
 		NOT IN
-			 (SELECT royalty_code FROM royalty WHERE royalty_month = #{lastMonth} 
+			 (SELECT royalty_code FROM royalty WHERE royalty_month = #{royaltyOverdue.lastMonth} 
 		AND royalty_code IN (SELECT royalty_code FROM royalty WHERE royalty_deadline >= date_format(now(),'%d') ))
 	</select>
 	

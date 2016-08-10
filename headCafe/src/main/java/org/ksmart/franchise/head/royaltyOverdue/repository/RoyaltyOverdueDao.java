@@ -8,13 +8,11 @@ import org.ksmart.franchise.head.util.Search;
 
 public interface RoyaltyOverdueDao {
 
-	List<RoyaltyOverdue> royaltyOverdueList(Search search, List<RoyaltyOverdueAdd> list);
+	List<RoyaltyOverdue> royaltyOverdueList(Search search);
 
 	List<RoyaltyOverdueAdd> royaltyOverdueIdentify(RoyaltyOverdue royaltyOverdue);
 
 	void royaltyOverdueAdd(List<RoyaltyOverdueAdd> list);
-
-	void royaltyIdentifyUpdate();
 
 
 }
