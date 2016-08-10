@@ -1,7 +1,6 @@
 package org.ksmart.franchise.head.royaltyOverdue.model;
 
 public class RoyaltyOverdue {
-
 	private String royaltyOverdueCode;  
 	private String contractCode;
 	private String royaltyOverdueStatus;

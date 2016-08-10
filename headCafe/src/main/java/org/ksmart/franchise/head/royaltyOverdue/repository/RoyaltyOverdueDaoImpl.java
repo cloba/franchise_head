@@ -64,4 +64,9 @@ public class RoyaltyOverdueDaoImpl implements RoyaltyOverdueDao{
 			}
 		}	
 	}
+	@Override
+	public RoyaltyOverdue royaltyOverDetatil(RoyaltyOverdue royaltyOverdue) {
+		System.out.println("RoyaltyOverdueDaoImpl의 royaltyOverDetatil메서드");
+		return sqlSessionRoyaltyOverdue.selectOne(NS+".selectROyaltyOverdueDetail", royaltyOverdue);
+	}
 }

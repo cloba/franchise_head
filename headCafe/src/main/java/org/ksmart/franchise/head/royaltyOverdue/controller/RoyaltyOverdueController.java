@@ -23,7 +23,7 @@ public class RoyaltyOverdueController {
 	@Autowired
 	private RoyaltyOverdueService royaltyOverdueService;
 	
-	//연체리스트 조회 하는 메서드
+	//로얄티 연체 리스트 조회 메서드
 	@RequestMapping(value="/viewRoyaltyOverdueList", method=RequestMethod.GET)
 	public String viewRoyaltyList(Model model, Search search, RoyaltyOverdue royaltyOverdue) {
 		  System.out.println("RoyaltyOverdueController의 viewRoyaltyList메서드 ");
@@ -45,4 +45,14 @@ public class RoyaltyOverdueController {
 	      return "/royaltyOverdue/viewRoyaltyOverdueList";
     }
 	
+	//로얄티 연체 상세정보 조회 메서드
+		@RequestMapping(value="/viewRoyaltyOverdueDetail", method=RequestMethod.GET)
+		public String viewRoyaltyOverdueDetail(Model model, RoyaltyOverdue royaltyOverdue) {
+			  System.out.println("RoyaltyOverdueController의 viewRoyaltyOverdueDetail메서드 ");
+			  System.out.println("getRoyaltyOverdueCode"+royaltyOverdue.getRoyaltyOverdueCode());
+			  royaltyOverdue =  royaltyOverdueService.royaltyOverdueDetailService(royaltyOverdue);			 
+			  model.addAttribute("royaltyOverdue", royaltyOverdue);
+			  
+		      return "/royaltyOverdue/viewRoyaltyOverdueDetail";
+	    }
 }

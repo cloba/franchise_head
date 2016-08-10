@@ -14,5 +14,7 @@ public interface RoyaltyOverdueDao {
 
 	void royaltyOverdueAdd(List<RoyaltyOverdueAdd> list);
 
+	RoyaltyOverdue royaltyOverDetatil(RoyaltyOverdue royaltyOverdue);
+
 
 }

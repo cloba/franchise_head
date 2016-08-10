@@ -15,18 +15,41 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="headSellProfitBySubMonth" column="head_sell_profit_by_sub_month"/>
 		<result property="royaltyCode" column="royalty_code"/>
 		<result property="subName" column="sub_name"/>
-		<result property="subName" column="sub_name"/>
 	</resultMap>
 	
 	
-	<!--로얄티 연체 리스트 조회 쿼리 -->
-	<select id="selectRoyaltyOverdueList" parameterType="java.util.Map" resultMap="RoyaltyOverdueResultMap"> 
+	<!-- 로얄티 연체 상세 정보 조회 쿼리 -->
+	<select id="selectROyaltyOverdueDetail" parameterType="org.ksmart.franchise.head.royaltyOverdue.model.RoyaltyOverdue" resultMap="RoyaltyOverdueResultMap">
 		SELECT	
 			s.sub_name, 
 			s.sub_code, 
 			r.royalty_overdue_code,
 			r.contract_code,
 			r.royalty_code,
+			r.royalty_overdue_status,
+			r.royalty_overdue_paid,
+			r.royalty_overdue_pay_date,
+			r.royalty_overdue_rest,
+			r.royalty_total_overdue_pay
+		FROM 
+			royalty s INNER JOIN royalty_overdue r 
+		ON
+			r.royalty_code = s.royalty_code 
+		WHERE
+			s.royalty_code = r.royalty_code	
+		AND 
+			r.royalty_overdue_code = #{royaltyOverdueCode}		
+	</select>
+	
+	
+	<!--로얄티 연체 리스트 조회 쿼리 -->
+	<select id="selectRoyaltyOverdueList" parameterType="java.util.Map" resultMap="RoyaltyOverdueResultMap"> 
+		SELECT	
+			s.sub_name, 
+			<!-- s.sub_code,  -->
+			r.royalty_overdue_code,
+			r.contract_code,
+		<!-- r.royalty_code, -->
 			r.royalty_overdue_status,
 			r.royalty_overdue_paid,
 			r.royalty_overdue_pay_date,

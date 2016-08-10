@@ -120,7 +120,7 @@ $(document).ready(function(){
 		<c:forEach var="royaltyOverdue" items="${royaltyOverduelist}">
 			<div>
 				<label>${royaltyOverdue.royaltyOverdueCode}																						</label>
-				<label><a href="/viewRoyaltyOverdueDetail?royaltyOvrdueCode=${royaltyOverdue.royaltyOverdueCode}">${royaltyOverdue.subName}</a>	</label>
+				<label><a href="/viewRoyaltyOverdueDetail?royaltyOverdueCode=${royaltyOverdue.royaltyOverdueCode}">${royaltyOverdue.subName}</a>	</label>
 			    <label>${royaltyOverdue.royaltyOverdueStatus}																					</label> 
 				<label>${royaltyOverdue.royaltyTotalOverduePay}																					</label>
 				<label>${royaltyOverdue.royaltyOverduePaid}																						</label>
