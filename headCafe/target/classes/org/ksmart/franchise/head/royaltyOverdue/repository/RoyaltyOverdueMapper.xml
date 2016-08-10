@@ -65,9 +65,9 @@ select * from royalty where royalty_code IN (select royalty_code from royalty wh
 	     </selectKey>
 	     <!-- list22:Royalty [lastMonth=null, RoyaltyCode=royalty_code1, contractCode=contract_code1, royaltyMonth=2016-06, royaltyDeadline=15, royaltyPaid=N, subPracticalSellPriceMonth=1000000, subSellProfitMonth=900000, headSellProfitBySubMonth=100000, royaltyPayActualDate=2016-08-08, royaltyActualAmount=100000, subName=전주사랑점] -->
 		INSERT INTO royalty_overdue
-			(royalty_overdue_code,   contract_code,    royalty_overdue_status,   royalty_overdue_paid,                                                                                                  royalty_overdue_pay_date,    royalty_overdue_rest,                                  royalty_total_overdue_pay) 
+			(royalty_overdue_code,   contract_code,    royalty_overdue_status,   royalty_overdue_paid,                                                                                                                        royalty_overdue_pay_date,    royalty_overdue_rest,                                  royalty_total_overdue_pay, royalty_code) 
 		VALUES        
-		    (#{royaltyOverdueCode},  #{contractCode},  #{royaltyActualAmount},  (select case when royalty_actual_amount=0 then '1' else '2' END FROM royalty where royalty_code = 'royalty_code1' )     #{royaltyPayActualDate},     #{headSellProfitBySubMonth}-#{royaltyActualAmount },   #{headSellProfitBySubMonth});  
+		    (#{royaltyOverdueCode},  #{contractCode},  #{royaltyActualAmount},  (select case when royalty_actual_amount=0 then '1' else '2' END as royaltyActualAmount FROM royalty where royalty_code = #{royaltyCode}),    (select if(isnull(#{royaltyPayActualDate}),0, #{royaltyPayActualDate})) ,     #{headSellProfitBySubMonth}-#{royaltyActualAmount },   #{headSellProfitBySubMonth}, #{royaltyCode} );  
 	</insert>
 
 </mapper>

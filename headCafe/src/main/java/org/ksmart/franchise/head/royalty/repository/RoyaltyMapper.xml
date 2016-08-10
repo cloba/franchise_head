@@ -24,6 +24,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="royaltyActualAmount" column="royalty_actual_amount"/>
 		<result property="royaltyPayActualDate" column="royalty_pay_actual_date"/>
 		<result property="headSellProfitBySubMonth" column="head_sell_profit_by_sub_month"/>
+		<result property="royaltyCode" column="royalty_code"/>
 	</resultMap>
 
 
@@ -96,9 +97,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 로얄티 연체 구하 확인하는 메서드 -->
 	<select id="selectRoyaltyOverdueIdentify" parameterType="java.util.Map" resultMap="RoyaltyOverdueAddResultMap">
 		SELECT
-			 head_sell_profit_by_sub_month, royalty_pay_actual_date, royalty_actual_amount, contract_code
+			 royalty_code, head_sell_profit_by_sub_month, royalty_pay_actual_date, royalty_actual_amount, contract_code
 	    FROM
-	    	 royalty where royalty_paid = 'N' and royalty_code 
+	    	 royalty 
+	    WHERE royalty_paid = 'N' and royalty_code 
 		NOT IN
 			 (select royalty_code from royalty where royalty_month = #{royaltyOverdue.lastMonth} 
 		AND royalty_code IN (select royalty_code from royalty where royalty_deadline > date_format(now(),'%d') ))
