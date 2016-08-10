@@ -22,11 +22,15 @@ public class RoyaltyOverdueServiceImpl implements RoyaltyOverdueService {
 		List<RoyaltyOverdueAdd> list = royaltyOverdueDao.royaltyOverdueIdentify(royaltyOverdue);
 		System.out.println("getRoyaltyCode :"+list.get(0).getRoyaltyCode());
 		System.out.println(list.get(0));
-		if(list!=null){
+		royaltyOverdueDao.royaltyOverdueAdd(list);
+		
+		/*if(list!=null){
 	  
-			royaltyOverdueDao.royaltyOverdueAdd(list);
-			
-		}
+			int identifyMethod = 
+			if(identifyMethod==1){
+				royaltyOverdueDao.royaltyIdentifyUpdate();
+			}
+		}*/
 		
 		return royaltyOverdueDao.royaltyOverdueList(search, list);
 	}

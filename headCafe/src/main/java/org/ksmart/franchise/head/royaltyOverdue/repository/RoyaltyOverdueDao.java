@@ -12,6 +12,9 @@ public interface RoyaltyOverdueDao {
 
 	List<RoyaltyOverdueAdd> royaltyOverdueIdentify(RoyaltyOverdue royaltyOverdue);
 
-	int royaltyOverdueAdd(List<RoyaltyOverdueAdd> list);
+	void royaltyOverdueAdd(List<RoyaltyOverdueAdd> list);
+
+	void royaltyIdentifyUpdate();
+
 
 }

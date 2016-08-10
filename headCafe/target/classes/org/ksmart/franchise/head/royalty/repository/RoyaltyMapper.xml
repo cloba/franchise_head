@@ -18,13 +18,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="subName" column="sub_name"/>
 		<result property="subCode" column="sub_code"/>
 	</resultMap>
-	
+
 	<resultMap id="RoyaltyOverdueAddResultMap" type="org.ksmart.franchise.head.royalty.model.RoyaltyOverdueAdd">
 		<result property="contractCode" column="contract_code"/>
 		<result property="royaltyActualAmount" column="royalty_actual_amount"/>
 		<result property="royaltyPayActualDate" column="royalty_pay_actual_date"/>
 		<result property="headSellProfitBySubMonth" column="head_sell_profit_by_sub_month"/>
 		<result property="royaltyCode" column="royalty_code"/>
+		<result property="royaltyOverdueIdentify" column="royalty_overdue_identify"/>
 	</resultMap>
 
 
@@ -100,10 +101,26 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			 royalty_code, head_sell_profit_by_sub_month, royalty_pay_actual_date, royalty_actual_amount, contract_code
 	    FROM
 	    	 royalty 
-	    WHERE royalty_paid = 'N' and royalty_code 
+	    WHERE royalty_paid = 'N' AND royalty_overdue_identify='N' AND royalty_code 
 		NOT IN
-			 (select royalty_code from royalty where royalty_month = #{royaltyOverdue.lastMonth} 
-		AND royalty_code IN (select royalty_code from royalty where royalty_deadline > date_format(now(),'%d') ))
+			 (SELECT royalty_code FROM royalty WHERE royalty_month = #{lastMonth} 
+		AND royalty_code IN (SELECT royalty_code FROM royalty WHERE royalty_deadline >= date_format(now(),'%d') ))
 	</select>
+	
+	<update id="updateRoyaltyOverdueIdentify" parameterType="java.lang.String">
+		UPDATE 
+			royalty
+		SET
+			royalty_overdue_identify='Y'
+		WHERE 
+			royalty_code = #{royaltyCode}
+	
+	
+	
+	
+	
+	</update>
+
+
 
 </mapper>

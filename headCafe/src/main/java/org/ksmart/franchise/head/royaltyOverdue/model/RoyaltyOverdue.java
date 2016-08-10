@@ -9,6 +9,8 @@ public class RoyaltyOverdue {
 	private String royaltyOverduePayDate;
 	private String royaltyOverdueRest;
 	private String lastMonth;
+	private String royaltyTotalOverduePay;
+	
 	
 	public String getRoyaltyOverdueCode() {
 		return royaltyOverdueCode;
@@ -51,6 +53,12 @@ public class RoyaltyOverdue {
 	}
 	public void setLastMonth(String lastMonth) {
 		this.lastMonth = lastMonth;
+	}
+	public String getRoyaltyTotalOverduePay() {
+		return royaltyTotalOverduePay;
+	}
+	public void setRoyaltyTotalOverduePay(String royaltyTotalOverduePay) {
+		this.royaltyTotalOverduePay = royaltyTotalOverduePay;
 	}
 
 	

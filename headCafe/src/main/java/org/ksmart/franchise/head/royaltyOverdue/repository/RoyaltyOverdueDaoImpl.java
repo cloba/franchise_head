@@ -49,15 +49,30 @@ public class RoyaltyOverdueDaoImpl implements RoyaltyOverdueDao{
 	
 	//로얄티연체 추가하는 메서드
 	@Override
-	public int royaltyOverdueAdd(List<RoyaltyOverdueAdd> list) {
+	public void royaltyOverdueAdd(List<RoyaltyOverdueAdd> list) {
 		System.out.println("RoyaltyOverdueDaoImpl의 royaltyOverdueAdd메서드");
+		String OverdueIdentify= null;
+		
 		for(int i=0; i<list.size(); i++){
 			System.out.println("list22:"+list.get(i));
 			System.out.println("royaltyCode :"+list.get(0).getRoyaltyCode());
-			sqlSessionRoyaltyOverdue.insert(NS+".insertRoyaltyOverdue", list.get(i));
-		}
+			
+			//메서드가 몇 번 실행됐는지 확인하는 변수
+			int queryIdentify = sqlSessionRoyaltyOverdue.insert(NS+".insertRoyaltyOverdue", list.get(i));
+			
+			System.out.println("aaaaaaaaaaaaaa :"+queryIdentify);
+			//메서드가 한 번 이상 실행 됐다면 
+			if(queryIdentify != 0){
+				// 메서드를 실행한 RoyaltyCode를 가져온다.
+				OverdueIdentify = list.get(i).getRoyaltyCode();
+				//RoyaltyCode의 royalty_overdue_identify를 'y'로 바꿔주는 메서드
+				sqlSessionRoyalty.update(S+".updateRoyaltyOverdueIdentify", OverdueIdentify);
+			}
+		}	
+	}
+	@Override
+	public void royaltyIdentifyUpdate() {
 		
 		
-		return 0;
 	}
 }
