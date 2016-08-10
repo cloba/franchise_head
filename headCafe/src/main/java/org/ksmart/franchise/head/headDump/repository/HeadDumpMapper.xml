@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.ksmart.franchise.head.headDump.repository.HeadDumpMapper">
+
+<resultMap id="RoyaltyResultMap" type="org.ksmart.franchise.head.headDump.model.HeadDump" >
+	<id property="headDumpCode" column="head_dump_code"/>
+	<result property="hItemCode" column="h_item_code"/>
+	<result property="specificItemCode" column="specific_item_code"/>
+	<result property="headDumpReason" column="head_dump_reason"/>
+	<result property="headStaffId" column="head_staff_id"/>
+	<result property="headDumpDate" column="head_dump_date"/>
+</resultMap>
+
+
+<select id="selectHeadDumpList" parameterType="java.util.Map" resultMap="RoyaltyResultMap">
+	SELECT 
+		head_dump_code,
+	 	h_item_code,
+		specific_item_code, 
+		head_dump_reason, 
+		head_staff_id,
+		head_dump_date
+	FROM
+		head_dump
+	<where>
+		<if test='search.searchItem != null and search.searchItem != "" '>
+			AND ${search.searchKey} like CONCAT('%',#{search.searchItem},'%')
+		</if>
+	</where>
+	<trim prefix="ORDER BY">
+		<if test="search.criteria != null or search.criteria != ''">
+			${search.criteria} ${search.upDown}
+		</if>
+	</trim>	
+
+
+
+</select>
+
+
+
+
+
+</mapper>
+
