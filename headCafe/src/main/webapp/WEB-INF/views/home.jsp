@@ -42,6 +42,8 @@
 <a href="/viewRoyaltyList">로얄티관리</a>
 <a href="/viewRoyaltyOverdueList">로얄티 연체관리</a>
 <a href="/viewHeadDumpList">폐기 상품 관리</a>
+<a href="viewReturnsList">반품 상품 관리</a>
+
 <c:choose>
 <c:when test="${headStaffLogin.headStaffId == null or headStaffLogin.headStaffId == '' }">
 

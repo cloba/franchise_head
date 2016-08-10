@@ -5,9 +5,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
-<script>
-
-</script>
 </head>
 <body>
 <h1>로얄티 디테일</h1>

@@ -168,7 +168,7 @@ tabel , td, th, tr{
 			<span id="guide" style="color:#999"></span>
 		</div>
 		<div>  
-			<input type="button" id="modifyBtn" value="[ 회원정보 수정 ]" > </a>
+			<input type="button" id="modifyBtn" value="[ 회원정보 수정 ]" /> 
 			<a href="/viewHeadStaffList?headStaffId=${headStaff.headStaffId }">[ 직원 리스트 관리 ]</a>
 		</div>	
 	</form>
