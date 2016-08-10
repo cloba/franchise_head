@@ -8,6 +8,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<resultMap type="org.ksmart.franchise.head.sell.model.Sell" id="sellResultMap">
 		<id property="headSellCode" column="head_sell_code"/>
 		<result property="inteCode" column="inte_code"/>
+		<result property="receivedOrderCode" column="received_order_code"/>
 		<result property="headSellQuantity" column="head_sell_quantity"/>
 		<result property="subCode" column="sub_code"/>
 		<result property="headSellGroup" column="head_sell_group"/>
@@ -110,7 +111,27 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 	
 	<!-- 승인한 주문건을 판매내역에 추가합니다 -->
-	<!-- <insert id="">
-		
-	</insert> -->
+	<insert id="addSell" parameterType="org.ksmart.franchise.head.sell.model.Sell" >
+		<selectKey resultType="hashmap" keyProperty="headSellCode" order="BEFORE">
+			SELECT IF( EXISTS(
+            	SELECT head_sell_code
+             	FROM head_sell), concat('head_sell_code', MAX(CONVERT(SUBSTRING(head_sell_code,15), UNSIGNED))+1), 'head_sell_code1') as headSellCode
+			FROM head_sell
+		</selectKey>
+		INSERT INTO head_sell
+			(head_sell_code, inte_code, received_order_code, head_sell_quantity, sub_code, head_sell_group, 
+			head_sell_purchase_price, head_sell_selling_price, head_sell_date, total_account_group, 
+			head_sell_profit_head)
+			SELECT #{headSellCode}, r.received_order_item, r.received_order_code, r.received_order_quantity, r.received_order_sub_code,
+					r.received_order_group, (i.h_item_purchase_price*r.received_order_quantity), 
+					(i.h_item_selling_price*r.received_order_quantity), now(), '본사판매', ((i.h_item_selling_price*r.received_order_quantity)-(i.h_item_selling_price*r.received_order_quantity))
+			FROM head_item i, received_order r 
+			WHERE r.received_order_code = #{receivedOrderCode} and r.received_order_item = i.inte_code
+	</insert>
+	
+	<!-- 판매내역 추가 되돌리기 -->
+	<delete id="cancelSell" parameterType="java.lang.String">
+		DELETE FROM head_sell 
+		WHERE head_sell_code= (select concat('head_sell_code', MAX(CONVERT(SUBSTRING(head_sell_code,15), UNSIGNED))))
+	</delete>
 </mapper>

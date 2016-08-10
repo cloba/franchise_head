@@ -19,5 +19,7 @@ public interface SellDao {
 	//본사가 승인을 취소하는 메서드입니다
 	int cancelConfirm(String code);
 	//승인한 주문 내용을 판매내역에 추가합니다
-	int addSell();
+	int addSell(Sell sell);
+	//판매내역 추가를 취소합니다
+	void cancelSell(String code);
 }

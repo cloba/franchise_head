@@ -125,7 +125,7 @@
 					<th>${list.staff}</th>
 				</c:if>
 				<c:if test="${list.check eq 'N'}">
-					<th><a href="/confirmOrder?code=${list.code}">확인</a></th>
+					<th><a href="/confirmOrder?receivedOrderCode=${list.code}">확인</a></th>
 				</c:if>
 			</tr>
 		</c:forEach>

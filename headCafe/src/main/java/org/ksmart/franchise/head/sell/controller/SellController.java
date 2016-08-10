@@ -53,9 +53,9 @@ public class SellController {
 	
 	//들어온 주문을 승인합니다
 	@RequestMapping(value="/confirmOrder")
-	public String confirmOrder(String code){
+	public String confirmOrder(Sell sell){
 		System.out.println("SellController의 confirmOrder 메서드 호출");
-		sellService.confirmOrderService(code);
+		sellService.confirmOrderService(sell);
 		
 		return "redirect:/viewReceivedOrder";
 	}

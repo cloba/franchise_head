@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 public class Sell {
 	private String headSellCode; 
 	private String inteCode;
+	private String receivedOrderCode;
 	private int headSellQuantity;
 	private String subCode;
 	private String headSellGroup;
@@ -30,6 +31,12 @@ public class Sell {
 	}
 	public void setInteCode(String inteCode) {
 		this.inteCode = inteCode;
+	}
+	public String getReceivedOrderCode() {
+		return receivedOrderCode;
+	}
+	public void setReceivedOrderCode(String receivedOrderCode) {
+		this.receivedOrderCode = receivedOrderCode;
 	}
 	public int getHeadSellQuantity() {
 		return headSellQuantity;
