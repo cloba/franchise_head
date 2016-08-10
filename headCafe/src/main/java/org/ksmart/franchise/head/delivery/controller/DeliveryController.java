@@ -24,10 +24,8 @@ public class DeliveryController {
 		List<Delivery> deliveryList = deliveryService.viewDeliveryListService(search);
 		model.addAttribute("deliveryList", deliveryList);
 		model.addAttribute("search", search);
-		
 		return "/delivery/viewDeliveryList";
 	}
-	
 	//배송상세를 보여줍니다
 	@RequestMapping(value="/viewDeliveryDetail")
 	public String viewDeliveryDetail(String deliveryCode, Model model){

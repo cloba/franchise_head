@@ -7,6 +7,7 @@ public class RoyaltyOverdueAdd {
 	private String royaltyPayActualDate;
 	private int headSellProfitBySubMonth; 
 	private String royaltyOverdueCode;
+	private String royaltyCode;
 
 	public String getRoyaltyPayActualDate() {
 		return royaltyPayActualDate;
@@ -38,6 +39,12 @@ public class RoyaltyOverdueAdd {
 	}
 	public void setHeadSellProfitBySubMonth(int headSellProfitBySubMonth) {
 		this.headSellProfitBySubMonth = headSellProfitBySubMonth;
+	}
+	public String getRoyaltyCode() {
+		return royaltyCode;
+	}
+	public void setRoyaltyCode(String royaltyCode) {
+		this.royaltyCode = royaltyCode;
 	}
 
  

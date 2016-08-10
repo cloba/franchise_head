@@ -20,8 +20,10 @@ public class RoyaltyOverdueServiceImpl implements RoyaltyOverdueService {
 		System.out.println("RoyaltyOverdueServiceImpl의 royaltyOverdueListService메서드");
 		
 		List<RoyaltyOverdueAdd> list = royaltyOverdueDao.royaltyOverdueIdentify(royaltyOverdue);
+		System.out.println("getRoyaltyCode :"+list.get(0).getRoyaltyCode());
+		System.out.println(list.get(0));
 		if(list!=null){
-	
+	  
 			royaltyOverdueDao.royaltyOverdueAdd(list);
 			
 		}

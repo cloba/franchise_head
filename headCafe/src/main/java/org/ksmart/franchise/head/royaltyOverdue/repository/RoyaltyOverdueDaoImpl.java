@@ -53,6 +53,7 @@ public class RoyaltyOverdueDaoImpl implements RoyaltyOverdueDao{
 		System.out.println("RoyaltyOverdueDaoImpl의 royaltyOverdueAdd메서드");
 		for(int i=0; i<list.size(); i++){
 			System.out.println("list22:"+list.get(i));
+			System.out.println("royaltyCode :"+list.get(0).getRoyaltyCode());
 			sqlSessionRoyaltyOverdue.insert(NS+".insertRoyaltyOverdue", list.get(i));
 		}
 		
