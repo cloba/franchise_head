@@ -92,12 +92,13 @@
 	</c:if>
 	<c:if test="${search.status == null}">
 		<a href="/viewSellList?status=N">[마감 전 판매내역 보기]</a> 
-		<a href="/viewSellList?status=Y">[마감 된 판매내역 보기기]</a>
+		<a href="/viewSellList?status=Y">[마감 된 판매내역 보기]</a>
 	</c:if>	
 	
 	<!-- 조회 결과 -->
 	<table border="1">
 		<tr>
+			<th>선택</th>
 			<th>
 				판매코드
 				<span id="codeUp">▲</span>
@@ -116,21 +117,32 @@
 				<span id="dateUp">▲</span>
 				<span id="dateDown">▼</span>
 			</th>
+			<th>배송여부</th>
 		</tr>
-		
-		<c:forEach var="list" items="${sellList}">
-			<tr>
-				<th><a href="/viewSellDetail?headSellCode=${list.headSellCode}">${list.headSellCode}</a></th>
-				<th>${list.inteCode}</th>
-				<th>${list.headSellQuantity}</th>
-				<th>${list.subCode}</th>
-				<th>${list.headSellGroup}</th>
-				<th><fmt:formatNumber value="${list.headSellSellingPrice}" pattern="#,###"/></th>
-				<th><fmt:parseDate value="${list.headSellDate}" pattern="yyyy-MM-dd HH:mm:ss" var="date"/>
-					<fmt:formatDate pattern="yyyy-MM-dd" type="both" value="${date}" />
-				</th>
-			</tr>
-		</c:forEach>
+		<form action="/requestDelivery" method="post">
+			<c:forEach var="list" items="${sellList}">
+				<input type="hidden" name="inteCode" value="${list.inteCode}"/>
+				<input type="hidden" name="headSellQuantity" value="${list.headSellQuantity}"/>
+				<tr>
+					<th>
+						<c:if test="${list.headSellDelivery eq 'N'}">
+							<input type="checkbox" name="checkedOrders" value="${list.headSellCode}"/>
+						</c:if>
+					</th>
+					<th><a href="/viewSellDetail?headSellCode=${list.headSellCode}">${list.headSellCode}</a></th>
+					<th>${list.inteCode}</th>
+					<th>${list.headSellQuantity}</th>
+					<th>${list.subCode}</th>
+					<th>${list.headSellGroup}</th>
+					<th><fmt:formatNumber value="${list.headSellSellingPrice}" pattern="#,###"/></th>
+					<th><fmt:parseDate value="${list.headSellDate}" pattern="yyyy-MM-dd HH:mm:ss" var="date"/>
+						<fmt:formatDate pattern="yyyy-MM-dd" type="both" value="${date}" />
+					</th>
+					<th>${list.headSellDelivery}</th>
+				</tr>
+			</c:forEach>
+			<button>배송요청</button>
+		</form>
 	</table>
 	<a href="/">[홈으로]</a>
 </body>

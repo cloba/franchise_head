@@ -30,13 +30,12 @@
 			<th>마감일자</th>
 			<th>수금여부</th>
 			<th>본사이익금액</th>
-			<th>가맹이익금액</th>
 		</tr>
 		<tr>
 			<th>${sell.headSellCode}</th>
 			<th>${sell.inteCode}</th>
 			<th>${sell.headSellQuantity}</th>
-			<th>${sell.storeCode}</th>
+			<th>${sell.subCode}</th>
 			<th>${sell.headSellGroup}</th>
 			<th>${sell.headSellPurchasePrice}</th>
 			<th>${sell.headSellSellingPrice}</th>
@@ -48,7 +47,6 @@
 					<fmt:formatDate pattern="yyyy-MM-dd" type="both" value="${date}" /></th>
 			<th>${sell.headSellDistr}</th>
 			<th><fmt:formatNumber value="${sell.headSellProfitHead}" pattern="#,###"/></th>
-			<th><fmt:formatNumber value="${sell.headSellProfitSub}" pattern="#,###"/></th>
 		</tr>
 	</table>
 	<a href="#">[수정/미구현]</a>

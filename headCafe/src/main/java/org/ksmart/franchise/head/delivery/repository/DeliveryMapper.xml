@@ -7,18 +7,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- POJO객체와 DB column명을 맞춰줍니다 -->
 	<resultMap type="org.ksmart.franchise.head.delivery.model.Delivery" id="deliveryResultMap">
 		<id property="deliveryCode" column="delivery_code"/>
-		<result property="ordersCode" column="orders_code"/>
+		<result property="receivedOrderCode" column="received_order_code"/>
 		<result property="deliveryDate" column="delivery_date"/>
 		<result property="deliveryReceive" column="delivery_receive"/>
-		<result property="deliveryLocation" column="delivery_location"/>
+		<result property="deliveryReceiveDate" column="delivery_receive_date"/>
+		<result property="deliveryStatus" column="delivery_status"/>
 		<result property="headStaffId" column="head_staff_id"/>
+		<result property="deliveryConfirmDate" column="delivery_confirm_date"/>
 		<result property="deliveryReturn" column="delivery_return"/>
 		<result property="deliveryPerson" column="delivery_person"/>
 	</resultMap>
 	
 	<!-- delivery의 리스트를 봅니다 (검색포함)-->
 	<select id="selectDelivery" parameterType="java.util.Map" resultMap="deliveryResultMap">
-		SELECT delivery_code, orders_code, delivery_date, delivery_receive, delivery_location, head_staff_id, delivery_return, delivery_person
+		SELECT delivery_code, received_order_code, delivery_date, delivery_receive, delivery_receive_date, delivery_status, head_staff_id, delivery_return, delivery_person, delivery_confirm_date
 		FROM delivery
 		<where>
 			<if test="search.regitDateStart != null and search.regitDateEnd != null and search.regitDateStart !='' and search.regitDateEnd !=''">
@@ -43,8 +45,43 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- delivery 하나를 봅니다  -->
 	<select id="selectOneDelivery" parameterType="java.util.Map" resultMap="deliveryResultMap">
-		SELECT delivery_code, orders_code, delivery_date, delivery_receive, delivery_location, head_staff_id, delivery_return, delivery_person
+		SELECT delivery_code, received_order_code, delivery_date, delivery_receive, delivery_receive_date, delivery_status, head_staff_id, delivery_return, delivery_person
 		FROM delivery
 		WHERE delivery_code = #{deliveryCode}
 	</select>
+	
+	<!-- 배송을 요청하면 해당 판매내역에 대한 delivery를 추가합니다 -->
+	<insert id="addDelivery" parameterType="org.ksmart.franchise.head.delivery.model.DeliveryCommand">
+		<selectKey resultType="hashmap" keyProperty="deliveryCode" order="BEFORE">
+			SELECT IF( EXISTS(
+            	SELECT delivery_code
+             	FROM delivery), concat('delivery_code', MAX(CONVERT(SUBSTRING(delivery_code,14), UNSIGNED))+1), 'delivery_code1') as deliveryCode
+			FROM delivery
+		</selectKey>
+		INSERT INTO delivery
+			(delivery_code, delivery_confirm_date, delivery_receive, delivery_status, head_staff_id, delivery_return, received_order_code)
+			VALUES (#{deliveryCode}, NOW(), 'N', '1', 'head_staff_id', 'N', #{receivedOrderCode})
+	</insert>
+	
+	<!-- 추가된 delivery를 삭제하여 되돌립니다 -->
+	<delete id="deleteDelivery">
+		DELETE FROM delivery WHERE delivery_code=#{deliveryCode}
+	</delete>
+	
+	<!-- status를 업데이트 합니다 -->
+	<update id="updateStatus" parameterType="org.ksmart.franchise.head.delivery.model.DeliveryCommand">
+		UPDATE delivery
+			<trim prefix="SET" prefixOverrides=",">
+				<if test='deliveryStatus != null and deliveryStatus.equals("2")'>
+					delivery_date = NOW()
+					, delivery_status=#{deliveryStatus}
+				</if>
+				<if test='deliveryStatus != null and deliveryStatus.equals("3")'>
+					delivery_receive_date = NOW()
+					, delivery_status=#{deliveryStatus}
+				</if>
+			</trim>
+		WHERE 
+			delivery_code = #{deliveryCode}
+	</update>
 </mapper>

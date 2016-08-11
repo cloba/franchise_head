@@ -1,5 +1,6 @@
 package org.ksmart.franchise.head.sell.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.ksmart.franchise.head.sell.model.ReceivedOrder;
@@ -59,5 +60,5 @@ public class SellController {
 		
 		return "redirect:/viewReceivedOrder";
 	}
-
+	
 }

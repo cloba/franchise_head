@@ -2,11 +2,13 @@ package org.ksmart.franchise.head.delivery.model;
 
 public class Delivery {
 	private String deliveryCode;
-	private String ordersCode;
+	private String receivedOrderCode;
 	private String deliveryDate;
 	private String deliveryReceive;
-	private String deliveryLocation;
+	private String deliveryReceiveDate;
+	private String deliveryStatus;
 	private String headStaffId;
+	private String deliveryConfirmDate;
 	private String deliveryReturn;
 	private String deliveryPerson;
 	public String getDeliveryCode() {
@@ -14,12 +16,6 @@ public class Delivery {
 	}
 	public void setDeliveryCode(String deliveryCode) {
 		this.deliveryCode = deliveryCode;
-	}
-	public String getOrdersCode() {
-		return ordersCode;
-	}
-	public void setOrdersCode(String ordersCode) {
-		this.ordersCode = ordersCode;
 	}
 	public String getDeliveryDate() {
 		return deliveryDate;
@@ -33,17 +29,29 @@ public class Delivery {
 	public void setDeliveryReceive(String deliveryReceive) {
 		this.deliveryReceive = deliveryReceive;
 	}
-	public String getDeliveryLocation() {
-		return deliveryLocation;
+	public String getDeliveryReceiveDate() {
+		return deliveryReceiveDate;
 	}
-	public void setDeliveryLocation(String deliveryLocation) {
-		this.deliveryLocation = deliveryLocation;
+	public void setDeliveryReceiveDate(String deliveryReceiveDate) {
+		this.deliveryReceiveDate = deliveryReceiveDate;
+	}
+	public String getDeliveryStatus() {
+		return deliveryStatus;
+	}
+	public void setDeliveryStatus(String deliveryStatus) {
+		this.deliveryStatus = deliveryStatus;
 	}
 	public String getHeadStaffId() {
 		return headStaffId;
 	}
 	public void setHeadStaffId(String headStaffId) {
 		this.headStaffId = headStaffId;
+	}
+	public String getDeliveryConfirmDate() {
+		return deliveryConfirmDate;
+	}
+	public void setDeliveryConfirmDate(String deliveryConfirmDate) {
+		this.deliveryConfirmDate = deliveryConfirmDate;
 	}
 	public String getDeliveryReturn() {
 		return deliveryReturn;
@@ -57,12 +65,11 @@ public class Delivery {
 	public void setDeliveryPerson(String deliveryPerson) {
 		this.deliveryPerson = deliveryPerson;
 	}
-	@Override
-	public String toString() {
-		return "Delivery [deliveryCode=" + deliveryCode + ", ordersCode=" + ordersCode + ", deliveryDate="
-				+ deliveryDate + ", deliveryReceive=" + deliveryReceive + ", deliveryLocation=" + deliveryLocation
-				+ ", headStaffId=" + headStaffId + ", deliveryReturn=" + deliveryReturn + ", deliveryPerson="
-				+ deliveryPerson + "]";
+	public String getReceivedOrderCode() {
+		return receivedOrderCode;
+	}
+	public void setReceivedOrderCode(String receivedOrderCode) {
+		this.receivedOrderCode = receivedOrderCode;
 	}
 	
 	

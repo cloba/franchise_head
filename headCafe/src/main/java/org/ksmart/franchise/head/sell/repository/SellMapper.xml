@@ -15,13 +15,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="headSellPurchasePrice" column="head_sell_purchase_price"/>
 		<result property="headSellSellingPrice" column="head_sell_selling_price"/>
 		<result property="headSellDate" column="head_sell_date"/>
+		<result property="headSellDelivery" column="head_sell_delivery"/>
 		<result property="totalAccountGroup" column="total_account_group"/>
 		<result property="headSellFinal" column="head_sell_final"/>
 		<result property="headSellFinalStaff" column="head_sell_final_staff"/>
 		<result property="headSellFinalDate" column="head_sell_final_date"/>
 		<result property="headSellDistr" column="head_sell_distr"/>
 		<result property="headSellProfitHead" column="head_sell_profit_head"/>
-		<result property="headSellProfitSub" column="head_sell_profit_sub"/>
 	</resultMap>
 	
 	<resultMap type="org.ksmart.franchise.head.sell.model.ReceivedOrder" id="ReceivedOrderResultMap">
@@ -38,7 +38,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 본사의 판매 리스트를 봅니다 (검색포함)-->
 	<select id="selectSell" parameterType="java.util.Map" resultMap="sellResultMap">
-		SELECT head_sell_code, inte_code, sub_code, head_sell_group, head_sell_purchase_price, head_sell_selling_price, head_sell_date, total_account_group, head_sell_final, head_sell_final_staff, head_sell_final_date, head_sell_distr, head_sell_profit_head, head_sell_profit_sub
+		SELECT head_sell_code, inte_code, received_order_code, head_sell_quantity, sub_code, head_sell_group, head_sell_purchase_price, head_sell_selling_price, head_sell_date, head_sell_delivery, total_account_group, head_sell_final, head_sell_final_staff, head_sell_final_date, head_sell_distr, head_sell_profit_head
 		FROM head_sell
 		<where>
 			<if test="search.regitDateStart != null and search.regitDateEnd != null and search.regitDateStart !='' and search.regitDateEnd !=''">
@@ -63,7 +63,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 판매내역 하나를 봅니다 -->
 	<select id="selectOneSell" parameterType="java.util.Map" resultMap="sellResultMap">
-		SELECT head_sell_code, inte_code, head_sell_quantity, sub_code, head_sell_group, head_sell_purchase_price, head_sell_selling_price, head_sell_date, total_account_group, head_sell_final, head_sell_final_staff, head_sell_final_date, head_sell_distr, head_sell_profit_head, head_sell_profit_sub
+		SELECT head_sell_code, inte_code, received_order_code, head_sell_quantity, sub_code, head_sell_group, head_sell_purchase_price, head_sell_selling_price, head_sell_date, head_sell_delivery, total_account_group, head_sell_final, head_sell_final_staff, head_sell_final_date, head_sell_distr, head_sell_profit_head
 		FROM head_sell
 		WHERE head_sell_code = #{headSellCode}
 	</select>
@@ -129,9 +129,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			WHERE r.received_order_code = #{receivedOrderCode} and r.received_order_item = i.inte_code
 	</insert>
 	
-	<!-- 판매내역 추가 되돌리기 -->
+	<!-- 판매내역 추가를 되돌립니다 -->
 	<delete id="cancelSell" parameterType="java.lang.String">
 		DELETE FROM head_sell 
 		WHERE head_sell_code= (select concat('head_sell_code', MAX(CONVERT(SUBSTRING(head_sell_code,15), UNSIGNED))))
 	</delete>
+	
+	<!-- 배송요청 여부 변경합니다 -->
+	<update id="updateSellDelivery" parameterType="java.util.Map">
+		UPDATE head_sell
+		SET
+			head_sell_delivery=#{status}
+		WHERE head_sell_code = #{headSellCode}
+	</update>
 </mapper>

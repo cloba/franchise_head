@@ -24,12 +24,13 @@
 			<th>가맹수령여부</th>
 			<th>현 위치</th>
 			<th>확인 직원 아이디</th>
+			<th>확인날짜</th>
 			<th>반송해당여부</th>
 			<th>배달직원</th>
 		</tr>
 		<tr>
 			<th>${delivery.deliveryCode}</th>
-			<th>${delivery.ordersCode}</th>
+			<th>${delivery.receivedOrderCode}</th>
 			<th>
 				<fmt:parseDate value="${delivery.deliveryDate}" pattern="yyyy-MM-dd HH:mm:ss" var="date"/>
 				<fmt:formatDate pattern="yyyy-MM-dd" type="both" value="${date}" />
@@ -37,7 +38,8 @@
 			<th>${delivery.deliveryReceive}</th>
 			<th>${delivery.deliveryLocation}</th>
 			<th>${delivery.headStaffId}</th>
-			<th>${delivery.deliveryReturn}</th>
+			<th>${delivery.headStaffId}</th>
+			<th>${delivery.deliveryConfirmDate}</th>
 			<th>${delivery.deliveryPerson}</th>
 			<th>${itemOut.headStaffSender}</th>
 		</tr>

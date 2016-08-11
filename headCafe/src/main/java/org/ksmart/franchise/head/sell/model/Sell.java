@@ -13,13 +13,13 @@ public class Sell {
 	private int headSellPurchasePrice;
 	private int headSellSellingPrice;
 	private String headSellDate;
+	private String headSellDelivery;
 	private String totalAccountGroup;
 	private String headSellFinal;
 	private String headSellFinalStaff;
 	private String headSellFinalDate;
 	private String headSellDistr;
 	private int headSellProfitHead;
-	private int headSellProfitSub;
 	public String getHeadSellCode() {
 		return headSellCode;
 	}
@@ -74,6 +74,12 @@ public class Sell {
 	public void setHeadSellDate(String headSellDate) {
 		this.headSellDate = headSellDate;
 	}
+	public String getHeadSellDelivery() {
+		return headSellDelivery;
+	}
+	public void setHeadSellDelivery(String headSellDelivery) {
+		this.headSellDelivery = headSellDelivery;
+	}
 	public String getTotalAccountGroup() {
 		return totalAccountGroup;
 	}
@@ -110,12 +116,5 @@ public class Sell {
 	public void setHeadSellProfitHead(int headSellProfitHead) {
 		this.headSellProfitHead = headSellProfitHead;
 	}
-	public int getHeadSellProfitSub() {
-		return headSellProfitSub;
-	}
-	public void setHeadSellProfitSub(int headSellProfitSub) {
-		this.headSellProfitSub = headSellProfitSub;
-	}
-	
 	
 }

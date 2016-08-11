@@ -72,7 +72,7 @@
 		<select id="searchKey" name="searchKey">
 			<option value="">::선택::</option>
 			<option value="delivery_code" <c:if test="${search.searchKey eq 'delivery_code'}">selected="selected"</c:if>>배송코드</option>
-			<option value="orders_code" <c:if test="${search.searchKey eq 'orders_code'}">selected="selected"</c:if>>가맹발주번호</option>
+			<option value="received_order_code" <c:if test="${search.searchKey eq 'received_order_code'}">selected="selected"</c:if>>가맹발주번호</option>
 		</select>
 		
 		<select id="status" name="status">
@@ -91,6 +91,7 @@
 	<!-- 조회 결과 -->
 	<table border="1">
 		<tr>
+			<th>선택</th>
 			<th>
 				배송코드
 				<span id="codeUp">▲</span>
@@ -106,20 +107,37 @@
 				<span id="returnUp">▲</span>
 				<span id="returnDown">▼</span>
 			</th>
+			<th>상태</th>
 		</tr>
-		
-		<c:forEach var="list" items="${deliveryList}">
-			<tr>
-				<th><a href="/viewDeliveryDetail?deliveryCode=${list.deliveryCode}">${list.deliveryCode}</a></th>
-				<th>${list.ordersCode}</th>
-				<th><fmt:parseDate value="${list.deliveryDate}" pattern="yyyy-MM-dd HH:mm:ss" var="date"/>
-					<fmt:formatDate pattern="yyyy-MM-dd" type="both" value="${date}" /></th>
-				<th>${list.deliveryReceive}</th>
-				<th>${list.deliveryReturn}</th>
-			</tr>
-		</c:forEach>
+		<form action="/updateStatus" method="post">
+			<c:forEach var="list" items="${deliveryList}">
+				<tr>
+					<th><input type="checkbox" name="checked" value="${list.deliveryCode}"/></th>
+					<th><a href="/viewDeliveryDetail?deliveryCode=${list.deliveryCode}">${list.deliveryCode}</a></th>
+					<th>${list.receivedOrderCode}</th>
+					<th><fmt:parseDate value="${list.deliveryDate}" pattern="yyyy-MM-dd HH:mm:ss" var="date"/>
+						<fmt:formatDate pattern="yyyy-MM-dd" type="both" value="${date}" /></th>
+					<th>${list.deliveryReceive}</th>
+					<th>${list.deliveryReturn}</th>
+					<c:if test="${list.deliveryStatus eq 1}">
+						<th>배송준비중</th>
+					</c:if>
+					<c:if test="${list.deliveryStatus eq 2}">
+						<th>배송중</th>
+					</c:if>
+					<c:if test="${list.deliveryStatus eq 3}">
+						<th>배송완료</th>
+					</c:if>
+				</tr>
+			</c:forEach>
+			<select name="status">
+				<option>:::선택:::</option>
+				<option value="2">배송중</option>
+				<option value="3">가맹이 받음</option>
+			</select>
+			<button>변경</button>
+		</form>
 	</table>
-	<a href="/">[신규등록:미구현]</a>
 	<a href="/">[홈으로]</a>
 </body>
 </html>
