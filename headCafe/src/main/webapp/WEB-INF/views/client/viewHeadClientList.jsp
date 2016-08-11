@@ -76,7 +76,7 @@ $(document).ready(function(){
 	</form>
 
 
-	<h1>재고 리스트</h1>
+	<h1>거래처 리스트</h1>
 	
 	<div>
 		<label>거래처 코드
@@ -99,5 +99,7 @@ $(document).ready(function(){
 		 	<label>${Client.headClientInCharge }</label>
 	 	</div>
 	 </c:forEach>
+	 
+	 <a href="/addHeadClient">[신규등록]</a>
 </body>
 </html>

@@ -3,6 +3,7 @@ package org.ksmart.franchise.head.client.controller;
 import java.util.List;
 
 import org.ksmart.franchise.head.client.model.Client;
+import org.ksmart.franchise.head.client.model.ClientCommand;
 import org.ksmart.franchise.head.client.service.ClientService;
 import org.ksmart.franchise.head.util.Search;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,7 @@ public class ClientController {
 	//거래처 상세 정보 보는 메서드
 	@RequestMapping(value="/viewHeadClientDetail", method=RequestMethod.GET)
 	public String viewHeadClientDetail(Model model, String headClientCode){
+		System.out.println("ClientController의 viewHeadClientDetail메서드 ");
 		
 		Client client = clientService.headClientDetailService(headClientCode);
 		model.addAttribute("client", client);
@@ -41,5 +43,23 @@ public class ClientController {
 		return "/client/viewHeadClientDetail";
 		
 	}
+	
+	//거래처 추가 폼 보여주는 메서드ㄴ
+	@RequestMapping(value="/addHeadClient", method=RequestMethod.GET)
+	public String AddHeadClient(){
+		System.out.println("ClientController의 AddHeadClient get메서드");
+		return "/client/addHeadClientForm";
+	}
+		
+	// 거래처등록 form에서 넘어오는 데이터를 받아서 처리하는 메서드
+	@RequestMapping(value="/addHeadClient", method=RequestMethod.POST)
+	public String addHeadClient(ClientCommand clientCommand, Model model){
+		System.out.println("ClientController의 addHeadClient post메서드");
+		System.out.println("getHeadClientParcleAddr :"+clientCommand.getHeadClientParcleAddr()); 
+		clientService.addHeadClient(clientCommand);
 
+		return "redirect:/viewHeadClientList";
+	}	
+	
+	
 }
