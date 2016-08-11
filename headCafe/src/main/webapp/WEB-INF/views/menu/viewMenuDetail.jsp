@@ -76,5 +76,6 @@
 	<a href="/headModifyMenu?menuDetail=${menu.menuCode}">[메뉴수정]</a>
 	<a href="/viewRecipeDetail?menuCode=${menu.menuCode}">[레시피보기]</a>
 	<a href="/viewMenuList">[메뉴목록]</a>
+	<a href="/addRecipe?menuCode=${menu.menuCode}">[메뉴목록]</a>
 </body>
 </html>
