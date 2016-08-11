@@ -5,41 +5,50 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="org.ksmart.franchise.head.headDump.repository.HeadDumpMapper">
 
-<resultMap id="RoyaltyResultMap" type="org.ksmart.franchise.head.headDump.model.HeadDump" >
-	<id property="headDumpCode" column="head_dump_code"/>
-	<result property="hItemCode" column="h_item_code"/>
-	<result property="specificItemCode" column="specific_item_code"/>
-	<result property="headDumpReason" column="head_dump_reason"/>
-	<result property="headStaffId" column="head_staff_id"/>
-	<result property="headDumpDate" column="head_dump_date"/>
-</resultMap>
-
-
-<select id="selectHeadDumpList" parameterType="java.util.Map" resultMap="RoyaltyResultMap">
-	SELECT 
-		head_dump_code,
-	 	h_item_code,
-		specific_item_code, 
-		head_dump_reason, 
-		head_staff_id,
-		head_dump_date
-	FROM
-		head_dump
-	<where>
-		<if test='search.searchItem != null and search.searchItem != "" '>
-			AND ${search.searchKey} like CONCAT('%',#{search.searchItem},'%')
-		</if>
-	</where>
-	<trim prefix="ORDER BY">
-		<if test="search.criteria != null or search.criteria != ''">
-			${search.criteria} ${search.upDown}
-		</if>
-	</trim>	
-
-
-
-</select>
-
+	<resultMap id="RoyaltyResultMap" type="org.ksmart.franchise.head.headDump.model.HeadDump" >
+		<id property="headDumpCode" column="head_dump_code"/>
+		<result property="hItemCode" column="h_item_code"/>
+		<result property="specificItemCode" column="specific_item_code"/>
+		<result property="headDumpReason" column="head_dump_reason"/>
+		<result property="headStaffId" column="head_staff_id"/>
+		<result property="headDumpDate" column="head_dump_date"/>
+	</resultMap>
+	
+	<!-- 판매 불가 상품 리스트 조회 쿼리 -->
+	<select id="selectHeadDumpList" parameterType="java.util.Map" resultMap="RoyaltyResultMap">
+		SELECT 
+			head_dump_code,
+		 	h_item_code,
+			specific_item_code, 
+			head_dump_reason, 
+			head_staff_id,
+			head_dump_date
+		FROM
+			head_dump
+		<where>
+			<if test='search.searchItem != null and search.searchItem != "" '>
+				AND ${search.searchKey} like CONCAT('%',#{search.searchItem},'%')
+			</if>
+		</where>
+		<trim prefix="ORDER BY">
+			<if test="search.criteria != null or search.criteria != ''">
+				${search.criteria} ${search.upDown}
+			</if>
+		</trim>	
+	</select>
+	
+	<!-- 판매 불가 상품 등록 쿼리 -->
+	<insert id="insertHeadDump" parameterType="java.util.Map">
+		<selectKey resultType="hashmap" keyProperty="headDumpCode" order="BEFORE">             
+			SELECT IF( EXISTS(
+	             SELECT head_dump_code FROM head_dump), concat('head_dump_code', MAX(CONVERT(SUBSTRING(head_dump_code,15), UNSIGNED))+1), 'head_dump_code1') as headDumpCode
+			FROM head_dump    
+	     </selectKey>
+	     INSERT INTO head_dump
+			   (head_dump_code,  h_item_code,                  specific_item_code,           head_dump_reason,                  head_staff_id, head_dump_date)
+		VALUES (#{headDumpCode}, #{headDumpCommand.hItemCode}, #{headDumpCommand.speciific}, #{headDumpCommand.headDumpReason}, 'id001',       NOW())
+	
+	</insert>
 
 
 

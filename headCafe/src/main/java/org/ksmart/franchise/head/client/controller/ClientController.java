@@ -44,7 +44,7 @@ public class ClientController {
 		
 	}
 	
-	//거래처 추가 폼 보여주는 메서드ㄴ
+	//거래처 추가 폼 보여주는 메서드
 	@RequestMapping(value="/addHeadClient", method=RequestMethod.GET)
 	public String AddHeadClient(){
 		System.out.println("ClientController의 AddHeadClient get메서드");

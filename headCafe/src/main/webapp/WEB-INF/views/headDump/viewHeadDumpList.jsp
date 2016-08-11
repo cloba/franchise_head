@@ -94,7 +94,7 @@ $(document).ready(function(){
 	</div>
 </form>
 
-	<!-- 로얄티 상단 메뉴 -->
+	<!-- 판매 불가 상품 컬럼  -->
 	<div>  
 		<label>판매불가 상품코드
 			<span id="headDumpCodeUp">▲</span>
@@ -129,6 +129,6 @@ $(document).ready(function(){
 			</div>
 		</c:forEach>
 
-
+	<a href="/addHeadDump">[판매불가 상품 등록]</a>
 </body>
 </html>
