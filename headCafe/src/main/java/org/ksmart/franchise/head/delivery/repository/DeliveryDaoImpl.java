@@ -7,6 +7,7 @@ import java.util.Map;
 import org.ksmart.franchise.head.delivery.model.Delivery;
 import org.ksmart.franchise.head.delivery.model.DeliveryCommand;
 import org.ksmart.franchise.head.delivery.model.Deliverysearch;
+import org.ksmart.franchise.head.stock.model.Stock;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -76,11 +77,30 @@ public class DeliveryDaoImpl implements DeliveryDao {
 		System.out.println("DeliveryDaoImpl의 deleteDelivery 메서드 호출");
 		sqlSessionDelivery.delete(NS+".deleteDelivery", deliveryCode);		
 	}
+	
+	@Override
+	//재고 테이블에서 임의의 PK값을 뽑습니다
+	public String randomPKFromStock(String inteCode){
+		System.out.println("DeliveryDaoImpl의 randomPKFromStock 메서드 호출");
+		System.out.println("randonPK DAO의 inteCode ======> "+inteCode);
+		Stock stock = sqlSessionDelivery.selectOne(NSStock+".randomStockPK", inteCode);	
+		String stockPK = stock.getSpecificItemCode();
+		System.out.println("randonPK DAO의 stockPK ======> "+stockPK);
+		return stockPK;
+	}
 
 	@Override
-	public int updateStock(String inteCode) {
-		System.out.println("DeliveryDaoImpl의 deleteDelivery 메서드 호출");
-		return sqlSessionStock.update(NSStock+".updateStock", inteCode);			
+	//배송된 상품만큼 재고에서 차감하는 메서드입니다
+	public int updateStock(String stockPK) {
+		System.out.println("DeliveryDaoImpl의 updateStock 메서드 호출");
+		return sqlSessionStock.update(NSStock+".updateStock", stockPK);			
+	}
+
+	@Override
+	//재고차감을 취소합니다
+	public void cancelUpdateStock(String stockPK) {
+		System.out.println("DeliveryDaoImpl의 cancelUpdateStock 메서드 호출");
+		sqlSessionStock.update(NSStock+".cancelUpdateStock", stockPK);			
 	}
 	
 	

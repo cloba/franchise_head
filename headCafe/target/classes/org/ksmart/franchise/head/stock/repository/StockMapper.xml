@@ -65,15 +65,30 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			specific_item_code = #{stock.specificItemCode}
 	</select>
 	
+	<!-- 조건을 만족하는 임의의 PK를 뽑는 쿼리 -->
+	<select id="randomStockPK" parameterType="java.lang.String" resultMap="StockResultMap">
+		SELECT specific_item_code
+		FROM head_stock
+		WHERE head_stock_item_out = 'N' AND h_item_code = (SELECT h_item_code FROM head_item WHERE inte_code = #{inteCode}) 
+		ORDER BY head_stock_in_expiry_date ASC
+		LIMIT 1
+	</select>
+	
 	<!-- 배송 수량만큼 재고에서 차감하는 쿼리 -->
 	<update id="updateStock" parameterType="java.lang.String">
 		UPDATE head_stock
 		SET
 			head_stock_item_out='Y',
 			head_stock_item_out_date=CURDATE()
-		WHERE head_stock_item_out = 'N' AND h_item_code = (SELECT h_item_code FROM head_item WHERE inte_code = #{inteCode}) LIMIT 1 
+		WHERE specific_item_code = #{stockPK}
 	</update>
 	
 	<!-- 수량 차감을 취소하는 쿼리 -->
-	
+	<update id="cancelUpdateStock" parameterType="java.lang.String">
+		UPDATE head_stock
+		SET
+			head_stock_item_out='N',
+			head_stock_item_out_date=NULL
+		WHERE specific_item_code = #{stockPK}
+	</update>
 </mapper>

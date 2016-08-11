@@ -45,7 +45,7 @@ public class DeliveryController {
 		System.out.println("checkedOrders ====> "+checkedOrders);
 		System.out.println("inteCode ====> "+inteCode);
 		System.out.println("headSellQuantity ====> "+headSellQuantity);
-		deliveryService.requestDeliveryService(checkedOrders, inteCode, headSellQuantity);
+			deliveryService.requestDeliveryService(checkedOrders, inteCode, headSellQuantity);
 		
 		return "redirect:/viewDeliveryList";
 	}

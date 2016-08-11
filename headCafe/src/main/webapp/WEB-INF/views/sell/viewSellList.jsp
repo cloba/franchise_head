@@ -117,7 +117,7 @@
 				<span id="dateUp">▲</span>
 				<span id="dateDown">▼</span>
 			</th>
-			<th>배송여부</th>
+			<th>배송요청여부</th>
 		</tr>
 		<form action="/requestDelivery" method="post">
 			<c:forEach var="list" items="${sellList}">

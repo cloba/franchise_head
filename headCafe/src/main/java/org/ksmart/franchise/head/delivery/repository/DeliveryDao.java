@@ -20,5 +20,10 @@ public interface DeliveryDao {
 	//판매내역의 배송요청여부를 변경하는 메서드입니다
 	int updateSellDelivery(String headSellCode, String status);
 	//배송된 상품만큼 재고에서 차감하는 메서드입니다
-	int updateStock(String inteCode);
+	int updateStock(String stockPK);
+	//재고차감을 취소합니다
+	void cancelUpdateStock(String stockPK);
+	//재고 테이블에서 임의의 PK값을 뽑습니다
+	String randomPKFromStock(String inteCode);
+	
 }
