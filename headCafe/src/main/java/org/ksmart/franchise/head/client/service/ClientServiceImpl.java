@@ -31,10 +31,16 @@ public class ClientServiceImpl implements ClientService {
 	}
 
 	@Override
-	public int addHeadClient(ClientCommand clientCommand) {
+	public int addHeadClientService(ClientCommand clientCommand) {
 		System.out.println("ClientServiceImpl의 HeadClientListService메서드");
 		return clientDao.addHeadClient(clientCommand);
 		
+	}
+
+	@Override
+	public Object modifyHeadClientService(Client client) {
+		System.out.println("ClientServiceImpl의 modifyHeadClient메서드");
+		return clientDao.modifyHeadClient(client);
 	}
 
 }

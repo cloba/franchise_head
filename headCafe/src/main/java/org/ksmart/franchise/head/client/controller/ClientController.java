@@ -2,6 +2,7 @@ package org.ksmart.franchise.head.client.controller;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.ksmart.franchise.head.client.model.Client;
 import org.ksmart.franchise.head.client.model.ClientCommand;
 import org.ksmart.franchise.head.client.service.ClientService;
@@ -17,6 +18,8 @@ public class ClientController {
 	
 	@Autowired
 	private ClientService clientService;
+	
+	Logger log = Logger.getLogger(this.getClass());
 
 	//거래처 리스트 조회
 	@RequestMapping(value="/viewHeadClientList", method=RequestMethod.GET)
@@ -56,10 +59,34 @@ public class ClientController {
 	public String addHeadClient(ClientCommand clientCommand, Model model){
 		System.out.println("ClientController의 addHeadClient post메서드");
 		System.out.println("getHeadClientParcleAddr :"+clientCommand.getHeadClientParcleAddr()); 
-		clientService.addHeadClient(clientCommand);
+		clientService.addHeadClientService(clientCommand);
 
 		return "redirect:/viewHeadClientList";
 	}	
+	
+	//거래처 정보 수정 form 보여주는 메서드
+	  @RequestMapping(value="/modifyClient", method=RequestMethod.GET)
+	  public String modifyClient(Model model, String headClientCode){
+		  System.out.println("ClientController의 modifyClient메서드 ");
+		  Client client =clientService.headClientDetailService(headClientCode); 
+
+		  model.addAttribute("client", client);
+		
+		return "/client/viewClientModifyForm";
+		  
+	  }
+	  
+	  //거래처 정보 처리하는 메서드
+	  @RequestMapping(value="/viewHeadClientDetail", method=RequestMethod.POST)
+	  public String ModifyHeadStaff(Model model, Client client){
+		  System.out.println("ClientController의 ModifyHeadStaff메서드 ");
+		  clientService.modifyHeadClientService(client);
+		  
+		  //수정된 정보의 pk를 가져와 수정된 내역을 보여주는 페이지로 이동(디테일페이지)
+		  String headClientCode= client.getHeadClientCode();
+		 return "redirect:/headStaffDetail?headClientCode="+headClientCode;
+		  
+	  }
 	
 	
 }

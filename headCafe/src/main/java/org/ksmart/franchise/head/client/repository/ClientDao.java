@@ -12,5 +12,7 @@ public interface ClientDao {
 	Client HeadClientDetail(String headClientCode);
 
 	int addHeadClient(ClientCommand clientCommand);
+
+	int modifyHeadClient(Client client);
 	
 }

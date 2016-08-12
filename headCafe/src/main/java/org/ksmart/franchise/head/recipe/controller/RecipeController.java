@@ -2,6 +2,7 @@ package org.ksmart.franchise.head.recipe.controller;
 
 import java.util.List;
 
+import org.ksmart.franchise.head.headStaff.model.HeadStaff;
 import org.ksmart.franchise.head.recipe.model.Recipe;
 import org.ksmart.franchise.head.recipe.model.RecipeCommand;
 import org.ksmart.franchise.head.recipe.service.RecipeService;
@@ -62,7 +63,7 @@ public class RecipeController {
 		return "/recipe/addRecipeForm";
 	}
 
-	// 메뉴를 추가하는 프로그램을 실행합니다
+	// 레시피 등록 처리하는 메서드
 	@RequestMapping(value="/addRecipe", method=RequestMethod.POST)
 	public String addRecipe(RecipeCommand recipeCommand){
 		System.out.println("RecipeController의 addRecipe post메서드 ");
@@ -70,5 +71,7 @@ public class RecipeController {
 		
 		return "redirect:/viewMenuDetail?menuCode="+recipeCommand.getMenuCode();
 	}	
+	
+	 
 		 
 }

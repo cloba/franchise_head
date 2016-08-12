@@ -12,7 +12,9 @@ public interface ClientService {
 
 	Client headClientDetailService(String headClientCode);
 
-	int addHeadClient(ClientCommand clientCommand);
+	int addHeadClientService(ClientCommand clientCommand);
+
+	Object modifyHeadClientService(Client client);
 
 
 

@@ -12,7 +12,7 @@
 
 <h1>본사 거래처 디테일</h1>
 
-	<div><label>거래처 코드 : </label>${client.headClientCode }</div><br/>
+	<div><label>거래처 코드 : </label>${client.headClientCode}</div><br/>
 	<div><label>거래처 명 : </label>${client.headClientName }</div><br/>
 	<div><label>계약 상태 : </label>
 		<c:if test="${client.headClientContract eq '1'}">계약	 체결 중</c:if>
@@ -29,6 +29,6 @@
 	<div><label>등록한 직원  : </label>${client.headStaffId }</div><br/>
 	<div><label>등록한 날짜  : </label>${client.headClientRegitDate }</div><br/>
 	
-
+	<a href="/modifyClient?headClientCode=${client.headClientCode}">[거래처 수정]</a>
 </body>
 </html>
