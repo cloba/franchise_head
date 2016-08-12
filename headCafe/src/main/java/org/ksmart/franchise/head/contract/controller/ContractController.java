@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.apache.log4j.Logger;
 
 @Controller
 public class ContractController {
@@ -19,11 +20,12 @@ public class ContractController {
 	@Autowired
 	private ContractService contractService;
 	
+	Logger log = Logger.getLogger(this.getClass());
+	
 	//계약 리스트를 보여줍니다 (검색포함)
 	@RequestMapping(value="/viewContractList")
 	public String viewContractList(Search contractSearch, Model model){
 		System.out.println("ContractController의 viewContractList 메서드 호출");
-
 		List<Contract> contractList = contractService.viewContractListService(contractSearch);
 		model.addAttribute("contractList", contractList);
 		model.addAttribute("conSearch", contractSearch);
@@ -35,7 +37,6 @@ public class ContractController {
 	@RequestMapping(value="/viewContractDetail")
 	public String viewContractDetail(String contractCode, Model model){
 		System.out.println("ContractController의 viewContractDetail 메서드 호출");
-
 		Contract contract = contractService.getContractDetailService(contractCode);
 		model.addAttribute("contract", contract);
 		
@@ -54,10 +55,9 @@ public class ContractController {
 	@RequestMapping(value="/addContract", method=RequestMethod.POST)
 	public String addContract(ContractCommand contractCommand, HeadLogin headStaffLogin){
 		System.out.println("PaymentController의 addContract 메서드 호출");
-		
 		contractService.addContractService(contractCommand);
 		String contractCode = contractCommand.getContractCode();
-		System.out.println(contractCode+" <====== contractCode");
+	//	System.out.println(contractCode+" <====== contractCode");
 		
 		return "redirect:/viewContractDetail?contractCode="+contractCode;
 	}
@@ -67,6 +67,7 @@ public class ContractController {
 	public String expireContractForm(String contractCode, Model model){
 		System.out.println("ContractController의 expireContractForm 메서드 호출");
 		model.addAttribute("code", contractCode);
+		
 		return "/contract/expireContract";
 	}
 	
@@ -74,8 +75,8 @@ public class ContractController {
 	@RequestMapping(value="/expireContract", method=RequestMethod.POST)
 	public String expireContract(Contract contract){
 		System.out.println("ContractController의 expireContract 메서드 호출");
-		contract.setContractStatus(3);
 		contractService.modifyContractService(contract);
+		
 		return "redirect:/viewContractDetail?contractCode="+contract.getContractCode();
 	}
 	
