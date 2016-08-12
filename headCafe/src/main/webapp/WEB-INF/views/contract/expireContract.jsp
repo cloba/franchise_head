@@ -10,7 +10,8 @@
 <form action="/expireContract" method="post">
 	계약번호: ${code}
 	<input type="hidden" name="contractCode" value="${code}"/>
-	<textarea name="contractExpireContent" rows="10" cols="30"></textarea>
+	파기일: <input type="date" name="contractExpiredDate"/>
+	내용: <textarea name="contractExpireContent" rows="10" cols="30"></textarea>
 	<button>확인</button>
 </form>
 

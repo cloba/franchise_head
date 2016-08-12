@@ -20,12 +20,11 @@ public class ContractDaoImpl implements ContractDao {
 	private SqlSessionTemplate sqlSessionContract;
 
 	@Override
+	//contract리스트를 봅니다
 	public List<Contract> viewContractList(Search contractSearch) {
 		System.out.println("ContractDaoImpl의 viewContractList 메서드 호출");
-		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("contractSearch", contractSearch);
-		
 		return sqlSessionContract.selectList(NS+".selectContract", map);
 	}
 
@@ -33,26 +32,32 @@ public class ContractDaoImpl implements ContractDao {
 	//contract하나의 상세를 봅니다
 	public Contract getContractDetail(String contractCode) {
 		System.out.println("ContractDaoImpl의 getContractDetail 메서드 호출");
-		
 		return sqlSessionContract.selectOne(NS+".selectOneContract", contractCode);
 	}
 
 	@Override
-	//contract를 수정하는 메서드입니다
+	//계약만료 실행 메서드입니다
 	public void modifyContract(Contract contract) {
 		System.out.println("ContractDaoImpl의 modifyContract 메서드 호출");
-		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("contract", contract);
-		
-		sqlSessionContract.update(NS+".updateContract", map);		
+		sqlSessionContract.update(NS+".modifyContract", map);		
 	}
 
 	@Override
+	//contract를 등록하는 메서드입니다
 	public void addContract(ContractCommand contractCommand) {
 		System.out.println("ContractDaoImpl의 addContract 메서드 호출");
-
 		sqlSessionContract.insert(NS+".addContract", contractCommand);
 	}
+	
+/*	@Override
+	//계약을 수정하는 메서드입니다
+	public void modifyContract(Contract contract) {
+		System.out.println("ContractDaoImpl의 modifyContract 메서드 호출");
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("contract", contract);
+		sqlSessionContract.update(NS+".modifyContract", map);		
+	}*/
 
 }

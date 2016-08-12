@@ -66,9 +66,7 @@ public class ContractController {
 	@RequestMapping(value="/expireContract", method=RequestMethod.GET)
 	public String expireContractForm(String contractCode, Model model){
 		System.out.println("ContractController의 expireContractForm 메서드 호출");
-		
 		model.addAttribute("code", contractCode);
-		
 		return "/contract/expireContract";
 	}
 	
@@ -76,7 +74,25 @@ public class ContractController {
 	@RequestMapping(value="/expireContract", method=RequestMethod.POST)
 	public String expireContract(Contract contract){
 		System.out.println("ContractController의 expireContract 메서드 호출");
+		contract.setContractStatus(3);
+		contractService.modifyContractService(contract);
+		return "redirect:/viewContractDetail?contractCode="+contract.getContractCode();
+	}
+	
+	//계약을 수정하는 form으로 이동합니다
+	@RequestMapping(value="/modifyContract", method=RequestMethod.GET)
+	public String modifyContractForm(String contractCode, Model model){
+		System.out.println("ContractController의 modifyContractForm 메서드 호출");
+		Contract contract = contractService.getContractDetailService(contractCode);
+		model.addAttribute("contract", contract);
 		
+		return "/contract/modifyContract";
+	}
+	
+	//계약을 수정합니다
+	@RequestMapping(value="/modifyContract", method=RequestMethod.POST)
+	public String modifyContract(Contract contract){
+		System.out.println("ContractController의 modifyContract 메서드 호출");
 		contractService.modifyContractService(contract);
 		
 		return "redirect:/viewContractDetail?contractCode="+contract.getContractCode();

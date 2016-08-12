@@ -15,9 +15,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="contractExpiryDate" column="contract_expiry_date"/>
 		<result property="contractDeposit" column="contract_deposit"/>
 		<result property="contractProfitPercent" column="contract_profit_percent"/>
+		<result property="contractStatus" column="contract_status"/>
 		<result property="contractFile" column="contract_file"/>
 		<result property="contractN" column="contract_n"/>
-		<result property="contractExpire" column="contract_expire"/>
 		<result property="contractExpiredDate" column="contract_expired_date"/>
 		<result property="contractExpireContent" column="contract_expire_content"/>
 		<result property="royaltyDeadline" column="royalty_deadline"/>
@@ -26,7 +26,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- contract의 리스트를 봅니다 (검색포함)-->
 	<select id="selectContract" parameterType="java.util.Map" resultMap="contractResultMap">
-		SELECT contract_code, head_staff_id, sub_code, contractor_name, contract_actual_date, contract_regit_date, contract_expiry_date, contract_deposit, contract_profit_percent, contract_file, contract_n, contract_expire, contract_expired_date, contract_expire_content
+		SELECT contract_code, head_staff_id, sub_code, contractor_name, contract_actual_date, contract_regit_date, contract_expiry_date, contract_deposit, contract_profit_percent, contract_status, contract_file, contract_n, contract_expired_date, contract_expire_content
 		FROM contract
 		<where>
 			<if test="contractSearch.regitDateStart != null and contractSearch.regitDateEnd != null and contractSearch.regitDateStart !='' and contractSearch.regitDateEnd !=''">
@@ -36,7 +36,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				AND  ${contractSearch.searchKey} like CONCAT('%',#{contractSearch.searchItem},'%') 
 			</if> 
 			<if test="contractSearch.status != null and contractSearch.status != ''">
-				AND  contract_expire = #{contractSearch.status}
+				AND  contract_status = #{contractSearch.status}
 			</if> 
 		</where> 
 		<trim prefix="ORDER BY">
@@ -51,18 +51,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- contract 하나를 봅니다  -->
 	<select id="selectOneContract" parameterType="java.lang.String" resultMap="contractResultMap">
-		SELECT contract_code, head_staff_id, sub_code, contractor_name, contract_actual_date, contract_regit_date, contract_expiry_date, contract_deposit, contract_profit_percent, contract_file, contract_n, contract_expire, contract_expired_date, contract_expire_content
+		SELECT contract_code, head_staff_id, sub_code, contractor_name, contract_actual_date, contract_regit_date, contract_expiry_date, contract_deposit, contract_profit_percent, contract_status, contract_file, contract_n, contract_expired_date, contract_expire_content
 		FROM contract
 		WHERE contract_code = #{contractCode}
 	</select>
 	
-	<!-- contract를 수정합니다 (계약파기시) -->
-	<update id="updateContract">
+	<!-- contract를 수정합니다 -->
+	<update id="modifyContract">
 		UPDATE contract
 		SET
-			contract_expire='Y',
-			contract_expired_date=NOW(),
-			contract_expire_content=#{contract.contractExpireContent}
+			<if test="contract.contractFile != null">
+				contract_file=#{contract.contractFile},
+			</if>
+			<if test="contract.contractExpiredDate != null">
+				contract_expired_date=#{contract.contractExpiredDate},
+				contract_expire_content=#{contract.contractExpireContent}.
+			</if>
+			contract_status=#{contract.contractStatus}
 		WHERE contract_code = #{contract.contractCode}
 	</update>
 	
@@ -75,8 +80,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			FROM contract
 		</selectKey>
 		INSERT INTO contract
-			(contract_code, head_staff_id, sub_code, contractor_name, contract_actual_date, contract_regit_date, contract_expiry_date, contract_deposit, contract_profit_percent, contract_file, contract_n, contract_expire,  royalty_deadline)
-			VALUES (#{contractCode}, 'head_staff_id1', #{subCode}, #{contractorName}, #{contractActualDate}, NOW(), #{contractExpiryDate}, #{contractDeposit}, #{contractProfitPercent}, #{contractFile}, #{contractN}, 'N', #{royaltyDeadline})
+			(contract_code, head_staff_id, sub_code, contractor_name, contract_actual_date, contract_regit_date, contract_expiry_date, contract_deposit, contract_profit_percent, contract_status, contract_file, contract_n, royalty_deadline)
+			VALUES (#{contractCode}, 'head_staff_id1', #{subCode}, #{contractorName}, #{contractActualDate}, NOW(), #{contractExpiryDate}, #{contractDeposit}, #{contractProfitPercent}, 1, #{contractFile}, #{contractN}, #{royaltyDeadline})
 	</insert>
+	
+
 	
 </mapper>

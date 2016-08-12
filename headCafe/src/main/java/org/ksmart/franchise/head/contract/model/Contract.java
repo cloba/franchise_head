@@ -10,13 +10,12 @@ public class Contract {
 	private String contractExpiryDate;
 	private int contractDeposit;
 	private int contractProfitPercent;
+	private int contractStatus;
 	private String contractFile;
 	private int contractN;
-	private String contractExpire;
 	private String contractExpiredDate;
 	private String contractExpireContent;
 	private int royalty_deadline;
-	
 	public String getContractCode() {
 		return contractCode;
 	}
@@ -71,6 +70,12 @@ public class Contract {
 	public void setContractProfitPercent(int contractProfitPercent) {
 		this.contractProfitPercent = contractProfitPercent;
 	}
+	public int getContractStatus() {
+		return contractStatus;
+	}
+	public void setContractStatus(int contractStatus) {
+		this.contractStatus = contractStatus;
+	}
 	public String getContractFile() {
 		return contractFile;
 	}
@@ -82,12 +87,6 @@ public class Contract {
 	}
 	public void setContractN(int contractN) {
 		this.contractN = contractN;
-	}
-	public String getContractExpire() {
-		return contractExpire;
-	}
-	public void setContractExpire(String contractExpire) {
-		this.contractExpire = contractExpire;
 	}
 	public String getContractExpiredDate() {
 		return contractExpiredDate;
@@ -107,5 +106,6 @@ public class Contract {
 	public void setRoyalty_deadline(int royalty_deadline) {
 		this.royalty_deadline = royalty_deadline;
 	}
+	
 	
 }

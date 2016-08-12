@@ -63,11 +63,13 @@
 			<option value="contractor_name" <c:if test="${conSearch.searchKey eq 'contractor_name'}">selected="selected"</c:if>>가맹점주 이름</option>
 		</select>
 		
-		<!-- 파기여부선택 -->
+		<!-- 계약상태 선택 -->
 		<select id="status" name="status">
-			<option value="">::파기여부 검색::</option>
-			<option value="Y" <c:if test="${search.status eq 'Y'}">selected="selected"</c:if>>파기된 계약</option>
-			<option value="N" <c:if test="${search.status eq 'N'}">selected="selected"</c:if>>유효한 계약</option>
+			<option value="">::계약상태 검색::</option>
+			<option value="1" <c:if test="${search.status eq '1'}">selected="selected"</c:if>>유효한 계약</option>
+			<option value="2" <c:if test="${search.status eq 'N'}">selected="selected"</c:if>>연기된 계약</option>
+			<option value="3" <c:if test="${search.status eq 'N'}">selected="selected"</c:if>>파기된 계약</option>
+			<option value="4" <c:if test="${search.status eq 'N'}">selected="selected"</c:if>>만료된 계약</option>
 		</select>
 		
 		<input type="text" id="searchItem" name="searchItem" value="${conSearch.searchItem}"/>
@@ -91,7 +93,7 @@
 				<span id="conDateDown">▼</span>
 			</th>
 			<th>점주이름</th>
-			<th>파기여부</th>
+			<th>계약상태</th>
 		</tr>
 		
 		<c:forEach var="contractList" items="${contractList}">
@@ -102,7 +104,18 @@
 					<fmt:formatDate pattern="yyyy-MM-dd" type="both" value="${date}" />
 				</th>
 				<th>${contractList.contractorName }</th>
-				<th>${contractList.contractExpire }</th>
+				<c:if test="${contractList.contractStatus eq '1'}">
+					<th>계약중</th>
+				</c:if>
+				<c:if test="${contractList.contractStatus eq '2'}">
+					<th>연기</th>
+				</c:if>
+				<c:if test="${contractList.contractStatus eq '3'}">
+					<th>파기</th>
+				</c:if>
+				<c:if test="${contractList.contractStatus eq '4'}">
+					<th>만료</th>
+				</c:if>
 			</tr>
 		</c:forEach>
 	</table>

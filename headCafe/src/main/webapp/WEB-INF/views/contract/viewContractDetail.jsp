@@ -28,7 +28,7 @@
 			<th>이익배분율</th>
 			<th>계약서 첨부파일</th>
 			<th>계약차수</th>
-			<th>파기여부</th>
+			<th>계약상태</th>
 			<th>계약파기일</th>
 			<th>계약파기내용</th>
 		</tr>
@@ -49,14 +49,26 @@
 			<th>${contract.contractProfitPercent}</th>
 			<th>${contract.contractFile}</th>
 			<th>${contract.contractN}</th>
-			<th>${contract.contractExpire}</th>
+			<c:if test="${contract.contractStatus eq '1'}">
+				<th>계약중</th>
+			</c:if>
+			<c:if test="${contract.contractStatus eq '2'}">
+				<th>연기</th>
+			</c:if>
+			<c:if test="${contract.contractStatus eq '3'}">
+				<th>파기</th>
+			</c:if>
+			<c:if test="${contract.contractStatus eq '4'}">
+				<th>만료</th>
+			</c:if>
 			<th>${contract.contractExpiredDate}</th>
 			<th>${contract.contractExpireContent}</th>
 		</tr>
 	</table>
-	<c:if test="${contract.contractExpire eq 'N'}">
+	<c:if test="${contract.contractStatus eq '1'}">
 		<a href="/expireContract?contractCode=${contract.contractCode}">[계약파기]</a>
 	</c:if>
+	<a href="/modifyContract?contractCode=${contract.contractCode}">[수정]</a>
 	<a href="/viewContractList">[돌아가기]</a>
 </body>
 </html>
