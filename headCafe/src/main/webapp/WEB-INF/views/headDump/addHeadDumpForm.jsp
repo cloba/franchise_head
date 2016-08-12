@@ -38,13 +38,13 @@
 		//폐기사유 유효성
 		$('#headClientPhoneSecond').blur(function(){
 			if($('#headClientPhoneSecond').val().length ==''){
-				if( $('#headStaffPhoneHelper').hide()){
-					$('#headStaffPhoneHelper').show();
+				if( $('#headDumpReasonHelper').hide()){
+					$('#headDumpReasonHelper').show();
 				}
-				$('#ClientPhoneHelper').css('color','red');
-				$('#ClientPhoneHelper').text('폐기사유를 입력해주세요.');
+				$('#headDumpReasonHelper').css('color','red');
+				$('#headDumpReasonHelper').text('폐기사유를 입력해주세요.');
 			}else{
-				$('#ClientPhoneHelper').hide();
+				$('#headDumpReasonHelper').hide();
 			}
 			
 		});
@@ -55,7 +55,7 @@
 				alert("상품코드를 입력해주세요.");
 			}else if ($('#specificItemCode').val() == ""){
 				alert("개별상품 코드를 입력 해주세요.");	
-			}else if ($('#headDumpReason').val().length == ""){
+			}else if ($('#headDumpReason').val() == ""){
 				alert("폐기사유를 입력 해주세요.");
 			}else {
 				$('#joinForm').submit();
