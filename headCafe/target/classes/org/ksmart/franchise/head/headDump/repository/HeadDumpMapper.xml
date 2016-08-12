@@ -59,6 +59,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE 
 		 	 head_dump_code	= #{headDumpCode}
  	</select>
+ 	
+ 	<update id="updateHeadDump" parameterType="java.util.Map">
+	 		UPDATE 
+	 			head_dump
+			SET
+				h_item_code=#{headDump.hItemCode},
+				specific_item_code=#{headDump.specificItemCode},
+				head_dump_reason=#{headDump.headDumpReason}
+			WHERE 
+				head_dump_code=#{headDump.headDumpCode}
+ 	</update>
 
 
 

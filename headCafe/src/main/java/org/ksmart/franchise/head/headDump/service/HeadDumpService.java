@@ -11,9 +11,9 @@ public interface HeadDumpService {
 	List<HeadDump> viewHeadDumpService(HeadDump headDump, Search search);
 	
 	int addHeadDumpService(HeadDumpCommand headDumpCommand);
-
-	HeadDump modifyHeadDumpService(String headClientCode);
 	
 	HeadDump viewHeadDumpDetailService(String headDumpCode);
+
+	int modifyHeadDumpService(HeadDump headDump);
 
 }

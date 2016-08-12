@@ -29,17 +29,19 @@ public class HeadDumpServiceImpl implements HeadDumpService{
 		return headDumpDao.addHeadDump(headDumpCommand);
 		
 	}
-
-	@Override
-	public HeadDump modifyHeadDumpService(String headClientCode) {
-		System.out.println("HeadDumpServiceImpl의 modifyHeadDumpService메서드");
-		return null;
-	}
-
+	//판매 불가 상품 상세 정보 조회 메서드
 	@Override
 	public HeadDump viewHeadDumpDetailService(String headDumpCode) {
 		System.out.println("HeadDumpServiceImpl의 viewHeadDumpDetailService메서드");
 		return headDumpDao.viewHeadDumpDetail(headDumpCode);
+	}
+
+	@Override
+	public int modifyHeadDumpService(HeadDump headDump) {
+		System.out.println("HeadDumpServiceImpl의 modifyHeadDumpService메서드");
+		return headDumpDao.modifyHeadDump(headDump);
+		
+		
 	}
 
 }

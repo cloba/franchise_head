@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <title>Insert title here</title>
+</head>
 <script>
 	$(document).ready(function(){
 		//상품코드 유효성
@@ -36,8 +37,8 @@
 			
 		});
 		//폐기사유 유효성
-		$('#headDumpReason').blur(function(){
-			if($('#headDumpReason').val().length ==''){
+		$('#headClientPhoneSecond').blur(function(){
+			if($('#headClientPhoneSecond').val().length ==''){
 				if( $('#headDumpReasonHelper').hide()){
 					$('#headDumpReasonHelper').show();
 				}
@@ -50,7 +51,7 @@
 		});
 		
 		// 폼 제출
-		$('#joinBtn').click(function(){
+		$('#modifyBtn').click(function(){
 			if ($('#hItemCode').val() == ""){
 				alert("상품코드를 입력해주세요.");
 			}else if ($('#specificItemCode').val() == ""){
@@ -58,32 +59,37 @@
 			}else if ($('#headDumpReason').val() == ""){
 				alert("폐기사유를 입력 해주세요.");
 			}else {
-				$('#joinForm').submit();
+				$('#modifyHeadDumpForm').submit();
 			}
 		});
 	});
 </script>
-</head>
 <body>
-	<form action="/addHeadDump" method="POST" id="joinForm">
+<h1>반품상품 수정 폼</h1>
+
+<form action="/modifyHeadDump" method="POST" id="modifyHeadDumpForm">
+		<div>
+			<label>판매 불가 상품 코드</label> 
+			<input type="text" name="headDumpCode" value="${headDump.headDumpCode }" readonly="readonly">
+		</div>
 		<div>
 			<label>상품코드: </label>
-			<input type="text" name="hItemCode" id="hItemCode">
+			<input type="text" name="hItemCode" id="hItemCode" value="${headDump.hItemCode }">
 			<span id="hItemCodeHelper"></span>
 		</div>
 		
 		<div>
 			<label>개별상품 코드: </label>
-			<input type="text" name="specificItemCode" id="specificItemCode">
+			<input type="text" name="specificItemCode" id="specificItemCode"  value="${headDump.specificItemCode }">
 			<span id="specificItemCodeHelper"></span>
 		</div>
 		<div>
 			<label>폐기 사유: </label>  
-			<input type="text" name="headDumpReason" id="headDumpReason">
+			<input type="text" name="headDumpReason" id="headDumpReason" value="${headDump.headDumpReason }">
 			<span id="headDumpReasonHelper"></span>
 		</div>
 		<div>
-			<input type="button" value="등록" id="joinBtn">
+			<input type="button" value="수정" id="modifyBtn">
 		</div>
 	</form>
 </body>

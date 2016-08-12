@@ -14,5 +14,10 @@
 	<div><label>폐기 사유: </label>${headDump.headDumpReason}</div>
 	<div><label>본사 직원 아이디: </label>${headDump.headStaffId}</div>
 	<div><label>폐기 일자: </label>${headDump.headDumpDate}</div>
+	
+	<div>
+		<a href="/modifyHeadDump?headDumpCode=${headDump.headDumpCode}">[수정]</a>	
+		<a href="viewHeadDumpList">[되돌아가기]</a>
+	</div>	
 </body>
 </html>

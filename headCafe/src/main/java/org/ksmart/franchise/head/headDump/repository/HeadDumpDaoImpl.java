@@ -21,7 +21,7 @@ public class HeadDumpDaoImpl implements HeadDumpDao{
 	//판매 불가 상품 리스트 조회 메서드
 	@Override
 	public List<HeadDump> viewHeadDumpList(HeadDump headDump, Search search) {
-		System.out.println("RoyaltyDaoImpl의 RoyaltyList메서드");
+		System.out.println("HeadDumpDaoImpl의 RoyaltyList 메서드");
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("search", search);
@@ -32,17 +32,26 @@ public class HeadDumpDaoImpl implements HeadDumpDao{
 	//판매 불가 상품 등록 메서드
 	@Override
 	public int addHeadDump(HeadDumpCommand headDumpCommand) {
-		System.out.println("RoyaltyDaoImpl의 RoyaltyListaddHeadDump");
+		System.out.println("HeadDumpDaoImpl의 RoyaltyListaddHeadDump 메서드");
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("headDumpCommand", headDumpCommand);
 		return sqlSessionHeadDump.insert(NS+".insertHeadDump", map);
 	}
-
+	//판매 불가 상품 상세정보 조회 메서드
 	@Override
 	public HeadDump viewHeadDumpDetail(String headDumpCode) {
-		System.out.println("RoyaltyDaoImpl의 viewHeadDumpDetail");
+		System.out.println("HeadDumpDaoImpl의 viewHeadDumpDetail 메서드");
 		
 		return sqlSessionHeadDump.selectOne(NS+".selectHeadDumpDetail", headDumpCode);
+	}
+
+	@Override
+	public int modifyHeadDump(HeadDump headDump) {
+		System.out.println("HeadDumpDaoImpl의 modifyHeadDump 메서드");
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("headDump", headDump);
+		return sqlSessionHeadDump.update(NS+".updateHeadDump", map);
 	}
 
 }

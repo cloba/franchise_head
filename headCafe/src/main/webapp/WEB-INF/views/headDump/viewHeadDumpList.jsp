@@ -66,7 +66,7 @@ $(document).ready(function(){
 	
 </script>
 <body>
-<h1>전 가맹 로얄티  리스트</h1>
+<h1>판매 불가 상품 리스트</h1>
 
 <form id="headDumpForm" action="/viewHeadDumpList" >
 	<div> 	
@@ -114,23 +114,19 @@ $(document).ready(function(){
 		<label>본사 직원 아이디/
 			<span id="headStaffIdUp">▲</span>
 			<span id="headStaffIdDown">▼</span></label>	
-		<label>
-			<span>수정 여부</span>
-		</label>	
-			
 	</div>
 
 	
-		<!-- 로얄티 실제 보여주는 정보 -->
+		<!-- 판매 불가 상품 실제 보여주는 정보 -->
 		<c:forEach var="headDump" items="${headDumpList}">
 			<div>
 				<label>${headDump.headDumpCode}																						</label>
-				<label><a href="/viewRoyaltyOverdueDetail?royaltyOverdueCode=${headDump.headDumpCode}">${headDump.hItemCode}</a>	</label>
+				<label><a href="/viewHeadDumpDetail?headDumpCode=${headDump.headDumpCode}">${headDump.hItemCode}</a>				</label>
 			    <label>${headDump.specificItemCode}																					</label>	
 			    <label>${headDump.headDumpReason}																					</label>																	x
 				<label>${headDump.headDumpDate}																						</label>
 				<label>${headDump.headStaffId}	                                                                                    </label>
-				<label><a href="/modifyHeadDump?headDumpCode=${headDumpCode}">[수정]</a>														</label>
+				
 			</div>
 		</c:forEach>
 

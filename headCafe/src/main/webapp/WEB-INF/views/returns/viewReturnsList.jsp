@@ -13,60 +13,60 @@ $(document).ready(function(){
 	$('#returnsCodeUp').click(function(){
 		$('#criteria').attr('value','returns_code');
 		$('#upDown').attr('value','DESC');
-		$('#royaltyForm').submit();
+		$('#returnsForm').submit();
 	});
 	$('#returnsCodeDown').click(function(){
 		$('#criteria').attr('value','returns_code');
 		$('#upDown').attr('value','ASC');
-		$('#royaltyForm').submit();
+		$('#returnsForm').submit();
 	});
 	$('#ordersCodeUp').click(function(){
 		$('#criteria').attr('value','orders_code');
 		$('#upDown').attr('value','DESC');
-		$('#royaltyForm').submit();
+		$('#returnsForm').submit();
 	});
 	$('#ordersCodeDown').click(function(){
 		$('#criteria').attr('value','orders_code');
 		$('#upDown').attr('value','ASC');
-		$('#royaltyForm').submit();
+		$('#returnsForm').submit();
 	});
 	$('#specificItemCodeUp').click(function(){
 		$('#criteria').attr('value','specific_item_code');
 		$('#upDown').attr('value','DESC');
-		$('#royaltyForm').submit();
+		$('#returnsForm').submit();
 	});
 	$('#specificItemCodeDown').click(function(){
 		$('#criteria').attr('value','specific_item_code');
 		$('#upDown').attr('value','ASC');
-		$('#royaltyForm').submit();
+		$('#returnsForm').submit();
 	});
 	$('#returnPriceUp').click(function(){
 		$('#criteria').attr('value','return_price');
 		$('#upDown').attr('value','DESC');
-		$('#royaltyForm').submit();
+		$('#returnsForm').submit();
 	});
 	$('#returnPriceDown').click(function(){
 		$('#criteria').attr('value','return_price');
 		$('#upDown').attr('value','ASC');
-		$('#royaltyForm').submit();
+		$('#returnsForm').submit();
 	});
 	$('#returnReDeliveryUp').click(function(){
 		$('#criteria').attr('value','return_re_delivery');
 		$('#upDown').attr('value','DESC');
-		$('#royaltyForm').submit();
+		$('#returnsForm').submit();
 	});
 	$('#returnReDeliveryDown').click(function(){
 		$('#criteria').attr('value','return_re_delivery');
 		$('#upDown').attr('value','ASC');
-		$('#royaltyForm').submit();
+		$('#returnsForm').submit();
 	});
 });	
 	
 </script>
 <body>
-<h1>전 가맹 로얄티  리스트</h1>
+<h1>반품 상품  리스트</h1>
 
-<form id="royaltyForm" action="/viewReturnsList" >
+<form id="returnsForm" action="/viewReturnsList" >
 	<div> 	
 		<!-- 검색조건 보내는 곳 -->
 		<input type="hidden" name="criteria" id="criteria" value=""/>
