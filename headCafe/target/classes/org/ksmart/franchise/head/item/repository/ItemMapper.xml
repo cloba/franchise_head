@@ -91,4 +91,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			head_client_code=#{itemCommand.headClientCode}
 		WHERE h_item_code = #{itemCommand.hItemCode}
 	</update>
+	
+	<!-- 본사가 판매한 상품의 가격을 구합니다 -->
+	<select id="getSumForAccounting" resultType="java.lang.Integer">
+		SELECT (h_item_selling_price*#{quantity}) as Price
+		FROM head_item
+		WHERE inte_code = #{inteCode}
+	</select>
 </mapper>

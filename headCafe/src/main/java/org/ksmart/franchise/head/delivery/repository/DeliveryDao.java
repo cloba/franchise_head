@@ -2,6 +2,7 @@ package org.ksmart.franchise.head.delivery.repository;
 
 import java.util.List;
 
+import org.ksmart.franchise.head.accounting.model.AccountingCommand;
 import org.ksmart.franchise.head.delivery.model.Delivery;
 import org.ksmart.franchise.head.delivery.model.DeliveryCommand;
 import org.ksmart.franchise.head.delivery.model.Deliverysearch;
@@ -25,5 +26,11 @@ public interface DeliveryDao {
 	void cancelUpdateStock(String stockPK);
 	//재고 테이블에서 임의의 PK값을 뽑습니다
 	String randomPKFromStock(String inteCode);
+	//판매한 상품의 가격 합계를 구합니다
+	int getSum(String inteCode, int quantity);
+	//판매된 내역을 회계에 등록합니다
+	int insertAccountBySell(AccountingCommand accountingCommand);
+	//회계에 판매내역 등록을 취소합니다
+	void cancelAccountBySell(String headAccountCode);
 	
 }

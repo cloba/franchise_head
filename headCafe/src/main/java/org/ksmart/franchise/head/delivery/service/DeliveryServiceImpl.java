@@ -2,6 +2,7 @@ package org.ksmart.franchise.head.delivery.service;
 
 import java.util.List;
 
+import org.ksmart.franchise.head.accounting.model.AccountingCommand;
 import org.ksmart.franchise.head.delivery.model.Delivery;
 import org.ksmart.franchise.head.delivery.model.DeliveryCommand;
 import org.ksmart.franchise.head.delivery.model.Deliverysearch;
@@ -29,7 +30,7 @@ public class DeliveryServiceImpl implements DeliveryService {
 
 	@Override
 	//배송을 요청하는 메서드입니다
-	public void requestDeliveryService(String[] checkedOrders, String[] inteCode, int headSellQuantity){
+	public void requestDeliveryService(String[] checkedOrders, String[] inteCode, int[] headSellQuantity){
 		System.out.println("DeliveryServiceImpl의 requestDeliveryService메서드 호출");
 		DeliveryCommand deliveryCommand = new DeliveryCommand();
 		String orderCode = null;
@@ -40,6 +41,7 @@ public class DeliveryServiceImpl implements DeliveryService {
 				orderCode = checkedOrders[i];
 			//	System.out.println(orderCode+" <==== orderCode");
 				deliveryCommand.setReceivedOrderCode(orderCode);
+				
 				//1.상품 배송정보를 추가합니다
 				int result1 = deliveryDao.requestDelivery(deliveryCommand);	
 				System.out.println("result1 ===> "+result1);
@@ -58,16 +60,42 @@ public class DeliveryServiceImpl implements DeliveryService {
 				}
 			}
 			
-			//3.판매내역에 따라 재고를 차감합니다
+			//3.판매한 내역을 회계에 추가합니다
 			for(int i = 0; i<inteCode.length; i++){
-				System.out.println("for1무 돌아감");
-				for(int j = 0; j<headSellQuantity; j++){
-					System.out.println("for2문 돌아감");
+				int sum = deliveryDao.getSum(inteCode[i], headSellQuantity[i]);
+				AccountingCommand accountingCommand = new AccountingCommand();
+				accountingCommand.setHeadAccountSum(sum);
+				int result3 = deliveryDao.insertAccountBySell(accountingCommand);
+				System.out.println(result3+" <===== result3");
+				String headAccountCode = accountingCommand.getHeadAccountCode();
+				if( result3 != 1 ){
+					System.out.println("result3 예외처리됨 ===> "+result3);
+					deliveryDao.cancelAccountBySell(headAccountCode);
+					Exception e = new Exception();
+					throw e; 
+				}
+			}
+			
+			//4.판매내역에 따라 재고를 차감합니다
+			//inteCode: 상품번호 , headSellQuantity: 요청수량
+			for(int i = 0; i<inteCode.length; i++){
+			//	System.out.println("for1문 돌아감");
+				
+				//요청 수량만큼 재고에서 해당상품 상태를 출고로 변경합니다
+				for(int j = 0; j<headSellQuantity[i]; j++){
+					
+					//해당상품 중 재고가 있는 상품의 stock일련번호를 임의로 받습니다
 					stockPK = deliveryDao.randomPKFromStock(inteCode[i]);
-					System.out.println("inteCode["+i+"] =====> "+inteCode[i]);
-					int result3 = deliveryDao.updateStock(stockPK);
-					if( result3 != 1 ){
-						System.out.println("result3 예외처리됨 ===> "+result3);
+				//	System.out.println("inteCode["+i+"] =====> "+inteCode[i]);
+				//	System.out.println("stockPK =================> "+stockPK);
+					
+					//재고에서 해당 상품의 out여부를 N->Y으로 변경합니다
+					int result4 = deliveryDao.updateStock(stockPK);
+				//	System.out.println(result4+" <=================result4");
+					
+					//실패시 Y->N으로 되돌리고 예외를 던집니다
+					if( result4 != 1 ){
+						System.out.println("result4 예외처리됨 ===> "+result4);
 						deliveryDao.cancelUpdateStock(stockPK);
 						Exception e = new Exception();
 						throw e; 
@@ -77,9 +105,12 @@ public class DeliveryServiceImpl implements DeliveryService {
 			
 		}catch (Exception e){
 			System.out.println("catch..");
-			deliveryDao.deleteDelivery(deliveryCommand.getDeliveryCode());
-			deliveryDao.updateSellDelivery(orderCode, "N");
-			deliveryDao.cancelUpdateStock(stockPK);
+			for(int i = 0; i<checkedOrders.length; i++){
+				orderCode = checkedOrders[i];
+				deliveryCommand.setReceivedOrderCode(orderCode);
+				deliveryDao.deleteDelivery(deliveryCommand.getDeliveryCode());
+				deliveryDao.updateSellDelivery(orderCode, "N");
+			}
 		}
 	}
 
@@ -94,6 +125,7 @@ public class DeliveryServiceImpl implements DeliveryService {
 			deliveryCommand.setDeliveryCode(deliveryCode);
 			deliveryCommand.setDeliveryStatus(status);
 			deliveryDao.updateStatus(deliveryCommand);	
+			
 		}
 		
 	}

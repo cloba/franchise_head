@@ -10,7 +10,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="subjectCode" column="subject_code" />
 		<result property="headClientCode" column="head_client_code" />
 		<result property="headAccountFlow" column="head_account_flow" />
-		<result property="headAccountGroupCode" column="head_account_group_code" />
 		<result property="headAccountTable" column="head_account_table" />
 		<result property="headAccountSum" column="head_account_sum" />
 		<result property="headAccountRequestDate" column="head_account_request_date" />
@@ -38,10 +37,32 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				${search.criteria} ${search.upDown}
 			</if>
 		</trim>	
-	
-	
 	</select>
+	
+	<!-- 판매내역을 회계에 등록합니다  -->
+	<insert id="insertAccountingBySelling" parameterType="org.ksmart.franchise.head.accounting.model.AccountingCommand">
+		<selectKey resultType="hashmap" keyProperty="headAccountCode" order="BEFORE">
+			SELECT IF( EXISTS(
+            	SELECT head_account_code
+             	FROM head_account), concat('head_account_code', MAX(CONVERT(SUBSTRING(head_account_code,18), UNSIGNED))+1), 'head_account_code1') as headAccountCode
+			FROM head_account
+		</selectKey>
+		INSERT INTO head_account
+		(head_account_code, subject_code, head_client_code, head_account_flow, head_account_table, head_account_sum, head_account_request_date, head_staff_id_request, head_account_detail)
+		VALUES (#{headAccountCode}, 
+				'subject_code2', 
+				'head_client_code1', 
+				'입금', 
+				'본사판매', 
+				'', 
+				NOW(), 
+				'head_staff_id1', 
+				#{headAccountSum})
+	</insert>
 
-
+	<!-- 판매에 따른 회계등록을 취소합니다 -->
+	<delete id="cancelAccountBySell">
+		DELETE FROM head_account WHERE head_account_code=#{headAccountCode}
+	</delete>
 
 </mapper>

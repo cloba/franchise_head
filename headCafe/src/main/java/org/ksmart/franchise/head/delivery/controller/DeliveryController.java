@@ -1,5 +1,6 @@
 package org.ksmart.franchise.head.delivery.controller;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.ksmart.franchise.head.delivery.model.Delivery;
@@ -40,13 +41,13 @@ public class DeliveryController {
 	
 	//선택한 판매내역에 대해 배송을 요청합니다
 	@RequestMapping(value="/requestDelivery")
-	public String requestDelivery(String[] checkedOrders, String[] inteCode, int headSellQuantity){
+	public String requestDelivery(String[] checkedOrders, String[] inteCode, int[] headSellQuantity){
 		System.out.println("SellController의 requestDelivery 메서드 호출");
-		System.out.println("checkedOrders ====> "+checkedOrders);
-		System.out.println("inteCode ====> "+inteCode);
-		System.out.println("headSellQuantity ====> "+headSellQuantity);
-			deliveryService.requestDeliveryService(checkedOrders, inteCode, headSellQuantity);
-		
+		System.out.println("checkedOrders ====> "+Arrays.toString(checkedOrders));
+		System.out.println("inteCode ====> "+Arrays.toString(inteCode));
+		System.out.println("headSellQuantity ====> "+Arrays.toString(headSellQuantity));
+		deliveryService.requestDeliveryService(checkedOrders, inteCode, headSellQuantity);
+
 		return "redirect:/viewDeliveryList";
 	}
 	

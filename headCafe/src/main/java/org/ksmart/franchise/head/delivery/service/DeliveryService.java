@@ -10,7 +10,7 @@ public interface DeliveryService {
 	
 	Delivery getDeliveryDetailService(String deliveryCode);
 	
-	void requestDeliveryService(String[] checkedOrders, String[] inteCode, int headSellQuantity);
+	void requestDeliveryService(String[] checkedOrders, String[] inteCode, int[] headSellQuantity);
 	
 	void updateStatusService(String[] checked, String status);
 }
