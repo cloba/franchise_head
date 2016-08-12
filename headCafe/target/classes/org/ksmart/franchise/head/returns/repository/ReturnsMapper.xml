@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.ksmart.franchise.head.returns.repository.ReturnsMapper">
+
+	<resultMap id="ReturnsResultMap" type="org.ksmart.franchise.head.returns.model.Returns">
+		<id property="returnsCode" column="returns_code"/>
+		<result property="ordersCode" column="orders_code"/>
+		<result property="specificItemCode" column="specific_item_code"/>
+		<result property="returnReason" column="return_reason"/>
+		<result property="returnPrice" column="return_price"/>
+		<result property="returnReportDate" column="return_report_date"/>
+		<result property="returnHeadCheck" column="return_head_check"/>
+		<result property="returnHeadCheckDate" column="return_head_check_date"/>
+		<result property="headStaffId" column="head_staff_id"/>
+		<result property="returnHeadCheck" column="return_head_check"/>
+		<result property="returnReDelivery" column="return_re_delivery"/>
+		<result property="returnCancel" column="return_cancel"/>
+	</resultMap>
+	
+	<!-- 로얄티 리스트 조회 메서드 -->
+	<select id="selectReturnsList" resultMap="ReturnsResultMap" parameterType="java.util.Map">
+		SELECT 
+			returns_code,        orders_code, 
+			specific_item_code,  return_reason, 
+			return_price,        head_staff_id,    
+			return_re_delivery
+		FROM `returns`
+		<where>
+			<if test='search.searchItem != null and search.searchItem != "" '>
+				AND ${search.searchKey} like CONCAT('%',#{search.searchItem},'%')
+			</if>
+		</where>
+		<trim prefix="ORDER BY">
+			<if test="search.criteria != null or search.criteria != ''">
+				${search.criteria} ${search.upDown}
+			</if>
+		</trim>
+	</select>
+
+<select id="selectReturnDetail" parameterType="java.util.Map" resultMap="ReturnsResultMap">
+	SELECT 
+		returns_code,       orders_code,              specific_item_code,
+		return_reason,      return_price,             return_report_date,              
+		return_head_check,  return_head_check_date,   head_staff_id, return_re_delivery, 
+		return_cancel
+	FROM 
+		`returns`
+	WHERE returns_code= #{returns.returnsCode}
+
+</select>
+
+
+
+
+
+</mapper>
