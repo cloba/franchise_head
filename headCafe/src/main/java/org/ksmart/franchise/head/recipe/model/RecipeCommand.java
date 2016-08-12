@@ -7,7 +7,8 @@ public class RecipeCommand {
 	private String recipeAct; //조리내용
 	private String recipeOrder; //레시피 순서
 	private String headStaffId; //등록한 아이디
-	
+	private String recipeCode;
+
 	public String getMenuCode() {
 		return menuCode;
 	}
@@ -43,6 +44,12 @@ public class RecipeCommand {
 	}
 	public void setRecipeOrder(String recipeOrder) {
 		this.recipeOrder = recipeOrder;
+	}
+	public String getRecipeCode() {
+		return recipeCode;
+	}
+	public void setRecipeCode(String recipeCode) {
+		this.recipeCode = recipeCode;
 	}
 	
 	

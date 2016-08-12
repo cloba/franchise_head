@@ -7,8 +7,6 @@ import org.ksmart.franchise.head.item.model.Item;
 import org.ksmart.franchise.head.menu.model.Menu;
 import org.ksmart.franchise.head.menu.model.MenuDomain;
 import org.ksmart.franchise.head.util.Search;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
 
 public interface MenuService {
 	//menu리스트를 봅니다
@@ -19,4 +17,5 @@ public interface MenuService {
 	public int addMenuService(MenuDomain menu) throws Exception;
 	//재료를 검색합니다
 	public List<Item> searchIngreService(String ingreName);
+	public int recipeCountService(String menuCode);
 }

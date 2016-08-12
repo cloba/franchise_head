@@ -55,19 +55,20 @@ public class RecipeController {
 		
 	//레시피 등록 form을 보여주는 메서드
 	@RequestMapping(value="/addRecipe", method=RequestMethod.GET)
-	public String addRecipe(Model model, Recipe recipe){
+	public String addRecipe(Model model, RecipeCommand recipeCommand){
 		System.out.println("RecipeController의 addRecipe get메서드");
-		model.addAttribute("recipe", recipe);	
+		model.addAttribute("recipeCommand", recipeCommand);	
+		System.out.println("getMenuCode"+recipeCommand.getMenuCode());
 		return "/recipe/addRecipeForm";
 	}
-	
+
 	// 메뉴를 추가하는 프로그램을 실행합니다
 	@RequestMapping(value="/addRecipe", method=RequestMethod.POST)
 	public String addRecipe(RecipeCommand recipeCommand){
 		System.out.println("RecipeController의 addRecipe post메서드 ");
 		recipeService.addRecipeService(recipeCommand);
 		
-		return "redirect:/viewRecipeList";
+		return "redirect:/viewMenuDetail?menuCode="+recipeCommand.getMenuCode();
 	}	
 		 
 }

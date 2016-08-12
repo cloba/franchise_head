@@ -110,5 +110,11 @@ public class MenuServiceImpl implements MenuService {
 		
 		return menuDao.searchIngre(ingreName);
 	}
+
+	@Override
+	public int recipeCountService(String menuCode) {
+		System.out.println("MenuServiceImpl의 recipecount메서드 호출");	
+		return menuDao.recipeCount(menuCode);
+	}
 	
 }

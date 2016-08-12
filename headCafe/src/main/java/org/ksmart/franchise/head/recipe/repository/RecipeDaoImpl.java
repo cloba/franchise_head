@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.ksmart.franchise.head.menu.model.MenuDomain;
 import org.ksmart.franchise.head.recipe.model.Recipe;
 import org.ksmart.franchise.head.recipe.model.RecipeCommand;
 import org.ksmart.franchise.head.util.Search;
@@ -43,15 +42,16 @@ public class RecipeDaoImpl implements RecipeDao{
 	@Override
 	public int addRecipe(RecipeCommand recipeCommand) {
 		System.out.println("RecipeDaoImpl의 addRecipe메서드");
+		System.out.println("getRecipeActArr::"+recipeCommand.getRecipeActArr().length);
 		int result = 0;
 		for(int i=0;  i<recipeCommand.getRecipeActArr().length; i++){
-			recipeCommand.setRecipeAct((recipeCommand.getRecipeActArr()[i]));
+			recipeCommand.setRecipeAct(recipeCommand.getRecipeActArr()[i]);
 			recipeCommand.setRecipeOrder(recipeCommand.getRecipeOrderArr()[i]);
 			
 			Map<String, Object> map = new HashMap<String, Object>();
 			map.put("recipeCommand", recipeCommand);
 			
-			result = sqlSessionRecipe.insert(NS+".insertAddRecipe", recipeCommand);
+			result = sqlSessionRecipe.insert(NS+".insertAddRecipe", map);
 		}
 		
 		return result;

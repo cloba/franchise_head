@@ -11,12 +11,10 @@
 
 	<div><label>메뉴이름 : </label>${recipe.menuCode }</div><br/>
 	
-	<c:forEach var="Recipe" items="${list}">  
+	<c:forEach var="Recipe" items="${list}" begin="1" end="1">  
 		<div class="recipeAct">${Recipe.recipeOrder}  ${Recipe.recipeAct}</div>
-		
-		
-		
 	</c:forEach><br/>
+	
 	
 	
 	<div><label>등록날짜</label>${recipe.recipeRegitDate }</div>
