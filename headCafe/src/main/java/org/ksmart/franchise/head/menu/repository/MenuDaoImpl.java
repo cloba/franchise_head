@@ -18,9 +18,13 @@ import org.springframework.stereotype.Repository;
 public class MenuDaoImpl implements MenuDao {
 	
 	private final String NS = "org.ksmart.franchise.head.menu.repository.MenuMapper";
+	private final String R = "org.ksmart.franchise.head.recipe.repository.RecipeMapper";
 	
 	@Autowired
 	private SqlSessionTemplate sqlSessionMenu;
+	
+	@Autowired   
+	private SqlSessionTemplate sqlSessionRecipe;
 	
 	// menu의 정보를 보여주는 메서드입니다
 	public List<Menu> viewMenuList(Search menuSearch) {
@@ -138,6 +142,13 @@ public class MenuDaoImpl implements MenuDao {
 		System.out.println("MenuDaoImpl의 deleteIngre 메서드 호출");
 		
 		sqlSessionMenu.delete(NS+".deleteIngre", menuCode);
+	}
+
+	@Override
+	public int recipeCount(String menuCode) {
+		System.out.println("MenuDaoImpl의 reciperecipecount 메서드 호출");
+		
+		return sqlSessionRecipe.selectOne(R+".selectCountRecipe", menuCode);
 	}
 
 

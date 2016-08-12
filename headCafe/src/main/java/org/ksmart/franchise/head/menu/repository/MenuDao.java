@@ -27,4 +27,6 @@ public interface MenuDao {
 	public void deleteMenu(String menuCode);
 	// 추가된 재료를 삭제하는 메서드입니다
 	public void deleteIngre(String menuCode);
+	// 등록된 레시피 수를 가져오는 메서드입니다.
+	public int recipeCount(String menuCode);
 }

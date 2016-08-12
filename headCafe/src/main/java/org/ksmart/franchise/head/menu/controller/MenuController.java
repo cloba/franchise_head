@@ -58,8 +58,10 @@ public class MenuController {
 		// 4. List를 Map으로 변환합니다
 		Map<String, Object> ingreMap = new HashMap<String, Object>();
 		ingreMap.put("ingreList", ingreList);
+		
+		// 5.레시피가 있는지 확인합니다.
+		menu.setRecipeIdentify(menuService.recipeCountService(menuCode));
 	
-		// 4.
 		model.addAttribute("menu",menu);
 		model.addAttribute("ingreList",ingreList);
 

@@ -10,6 +10,8 @@ public class Menu {
 	private String menuRegitDate;
 	private String menuStatus;
 	private String menuExpiredDate;
+	private int recipeIdentify;   //레시피 리스트 수
+	
 	public String getMenuCode() {
 		return menuCode;
 	}
@@ -70,6 +72,12 @@ public class Menu {
 				+ menuIngrePrice + ", menuSellingPrice=" + menuSellingPrice + ", headStaffId=" + headStaffId
 				+ ", menuRegitDate=" + menuRegitDate + ", menuStatus=" + menuStatus + ", menuExpiredDate="
 				+ menuExpiredDate + "]";
+	}
+	public int getRecipeIdentify() {
+		return recipeIdentify;
+	}
+	public void setRecipeIdentify(int recipeIdentify) {
+		this.recipeIdentify = recipeIdentify;
 	}
 	
 }

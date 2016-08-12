@@ -30,7 +30,7 @@ $(document).ready(function(){
 			number++
 			console.log('order:'+order)
 	//	}
-		$('#recipeAdd').append('<div> 순서: <input type="text" readonly="readonly" id="recipeOrder'+number+'" class="recipeOrder" name="recipeOrder" required="required" value="'+number+'" /> 레시피 내용: <input type="text" class="recipeContent" name="recipeContent" required="required" size="40" maxlength="35"/></div>');
+		$('#recipeAdd').append('<div> 순서: <input type="text" readonly="readonly" id="recipeOrder'+number+'" class="recipeOrder" name="recipeOrderArr" required="required" value="'+number+'" /> 레시피 내용: <input type="text" class="recipeContent" name="recipeActArr" required="required" size="40" maxlength="35"/></div>');
 		
 	});
 });
@@ -38,10 +38,10 @@ $(document).ready(function(){
 </head>
 <body>
 <h1>레시피 등록</h1>
-	<form action="/addHeadStaff" method="POST" id="joinForm">
+	<form action="/addRecipe" method="POST" id="joinForm">
 
 		<div>	
-			<label>메뉴이름 : </label><div>${menuCode}</div>
+			<div><label>메뉴이름: </label>${recipeCommand.menuCode}</div>
 		</div>
 	 
 		<div>
@@ -54,7 +54,7 @@ $(document).ready(function(){
 			<input type="submit" value="저장">
 		</div>
 		<div>
-			<input type="hidden"  value="${menuCode}">
+			<input type="hidden" name="menuCode" value="${recipeCommand.menuCode}">
 		</div>
 
 	</form>
