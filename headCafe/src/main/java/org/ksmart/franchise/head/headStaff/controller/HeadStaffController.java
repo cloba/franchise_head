@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 @Controller
-@SessionAttributes("headStaffLogin")
+@SessionAttributes("login")
 public class HeadStaffController {
 	
 	@ModelAttribute("headStaffLogin")
@@ -39,7 +39,7 @@ public class HeadStaffController {
 	}
 	
 	//본사직원 로그인 메서드  
-	@RequestMapping(value="/loginStaff", method=RequestMethod.POST)
+	/*@RequestMapping(value="/loginStaff", method=RequestMethod.POST)
 	public String loginStaff(Model model, @ModelAttribute HeadStaffLogin headStaffLogin){
 		System.out.println("HeadStaffController의 loginStaff실행");
 		headStaffService.loginStaffService(headStaffLogin);
@@ -57,7 +57,7 @@ public class HeadStaffController {
 	//	System.out.println("headStaffLogin :"+headStaffLogin.getHeadStaffId());
 		return "/home";   //(로그인 못 했다는 메서지와 함께) 로그인창 다시보여줘야함
 		
-	}
+	}*/
 	
 	//회원가입 form을 보여주는 메서드
 	@RequestMapping(value="/addHeadStaff", method=RequestMethod.GET)

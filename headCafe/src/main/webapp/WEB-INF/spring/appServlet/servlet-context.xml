@@ -21,6 +21,12 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 	
+	<!-- interceptor -->
+<!-- 	<mvc:interceptors>
+		<mvc:mapping path="/org/ksmart/franchise/*"/>
+	    <bean class="org.ksmart.franchise.head.util.session.Session"/>
+	</mvc:interceptors> -->
+	
 	<context:component-scan base-package="org.ksmart.franchise" />
 	
 	<bean 	id="multipartResolver" 

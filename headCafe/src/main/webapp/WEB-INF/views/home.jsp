@@ -15,7 +15,7 @@
 			} else if ($('#headStaffPw').val() == "") {
 				alert('비밀번호를 입력하세요.');
 			}else{
-				$('#loginForm').attr('action','/loginStaff');  //바꿈
+				$('#loginForm').attr('action','/login');  //바꿈
 				$('#loginForm').submit();
 			}
 		});
@@ -23,11 +23,11 @@
 </script>	
 </head>
 <body>
-로그인 아이디: ${headStaffLogin.headStaffId}
+아이디: ${login.headStaffId}
 <a href="/viewReceivedOrder">들어온 주문 확인</a>
 <a href="/viewDeliveryList">배송관리</a>
 <a href="/viewItemOutList">출고관리</a>
-<a href="/viewSellList?status=Y">본사판매관리</a>
+<a href="/viewSellList">본사판매관리</a>
 <a href="/viweHeadStockList">재고관리</a>
 <a href="/viewPaymentList?status=Y">결제방식 관리</a>
 <a href="/viewItemList">상품관리</a>
@@ -43,30 +43,30 @@
 <a href="/viewHeadDumpList">판매 불가 상품 관리</a>
 <a href="/viewReturnsList">반품 상품 관리</a>
 
-<c:choose>
-<c:when test="${headStaffLogin.headStaffId == null or headStaffLogin.headStaffId == '' }">
-
-	<!-- 로그인 폼 -->
-	<div class="join">
-		<form id="loginForm" action="" method="post" >
-			<h2>로그인</h2>
-			
-			<div class="form-group">
-				<label for="staffId">아이디 : </label>
-				<input type="text" class="form-control" id="headStaffId" name ="headStaffId" placeholder="Enter ID">
-			</div>
-			<div class="form-group">
-				<label for="staffPw">비밀번호:</label>
-				<input type="password" class="form-control" id="headStaffPw" name = "headStaffPw" placeholder="Enter password">
-			</div>
-			<div id="right">
-				<input type="button" class="btn btn-default" id="loginBtn" value="로그인"/>
-			</div>
-		</form>
-	</div>
-</c:when>
+	<c:choose>
+	<c:when test="${login.headStaffId == null or login.headStaffId == ''}">
+	
+		<!-- 로그인 폼 -->
+		<div class="join">
+			<form id="loginForm" action="" method="post" >
+				<h2>로그인</h2>
+				
+				<div class="form-group">
+					<label for="staffId">아이디 : </label>
+					<input type="text" class="form-control" id="headStaffId" name="headStaffId" placeholder="Enter ID">
+				</div>
+				<div class="form-group">
+					<label for="staffPw">비밀번호:</label>
+					<input type="password" class="form-control" id="headStaffPw" name="headStaffPw" placeholder="Enter password">
+				</div>
+				<div id="right">
+					<input type="button" class="btn btn-default" id="loginBtn" value="로그인"/>
+				</div>
+			</form>
+		</div>
+	</c:when>
 	<c:otherwise>
-	아이디: ${headStaffLogin.headStaffId}
+	
 	<a href="/logout">로그아웃</a>
 	</c:otherwise>
 </c:choose>
