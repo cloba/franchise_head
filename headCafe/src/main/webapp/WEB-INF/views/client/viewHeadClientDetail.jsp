@@ -5,7 +5,6 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
@@ -15,10 +14,14 @@
 
 	<div><label>거래처 코드 : </label>${client.headClientCode }</div><br/>
 	<div><label>거래처 명 : </label>${client.headClientName }</div><br/>
-	<div><label>계약 상태 : </label>${client.headClientContract }</div><br/>
-	<div><label>담당자 명 : </label>${client.headClientInCharge }</div><br/>
-	<div><label>연락처  : </label>${client.headClientPhoneFirst} - ${client.headClientPhoneSecond } - ${client.headClientPhoneThird }</div><br/>
+	<div><label>계약 상태 : </label>
+		<c:if test="${client.headClientContract eq '1'}">계약	 체결 중</c:if>
+		<c:if test="${client.headClientContract eq '2'}">계약 중지</c:if>
+		<c:if test="${client.headClientContract eq '3'}">계약	 만료</c:if>
+		<c:if test="${client.headClientContract eq '4'}">계약	 파기</c:if></div><br/>
 	
+	<div><label>담당자 명 : </label>${client.headClientInCharge }</div><br/>
+	<div><label>연락처  : </label>${client.headClientPhoneFirst} - ${client.headClientPhoneSecond } - ${client.headClientPhoneThird }</div><br/>				
 	<div><label>거래처 우편주소 : </label>${client.headClientPost }</div><br/>
 	<div><label>거래처 번지주소 : </label>${client.headClientParcleAddr }</div><br/>
 	<div><label>거래처 도로명주소 : </label>${client.headClientRoadAddr }</div><br/>

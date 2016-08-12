@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.ksmart.franchise.head.client.model.Client;
+import org.ksmart.franchise.head.client.model.ClientCommand;
 import org.ksmart.franchise.head.util.Search;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,15 @@ public class ClientDaoImpl implements ClientDao {
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("headClientCode", headClientCode);
 		return sqlSessionHeadClient.selectOne(NS+".selectHeadClientdetail", map);
+	}
+	@Override
+	public int addHeadClient(ClientCommand clientCommand) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("clientCommand", clientCommand);
+		System.out.println("getHeadClientParcleAddr::"+clientCommand.getHeadClientParcleAddr());
+		System.out.println("getHeadClientRoadAddr::"+clientCommand.getHeadClientRoadAddr());
+		
+		return sqlSessionHeadClient.insert(NS+".insertAddHeadClient", map);
 	}
 
 }

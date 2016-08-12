@@ -3,6 +3,7 @@ package org.ksmart.franchise.head.client.service;
 import java.util.List;
 
 import org.ksmart.franchise.head.client.model.Client;
+import org.ksmart.franchise.head.client.model.ClientCommand;
 import org.ksmart.franchise.head.client.repository.ClientDao;
 import org.ksmart.franchise.head.util.Search;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,13 @@ public class ClientServiceImpl implements ClientService {
 		System.out.println("ClientServiceImpl의 headClientDetailService메서드");
 		
 		return clientDao.HeadClientDetail(headClientCode);
+	}
+
+	@Override
+	public int addHeadClient(ClientCommand clientCommand) {
+		System.out.println("ClientServiceImpl의 HeadClientListService메서드");
+		return clientDao.addHeadClient(clientCommand);
+		
 	}
 
 }

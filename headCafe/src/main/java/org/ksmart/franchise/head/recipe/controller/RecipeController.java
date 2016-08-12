@@ -52,6 +52,12 @@ public class RecipeController {
 			return "/recipe/viewRecipeDetail";
 		  }
 		
-		
-		
+		//레시피 등록 form을 보여주는 메서드
+			@RequestMapping(value="/addRecipe", method=RequestMethod.GET)
+			public String addRecipe(Model model, Recipe recipe){
+				System.out.println("RecipeController의 addRecipe 메서드");
+				model.addAttribute("recipe", recipe);	
+				return "/recipe/addRecipe";
+			}
+		 
 }

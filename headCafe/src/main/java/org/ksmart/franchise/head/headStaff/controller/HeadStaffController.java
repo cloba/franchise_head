@@ -67,7 +67,7 @@ public class HeadStaffController {
 		return "/headStaff/AddHeadStaff";
 	}
 	
-	// AddHeadStaff.jsp의 form에서 넘어오는 데이터를 받아서 처리하는 메서드
+	// 회원가입 form에서 넘어오는 데이터를 받아서 처리하는 메서드
 	@RequestMapping(value="/addHeadStaff", method=RequestMethod.POST)
 	public String addHeadStaff1(HeadStaffCommand headStaffCommand, Model model){
 		//1. form에서 보낸 데이터가 담긴 headStaff 객체를 매개변수로 하는 메서드를 호출합니당

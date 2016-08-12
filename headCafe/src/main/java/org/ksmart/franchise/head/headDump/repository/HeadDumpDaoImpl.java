@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.ksmart.franchise.head.headDump.model.HeadDump;
+import org.ksmart.franchise.head.headDump.model.HeadDumpCommand;
 import org.ksmart.franchise.head.util.Search;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,7 @@ public class HeadDumpDaoImpl implements HeadDumpDao{
 	@Autowired		
 	private SqlSessionTemplate sqlSessionHeadDump;
 		
-	//폐기 상품 리스트 조회 메서드
+	//판매 불가 상품 리스트 조회 메서드
 	@Override
 	public List<HeadDump> viewHeadDumpList(HeadDump headDump, Search search) {
 		System.out.println("RoyaltyDaoImpl의 RoyaltyList메서드");
@@ -26,6 +27,15 @@ public class HeadDumpDaoImpl implements HeadDumpDao{
 		map.put("search", search);
 		map.put("headDump", headDump);
 		return sqlSessionHeadDump.selectList(NS+".selectHeadDumpList", map);
+	}
+
+	//판매 불가 상품 등록 메서드
+	@Override
+	public int addHeadDump(HeadDumpCommand headDumpCommand) {
+		System.out.println("RoyaltyDaoImpl의 RoyaltyListaddHeadDump");
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("headDumpCommand", headDumpCommand);
+		return sqlSessionHeadDump.insert(NS+".insertHeadDump", map);
 	}
 
 }

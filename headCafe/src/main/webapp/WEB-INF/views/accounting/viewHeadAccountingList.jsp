@@ -235,8 +235,7 @@ $(document).ready(function(){
 	</form>
 
 
-
-	
+<div style="overflow:scroll; width:1300px; height:550px; padding:10px;">	
 	<div>
 		<label>본사 통합회계 전표번호
 			<span id="headAccountCodeUp">▲</span>
@@ -294,5 +293,6 @@ $(document).ready(function(){
 		 	<label>${Accounting.headStaffIdConfirm }</label> 	
 	 	</div>
 	 </c:forEach>
+</div>	 
 </body>
 </html>
