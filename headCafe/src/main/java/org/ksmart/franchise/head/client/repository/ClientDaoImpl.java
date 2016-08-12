@@ -51,7 +51,7 @@ public class ClientDaoImpl implements ClientDao {
 		return sqlSessionHeadClient.insert(NS+".insertAddHeadClient", map);
 	}
 	
-	
+	//본사 거래처 수정 처리하는 메서드
 	@Override
 	public int modifyHeadClient(Client client) {
 		System.out.println("ClientDaoImpl의 modifyHeadClient메서드");

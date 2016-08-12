@@ -17,5 +17,6 @@ public interface MenuService {
 	public int addMenuService(MenuDomain menu) throws Exception;
 	//재료를 검색합니다
 	public List<Item> searchIngreService(String ingreName);
+	//메뉴에 등록된 레시피 수를 구해옵니다.
 	public int recipeCountService(String menuCode);
 }

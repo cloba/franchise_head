@@ -67,25 +67,24 @@ public class ClientController {
 	//거래처 정보 수정 form 보여주는 메서드
 	  @RequestMapping(value="/modifyClient", method=RequestMethod.GET)
 	  public String modifyClient(Model model, String headClientCode){
-		  System.out.println("ClientController의 modifyClient메서드 ");
+		  System.out.println("ClientController의 modifyClient get메서드 ");
 		  Client client =clientService.headClientDetailService(headClientCode); 
 
 		  model.addAttribute("client", client);
 		
-		return "/client/viewClientModifyForm";
+		return "/client/viewHeadClientModifyForm";
 		  
 	  }
 	  
 	  //거래처 정보 처리하는 메서드
-	  @RequestMapping(value="/viewHeadClientDetail", method=RequestMethod.POST)
-	  public String ModifyHeadStaff(Model model, Client client){
-		  System.out.println("ClientController의 ModifyHeadStaff메서드 ");
+	  @RequestMapping(value="/modifyClient", method=RequestMethod.POST)
+	  public String modifyClient(Model model, Client client){
+		  System.out.println("ClientController의 modifyClient post메서드 ");
 		  clientService.modifyHeadClientService(client);
-		  
+		  System.out.println("getHeadClientCode"+client.getHeadClientCode());
 		  //수정된 정보의 pk를 가져와 수정된 내역을 보여주는 페이지로 이동(디테일페이지)
 		  String headClientCode= client.getHeadClientCode();
-		 return "redirect:/headStaffDetail?headClientCode="+headClientCode;
-		  
+		 return "redirect:/viewHeadClientDetail?headClientCode="+headClientCode;
 	  }
 	
 	
