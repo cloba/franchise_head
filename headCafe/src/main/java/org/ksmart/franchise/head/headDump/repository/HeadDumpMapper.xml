@@ -46,10 +46,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	     </selectKey>
 	     INSERT INTO head_dump
 			   (head_dump_code,  h_item_code,                  specific_item_code,           head_dump_reason,                  head_staff_id, head_dump_date)
-		VALUES (#{headDumpCode}, #{headDumpCommand.hItemCode}, #{headDumpCommand.speciific}, #{headDumpCommand.headDumpReason}, 'id001',       NOW())
+		VALUES (#{headDumpCode}, #{headDumpCommand.hItemCode}, #{headDumpCommand.specificItemCode}, #{headDumpCommand.headDumpReason}, 'id001',       NOW())
 	
-	</insert>
-
+	</insert> 
+ 
 
 
 
