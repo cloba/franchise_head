@@ -68,17 +68,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 	
 	<!-- contract를 수정합니다 -->
-	<update id="modifyContract">
+	<update id="modifyContract" parameterType="org.ksmart.franchise.head.contract.model.ContractCommand">
 		UPDATE contract
 		SET
-			<if test="contractFile != null">
-				contract_file=#{contractFile},
-			</if>
-			<if test="fileMap.originalName != null">
+			<if test="contractFile.originalName != null">
 				contract_file='Y', 
-				contract_file_original_name=#{fileMap.originalName}, 
-				contract_file_stored_name=#{fileMap.storedName}, 
-				contract_file_size=#{fileMap.fileSize},
+				contract_file_original_name=#{contractFile.originalName}, 
+				contract_file_stored_name=#{contractFile.storedName}, 
+				contract_file_size=#{contractFile.fileSize},
 			</if>
 			contract_status=#{contractStatus}
 		WHERE contract_code = #{contractCode}

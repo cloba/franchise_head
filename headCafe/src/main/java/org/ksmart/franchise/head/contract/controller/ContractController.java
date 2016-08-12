@@ -93,6 +93,7 @@ public class ContractController {
 	@RequestMapping(value="/addContract", method=RequestMethod.POST) //HttpServletRequest에 파일정보를 담아옵니다
 	public String addContract(ContractCommand contractCommand, HttpServletRequest request){
 		log.debug("ContractController addContract 메서드 호출");
+		log.debug("contractCommand!!!====> "+contractCommand);
 		try {
 			contractService.addContractService(contractCommand, request);
 		} catch (Exception e) {

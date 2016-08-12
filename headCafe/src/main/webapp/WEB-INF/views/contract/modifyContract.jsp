@@ -23,8 +23,6 @@
 			$('#option1').attr('selected','selected');
 		}else if( target == 2 ){
 			$('#option2').attr('selected','selected');
-		}else if( target == 3 ){
-			$('#option3').attr('selected','selected');
 		}else if( target == 4 ){
 			$('#option4').attr('selected','selected');
 		};
@@ -32,7 +30,7 @@
 	
 </script>
 <h1>계약 수정</h1>
-	<form id="modifyForm" action="/modifyContract" method="POST">
+	<form id="modifyForm" action="/modifyContract" method="POST" enctype="multipart/form-data">
 		<div> 
 		계약코드: <input type="text" name="contractCode" value="${contract.contractCode}" readonly="readonly"/> 
 		</div>
@@ -44,7 +42,6 @@
 			<select id="contractStatus" name="contractStatus">
 				<option id="option1" value="1">계약중</option>
 				<option id="option2" value="2">계약연기</option>
-				<option id="option3" value="3">계약파기</option>
 				<option id="option4" value="4">계약만료</option>
 			</select>
 		</div>

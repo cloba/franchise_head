@@ -65,6 +65,7 @@ public class ContractDaoImpl implements ContractDao {
 	//계약을 수정하는 메서드입니다
 	public void modifyContract(ContractCommand contractCommand) {
 		log.debug("ContractDaoImpl의 modifyContract 메서드 호출");
+		log.debug(contractCommand.toString());
 		sqlSessionContract.update(NS+".modifyContract", contractCommand);		
 	}
 

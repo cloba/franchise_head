@@ -56,9 +56,11 @@ public class ContractServiceImpl implements ContractService {
 		
 		//HttpServletRequest에 담겨서 서버로 전송된 Multipart형식의 데이터를 형변환 하여 담습니다
 		MultipartHttpServletRequest multipartHttpServletRequest = (MultipartHttpServletRequest)request;
+
 		//request에서 파일 객체를 가져옵니다. iterator에 저장된 파일이름을 인자로 받습니다
 		MultipartFile multipartFile = multipartHttpServletRequest.getFile("file");
-        if(multipartFile.isEmpty() == false){
+
+		if(multipartFile.isEmpty() == false){
             log.debug("------------- file start -------------");
 			log.debug("name : "+multipartFile.getName());
 			log.debug("filename : "+multipartFile.getOriginalFilename());
@@ -68,7 +70,6 @@ public class ContractServiceImpl implements ContractService {
         
         Map<String, Object> fileMap = fileUtils.parseInsertFileInfo(request);
 		contractCommand.setContractFile(fileMap);
-		contractCommand.setContractStatus(3);
 		contractDao.modifyContract(contractCommand);
 	}
 
