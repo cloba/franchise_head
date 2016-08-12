@@ -13,12 +13,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="recipeRegitDate" column="recipe_regit_date"/>
 		<result property="menuName" column="menu_name"/>
 		<result property="recipeOrder" column="recipe_order"/>
-<!-- 		
-		<RESULT PROPERTY="INGRENAME" COLUMN="INGRE_NAME"/> 
-		<RESULT PROPERTY="INGREAMOUNT" COLUMN="INGRE_AMOUNT"/> 
- 		<result property="hItemCode" column="h_item_code"/> 
-		<result property="ingreStatus" column="ingre_status"/> -->
-
 	</resultMap>
 		
 		
@@ -66,5 +60,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				m.menu_code = #{menuCode} 
 			ORDER BY r.recipe_order ASC	
 	</select>
+	<insert id="insertAddRecipe" parameterType="java.util.Map">
+		<selectKey resultType="hashmap" keyProperty="recipeCode" order="BEFORE">             
+			SELECT IF( EXISTS(
+	             SELECT recipe_code FROM recipe), concat('recipe_code', MAX(CONVERT(SUBSTRING(recipe_code,21), UNSIGNED))+1), 'recipe_code1') as recipeCode
+			FROM recipe     
+	     </selectKey>
+	     INSERT INTO recipe
+				(recipe_code,                 menu_code,                  recipe_act,    head_staff_id,  recipe_regit_date,   recipe_order)
+		VALUES  (#{recipeCode}, #{recipeCommand.menuCode},  #{recipeCommand.recipeAct},  'id001',         NOW(),              #{recipeCommand.recipeOrder})
+	     
+	     
+	</insert> 
+
 		
 </mapper>
