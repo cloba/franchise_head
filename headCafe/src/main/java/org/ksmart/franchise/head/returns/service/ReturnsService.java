@@ -11,4 +11,6 @@ public interface ReturnsService {
 
 	Returns viewReturnsDetailService(Returns returns);
 
+	int modifyHeadDumpService(String returnsCode, String returnApprovalIdenfity);
+
 }

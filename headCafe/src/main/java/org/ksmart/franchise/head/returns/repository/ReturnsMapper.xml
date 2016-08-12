@@ -17,6 +17,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="returnHeadCheck" column="return_head_check"/>
 		<result property="returnReDelivery" column="return_re_delivery"/>
 		<result property="returnCancel" column="return_cancel"/>
+		<result property="returnApproval" column="return_approval"/>
+		<result property="returnApprovalDate" column="return_approval_date"/>
+		
+		
 	</resultMap>
 	
 	<!-- 로얄티 리스트 조회 메서드 -->
@@ -39,18 +43,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</trim>
 	</select>
 
-<select id="selectReturnDetail" parameterType="java.util.Map" resultMap="ReturnsResultMap">
-	SELECT 
-		returns_code,       orders_code,              specific_item_code,
-		return_reason,      return_price,             return_report_date,              
-		return_head_check,  return_head_check_date,   head_staff_id, return_re_delivery, 
-		return_cancel
-	FROM 
-		`returns`
-	WHERE returns_code= #{returns.returnsCode}
-
-</select>
-
+	<select id="selectReturnDetail" parameterType="java.util.Map" resultMap="ReturnsResultMap">
+		SELECT 
+			returns_code,       orders_code,              specific_item_code,
+			return_reason,      return_price,             return_report_date,              
+			return_head_check,  return_head_check_date,   head_staff_id, return_re_delivery, 
+			return_cancel,      return_approval,          return_approval_date
+		FROM 
+			`returns`
+		WHERE returns_code= #{returns.returnsCode}
+	
+	</select>
+	<update id="updateReturnsApproval" parameterType="java.lang.String">
+		UPDATE `returns`
+	SET
+		return_approval=#{returnApprovalIdenfity},
+		return_approval_date=NOW()
+	WHERE
+		returns_code=#{returnsCode} 
+	</update>
 
 
 

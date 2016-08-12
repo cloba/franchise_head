@@ -140,7 +140,7 @@ $(document).ready(function(){
 		    	<label>												                   ${Returns.returnPrice}원        </label> 
 				<label>
 					<c:if test="${Returns.returnReDelivery eq 'N'}">			    환불 요청			          </c:if>
-					<c:if test="${Returns.returnReDelivery ne 'Y'}">              재배송 요청                                    </c:if></label>
+					<c:if test="${Returns.returnReDelivery eq 'Y'}">              재배송 요청                                    </c:if></label>
 			</div>
 		</c:forEach>
 

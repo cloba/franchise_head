@@ -12,7 +12,21 @@ public class Returns {
 	private String headStaffId;
 	private String returnReDelivery;
 	private String returnCancel;
-	
+	private String returnApprovalDate;
+	private String returnApproval;
+		
+	public String getReturnApprovalDate() {
+		return returnApprovalDate;
+	}
+	public void setReturnApprovalDate(String returnApprovalDate) {
+		this.returnApprovalDate = returnApprovalDate;
+	}
+	public String getReturnApproval() {
+		return returnApproval;
+	}
+	public void setReturnApproval(String returnApproval) {
+		this.returnApproval = returnApproval;
+	}
 	public String getReturnsCode() {
 		return returnsCode;
 	}

@@ -11,4 +11,6 @@ public interface ReturnsDao {
 
 	Returns viewReturnsDetail(Returns returns);
 
+	int modifyReturnsApproval(String returnsCode, String returnApprovalIdenfity);
+
 }

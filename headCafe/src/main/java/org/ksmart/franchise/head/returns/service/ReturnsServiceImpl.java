@@ -26,4 +26,11 @@ public class ReturnsServiceImpl implements ReturnsService{
 		return returnsDao.viewReturnsDetail(returns);
 	}
 
+	@Override
+	public int modifyHeadDumpService(String returnsCode, String returnApprovalIdenfity) {
+		return returnsDao.modifyReturnsApproval(returnsCode, returnApprovalIdenfity);
+
+		
+	}
+
 }

@@ -39,4 +39,14 @@ public class ReturnsDaoImpl implements ReturnsDao {
 		return sqlSessionReturns.selectOne(NS+".selectReturnDetail", map);
 	}
 
+	@Override
+	public int modifyReturnsApproval(String returnsCode, String returnApprovalIdenfity) {
+		System.out.println("ReturnsDaoImpl의 modifyReturnsApproval메서드");
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("returnsCode", returnsCode);
+		map.put("returnApprovalIdenfity", returnApprovalIdenfity);
+		
+		return sqlSessionReturns.update(NS+".updateReturnsApproval", map);
+	}
+
 }

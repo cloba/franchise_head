@@ -33,6 +33,7 @@ public class HeadDumpController {
 		
 		return "/headDump/viewHeadDumpList";
     }
+	
 	//판매 불가 상품 추가 폼 보여주는 메서드
 	@RequestMapping(value="/addHeadDump", method=RequestMethod.GET)
 	public String addHeadDump(){
