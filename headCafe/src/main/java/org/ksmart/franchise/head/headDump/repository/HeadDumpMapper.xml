@@ -49,7 +49,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		VALUES (#{headDumpCode}, #{headDumpCommand.hItemCode}, #{headDumpCommand.specificItemCode}, #{headDumpCommand.headDumpReason}, 'id001',       NOW())
 	
 	</insert> 
- 
+	
+	<!-- 판매 불가 상품 디테일 -->
+ 	<select id="selectHeadDumpDetail" parameterType="java.lang.String" resultMap="RoyaltyResultMap">
+ 		SELECT
+ 			 head_dump_code, h_item_code, specific_item_code, head_dump_reason, head_staff_id, head_dump_date
+		FROM
+			 head_dump
+		WHERE 
+		 	 head_dump_code	= #{headDumpCode}
+ 	</select>
 
 
 

@@ -12,4 +12,6 @@ public interface HeadDumpDao {
 
 	int addHeadDump(HeadDumpCommand headDumpCommand);
 
+	HeadDump viewHeadDumpDetail(String headDumpCode);
+
 }

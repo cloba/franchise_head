@@ -30,4 +30,16 @@ public class HeadDumpServiceImpl implements HeadDumpService{
 		
 	}
 
+	@Override
+	public HeadDump modifyHeadDumpService(String headClientCode) {
+		System.out.println("HeadDumpServiceImpl의 modifyHeadDumpService메서드");
+		return null;
+	}
+
+	@Override
+	public HeadDump viewHeadDumpDetailService(String headDumpCode) {
+		System.out.println("HeadDumpServiceImpl의 viewHeadDumpDetailService메서드");
+		return headDumpDao.viewHeadDumpDetail(headDumpCode);
+	}
+
 }

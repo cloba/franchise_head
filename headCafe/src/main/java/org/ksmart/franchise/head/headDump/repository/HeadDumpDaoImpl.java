@@ -38,4 +38,11 @@ public class HeadDumpDaoImpl implements HeadDumpDao{
 		return sqlSessionHeadDump.insert(NS+".insertHeadDump", map);
 	}
 
+	@Override
+	public HeadDump viewHeadDumpDetail(String headDumpCode) {
+		System.out.println("RoyaltyDaoImpl의 viewHeadDumpDetail");
+		
+		return sqlSessionHeadDump.selectOne(NS+".selectHeadDumpDetail", headDumpCode);
+	}
+
 }

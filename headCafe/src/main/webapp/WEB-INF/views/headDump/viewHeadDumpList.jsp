@@ -114,6 +114,10 @@ $(document).ready(function(){
 		<label>본사 직원 아이디/
 			<span id="headStaffIdUp">▲</span>
 			<span id="headStaffIdDown">▼</span></label>	
+		<label>
+			<span>수정 여부</span>
+		</label>	
+			
 	</div>
 
 	
@@ -125,7 +129,8 @@ $(document).ready(function(){
 			    <label>${headDump.specificItemCode}																					</label>	
 			    <label>${headDump.headDumpReason}																					</label>																	x
 				<label>${headDump.headDumpDate}																						</label>
-				<label>${headDump.headStaffId}																						</label>
+				<label>${headDump.headStaffId}	                                                                                    </label>
+				<label><a href="/modifyHeadDump?headDumpCode=${headDumpCode}">[수정]</a>														</label>
 			</div>
 		</c:forEach>
 

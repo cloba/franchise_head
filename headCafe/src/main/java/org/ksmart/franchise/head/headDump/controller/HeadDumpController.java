@@ -3,6 +3,7 @@ package org.ksmart.franchise.head.headDump.controller;
 
 import java.util.List;
 
+import org.ksmart.franchise.head.client.model.Client;
 import org.ksmart.franchise.head.headDump.model.HeadDump;
 import org.ksmart.franchise.head.headDump.model.HeadDumpCommand;
 import org.ksmart.franchise.head.headDump.service.HeadDumpService;
@@ -19,7 +20,7 @@ public class HeadDumpController {
 	private HeadDumpService headDumpService;
 	
 	
-	// 폐기 상품 리스트 조회 메서드
+		// 판매 불가 상품 리스트 조회 메서드
 		@RequestMapping(value="/viewHeadDumpList", method=RequestMethod.GET)
 		public String viewHeadDumpList(Model model, HeadDump headDump, Search search) {
 			  System.out.println("HeadDumpController의 viewHeadDumpList메서드 ");
@@ -31,14 +32,14 @@ public class HeadDumpController {
 
 		      return "/headDump/viewHeadDumpList";
 	    }
-		//거래처 추가 폼 보여주는 메서드
+		//판매 불가 상품 추가 폼 보여주는 메서드
 		@RequestMapping(value="/addHeadDump", method=RequestMethod.GET)
 		public String addHeadDump(){
 			System.out.println("HeadDumpController의 addHeadDump get메서드");
 			return "/headDump/addHeadDumpForm";
 		}
 			
-		// 거래처등록 form에서 넘어오는 데이터를 받아서 처리하는 메서드
+		// 판매불가상품 등록 form에서 넘어오는 데이터를 받아서 처리하는 메서드
 		@RequestMapping(value="/addHeadDump", method=RequestMethod.POST)
 		public String addHeadDump(HeadDumpCommand headDumpCommand, Model model){
 			System.out.println("HeadDumpController의 addHeadDump post메서드");
@@ -46,4 +47,42 @@ public class HeadDumpController {
 
 			return "redirect:/viewHeadDumpList";
 		}	
+		
+	//판매불가상품 상세 정보 보는 메서드
+	@RequestMapping(value="/viewHeadDumpDetail", method=RequestMethod.GET)
+	public String viewHeadDumpDetail(Model model, String headDumpCode){
+		System.out.println("ClientController의 viewHeadClientDetail메서드 ");
+		
+		HeadDump headDump = headDumpService.viewHeadDumpDetailService(headDumpCode);
+		model.addAttribute("headDump", headDump);
+		
+		return "/headDump/viewHeadDumpDetail";
+		
+	}
+		
+ 	//판매 불가 상품 수정 form 보여주는 메서드
+	  @RequestMapping(value="/modifyHeadDump", method=RequestMethod.GET)
+	  public String modifyHeadDump(Model model, String headClientCode){
+		  System.out.println("ClientController의 modifyClient get메서드 ");
+		  
+		  HeadDump headDump =headDumpService.modifyHeadDumpService(headClientCode); 
+
+		  model.addAttribute("headDump", headDump);
+		
+		return "/headDump/viewHeadDumpModifyForm";
+		  
+	  }
+	  
+	  /*//거래처 정보 처리하는 메서드
+	  @RequestMapping(value="/modifyHeadDump", method=RequestMethod.POST)
+	  public String modifyHeadDump(Model model, HeadDump headDump){
+		  System.out.println("HeadDumpController의 modifyHeadDump post메서드 ");
+		  headDumpService.modifyHeadClientService(headDump);
+		  System.out.println("getHeadClientCode"+headDump.getHeadClientCode());
+		  //수정된 정보의 pk를 가져와 수정된 내역을 보여주는 페이지로 이동(디테일페이지)
+		  String headClientCode= headDump.getHeadClientCode();
+		 return "redirect:/viewHeadClientDetail?headClientCode="+headClientCode;
+	  }*/
+		
+		
 }
