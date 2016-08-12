@@ -11,9 +11,10 @@ public class Contract {
 	private int contractDeposit;
 	private int contractProfitPercent;
 	private int contractStatus;
+	private String contractFile;
 	private String contractFileOriginalName;
 	private String contractFileStoredName;
-	private String contractFileSize;
+	private int contractFileSize;
 	private int contractN;
 	private String contractExpiredDate;
 	private String contractExpireContent;
@@ -78,6 +79,12 @@ public class Contract {
 	public void setContractStatus(int contractStatus) {
 		this.contractStatus = contractStatus;
 	}
+	public String getContractFile() {
+		return contractFile;
+	}
+	public void setContractFile(String contractFile) {
+		this.contractFile = contractFile;
+	}
 	public String getContractFileOriginalName() {
 		return contractFileOriginalName;
 	}
@@ -90,10 +97,10 @@ public class Contract {
 	public void setContractFileStoredName(String contractFileStoredName) {
 		this.contractFileStoredName = contractFileStoredName;
 	}
-	public String getContractFileSize() {
+	public int getContractFileSize() {
 		return contractFileSize;
 	}
-	public void setContractFileSize(String contractFileSize) {
+	public void setContractFileSize(int contractFileSize) {
 		this.contractFileSize = contractFileSize;
 	}
 	public int getContractN() {
@@ -126,12 +133,11 @@ public class Contract {
 				+ ", contractorName=" + contractorName + ", contractActualDate=" + contractActualDate
 				+ ", contractRegitDate=" + contractRegitDate + ", contractExpiryDate=" + contractExpiryDate
 				+ ", contractDeposit=" + contractDeposit + ", contractProfitPercent=" + contractProfitPercent
-				+ ", contractStatus=" + contractStatus + ", contractFileOriginalName=" + contractFileOriginalName
-				+ ", contractFileStoredName=" + contractFileStoredName + ", contractFileSize=" + contractFileSize
-				+ ", contractN=" + contractN + ", contractExpiredDate=" + contractExpiredDate
-				+ ", contractExpireContent=" + contractExpireContent + ", royaltyDeadline=" + royaltyDeadline + "]";
+				+ ", contractStatus=" + contractStatus + ", contractFile=" + contractFile
+				+ ", contractFileOriginalName=" + contractFileOriginalName + ", contractFileStoredName="
+				+ contractFileStoredName + ", contractFileSize=" + contractFileSize + ", contractN=" + contractN
+				+ ", contractExpiredDate=" + contractExpiredDate + ", contractExpireContent=" + contractExpireContent
+				+ ", royaltyDeadline=" + royaltyDeadline + "]";
 	}
-	
-	
 	
 }

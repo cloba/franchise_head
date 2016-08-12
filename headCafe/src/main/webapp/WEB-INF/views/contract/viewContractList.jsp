@@ -100,8 +100,8 @@
 			<tr>
 				<th><a href="/viewContractDetail?contractCode=${contractList.contractCode }">${contractList.contractCode }</a></th>
 				<th>${contractList.subCode }</th>
-				<th><fmt:parseDate value="${contractList.contractActualDate}" pattern="yyyy-MM-dd HH:mm:ss" var="date"/>
-					<fmt:formatDate pattern="yyyy-MM-dd" type="both" value="${date}" />
+				<th><%-- <fmt:parseDate value="${contractList.contractActualDate}" pattern="yyyy-MM-dd HH:mm:ss" var="date"/> --%>
+					${contractList.contractActualDate}"
 				</th>
 				<th>${contractList.contractorName }</th>
 				<c:if test="${contractList.contractStatus eq '1'}">

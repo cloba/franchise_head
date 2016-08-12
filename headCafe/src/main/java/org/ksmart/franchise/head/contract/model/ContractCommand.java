@@ -11,6 +11,7 @@ public class ContractCommand {
 	private int contractDeposit;
 	private int contractProfitPercent;
 	private Map<String, Object> contractFile;
+	private int contractStatus;
 	private int contractN;
 	private int royaltyDeadline;
 	public String getContractCode() {
@@ -61,6 +62,12 @@ public class ContractCommand {
 	public void setContractFile(Map<String, Object> contractFile) {
 		this.contractFile = contractFile;
 	}
+	public int getContractStatus() {
+		return contractStatus;
+	}
+	public void setContractStatus(int contractStatus) {
+		this.contractStatus = contractStatus;
+	}
 	public int getContractN() {
 		return contractN;
 	}
@@ -78,8 +85,8 @@ public class ContractCommand {
 		return "ContractCommand [contractCode=" + contractCode + ", subCode=" + subCode + ", contractorName="
 				+ contractorName + ", contractActualDate=" + contractActualDate + ", contractExpiryDate="
 				+ contractExpiryDate + ", contractDeposit=" + contractDeposit + ", contractProfitPercent="
-				+ contractProfitPercent + ", contractFile=" + contractFile + ", contractN=" + contractN
-				+ ", royaltyDeadline=" + royaltyDeadline + "]";
+				+ contractProfitPercent + ", contractFile=" + contractFile + ", contractStatus=" + contractStatus
+				+ ", contractN=" + contractN + ", royaltyDeadline=" + royaltyDeadline + "]";
 	}
 	
 }

@@ -42,11 +42,34 @@ public class ContractServiceImpl implements ContractService {
 	}
 
 	@Override
-	//contract를 수정합니다 (계약 파기시 사용)
-	public void modifyContractService(Contract contract) {
-		System.out.println("ContractServiceImpl의 ModifyContractService메서드 호출");		
+	//계약을 파기합니다 
+	public void expireContractService(Contract contract) {
+		log.debug("ContractServiceImpl의 expireContractService메서드 호출");		
 		contract.setContractStatus(3);
-		contractDao.modifyContract(contract);
+		contractDao.expireContract(contract);
+	}
+	
+	@Override
+	//계약을 수정합니다
+	public void modifyContractService(ContractCommand contractCommand, HttpServletRequest request) throws Exception {
+		log.debug("ContractServiceImpl의 ModifyContractService메서드 호출");		
+		
+		//HttpServletRequest에 담겨서 서버로 전송된 Multipart형식의 데이터를 형변환 하여 담습니다
+		MultipartHttpServletRequest multipartHttpServletRequest = (MultipartHttpServletRequest)request;
+		//request에서 파일 객체를 가져옵니다. iterator에 저장된 파일이름을 인자로 받습니다
+		MultipartFile multipartFile = multipartHttpServletRequest.getFile("file");
+        if(multipartFile.isEmpty() == false){
+            log.debug("------------- file start -------------");
+			log.debug("name : "+multipartFile.getName());
+			log.debug("filename : "+multipartFile.getOriginalFilename());
+			log.debug("size : "+multipartFile.getSize());
+			log.debug("-------------- file end --------------\n");
+        }
+        
+        Map<String, Object> fileMap = fileUtils.parseInsertFileInfo(request);
+		contractCommand.setContractFile(fileMap);
+		contractCommand.setContractStatus(3);
+		contractDao.modifyContract(contractCommand);
 	}
 
 	@Override
@@ -71,4 +94,12 @@ public class ContractServiceImpl implements ContractService {
 		contractCommand.setContractFile(fileMap);
 		contractDao.addContract(contractCommand);
 	}
+
+	@Override
+	//파일정보를 불러옵니다
+	public Contract getFileInfoService(String contractCode) {
+		return contractDao.getFileInfo(contractCode);
+	}
+
+	
 }

@@ -32,7 +32,7 @@
 	
 </script>
 <h1>계약 수정</h1>
-	<form id="modifyForm" action="/modifyContract" method="post">
+	<form id="modifyForm" action="/modifyContract" method="POST">
 		<div> 
 		계약코드: <input type="text" name="contractCode" value="${contract.contractCode}" readonly="readonly"/> 
 		</div>
@@ -49,9 +49,9 @@
 			</select>
 		</div>
 		<div> 
-		계약서 첨부파일: <input type="file" name="contractFile" value="${contract.contractFile}" required="required"/> 
+		계약서 첨부파일: ${contract.contractFileOriginalName}<input type="file" name="file" required="required"/> 
 		</div>
-		<button>수정</button>
+		<input type="submit" value="수정"/>
 	</form>
 </body>
 </html>
