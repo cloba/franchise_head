@@ -11,11 +11,13 @@ public class Contract {
 	private int contractDeposit;
 	private int contractProfitPercent;
 	private int contractStatus;
-	private String contractFile;
+	private String contractFileOriginalName;
+	private String contractFileStoredName;
+	private String contractFileSize;
 	private int contractN;
 	private String contractExpiredDate;
 	private String contractExpireContent;
-	private int royalty_deadline;
+	private int royaltyDeadline;
 	public String getContractCode() {
 		return contractCode;
 	}
@@ -76,11 +78,23 @@ public class Contract {
 	public void setContractStatus(int contractStatus) {
 		this.contractStatus = contractStatus;
 	}
-	public String getContractFile() {
-		return contractFile;
+	public String getContractFileOriginalName() {
+		return contractFileOriginalName;
 	}
-	public void setContractFile(String contractFile) {
-		this.contractFile = contractFile;
+	public void setContractFileOriginalName(String contractFileOriginalName) {
+		this.contractFileOriginalName = contractFileOriginalName;
+	}
+	public String getContractFileStoredName() {
+		return contractFileStoredName;
+	}
+	public void setContractFileStoredName(String contractFileStoredName) {
+		this.contractFileStoredName = contractFileStoredName;
+	}
+	public String getContractFileSize() {
+		return contractFileSize;
+	}
+	public void setContractFileSize(String contractFileSize) {
+		this.contractFileSize = contractFileSize;
 	}
 	public int getContractN() {
 		return contractN;
@@ -100,12 +114,24 @@ public class Contract {
 	public void setContractExpireContent(String contractExpireContent) {
 		this.contractExpireContent = contractExpireContent;
 	}
-	public int getRoyalty_deadline() {
-		return royalty_deadline;
+	public int getRoyaltyDeadline() {
+		return royaltyDeadline;
 	}
-	public void setRoyalty_deadline(int royalty_deadline) {
-		this.royalty_deadline = royalty_deadline;
+	public void setRoyaltyDeadline(int royaltyDeadline) {
+		this.royaltyDeadline = royaltyDeadline;
 	}
+	@Override
+	public String toString() {
+		return "Contract [contractCode=" + contractCode + ", headStaffId=" + headStaffId + ", subCode=" + subCode
+				+ ", contractorName=" + contractorName + ", contractActualDate=" + contractActualDate
+				+ ", contractRegitDate=" + contractRegitDate + ", contractExpiryDate=" + contractExpiryDate
+				+ ", contractDeposit=" + contractDeposit + ", contractProfitPercent=" + contractProfitPercent
+				+ ", contractStatus=" + contractStatus + ", contractFileOriginalName=" + contractFileOriginalName
+				+ ", contractFileStoredName=" + contractFileStoredName + ", contractFileSize=" + contractFileSize
+				+ ", contractN=" + contractN + ", contractExpiredDate=" + contractExpiredDate
+				+ ", contractExpireContent=" + contractExpireContent + ", royaltyDeadline=" + royaltyDeadline + "]";
+	}
+	
 	
 	
 }

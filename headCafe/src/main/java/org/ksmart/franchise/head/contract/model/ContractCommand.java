@@ -1,5 +1,7 @@
 package org.ksmart.franchise.head.contract.model;
 
+import java.util.Map;
+
 public class ContractCommand {
 	private String contractCode;
 	private String subCode;
@@ -8,7 +10,7 @@ public class ContractCommand {
 	private String contractExpiryDate;
 	private int contractDeposit;
 	private int contractProfitPercent;
-	private String contractFile;
+	private Map<String, Object> contractFile;
 	private int contractN;
 	private int royaltyDeadline;
 	public String getContractCode() {
@@ -53,10 +55,10 @@ public class ContractCommand {
 	public void setContractProfitPercent(int contractProfitPercent) {
 		this.contractProfitPercent = contractProfitPercent;
 	}
-	public String getContractFile() {
+	public Map<String, Object> getContractFile() {
 		return contractFile;
 	}
-	public void setContractFile(String contractFile) {
+	public void setContractFile(Map<String, Object> contractFile) {
 		this.contractFile = contractFile;
 	}
 	public int getContractN() {
@@ -71,4 +73,13 @@ public class ContractCommand {
 	public void setRoyaltyDeadline(int royaltyDeadline) {
 		this.royaltyDeadline = royaltyDeadline;
 	}
+	@Override
+	public String toString() {
+		return "ContractCommand [contractCode=" + contractCode + ", subCode=" + subCode + ", contractorName="
+				+ contractorName + ", contractActualDate=" + contractActualDate + ", contractExpiryDate="
+				+ contractExpiryDate + ", contractDeposit=" + contractDeposit + ", contractProfitPercent="
+				+ contractProfitPercent + ", contractFile=" + contractFile + ", contractN=" + contractN
+				+ ", royaltyDeadline=" + royaltyDeadline + "]";
+	}
+	
 }

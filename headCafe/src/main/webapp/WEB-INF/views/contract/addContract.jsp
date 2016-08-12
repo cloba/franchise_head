@@ -16,7 +16,7 @@
 <body>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 <h1>계약 신규 등록</h1>
-	<form name="addForm" action="/addContract" method="post">
+	<form name="addForm" action="/addContract" method="post" enctype="multipart/form-data">
 		<div> 
 		가맹일련번호: <input type="text" name="subCode" required="required"/> 
 		</div>
@@ -39,7 +39,7 @@
 		로열티 지급기일: <input type="text" name="royaltyDeadline" required="required"/> 
 		</div>
 		<div> 
-		계약서첨부파일: <input type="file" name="contractFile" required="required"/> 
+		계약서첨부파일: <input type="file" name="file" required="required"/> 
 		</div>
 		<div> 
 		계약차수: <input type="number" name="contractN" required="required" min="1"/> 

@@ -2,6 +2,8 @@ package org.ksmart.franchise.head.contract.service;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.ksmart.franchise.head.contract.model.Contract;
 import org.ksmart.franchise.head.contract.model.ContractCommand;
 import org.ksmart.franchise.head.util.Search;
@@ -14,5 +16,5 @@ public interface ContractService {
 	//계약을 수정합니다
 	public void modifyContractService(Contract contract);
 	//계약을 등록합니다
-	void addContractService(ContractCommand contractCommand);
+	void addContractService(ContractCommand contractCommand, HttpServletRequest request) throws Exception;
 }

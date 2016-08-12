@@ -1,6 +1,7 @@
 package org.ksmart.franchise.head.contract.repository;
 
 import java.util.List;
+import java.util.Map;
 
 import org.ksmart.franchise.head.contract.model.Contract;
 import org.ksmart.franchise.head.contract.model.ContractCommand;

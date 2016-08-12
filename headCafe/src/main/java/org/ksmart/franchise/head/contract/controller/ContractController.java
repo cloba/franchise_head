@@ -2,10 +2,11 @@ package org.ksmart.franchise.head.contract.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.ksmart.franchise.head.contract.model.Contract;
 import org.ksmart.franchise.head.contract.model.ContractCommand;
 import org.ksmart.franchise.head.contract.service.ContractService;
-import org.ksmart.franchise.head.item.model.HeadLogin;
 import org.ksmart.franchise.head.util.Search;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -52,12 +53,16 @@ public class ContractController {
 	}
 	
 	//계약을 등록합니다
-	@RequestMapping(value="/addContract", method=RequestMethod.POST)
-	public String addContract(ContractCommand contractCommand, HeadLogin headStaffLogin){
-		System.out.println("PaymentController의 addContract 메서드 호출");
-		contractService.addContractService(contractCommand);
+	@RequestMapping(value="/addContract", method=RequestMethod.POST) //HttpServletRequest에 파일정보를 담아옵니다
+	public String addContract(ContractCommand contractCommand, HttpServletRequest request){
+		log.debug("ContractController addContract 메서드 호출");
+		try {
+			contractService.addContractService(contractCommand, request);
+		} catch (Exception e) {
+			log.debug("fileUpload 예외 발생..", e);
+			e.printStackTrace();
+		}
 		String contractCode = contractCommand.getContractCode();
-	//	System.out.println(contractCode+" <====== contractCode");
 		
 		return "redirect:/viewContractDetail?contractCode="+contractCode;
 	}

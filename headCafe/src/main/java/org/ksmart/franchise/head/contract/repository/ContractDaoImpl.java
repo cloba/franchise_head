@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
 import org.ksmart.franchise.head.contract.model.Contract;
 import org.ksmart.franchise.head.contract.model.ContractCommand;
 import org.ksmart.franchise.head.util.Search;
@@ -18,6 +19,8 @@ public class ContractDaoImpl implements ContractDao {
 	
 	@Autowired
 	private SqlSessionTemplate sqlSessionContract;
+	
+	Logger log = Logger.getLogger(this.getClass());
 
 	@Override
 	//contract리스트를 봅니다
@@ -45,9 +48,9 @@ public class ContractDaoImpl implements ContractDao {
 	}
 
 	@Override
-	//contract를 등록하는 메서드입니다
+	//contract를 등록하는 메서드입니다 
 	public void addContract(ContractCommand contractCommand) {
-		System.out.println("ContractDaoImpl의 addContract 메서드 호출");
+		log.debug("ContractDaoImpl의 addContract 메서드 호출");
 		sqlSessionContract.insert(NS+".addContract", contractCommand);
 	}
 	

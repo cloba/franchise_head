@@ -16,7 +16,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="contractDeposit" column="contract_deposit"/>
 		<result property="contractProfitPercent" column="contract_profit_percent"/>
 		<result property="contractStatus" column="contract_status"/>
-		<result property="contractFile" column="contract_file"/>
+		<result property="contractFileOriginalName" column="contract_file_original_name"/>
+		<result property="contractFileStoredName" column="contract_file_stored_name"/>
+		<result property="contractFileSize" column="contract_fcontract_file_sizeile"/>
 		<result property="contractN" column="contract_n"/>
 		<result property="contractExpiredDate" column="contract_expired_date"/>
 		<result property="contractExpireContent" column="contract_expire_content"/>
@@ -24,9 +26,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</resultMap>
 	
 	
+	<!-- <select id="selectFileList" parameterType="hashmap" resultType="hashmap">
+    <![CDATA[
+        SELECT
+            IDX,
+            ORIGINAL_FILE_NAME,
+            ROUND(FILE_SIZE/1024,1) AS FILE_SIZE
+        FROM
+            TB_FILE
+        WHERE
+            BOARD_IDX = #{IDX}
+            AND DEL_GB = 'N'
+    ]]>
+</select>
+	 -->
+	
 	<!-- contract의 리스트를 봅니다 (검색포함)-->
 	<select id="selectContract" parameterType="java.util.Map" resultMap="contractResultMap">
-		SELECT contract_code, head_staff_id, sub_code, contractor_name, contract_actual_date, contract_regit_date, contract_expiry_date, contract_deposit, contract_profit_percent, contract_status, contract_file, contract_n, contract_expired_date, contract_expire_content
+		SELECT contract_code, head_staff_id, sub_code, contractor_name, contract_actual_date, contract_regit_date, contract_expiry_date, contract_deposit, contract_profit_percent, contract_status, contract_file_original_name, contract_file_stored_name, contract_file_size, contract_n, contract_expired_date, contract_expire_content, royalty_deadline 
 		FROM contract
 		<where>
 			<if test="contractSearch.regitDateStart != null and contractSearch.regitDateEnd != null and contractSearch.regitDateStart !='' and contractSearch.regitDateEnd !=''">
@@ -51,7 +68,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- contract 하나를 봅니다  -->
 	<select id="selectOneContract" parameterType="java.lang.String" resultMap="contractResultMap">
-		SELECT contract_code, head_staff_id, sub_code, contractor_name, contract_actual_date, contract_regit_date, contract_expiry_date, contract_deposit, contract_profit_percent, contract_status, contract_file, contract_n, contract_expired_date, contract_expire_content
+		SELECT contract_code, head_staff_id, sub_code, contractor_name, contract_actual_date, contract_regit_date, contract_expiry_date, contract_deposit, contract_profit_percent, contract_status, contract_file_original_name, contract_file_stored_name, contract_file_size, contract_n, contract_expired_date, contract_expire_content, royalty_deadline 
 		FROM contract
 		WHERE contract_code = #{contractCode}
 	</select>
@@ -80,8 +97,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			FROM contract
 		</selectKey>
 		INSERT INTO contract
-			(contract_code, head_staff_id, sub_code, contractor_name, contract_actual_date, contract_regit_date, contract_expiry_date, contract_deposit, contract_profit_percent, contract_status, contract_file, contract_n, royalty_deadline)
-			VALUES (#{contractCode}, 'head_staff_id1', #{subCode}, #{contractorName}, #{contractActualDate}, NOW(), #{contractExpiryDate}, #{contractDeposit}, #{contractProfitPercent}, 1, #{contractFile}, #{contractN}, #{royaltyDeadline})
+			(contract_code, head_staff_id, sub_code, contractor_name, contract_actual_date, contract_regit_date, contract_expiry_date, contract_deposit, contract_profit_percent, contract_status, contract_file_original_name, contract_file_stored_name, contract_file_size, contract_n, royalty_deadline)
+			VALUES (#{contractCode}, 'head_staff_id1', #{subCode}, #{contractorName}, #{contractActualDate}, NOW(), #{contractExpiryDate}, #{contractDeposit}, #{contractProfitPercent}, 1, #{contractFile.originalName}, #{contractFile.storedName}, #{contractFile.fileSize}, #{contractN}, #{royaltyDeadline})
 	</insert>
 	
 
