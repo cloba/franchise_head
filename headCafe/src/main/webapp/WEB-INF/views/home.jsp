@@ -40,7 +40,7 @@
 <a href="/viewPaymentList?status=Y">결제방식 관리</a>
 <a href="/viewItemList">상품관리</a>
 <a href="/viewHeadStaffList">본사직원조회</a>
-<a href="/viewMenuList?status=Y">메뉴관리</a>
+<a href="/viewMenuList.do?status=Y">메뉴관리</a>
 <a href="/viewSubList">가맹관리</a>
 <a href="/viewSubjectList">계정과목관리</a>
 <a href="/viewHeadClientList">거래처관리</a>

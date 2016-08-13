@@ -1,5 +1,7 @@
 package org.ksmart.franchise.head.menu.model;
 
+import java.util.Arrays;
+
 public class MenuDomain {
 	private String menuCode;
 	private String menuName;
@@ -70,6 +72,13 @@ public class MenuDomain {
 	}
 	public void setIngreAmountArr(String[] ingreAmountArr) {
 		this.ingreAmountArr = ingreAmountArr;
+	}
+	@Override
+	public String toString() {
+		return "MenuDomain [menuCode=" + menuCode + ", menuName=" + menuName + ", menuIngrePrice=" + menuIngrePrice
+				+ ", menuSellingPrice=" + menuSellingPrice + ", ingrePriceCode=" + ingrePriceCode + ", ingreName="
+				+ ingreName + ", hItemCode=" + hItemCode + ", hItemCodeArr=" + Arrays.toString(hItemCodeArr)
+				+ ", ingreAmount=" + ingreAmount + ", ingreAmountArr=" + Arrays.toString(ingreAmountArr) + "]";
 	}
 	
 	

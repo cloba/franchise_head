@@ -3,6 +3,7 @@ package org.ksmart.franchise.head.delivery.controller;
 import java.util.Arrays;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.ksmart.franchise.head.delivery.model.Delivery;
 import org.ksmart.franchise.head.delivery.model.Deliverysearch;
 import org.ksmart.franchise.head.delivery.service.DeliveryService;
@@ -17,6 +18,8 @@ public class DeliveryController {
 	
 	@Autowired
 	private DeliveryService deliveryService;
+	
+	Logger log = Logger.getLogger(this.getClass());
 	
 	//배송 리스트를 보여줍니다 (검색포함)
 	@RequestMapping(value="/viewDeliveryList.do")

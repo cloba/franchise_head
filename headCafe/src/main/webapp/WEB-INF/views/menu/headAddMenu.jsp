@@ -38,7 +38,7 @@
 				$('#'+id).autocomplete({
 					source : function(request, response) {
 						$.ajax({
-							url : "/searchIngre",
+							url : "/searchIngre.do",
 							dataType : "json",
 							data : {
 								ingreName: $('#'+id).val()
@@ -69,7 +69,7 @@
 </script>
 <!-- menu에 메뉴를 등록하는 페이지입니다 -->
 <h1>메뉴 등록</h1>
-	<form name="addForm" action="/headAddMenu" method="post">
+	<form name="addForm" action="/headAddMenu.do" method="post">
 		<!-- menu 정보입력 -->
 		<div> 
 		메뉴이름: <input type="text" name="menuName" id="menuName" required="required" /> 

@@ -49,7 +49,7 @@
 			</c:choose>
 		</tr>
 	</table>
-<h3>[필요한 재료량과 가격계산]</h3>	<a href="#">재료등록(구현전)</a>
+<h3>[필요한 재료량과 가격계산]</h3>
 	<table border="1">
 		<tr>
 			<th>메뉴명(그룹코드)</th>
@@ -73,13 +73,13 @@
 		</c:forEach>
 	</table>
 
-	<a href="/headModifyMenu?menuDetail=${menu.menuCode}">[메뉴수정]</a>
-	<a href="/viewMenuList">[메뉴목록]</a>
+	<a href="/headModifyMenu.do?menuCode=${menu.menuCode}">[메뉴수정]</a>
+	<a href="/viewMenuList.do">[메뉴목록]</a>
 	<c:if test="${menu.recipeIdentify ne 0}">
-		<a href="/viewRecipeDetail?menuCode=${menu.menuCode}">[레시피보기]</a>
+		<a href="/viewRecipeDetail.do?menuCode=${menu.menuCode}">[레시피보기]</a>
 	</c:if>
 	<c:if test="${menu.recipeIdentify eq 0}">
-		<a href="/addRecipe?menuCode=${menu.menuCode}">[레시피 등록]</a>
+		<a href="/addRecipe.do?menuCode=${menu.menuCode}">[레시피 등록]</a>
 	</c:if>
 </body>
 </html>

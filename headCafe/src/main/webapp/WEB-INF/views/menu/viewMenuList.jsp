@@ -63,7 +63,7 @@
 </script>
 <h1>메뉴 리스트</h1>
 	<!-- 메뉴 검색 -->
-	<form name="menuList" id="menuList" action="/viewMenuList" method="post">
+	<form name="menuList" id="menuList" action="/viewMenuList.do" method="post">
 		<!-- 오름차/내림차순 정렬을 위한 input 태그 -->
 		<input type="hidden" name="criteria" id="criteria" value=""/>
 		<input type="hidden" name="upDown" id="upDown" value=""/>
@@ -84,16 +84,16 @@
 	<br>
 	<!-- 적용상태에 따른 a태그 분리 -->
 		<c:if test="${menuSearch.status == 'Y'}"> 
-			<a href="/viewMenuList?status=N">[미적용메뉴 보기]</a>
-			<a href="/viewMenuList">[전체메뉴 보기]</a>
+			<a href="/viewMenuList.do?status=N">[미적용메뉴 보기]</a>
+			<a href="/viewMenuList.do">[전체메뉴 보기]</a>
 		</c:if>
 		<c:if test="${menuSearch.status == 'N'}"> 
-			<a href="/viewMenuList?status=Y">[적용메뉴 보기]</a>
-			<a href="/viewMenuList">[전체메뉴 보기]</a>
+			<a href="/viewMenuList.do?status=Y">[적용메뉴 보기]</a>
+			<a href="/viewMenuList.do">[전체메뉴 보기]</a>
 		</c:if>
 		<c:if test="${menuSearch.status == null}">
-			<a href="/viewMenuList?status=N">[미적용메뉴 보기]</a> 
-			<a href="/viewMenuList?status=Y">[적용메뉴 보기]</a>
+			<a href="/viewMenuList.do?status=N">[미적용메뉴 보기]</a> 
+			<a href="/viewMenuList.do?status=Y">[적용메뉴 보기]</a>
 		</c:if>	
 	
 	
@@ -116,14 +116,14 @@
 		
 		<c:forEach var="menuList" items="${menuList}">
 			<tr>
-				<th><a href="/viewMenuDetail?menuCode=${menuList.menuCode}">${menuList.menuName}</a></th>
+				<th><a href="/viewMenuDetail.do?menuCode=${menuList.menuCode}">${menuList.menuName}</a></th>
 				<th>${menuList.menuCode}</th>
 				<th>${menuList.inteCode}</th>
 				<th>${menuList.menuStatus}</th>
 			</tr>
 		</c:forEach>
 	</table>
-	<a href="/headAddMenu">[신규등록]</a>
+	<a href="/headAddMenu.do">[신규등록]</a>
 	<a href="/">[홈으로]</a>
 </body>
 </html>
