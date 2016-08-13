@@ -21,7 +21,7 @@ public class SessionInterceptor extends HandlerInterceptorAdapter{
 		log.debug("sessionInterceptor 실행");
 		HttpSession session = request.getSession();
 		
-		if( session == null || session.getAttribute("loginId") == null ){
+		if( session == null || session.getAttribute("login") == null ){
 			response.sendRedirect("/login.go");
 			return false;
 		}
