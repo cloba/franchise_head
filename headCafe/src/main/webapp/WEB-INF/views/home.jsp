@@ -15,7 +15,7 @@
 			} else if ($('#headStaffPw').val() == "") {
 				alert('비밀번호를 입력하세요.');
 			}else{
-				$('#loginForm').attr('action','/login');  //바꿈
+				$('#loginForm').attr('action','/login.go');  //바꿈
 				$('#loginForm').submit();
 			}
 		});
@@ -23,9 +23,17 @@
 </script>	
 </head>
 <body>
-아이디: ${login.headStaffId}
-<a href="/viewReceivedOrder">들어온 주문 확인</a>
-<a href="/viewDeliveryList">배송관리</a>
+아이디:
+<c:choose>
+	<c:when test="${login.headStaffId ne null}">
+		아이디: ${login.headStaffId}
+	</c:when>
+	<c:otherwise>
+		<a href="/login.go">로그인</a>
+	</c:otherwise>
+</c:choose>
+<a href="/viewReceivedOrder.do">들어온 주문 확인</a>
+<a href="/viewDeliveryList.do">배송관리</a>
 <a href="/viewItemOutList">출고관리</a>
 <a href="/viewSellList">본사판매관리</a>
 <a href="/viweHeadStockList">재고관리</a>

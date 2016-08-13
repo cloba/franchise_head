@@ -19,7 +19,7 @@ public class DeliveryController {
 	private DeliveryService deliveryService;
 	
 	//배송 리스트를 보여줍니다 (검색포함)
-	@RequestMapping(value="/viewDeliveryList")
+	@RequestMapping(value="/viewDeliveryList.do")
 	public String viewDeliveryList(Deliverysearch search, Model model){
 		System.out.println("DeliveryController의 viewDeliveryList 메서드 호출");
 		List<Delivery> deliveryList = deliveryService.viewDeliveryListService(search);

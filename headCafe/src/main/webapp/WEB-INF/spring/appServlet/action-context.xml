@@ -15,6 +15,11 @@
             <mvc:mapping path="/**"/>
             <bean id="loggerInterceptor" class="org.ksmart.franchise.head.util.logger.LoggerInterceptor"></bean>
         </mvc:interceptor>
+        <mvc:interceptor>
+			<mvc:mapping path="/**/*.do"/>
+			<!-- <mvc:exclude-mapping path="/org/ksmart/franchise/HomeController"/> -->
+		    <bean id="sessionInterceptor" class="org.ksmart.franchise.head.util.session.SessionInterceptor"/>
+	    </mvc:interceptor>
     </mvc:interceptors>
      
    <!--  <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping"/> -->
