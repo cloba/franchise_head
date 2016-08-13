@@ -23,7 +23,7 @@ public class RoyaltyController {
 	private RoyaltyService royaltyService;
 
 	//전가맹 로얄티 리스트 조회하는 메서드
-	@RequestMapping(value="/viewRoyaltyList", method=RequestMethod.GET)
+	@RequestMapping(value="/viewRoyaltyList.do", method=RequestMethod.GET)
 	public String viewRoyaltyList(Model model, Royalty royalty, Search search) {
 		  System.out.println("RoyaltyController의 viewRecipeList메서드 ");
 		  
@@ -44,7 +44,7 @@ public class RoyaltyController {
     }
 	
 	// 가맹 디테일 조회하는 메서드
-	@RequestMapping(value="/viewRoyaltyDetail", method= RequestMethod.GET)
+	@RequestMapping(value="/viewRoyaltyDetail.do", method= RequestMethod.GET)
 	public String viewRoyaltyDetail(Model model, Royalty royalty){
 		System.out.println("RoyaltyController의 viewRoyaltyDetail메서드 ");
 		royalty = royaltyService.royaltyDetailService(royalty);

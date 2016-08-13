@@ -76,10 +76,10 @@
 	<a href="/headModifyMenu?menuDetail=${menu.menuCode}">[메뉴수정]</a>
 	<a href="/viewMenuList">[메뉴목록]</a>
 	<c:if test="${menu.recipeIdentify ne 0}">
-		<a href="/viewRecipeDetail?menuCode=${menu.menuCode}">[레시피보기]</a>
+		<a href="/viewRecipeDetail.do?menuCode=${menu.menuCode}">[레시피보기]</a>
 	</c:if>
 	<c:if test="${menu.recipeIdentify eq 0}">
-		<a href="/addRecipe?menuCode=${menu.menuCode}">[레시피 등록]</a>
+		<a href="/addRecipe.do?menuCode=${menu.menuCode}">[레시피 등록]</a>
 	</c:if>
 </body>
 </html>

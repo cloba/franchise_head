@@ -29,6 +29,6 @@
 	<div><label>등록한 직원  : </label>${client.headStaffId }</div><br/>
 	<div><label>등록한 날짜  : </label>${client.headClientRegitDate }</div><br/>
 	
-	<a href="/modifyClient?headClientCode=${client.headClientCode}">[거래처 수정]</a>
+	<a href="/modifyClient.do?headClientCode=${client.headClientCode}">[거래처 수정]</a>
 </body>
 </html>

@@ -64,7 +64,7 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
-	<form action="/viweHeadStockList" id="HeadStaffStockForm">
+	<form action="/viweHeadStockList.do" id="HeadStaffStockForm">
 		<div> 	
 			<!-- 검색조건 보내는 곳 -->
 			<input type="hidden" name="criteria" id="criteria" value=""/>
@@ -112,7 +112,7 @@ $(document).ready(function(){
  	<c:forEach var="Stock" items="${list}">
 	 	<div>
 		 	<label>${Stock.specificItemCode }</label>
-		 	<label><a href="viewHeadStrockDetail?specificItemCode=${ Stock.specificItemCode}">${Stock.hItemCode }</a></label>
+		 	<label><a href="viewHeadStrockDetail.do?specificItemCode=${ Stock.specificItemCode}">${Stock.hItemCode }</a></label>
 		 	<label>${Stock.headStockInDate }</label>
 		 	<label>${Stock.headStockItemOut }</label>
 	 	</div>

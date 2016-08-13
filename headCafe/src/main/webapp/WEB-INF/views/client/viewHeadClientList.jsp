@@ -53,7 +53,7 @@ $(document).ready(function(){
 
 </head>
 <body>
-	<form action="/viewHeadClientList" id="HeadClientForm">
+	<form action="/viewHeadClientList.do" id="HeadClientForm">
 		<div> 	
 			<!-- 검색조건 보내는 곳 -->
 			<input type="hidden" name="criteria" id="criteria" value=""/>
@@ -95,11 +95,11 @@ $(document).ready(function(){
  	<c:forEach var="Client" items="${list}">
 	 	<div>
 		 	<label>${Client.headClientCode }</label>
-		 	<label><a href="viewHeadClientDetail?headClientCode=${ Client.headClientCode}">${Client.headClientName }</a></label>
+		 	<label><a href="viewHeadClientDetail.do?headClientCode=${ Client.headClientCode}">${Client.headClientName }</a></label>
 		 	<label>${Client.headClientInCharge }</label>
 	 	</div>
 	 </c:forEach>
 	 
-	 <a href="/addHeadClient">[신규등록]</a>
+	 <a href="/addHeadClient.do">[신규등록]</a>
 </body>
 </html>

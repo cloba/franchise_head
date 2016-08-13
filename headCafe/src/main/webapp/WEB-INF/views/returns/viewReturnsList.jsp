@@ -40,23 +40,23 @@ $(document).ready(function(){
 		$('#upDown').attr('value','ASC');
 		$('#returnsForm').submit();
 	});
-	$('#returnPriceUp').click(function(){
-		$('#criteria').attr('value','return_price');
+	$('#returnsPriceUp').click(function(){
+		$('#criteria').attr('value','returns_price');
 		$('#upDown').attr('value','DESC');
 		$('#returnsForm').submit();
 	});
-	$('#returnPriceDown').click(function(){
-		$('#criteria').attr('value','return_price');
+	$('#returnsPriceDown').click(function(){
+		$('#criteria').attr('value','returns_price');
 		$('#upDown').attr('value','ASC');
 		$('#returnsForm').submit();
 	});
-	$('#returnReDeliveryUp').click(function(){
-		$('#criteria').attr('value','return_re_delivery');
+	$('#returnsReDeliveryUp').click(function(){
+		$('#criteria').attr('value','returns_re_delivery');
 		$('#upDown').attr('value','DESC');
 		$('#returnsForm').submit();
 	});
-	$('#returnReDeliveryDown').click(function(){
-		$('#criteria').attr('value','return_re_delivery');
+	$('#returnsReDeliveryDown').click(function(){
+		$('#criteria').attr('value','returns_re_delivery');
 		$('#upDown').attr('value','ASC');
 		$('#returnsForm').submit();
 	});
@@ -79,11 +79,11 @@ $(document).ready(function(){
 		<!-- 검색 조건 선택  -->
 		<select name="searchKey">    
 			<option value="">선택</option>   
-			<option value="returns_code" <c:if test="${'returns_code' eq search.searchKey }">selected="selected"</c:if>>로열티지불 코드</option>
-			<option value="orders_code"<c:if test="${'orders_code' eq search.searchKey }">selected="selected"</c:if>>계약코드</option>
-			<option value="specific_item_code" <c:if test="${'specific_item_code' eq search.searchKey }">selected="selected"</c:if>>해당 월</option>
-			<option value="return_price" <c:if test="${'return_price' eq search.searchKey }">selected="selected"</c:if>>해당 월</option>
-			<option value="return_re_delivery" <c:if test="${'return_re_delivery' eq search.searchKey }">selected="selected"</c:if>>해당 월</option>
+			<option value="returns_code" <c:if test="${'returns_code' eq search.searchKey }">selected="selected"</c:if>>반품 코드</option>
+			<option value="orders_code"<c:if test="${'orders_code' eq search.searchKey }">selected="selected"</c:if>>가맹발주 번호</option>
+			<option value="specific_item_code" <c:if test="${'specific_item_code' eq search.searchKey }">selected="selected"</c:if>>개별상품코드</option>
+			<option value="returns_price" <c:if test="${'returns_price' eq search.searchKey }">selected="selected"</c:if>>반품가격</option>
+			<option value="returns_re_delivery" <c:if test="${'returns_re_delivery' eq search.searchKey }">selected="selected"</c:if>>재배송 요청 여부</option>
 		</select>
 		
 		<!-- 검색어랑 검색버튼 -->
@@ -104,11 +104,11 @@ $(document).ready(function(){
 			<span id="specificItemCodeUp">▲</span>
 			<span id="specificItemCodeDown">▼</span></label>
 		<label>반품사유
-			<span id="returnReasonUp"></span>
-			<span id="returnReasonDown">/</span></label>
+			<span id="returnsReasonUp"></span>
+			<span id="returnsReasonDown">/</span></label>
 		<label>반품가격/
-			<span id="returnPriceUp">▲</span>
-			<span id="returnPriceDown">▼</span></label>	
+			<span id="returnsPriceUp">▲</span>
+			<span id="returnsPriceDown">▼</span></label>	
 	    <!-- <label>가맹보고날짜/
 			<span id="royaltyPaidUp"></span>
 			<span id="royaltyPaidDown"></span></label> 	 -->
@@ -119,8 +119,8 @@ $(document).ready(function(){
 			<span id="subSellProfitMonthUp"></span>
 			<span id="subSellProfitMonthDown"></span></label>	 --> 
 		<label>재배송 요청 여부/
-			<span id="returnReDeliveryUp">▲</span>
-			<span id="returnReDeliveryDown">▼</span></label>	
+			<span id="returnsReDeliveryUp">▲</span>
+			<span id="returnsReDeliveryDown">▼</span></label>	
 <!-- 		<label>반품 취소 여부/
 			<span id="royaltyPayActualDateUp"></span>
 			<span id="royaltyPayActualDateDown"></span></label> -->	
@@ -133,14 +133,14 @@ $(document).ready(function(){
 				<label>																   ${Returns.returnsCode}        </label>
 		   		<label><a href="/viewReturnsDetail?returnsCode=${Returns.returnsCode}">${Returns.ordersCode}   </a>  </label> 
 				<label>														     	   ${Returns.specificItemCode}   </label>
-		 	    <label><a href="/viewReturnsDetail?returnsCode=${Returns.returnsCode}">${Returns.returnReason} </a>  </label>
+		 	    <label><a href="/viewReturnsDetail?returnsCode=${Returns.returnsCode}">${Returns.returnsReason} </a>  </label>
 				<%-- <label>																         
 					<c:if test="${Returns.returnPrice eq 0}">			    		교환 요청	              </c:if>		    	
 					<c:if test="${Returns.returnPrice ne 0}">			           ${Returns.returnPrice} </c:if></label>	 --%>    	
-		    	<label>												                   ${Returns.returnPrice}원        </label> 
+		    	<label>												                   ${Returns.returnsPrice}원        </label> 
 				<label>
-					<c:if test="${Returns.returnReDelivery eq 'N'}">			    환불 요청			          </c:if>
-					<c:if test="${Returns.returnReDelivery eq 'Y'}">              재배송 요청                                    </c:if></label>
+					<c:if test="${Returns.returnsReDelivery eq 'N'}">			    환불 요청			          </c:if>
+					<c:if test="${Returns.returnsReDelivery eq 'Y'}">              재배송 요청                                    </c:if></label>
 			</div>
 		</c:forEach>
 

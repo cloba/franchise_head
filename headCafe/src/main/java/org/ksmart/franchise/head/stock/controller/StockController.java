@@ -17,7 +17,7 @@ public class StockController {
 	@Autowired
 	private StockService stockService;
 	//재고리스트 조회 메서드
-	@RequestMapping(value="/viweHeadStockList", method=RequestMethod.GET)
+	@RequestMapping(value="/viweHeadStockList.do", method=RequestMethod.GET)
 	public String viweHeadStrockList(Model model, Search search){
 		System.out.println("StockController의 viweHeadStrockList 메서드");
 		
@@ -31,7 +31,7 @@ public class StockController {
 	}
 	
 	//단일 재고의 자세한 정보를 보는 메서드
-	@RequestMapping(value="/viewHeadStrockDetail", method=RequestMethod.GET)
+	@RequestMapping(value="/viewHeadStrockDetail.do", method=RequestMethod.GET)
 	public String viewHeadStrockDetail(Model model, Stock stock){
 		System.out.println("StockController의 viewHeadStrockDetail 메서드");
 		System.out.println("getSpecificItemCode"+stock.getSpecificItemCode());

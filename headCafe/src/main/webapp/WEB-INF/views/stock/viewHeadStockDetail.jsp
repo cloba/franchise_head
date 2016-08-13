@@ -42,7 +42,7 @@
 	</div>
 	
 	<div>
-		<a href= "/viweHeadStockList"									>[ 재고 리스트 페이지로  ]</a>
+		<a href= "/viweHeadStockList.do"									>[ 재고 리스트 페이지로  ]</a>
 		<a href= "/"													>[ 재고 수정 ]</a>
 		<a href= "/"													>[ 되돌아가기]</a>
 	</div>	

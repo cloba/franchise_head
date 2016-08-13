@@ -65,7 +65,7 @@ $(document).ready(function(){
 <body>
 <h1>전 가맹 로얄티  리스트</h1>
 
-<form id="royaltyForm" action="/viewRoyaltyList" >
+<form id="royaltyForm" action="/viewRoyaltyList.do" >
 	<div> 	
 		<!-- 검색조건 보내는 곳 -->
 		<input type="hidden" name="criteria" id="criteria" value=""/>
@@ -131,7 +131,7 @@ $(document).ready(function(){
 		<c:forEach var="Royalty" items="${royaltyList}">
 			<div>
 				<label>${Royalty.royaltyCode}																</label>
-				<label><a href="/viewRoyaltyDetail?royaltyCode=${Royalty.royaltyCode}">${Royalty.subName}</a>	</label>
+				<label><a href="/viewRoyaltyDetail.do?royaltyCode=${Royalty.royaltyCode}">${Royalty.subName}</a>	</label>
 		<%--    <label>${Royalty.contractCode}																</label> --%>
 				<label>${Royalty.royaltyMonth}월																</label>
 		<%--    <label>${Royalty.royaltyDeadline}															</label>

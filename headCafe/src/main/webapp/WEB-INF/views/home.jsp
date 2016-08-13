@@ -36,20 +36,20 @@
 <a href="/viewDeliveryList.do">배송관리</a>
 <a href="/viewItemOutList">출고관리</a>
 <a href="/viewSellList">본사판매관리</a>
-<a href="/viweHeadStockList">재고관리</a>
+<a href="/viweHeadStockList.do">재고관리</a>
 <a href="/viewPaymentList?status=Y">결제방식 관리</a>
 <a href="/viewItemList">상품관리</a>
 <a href="/viewHeadStaffList">본사직원조회</a>
 <a href="/viewMenuList?status=Y">메뉴관리</a>
 <a href="/viewSubList">가맹관리</a>
 <a href="/viewSubjectList">계정과목관리</a>
-<a href="/viewHeadClientList">거래처관리</a>
-<a href="/viewContractList">계약관리</a>
-<a href="/viewHeadAccountingList">회계관리</a>
-<a href="/viewRoyaltyList">로얄티관리</a>
-<a href="/viewRoyaltyOverdueList">로얄티 연체관리</a>
-<a href="/viewHeadDumpList">판매 불가 상품 관리</a>
-<a href="/viewReturnsList">반품 상품 관리</a>
+<a href="/viewHeadClientList.do">거래처관리</a>
+<a href="/viewContractList.do">계약관리</a>
+<a href="/viewHeadAccountingList.do">회계관리</a>
+<a href="/viewRoyaltyList.do">로얄티관리</a>
+<a href="/viewRoyaltyOverdueList.do">로얄티 연체관리</a>
+<a href="/viewHeadDumpList.do">판매 불가 상품 관리</a>
+<a href="/viewReturnsList.do">반품 상품 관리</a>
 
 	<c:choose>
 	<c:when test="${login.headStaffId == null or login.headStaffId == ''}">

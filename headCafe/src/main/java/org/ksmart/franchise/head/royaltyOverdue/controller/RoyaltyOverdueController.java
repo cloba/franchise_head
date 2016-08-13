@@ -24,7 +24,7 @@ public class RoyaltyOverdueController {
 	private RoyaltyOverdueService royaltyOverdueService;
 	
 	//로얄티 연체 리스트 조회 메서드
-	@RequestMapping(value="/viewRoyaltyOverdueList", method=RequestMethod.GET)
+	@RequestMapping(value="/viewRoyaltyOverdueList.do", method=RequestMethod.GET)
 	public String viewRoyaltyList(Model model, Search search, RoyaltyOverdue royaltyOverdue) {
 		  System.out.println("RoyaltyOverdueController의 viewRoyaltyList메서드 ");
 		  
@@ -46,7 +46,7 @@ public class RoyaltyOverdueController {
     }
 	
 	//로얄티 연체 상세정보 조회 메서드
-		@RequestMapping(value="/viewRoyaltyOverdueDetail", method=RequestMethod.GET)
+		@RequestMapping(value="/viewRoyaltyOverdueDetail.do", method=RequestMethod.GET)
 		public String viewRoyaltyOverdueDetail(Model model, RoyaltyOverdue royaltyOverdue) {
 			  System.out.println("RoyaltyOverdueController의 viewRoyaltyOverdueDetail메서드 ");
 			  System.out.println("getRoyaltyOverdueCode"+royaltyOverdue.getRoyaltyOverdueCode());

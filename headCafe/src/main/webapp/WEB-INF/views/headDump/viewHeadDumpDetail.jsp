@@ -16,8 +16,8 @@
 	<div><label>폐기 일자: </label>${headDump.headDumpDate}</div>
 	
 	<div>
-		<a href="/modifyHeadDump?headDumpCode=${headDump.headDumpCode}">[수정]</a>	
-		<a href="viewHeadDumpList">[되돌아가기]</a>
+		<a href="/modifyHeadDump.do?headDumpCode=${headDump.headDumpCode}">[수정]</a>	
+		<a href="viewHeadDumpList.do">[되돌아가기]</a>
 	</div>	
 </body>
 </html>
