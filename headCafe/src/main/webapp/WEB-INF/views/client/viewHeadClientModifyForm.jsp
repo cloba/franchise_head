@@ -85,7 +85,7 @@
 </head>
 <body>
 <h1>본사 거래처 디테일</h1>
-	<form id="modifyForm" action="/modifyClient" method="POST">
+	<form id="modifyForm" action="/modifyClient.do" method="POST">
 		<div>
 			<label>거래처명: </label>
 			<input type="text" name="headClientName" id="headClientName" value="${client.headClientName }">
@@ -145,6 +145,6 @@
 			<input type="button" id="modifyFormBtn" value="수정"> 
 		</div>
 	</form>
-	<a href="/viewHeadClientList">[돌아가기]</a>
+	<a href="/viewHeadClientList.do">[돌아가기]</a>
 </body>
 </html>

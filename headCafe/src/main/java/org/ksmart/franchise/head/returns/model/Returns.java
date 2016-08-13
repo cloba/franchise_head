@@ -4,29 +4,19 @@ public class Returns {
 	private String returnsCode;
 	private String ordersCode;
 	private String specificItemCode;
-	private String returnReason;
-	private String returnPrice;
-	private String returnReportDate;
-	private String returnHeadCheck;
-	private String returnHeadCheckDate;
+	private String returnsReason;
+	private String returnsPrice;
+	private String returnsReportDate;
+	private String returnsHeadCheck;
+	private String returnsHeadCheckDate;
 	private String headStaffId;
-	private String returnReDelivery;
-	private String returnCancel;
-	private String returnApprovalDate;
-	private String returnApproval;
-		
-	public String getReturnApprovalDate() {
-		return returnApprovalDate;
-	}
-	public void setReturnApprovalDate(String returnApprovalDate) {
-		this.returnApprovalDate = returnApprovalDate;
-	}
-	public String getReturnApproval() {
-		return returnApproval;
-	}
-	public void setReturnApproval(String returnApproval) {
-		this.returnApproval = returnApproval;
-	}
+	private String returnsReDelivery;
+	private String returnsCancel;
+	private String returnsApprovalDate;
+	private String returnsApproval;
+	private String returnReason;
+	
+	
 	public String getReturnsCode() {
 		return returnsCode;
 	}
@@ -45,35 +35,35 @@ public class Returns {
 	public void setSpecificItemCode(String specificItemCode) {
 		this.specificItemCode = specificItemCode;
 	}
-	public String getReturnReason() {
-		return returnReason;
+	public String getReturnsReason() {
+		return returnsReason;
 	}
-	public void setReturnReason(String returnReason) {
-		this.returnReason = returnReason;
+	public void setReturnsReason(String returnsReason) {
+		this.returnsReason = returnsReason;
 	}
-	public String getReturnPrice() {
-		return returnPrice;
+	public String getReturnsPrice() {
+		return returnsPrice;
 	}
-	public void setReturnPrice(String returnPrice) {
-		this.returnPrice = returnPrice;
+	public void setReturnsPrice(String returnsPrice) {
+		this.returnsPrice = returnsPrice;
 	}
-	public String getReturnReportDate() {
-		return returnReportDate;
+	public String getReturnsReportDate() {
+		return returnsReportDate;
 	}
-	public void setReturnReportDate(String returnReportDate) {
-		this.returnReportDate = returnReportDate;
+	public void setReturnsReportDate(String returnsReportDate) {
+		this.returnsReportDate = returnsReportDate;
 	}
-	public String getReturnHeadCheck() {
-		return returnHeadCheck;
+	public String getReturnsHeadCheck() {
+		return returnsHeadCheck;
 	}
-	public void setReturnHeadCheck(String returnHeadCheck) {
-		this.returnHeadCheck = returnHeadCheck;
+	public void setReturnsHeadCheck(String returnsHeadCheck) {
+		this.returnsHeadCheck = returnsHeadCheck;
 	}
-	public String getReturnHeadCheckDate() {
-		return returnHeadCheckDate;
+	public String getReturnsHeadCheckDate() {
+		return returnsHeadCheckDate;
 	}
-	public void setReturnHeadCheckDate(String returnHeadCheckDate) {
-		this.returnHeadCheckDate = returnHeadCheckDate;
+	public void setReturnsHeadCheckDate(String returnsHeadCheckDate) {
+		this.returnsHeadCheckDate = returnsHeadCheckDate;
 	}
 	public String getHeadStaffId() {
 		return headStaffId;
@@ -81,20 +71,36 @@ public class Returns {
 	public void setHeadStaffId(String headStaffId) {
 		this.headStaffId = headStaffId;
 	}
-	public String getReturnReDelivery() {
-		return returnReDelivery;
+	public String getReturnsReDelivery() {
+		return returnsReDelivery;
 	}
-	public void setReturnReDelivery(String returnReDelivery) {
-		this.returnReDelivery = returnReDelivery;
+	public void setReturnsReDelivery(String returnsReDelivery) {
+		this.returnsReDelivery = returnsReDelivery;
 	}
-	public String getReturnCancel() {
-		return returnCancel;
+	public String getReturnsCancel() {
+		return returnsCancel;
 	}
-	public void setReturnCancel(String returnCancel) {
-		this.returnCancel = returnCancel;
+	public void setReturnsCancel(String returnsCancel) {
+		this.returnsCancel = returnsCancel;
 	}
-	
-
-	
+	public String getReturnsApprovalDate() {
+		return returnsApprovalDate;
+	}
+	public void setReturnsApprovalDate(String returnsApprovalDate) {
+		this.returnsApprovalDate = returnsApprovalDate;
+	}
+	public String getReturnsApproval() {
+		return returnsApproval;
+	}
+	public void setReturnsApproval(String returnsApproval) {
+		this.returnsApproval = returnsApproval;
+	}
+	public String getReturnReason() {
+		return returnReason;
+	}
+	public void setReturnReason(String returnReason) {
+		this.returnReason = returnReason;
+	}
+		
 	
 }

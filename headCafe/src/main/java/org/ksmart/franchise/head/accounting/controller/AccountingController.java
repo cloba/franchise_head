@@ -19,7 +19,7 @@ public class AccountingController {
 	private AccountingService accountingService;
 
 	//본사통합회계 리스트 조회
-	@RequestMapping(value="/viewHeadAccountingList", method=RequestMethod.GET)
+	@RequestMapping(value="/viewHeadAccountingList.do", method=RequestMethod.GET)
 	public String viewHeadAccountingList(Model model, Search search){
 		System.out.println("AccountingController의 viewHeadAccountingList메서드");
 	

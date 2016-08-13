@@ -38,7 +38,7 @@ $(document).ready(function(){
 </head>
 <body>
 <h1>레시피 등록</h1>
-	<form action="/addRecipe" method="POST" id="joinForm">
+	<form action="/addRecipe.do" method="POST" id="joinForm">
 
 		<div>	
 			<div><label>메뉴이름: </label>${recipeCommand.menuCode}</div>

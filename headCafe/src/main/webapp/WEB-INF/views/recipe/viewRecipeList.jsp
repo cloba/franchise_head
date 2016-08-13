@@ -66,7 +66,7 @@ $(document).ready(function(){
 </script>
 <body>
 <h1>레시피 리스트</h1>
-<form id="RecipeForm" action="/viewRecipeList" >
+<form id="RecipeForm" action="/viewRecipeList.do" >
 	<div> 	
 		<!-- 검색조건 보내는 곳 -->
 		<input type="hidden" name="criteria" id="criteria" value=""/>
@@ -113,7 +113,7 @@ $(document).ready(function(){
 			<div>
 				<label>${Recipe.recipeCode}</label>
 				<label>${Recipe.menuName }</label>
-				<label><a href="/viewRecipeDetail?recipeCode=${Recipe.recipeCode}" >${Recipe.ingreName}</a></label>
+				<label><a href="/viewRecipeDetail.do?recipeCode=${Recipe.recipeCode}" >${Recipe.ingreName}</a></label>
 				<label>${Recipe.ingreStatus}</label>
 			</div>
 		</c:forEach>

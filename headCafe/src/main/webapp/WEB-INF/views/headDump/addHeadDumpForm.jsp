@@ -65,7 +65,7 @@
 </script>
 </head>
 <body>
-	<form action="/addHeadDump" method="POST" id="joinForm">
+	<form action="/addHeadDump.do" method="POST" id="joinForm">
 		<div>
 			<label>상품코드: </label>
 			<input type="text" name="hItemCode" id="hItemCode">

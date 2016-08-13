@@ -85,7 +85,7 @@
 </head>
 <body>
 <h1>클라이언트 추가 폼</h1>
-	<form action="/addHeadClient" method="POST" id="joinForm">
+	<form action="/addHeadClient.do" method="POST" id="joinForm">
 		<div>
 			<label>거래처명: </label>
 			<input type="text" name="headClientName" id="headClientName" value="">

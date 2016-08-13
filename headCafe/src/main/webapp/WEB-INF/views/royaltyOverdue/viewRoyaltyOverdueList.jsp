@@ -65,7 +65,7 @@ $(document).ready(function(){
 <body>
 <h1>전 가맹 로얄티  리스트</h1>
 
-<form id="royaltyOverdueForm" action="/viewRoyaltyOverdueList" >
+<form id="royaltyOverdueForm" action="/viewRoyaltyOverdueList.do" >
 	<div> 	
 		<!-- 검색조건 보내는 곳 -->
 		<input type="hidden" name="criteria" id="criteria" value=""/>
@@ -120,7 +120,7 @@ $(document).ready(function(){
 		<c:forEach var="royaltyOverdue" items="${royaltyOverduelist}">
 			<div>
 				<label>${royaltyOverdue.royaltyOverdueCode}																						</label>
-				<label><a href="/viewRoyaltyOverdueDetail?royaltyOverdueCode=${royaltyOverdue.royaltyOverdueCode}">${royaltyOverdue.subName}</a>	</label>
+				<label><a href="/viewRoyaltyOverdueDetail.do?royaltyOverdueCode=${royaltyOverdue.royaltyOverdueCode}">${royaltyOverdue.subName}</a>	</label>
 			    <label>${royaltyOverdue.royaltyOverdueStatus}																					</label> 
 				<label>${royaltyOverdue.royaltyTotalOverduePay}																					</label>
 				<label>${royaltyOverdue.royaltyOverduePaid}																						</label>

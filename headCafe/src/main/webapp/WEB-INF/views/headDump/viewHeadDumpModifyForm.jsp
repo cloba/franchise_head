@@ -67,7 +67,7 @@
 <body>
 <h1>반품상품 수정 폼</h1>
 
-<form action="/modifyHeadDump" method="POST" id="modifyHeadDumpForm">
+<form action="/modifyHeadDump.do" method="POST" id="modifyHeadDumpForm">
 		<div>
 			<label>판매 불가 상품 코드</label> 
 			<input type="text" name="headDumpCode" value="${headDump.headDumpCode }" readonly="readonly">

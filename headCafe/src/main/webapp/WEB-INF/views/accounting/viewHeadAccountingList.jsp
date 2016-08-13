@@ -203,7 +203,7 @@ $(document).ready(function(){
 </head>
 <body>
 <h1>통합회계리스트</h1>
-<form action="/viewHeadAccountingList" id="HeadAccountingForm">
+<form action="/viewHeadAccountingList.do" id="HeadAccountingForm">
 		<div> 	
 			<!-- 검색조건 보내는 곳 -->
 			<input type="hidden" name="criteria" id="criteria" value=""/>
@@ -281,7 +281,7 @@ $(document).ready(function(){
  	<c:forEach var="Accounting" items="${list}">
 	 	<div>
 		 	<label>${Accounting.headAccountCode }</label>
-		 	<label><a href="viewHeadClientDetail?headClientCode=${ Client.headClientCode}">${Client.subjectCode }</a></label>
+		 	<label><a href="viewHeadClientDetail.do?headClientCode=${ Client.headClientCode}">${Client.subjectCode }</a></label>
 		 	<label>${Accounting.headClientCode }</label>
 		 	<label>${Accounting.headAccountFlow }</label>
 		 	<label>${Accounting.headAccountGroupCode }</label>

@@ -22,7 +22,7 @@ public class HeadDumpController {
 	Logger log = Logger.getLogger(this.getClass());
 	
 	// 판매 불가 상품 리스트 조회 메서드
-	@RequestMapping(value="/viewHeadDumpList", method=RequestMethod.GET)
+	@RequestMapping(value="/viewHeadDumpList.do", method=RequestMethod.GET)
 	public String viewHeadDumpList(Model model, HeadDump headDump, Search search) {
 		System.out.println("HeadDumpController의 viewHeadDumpList메서드 ");
 		  

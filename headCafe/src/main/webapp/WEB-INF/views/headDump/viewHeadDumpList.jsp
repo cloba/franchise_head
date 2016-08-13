@@ -68,7 +68,7 @@ $(document).ready(function(){
 <body>
 <h1>판매 불가 상품 리스트</h1>
 
-<form id="headDumpForm" action="/viewHeadDumpList" >
+<form id="headDumpForm" action="/viewHeadDumpList.do" >
 	<div> 	
 		<!-- 검색조건 보내는 곳 -->
 		<input type="hidden" name="criteria" id="criteria" value=""/>
@@ -121,7 +121,7 @@ $(document).ready(function(){
 		<c:forEach var="headDump" items="${headDumpList}">
 			<div>
 				<label>${headDump.headDumpCode}																						</label>
-				<label><a href="/viewHeadDumpDetail?headDumpCode=${headDump.headDumpCode}">${headDump.hItemCode}</a>				</label>
+				<label><a href="/viewHeadDumpDetail.do?headDumpCode=${headDump.headDumpCode}">${headDump.hItemCode}</a>				</label>
 			    <label>${headDump.specificItemCode}																					</label>	
 			    <label>${headDump.headDumpReason}																					</label>																	x
 				<label>${headDump.headDumpDate}																						</label>
@@ -130,6 +130,6 @@ $(document).ready(function(){
 			</div>
 		</c:forEach>
 
-	<a href="/addHeadDump">[판매불가 상품 등록]</a>
+	<a href="/addHeadDump.do">[판매불가 상품 등록]</a>
 </body>
 </html>
