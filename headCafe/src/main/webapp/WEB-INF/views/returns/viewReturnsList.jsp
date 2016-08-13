@@ -66,7 +66,7 @@ $(document).ready(function(){
 <body>
 <h1>반품 상품  리스트</h1>
 
-<form id="returnsForm" action="/viewReturnsList" >
+<form id="returnsForm" action="/viewReturnsList.do" >
 	<div> 	
 		<!-- 검색조건 보내는 곳 -->
 		<input type="hidden" name="criteria" id="criteria" value=""/>
@@ -131,9 +131,9 @@ $(document).ready(function(){
 		<c:forEach var="Returns" items="${returnsList}">
 			<div>
 				<label>																   ${Returns.returnsCode}        </label>
-		   		<label><a href="/viewReturnsDetail?returnsCode=${Returns.returnsCode}">${Returns.ordersCode}   </a>  </label> 
+		   		<label><a href="/viewReturnsDetail.do?returnsCode=${Returns.returnsCode}">${Returns.ordersCode}   </a>  </label> 
 				<label>														     	   ${Returns.specificItemCode}   </label>
-		 	    <label><a href="/viewReturnsDetail?returnsCode=${Returns.returnsCode}">${Returns.returnsReason} </a>  </label>
+		 	    <label><a href="/viewReturnsDetail.do?returnsCode=${Returns.returnsCode}">${Returns.returnsReason} </a>  </label>
 				<%-- <label>																         
 					<c:if test="${Returns.returnPrice eq 0}">			    		교환 요청	              </c:if>		    	
 					<c:if test="${Returns.returnPrice ne 0}">			           ${Returns.returnPrice} </c:if></label>	 --%>    	

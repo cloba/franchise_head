@@ -31,15 +31,17 @@
 			<c:if test="${returns.returnsCancel eq 'Y'}">              반품 취소                                 </c:if></div>
 
 	<div><label>본사 확인 여부 : </label>${returns.returnsApproval}</div>
+	
+	<div><label>반품 그룹 코드</label>${returns.returnsGroupCode}</div>
 	<!-- 본사가 반품 첫 확인 했다는 버튼(물건 보고 승인 아님)   -->
 	<div>
 	<c:if test="${returns.returnsApproval=='N'}">
-		<a href="/modifyReturnsApproval?returnsCode=${returns.returnsCode}&returnsApprovalIdenfity=Y">[승인]</a>
+		<a href="/modifyReturnsApproval.do?returnsCode=${returns.returnsCode}&returnsApprovalIdenfity=Y&returnsGroupCode=${returns.returnsGroupCode}">[승인]</a>
 	</c:if>	
 	<c:if test="${returns.returnsApproval=='Y'}">
-		<a href="/modifyReturnsApproval?returnsCode=${returns.returnsCode}&returnsApprovalIdenfity=N">[승인 취소]</a>
+		<a href="/modifyReturnsApproval.do?returnsCode=${returns.returnsCode}&returnsApprovalIdenfity=N&returnsGroupCode=${returns.returnsGroupCode}">[승인 취소]</a>
 	</c:if>	
-		<a href="/viewReturnsList">[되돌아가기]</a>
+		<a href="/viewReturnsList.do">[되돌아가기]</a>
 	</div>
 </body>
 </html>

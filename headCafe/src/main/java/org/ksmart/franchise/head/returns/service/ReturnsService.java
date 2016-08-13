@@ -3,6 +3,7 @@ package org.ksmart.franchise.head.returns.service;
 import java.util.List;
 
 import org.ksmart.franchise.head.returns.model.Returns;
+import org.ksmart.franchise.head.returns.model.ReturnsProcess;
 import org.ksmart.franchise.head.util.Search;
 
 public interface ReturnsService {
@@ -11,6 +12,6 @@ public interface ReturnsService {
 
 	Returns viewReturnsDetailService(Returns returns);
 
-	int modifyHeadDumpService(String returnsCode, String returnApprovalIdenfity);
+	void addHeadDumpService(ReturnsProcess returnsProcess);
 
 }
