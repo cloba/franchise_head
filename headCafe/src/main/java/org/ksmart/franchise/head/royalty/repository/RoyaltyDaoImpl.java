@@ -49,24 +49,32 @@ public class RoyaltyDaoImpl implements RoyaltyDao{
 		return sqlSessionRoyalty.selectOne(NS+".selectContractCount");
 	}
 
-	//지난달 지불할 로얄티가 입력하는 메서드
+	//지난달 지불할 로얄티 입력하는 메서드
 	@Override
 	public int insertRoyalty(Royalty royalty) {
-		System.out.println("RoyaltyDaoImpl의 insertRoyalty");
+		System.out.println("RoyaltyDaoImpl의 insertRoyalty 메서드");
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("royalty", royalty);
 		return sqlSessionRoyalty.insert(NS+".insertRoyalty", map);
 				
 		
 	}
-
+	
+	//로얄티 상세정보 조회 메서드
 	@Override
-	public Royalty royaltyDetail(Royalty royalty) {
-		System.out.println("RoyaltyDaoImpl의 royaltyDetail");
-		System.out.println("RoyaltyCode :"+royalty.getRoyaltyCode());
+	public Royalty royaltyDetail(String royaltyCode) {
+		System.out.println("RoyaltyDaoImpl의 royaltyDetail 메서드");
+		return sqlSessionRoyalty.selectOne(NS+".selectRoyaltyDetail", royaltyCode);
+	}
+
+	//로얄티 실제 지불 금액,날짜 기입 및 수정 메서드
+	@Override
+	public int modifyRoyaltyPay(Royalty royalty) {
+		System.out.println("RoyaltyDaoImpl의 modifyRoyaltyPay 메서드");
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("royalty", royalty);
-		return sqlSessionRoyalty.selectOne(NS+".selectRoyaltyDetail", map);
+		
+		return sqlSessionRoyalty.update(NS+".updateRoyaltyPay", map);
 	}
 
 }
