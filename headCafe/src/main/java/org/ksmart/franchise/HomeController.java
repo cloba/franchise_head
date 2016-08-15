@@ -29,7 +29,14 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
-		return "home";
+		return "main";
 	}
 	
+/*	@RequestMapping(value = "/test")
+	public String index(){
+		logger.debug("test실행 ");
+		
+		return "/bootstrap/pages/index.html";
+	}
+	*/
 }

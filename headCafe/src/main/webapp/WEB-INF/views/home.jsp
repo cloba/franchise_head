@@ -5,22 +5,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>	
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">		
 	<title>Home</title>
-<script>
-	//로그인 메서드
-	$(document).ready(function() {
-		$('#loginBtn').click(function() {
-			console.log('로그인버튼 클릭');
-			if ($('#headStaffId').val() == "") {
-				alert('아이디를 입력하세요.');
-			} else if ($('#headStaffPw').val() == "") {
-				alert('비밀번호를 입력하세요.');
-			}else{
-				$('#loginForm').attr('action','/login.go');  //바꿈
-				$('#loginForm').submit();
-			}
-		});
-	});
-</script>	
 </head>
 <body>
 <c:choose>
@@ -32,6 +16,7 @@
 		<a href="/login.go">로그인</a>
 	</c:otherwise>
 </c:choose>
+<a href="/resources/bootstrap/pages/index.html">test</a>
 <a href="/viewReceivedOrder.do">들어온 주문 확인</a>
 <a href="/viewDeliveryList.do">배송관리</a>
 <a href="/viewItemOutList">출고관리</a>
