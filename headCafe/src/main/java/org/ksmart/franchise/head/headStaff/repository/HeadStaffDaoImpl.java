@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
 import org.ksmart.franchise.head.headStaff.model.HeadStaff;
 import org.ksmart.franchise.head.headStaff.model.HeadStaffCommand;
 import org.ksmart.franchise.head.headStaff.model.HeadStaffLogin;
@@ -21,6 +22,7 @@ public class HeadStaffDaoImpl implements HeadStaffDao{
 
 	@Autowired
 	private SqlSessionTemplate sqlSessionHeadStaff;
+	Logger log = Logger.getLogger(this.getClass());
 	
 	
 	//form에서 입력한 headstaff객체를 받아 회원가입처리 하는 메서드.
@@ -61,9 +63,11 @@ public class HeadStaffDaoImpl implements HeadStaffDao{
 	@Override
 	public HeadStaffLogin headStaffLogin(HeadStaffLogin headStaffLogin) {
 		System.out.println("HeadStaffDaoImpl의 headStafflogin메서드");
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("headStaffLogin", headStaffLogin);
-		return sqlSessionHeadStaff.selectOne(NS+".selectHeadStaffLogin", map);
+		
+		HeadStaffLogin result = sqlSessionHeadStaff.selectOne(NS+".selectHeadStaffLogin", headStaffLogin);
+		
+		return result;
+	
 	}
 
 	//퇴사자 등록 하는 메서드

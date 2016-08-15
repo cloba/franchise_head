@@ -2,6 +2,7 @@ package org.ksmart.franchise.head.headStaff.service;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.ksmart.franchise.head.headStaff.model.HeadStaff;
 import org.ksmart.franchise.head.headStaff.model.HeadStaffCommand;
 import org.ksmart.franchise.head.headStaff.model.HeadStaffLogin;
@@ -17,7 +18,8 @@ public class HeadStaffServiceImpl implements HeadStaffService{
 	
 	@Autowired
 	private HeadStaffDao headStaffDao;
-
+	Logger log = Logger.getLogger(this.getClass());
+	
 	//headstaff객체를 받아 dao를 호출하여 처리한다.
 	@Override
 	public Object addHeadStaff(HeadStaffCommand headStaffCommand) {
@@ -46,12 +48,24 @@ public class HeadStaffServiceImpl implements HeadStaffService{
 		return headStaffDao.headStaffModify(headstaff);
 		
 	}
+	
 	//본사직원 로그인 메서드
 	@Override
-	public HeadStaffLogin loginStaffService(HeadStaffLogin headStaffLogin) {
-		return headStaffDao.headStaffLogin(headStaffLogin);
+	public String loginStaffService(HeadStaffLogin headStaffLogin) {
+		log.debug("HeadStaffServiceImpl의 loginStaffService 메서드");
 		
+		String re = null;
+		
+		if(null != headStaffDao.headStaffLogin(headStaffLogin)){
+			log.debug("service test:: "+headStaffDao.headStaffLogin(headStaffLogin).toString());
+			re = "success";
+		}else{
+			re = "fail";
+		}
+		
+		return re;
 	}
+	
 	//본사직원 퇴사하는 메서드
 	@Override
 	public int addResignStaffService(HeadStaff headStaff) {

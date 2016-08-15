@@ -32,34 +32,42 @@ public class HeadStaffController {
 	private String resignIdentify = ""; 
 	Logger log = Logger.getLogger(this.getClass());
 	
-	//로그아웃 메서드
-	@RequestMapping(value="/logout", method=RequestMethod.GET)
-	public String logout(SessionStatus sessionStatus){
+	//로그인 페이지로 이동 메서드
+	@RequestMapping(value="/login.go")
+	public String logIn(){
 		
+		log.debug("logIn메서드..");
+		
+		return "/headStaff/login";
+	}
+	
+	
+	//로그아웃 메서드
+	@RequestMapping(value="/logout.do", method=RequestMethod.GET)
+	public String logout(SessionStatus sessionStatus){
+		log.debug("HeadStaffController의 logout실행");
 		sessionStatus.setComplete();
 		
-		return "/home";
+		return "redirect:/";
 	}
 	
 	//본사직원 로그인 메서드  
-	@RequestMapping(value="/login.go")
+	@RequestMapping(value="/loginAction.go")
 	public String loginStaff(Model model, @ModelAttribute HeadStaffLogin login){
 		log.debug("HeadStaffController의 loginStaff실행");
-		headStaffService.loginStaffService(login);
-	//	log.debug("메서드 성공");
+		String re = null;
+		String result = headStaffService.loginStaffService(login);
 		
-		if(login == null ){
+		if(result == "fail" ){
+			model.addAttribute("result", "fail");
 			log.debug("로그인 실패");
-		}else{
-			
+			re = "/headStaff/login";
+		}else if(result == "success"){
 			log.debug("로그인 완료");
 			model.addAttribute("login", login);
+			re = "/home";
 		}
-		
-	//	log.debug("headStaff" +headStaff.getHeadStaffId());
-	//	log.debug("headStaffLogin :"+headStaffLogin.getHeadStaffId());
-		return "/home";   //(로그인 못 했다는 메서지와 함께) 로그인창 다시보여줘야함
-		
+		return re;   //(로그인 못 했다는 메서지와 함께) 로그인창 다시보여줘야함
 	}
 	
 	//회원가입 form을 보여주는 메서드

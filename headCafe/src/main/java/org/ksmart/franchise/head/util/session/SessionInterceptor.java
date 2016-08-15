@@ -21,11 +21,12 @@ public class SessionInterceptor extends HandlerInterceptorAdapter{
 		log.debug("sessionInterceptor 실행");
 		HttpSession session = request.getSession();
 		
-		if( session == null || session.getAttribute("login") == null ){
+		if( session.getAttribute("login") == null ){
+			log.debug("세션없음");
 			response.sendRedirect("/login.go");
 			return false;
 		}
-		
+		log.debug("세션있음: "+session.getAttribute("login"));
 		return true;
 	}
 }

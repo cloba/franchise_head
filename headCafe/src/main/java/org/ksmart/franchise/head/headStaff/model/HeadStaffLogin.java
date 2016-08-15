@@ -31,6 +31,11 @@ public class HeadStaffLogin {
 	public void setHeadStaffLevel(String headStaffLevel) {
 		this.headStaffLevel = headStaffLevel;
 	}
+	@Override
+	public String toString() {
+		return "HeadStaffLogin [headStaffId=" + headStaffId + ", headStaffPw=" + headStaffPw + ", headStaffName="
+				+ headStaffName + ", headStaffLevel=" + headStaffLevel + "]";
+	}
 	
 	
 

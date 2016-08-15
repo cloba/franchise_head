@@ -18,7 +18,7 @@ public interface HeadStaffDao {
 	HeadStaff headStaffDetail(String headStaffId);
 
 	int headStaffModify(HeadStaff headstaff);
-
+	
 	HeadStaffLogin headStaffLogin(HeadStaffLogin headStaffLogin);
 
 	public int addResignStaff(HeadStaff headStaff);

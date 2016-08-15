@@ -8,22 +8,6 @@ public class HeadStaffSearch {
 	private String lineUp;
 	private String upDown;
 	
-	
-//	public String getSearchHeadStaffInfo() {
-//		return SearchHeadStaffInfo;
-//	}
-//	public void setSearchHeadStaffInfo(String searchHeadStaffInfo) {
-//		SearchHeadStaffInfo = searchHeadStaffInfo;
-//	}
-//	public String getSearchHeadStaffKey() {
-//		return SearchHeadStaffKey;
-//	}
-//	public void setSearchHeadStaffKey(String searchHeadStaffKey) {
-//		SearchHeadStaffKey = searchHeadStaffKey;
-//	}
-	
-	
-	
 	public String getCriteria() {
 		return criteria;
 	}

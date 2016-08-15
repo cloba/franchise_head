@@ -19,11 +19,8 @@ public interface HeadStaffService {
 
 	int modifyHeadStaff(HeadStaff headStaff);
 
-	HeadStaffLogin loginStaffService(HeadStaffLogin headStaffLogin);
+	String loginStaffService(HeadStaffLogin headStaffLogin);
 
 	int addResignStaffService(HeadStaff headStaff);
-
-
-//	void viewResignStaffListService(HeadStaff headStaff);
 
 }

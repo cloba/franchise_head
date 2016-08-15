@@ -23,10 +23,10 @@
 </script>	
 </head>
 <body>
-아이디:
 <c:choose>
 	<c:when test="${login.headStaffId ne null}">
 		아이디: ${login.headStaffId}
+		<a href="/logout.do">로그아웃</a>
 	</c:when>
 	<c:otherwise>
 		<a href="/login.go">로그인</a>
@@ -51,32 +51,5 @@
 <a href="/viewHeadDumpList.do">판매 불가 상품 관리</a>
 <a href="/viewReturnsList.do">반품 상품 관리</a>
 
-	<c:choose>
-	<c:when test="${login.headStaffId == null or login.headStaffId == ''}">
-	
-		<!-- 로그인 폼 -->
-		<div class="join">
-			<form id="loginForm" action="" method="post" >
-				<h2>로그인</h2>
-				
-				<div class="form-group">
-					<label for="staffId">아이디 : </label>
-					<input type="text" class="form-control" id="headStaffId" name="headStaffId" placeholder="Enter ID">
-				</div>
-				<div class="form-group">
-					<label for="staffPw">비밀번호:</label>
-					<input type="password" class="form-control" id="headStaffPw" name="headStaffPw" placeholder="Enter password">
-				</div>
-				<div id="right">
-					<input type="button" class="btn btn-default" id="loginBtn" value="로그인"/>
-				</div>
-			</form>
-		</div>
-	</c:when>
-	<c:otherwise>
-	
-	<a href="/logout">로그아웃</a>
-	</c:otherwise>
-</c:choose>
 </body>
 </html>
