@@ -9,6 +9,7 @@ public interface RoyaltyOverdueService {
 
 	List<RoyaltyOverdue> royaltyOverdueListService(Search search, RoyaltyOverdue royaltyOverdue);
 
-	RoyaltyOverdue royaltyOverdueDetailService(RoyaltyOverdue royaltyOverdue);
+
+	RoyaltyOverdue royaltyOverdueDetailService(String royaltyOverdueCode);
 
 }

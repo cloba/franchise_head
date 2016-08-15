@@ -7,6 +7,7 @@ import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Locale;
 
+import org.apache.log4j.Logger;
 import org.ksmart.franchise.head.royalty.model.Royalty;
 import org.ksmart.franchise.head.royalty.service.RoyaltyService;
 import org.ksmart.franchise.head.util.Search;
@@ -21,6 +22,8 @@ public class RoyaltyController {
 	
 	@Autowired
 	private RoyaltyService royaltyService;
+	
+	Logger log = Logger.getLogger(this.getClass());
 
 	//전가맹 로얄티 리스트 조회하는 메서드
 	@RequestMapping(value="/viewRoyaltyList.do", method=RequestMethod.GET)
@@ -45,13 +48,39 @@ public class RoyaltyController {
 	
 	// 가맹 디테일 조회하는 메서드
 	@RequestMapping(value="/viewRoyaltyDetail.do", method= RequestMethod.GET)
-	public String viewRoyaltyDetail(Model model, Royalty royalty){
+	public String viewRoyaltyDetail(Model model, String royaltyCode){
 		System.out.println("RoyaltyController의 viewRoyaltyDetail메서드 ");
-		royalty = royaltyService.royaltyDetailService(royalty);
+		Royalty royalty = royaltyService.royaltyDetailService(royaltyCode);
 		model.addAttribute("royalty", royalty);
 		return "/royalty/viewRoyaltyDetail";
 		
-	}		
+	}	
+	
+	//판매 불가 상품 수정 form 보여주는 메서드
+	  @RequestMapping(value="/modifyRoyaltyPay.do", method=RequestMethod.GET)
+	  public String modifyRoyaltyPayForm(Model model, String royaltyCode){
+		  System.out.println("RoyaltyController의 modifyRoyaltyPay get메서드 ");
+		  
+		  Royalty royalty = royaltyService.royaltyDetailService(royaltyCode);
+//		  royaltyService.modifyRoyaltyPayService(royalty); 
+		  System.out.println("getRoyaltyCode::"+royalty.getRoyaltyCode());
+		  model.addAttribute("royalty", royalty);
+		  
+		return "/royalty/modifyRoyaltyPayForm";
+		  
+	  }
+	  
+	  //판매 불가 상품 수정 처리하는 메서드
+	  @RequestMapping(value="/modifyRoyaltyPay.do", method=RequestMethod.POST)
+	  public String modifyRoyaltyPay(Model model, Royalty royalty){
+		  System.out.println("RoyaltyController의 modifyRoyaltyPay post메서드 ");
+		  
+		  royaltyService.modifyRoyaltyPayService(royalty);
+		  
+		  
+		  //수정된 정보의 pk를 가져와 수정된 내역을 보여주는 페이지로 이동(디테일페이지)
+		 return "redirect:/viewRoyaltyDetail.do?royaltyCode="+royalty.getRoyaltyCode();
+	  }
 			
 		
 }

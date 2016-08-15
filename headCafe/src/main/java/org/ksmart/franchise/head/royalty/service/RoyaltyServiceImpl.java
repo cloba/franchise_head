@@ -50,12 +50,18 @@ public class RoyaltyServiceImpl implements RoyaltyService {
 
 	//로얄티 가맹에 대한 상세정보 조회메서드
 	@Override
-	public Royalty royaltyDetailService(Royalty royalty) {
+	public Royalty royaltyDetailService(String royaltyCode) {
 		System.out.println("RoyaltyServiceImpl의 royaltyDetailService");
 		
-		return RoyaltyDao.royaltyDetail(royalty);
+		return RoyaltyDao.royaltyDetail(royaltyCode);
 		
 		
+	}
+
+	@Override
+	public int modifyRoyaltyPayService(Royalty royalty) {
+		System.out.println("RoyaltyServiceImpl의 modifyRoyaltyPayService");
+		return RoyaltyDao.modifyRoyaltyPay(royalty);
 	}
 
 }

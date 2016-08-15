@@ -98,8 +98,8 @@
 						<option value="018">018</option>
 						<option value="019">019</option>
 				</select>-	
-			<input type="text" name="headStaffPhoneSecond" id="headStaffPhoneSecond" size=4 maxlength=4/>-
-			<input type="text" name="headStaffPhoneThird" id="headStaffPhoneThird" size=4 maxlength=4/>
+			<input type="text" name="headStaffPhoneSecond" id="headStaffPhoneSecond" size=4 maxlength=4 onkeypress="if (event.keyCode<48|| event.keyCode>57)  event.returnValue=false;" style='IME-MODE:disabled;'/>-
+			<input type="text" name="headStaffPhoneThird" id="headStaffPhoneThird" size=4 maxlength=4 onkeypress="if (event.keyCode<48|| event.keyCode>57)  event.returnValue=false;" style='IME-MODE:disabled;'/>
 			<span id="headStaffPhoneHelper"></span>
 		</div>
 <!-- 		<div> -->

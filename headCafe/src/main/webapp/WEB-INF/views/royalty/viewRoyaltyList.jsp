@@ -142,7 +142,7 @@ $(document).ready(function(){
 				<label>
 					<c:if test="${Royalty.royaltyPayActualDate eq null}">미지급							</c:if>
 					<c:if test="${Royalty.royaltyPayActualDate ne null}">${Royalty.royaltyPayActualDate}</c:if></label>
-				<%-- 	${Royalty.royaltyPayActualDate} --%>
+
 				<label>${Royalty.royaltyActualAmount}														</label>
 			</div>
 		</c:forEach>

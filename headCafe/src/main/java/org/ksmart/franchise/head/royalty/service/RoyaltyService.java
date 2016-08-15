@@ -11,7 +11,9 @@ public interface RoyaltyService {
 
 	List<Royalty> currentlypaiedMonthService(Royalty royalty, Search search);
 
-	Royalty royaltyDetailService(Royalty royalty);
+	Royalty royaltyDetailService(String royaltyCode);
+
+	int modifyRoyaltyPayService(Royalty royalty);
 
 
 

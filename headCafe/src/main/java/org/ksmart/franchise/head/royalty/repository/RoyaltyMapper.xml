@@ -17,6 +17,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="royaltyActualAmount"  column="royalty_actual_amount"/>
 		<result property="subName" column="sub_name"/>
 		<result property="subCode" column="sub_code"/>
+		<result property="royaltyOverdueIdentify" column="royalty_overdue_identify"/>
 	</resultMap>
 
 	<resultMap id="RoyaltyOverdueAddResultMap" type="org.ksmart.franchise.head.royalty.model.RoyaltyOverdueAdd">
@@ -28,8 +29,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="royaltyOverdueIdentify" column="royalty_overdue_identify"/>
 	</resultMap>
 
-
-
+ 	
 	<!-- 로얄티 리스트구 하는메서드 -->
 	<select id="selectRoyaltyList" resultMap="RoyaltyResultMap">
 		SELECT
@@ -78,18 +78,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			(select max(royalty_code) from royalty where contract_code = #{contractCode})
 	</select>
 	
-	<!-- 본사 가맹간의 현재 계약 건수 구하는 메서드 -->
+	<!-- 본사 가맹간의 현재 계약 건수 조회 메서드 -->
 	<select id="selectContractCount" resultType="java.lang.String">
 		select count(contract_code) from contract where contract_expire = 'N'
 	</select>
-	
-	<select id="selectRoyaltyDetail" parameterType="java.util.Map" resultMap="RoyaltyResultMap">
+	<!-- 한 가맹에 대한 로얄티 상세정보 조회 메서드-->
+	<select id="selectRoyaltyDetail" parameterType="java.lang.String" resultMap="RoyaltyResultMap">
 		SELECT
-			royalty_code, contract_code, royalty_month, royalty_deadline, royalty_paid, sub_practical_sell_price_month, sub_code,
-			sub_sell_profit_month, head_sell_profit_by_sub_month, royalty_pay_actual_date, royalty_actual_amount, sub_name
+			royalty_code,             contract_code,                    royalty_month,  
+			royalty_paid,             sub_practical_sell_price_month,   sub_code,
+			sub_sell_profit_month,    head_sell_profit_by_sub_month,    royalty_deadline,
+			royalty_pay_actual_date,  royalty_actual_amount,            sub_name,
+			royalty_overdue_identify
 		FROM
 			royalty 
-		WHERE royalty_code = #{royalty.RoyaltyCode}
+		WHERE 
+			royalty_code = #{royaltyCode}
 	</select>
 	
 	<!-- 로얄티 연체 구하 확인하는 메서드 -->
@@ -104,6 +108,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		AND royalty_code IN (SELECT royalty_code FROM royalty WHERE royalty_deadline >= date_format(now(),'%d') ))
 	</select>
 	
+	<!-- 로얄티 연체 테이블 이동후 연체에 추가 됐다는 확인컬럼 메서드 -->
 	<update id="updateRoyaltyOverdueIdentify" parameterType="java.lang.String">
 		UPDATE 
 			royalty
@@ -111,11 +116,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			royalty_overdue_identify='Y'
 		WHERE 
 			royalty_code = #{royaltyCode}
+	</update>
 	
-	
-	
-	
-	
+	<update id="updateRoyaltyPay" parameterType="java.util.Map">
+		UPDATE 
+			royalty
+		SET
+			royalty_pay_actual_date = NOW(),
+			royalty_actual_amount = #{royalty.royaltyActualAmount}
+		WHERE 
+			royalty_code = #{royalty.royaltyCode}
+		
 	</update>
 
 

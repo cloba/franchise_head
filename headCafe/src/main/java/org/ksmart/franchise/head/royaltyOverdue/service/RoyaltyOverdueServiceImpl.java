@@ -26,12 +26,12 @@ public class RoyaltyOverdueServiceImpl implements RoyaltyOverdueService {
 		
 		return royaltyOverdueDao.royaltyOverdueList(search);
 	}
-
+	
+	//로얄티 연체 상세 정보 조회 메서드 
 	@Override
-	public RoyaltyOverdue royaltyOverdueDetailService(RoyaltyOverdue royaltyOverdue) {
+	public RoyaltyOverdue royaltyOverdueDetailService(String royaltyOverdueCode) {
 		System.out.println("RoyaltyOverdueServiceImpl의 royaltyOverdueDetailService메서드");
 		
-		return royaltyOverdueDao.royaltyOverDetatil(royaltyOverdue);
+		return royaltyOverdueDao.royaltyOverDetatil(royaltyOverdueCode);
 	}
-
 }

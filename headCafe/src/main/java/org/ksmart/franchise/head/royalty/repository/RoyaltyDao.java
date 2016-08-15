@@ -15,6 +15,8 @@ public interface RoyaltyDao {
 
 	int insertRoyalty(Royalty royalty);
 
-	Royalty royaltyDetail(Royalty royalty);
+	Royalty royaltyDetail(String royaltyCode);
+
+	int modifyRoyaltyPay(Royalty royalty);
 
 }

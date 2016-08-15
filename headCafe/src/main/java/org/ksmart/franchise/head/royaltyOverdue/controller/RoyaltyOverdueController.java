@@ -35,24 +35,33 @@ public class RoyaltyOverdueController {
 		  SimpleDateFormat Month = new SimpleDateFormat("yyyy-MM");  //데이터 포맷 형태.
 		  royaltyOverdue.setLastMonth(Month.format(cal.getTime()));  //royaltyOverdue객체에 지난 달 입력.
 		  List<RoyaltyOverdue> royaltyOverduelist =  royaltyOverdueService.royaltyOverdueListService(search, royaltyOverdue);
-
+		
 		  for(RoyaltyOverdue a:royaltyOverduelist){
 			  System.out.println("getRoyaltyPayActualDate"+a.getRoyaltyOverduePayDate()); 
 		  }
 		  System.out.println("royaltyOverduelist.size:"+ royaltyOverduelist.size());
 		  model.addAttribute("royaltyOverduelist", royaltyOverduelist);
 		  
-	      return "/royaltyOverdue/viewRoyaltyOverdueList";
+		  return "/royaltyOverdue/viewRoyaltyOverdueList";
     }
 	
 	//로얄티 연체 상세정보 조회 메서드
-		@RequestMapping(value="/viewRoyaltyOverdueDetail.do", method=RequestMethod.GET)
-		public String viewRoyaltyOverdueDetail(Model model, RoyaltyOverdue royaltyOverdue) {
-			  System.out.println("RoyaltyOverdueController의 viewRoyaltyOverdueDetail메서드 ");
-			  System.out.println("getRoyaltyOverdueCode"+royaltyOverdue.getRoyaltyOverdueCode());
-			  royaltyOverdue =  royaltyOverdueService.royaltyOverdueDetailService(royaltyOverdue);			 
-			  model.addAttribute("royaltyOverdue", royaltyOverdue);
-			  
-		      return "/royaltyOverdue/viewRoyaltyOverdueDetail";
-	    }
+	@RequestMapping(value="/viewRoyaltyOverdueDetail.do", method=RequestMethod.GET)
+	public String viewRoyaltyOverdueDetail(Model model, String royaltyOverdueCode) {
+		  RoyaltyOverdue royaltyOverdue =  royaltyOverdueService.royaltyOverdueDetailService(royaltyOverdueCode);			 
+		  model.addAttribute("royaltyOverdue", royaltyOverdue);
+		  
+	      return "/royaltyOverdue/viewRoyaltyOverdueDetail";
+    }
+	
+	//로얄티 연체테이블에 로얄티 납부금액 추가하는 메서드
+	@RequestMapping(value="/addRoyaltyPay", method=RequestMethod.GET)
+	public String addroyalty(Model model, String royaltyOverdueCode){
+		System.out.println("RoyaltyOverdueController의 addRoyaltyPay메서드 ");
+		RoyaltyOverdue royaltyOverdue = royaltyOverdueService.royaltyOverdueDetailService(royaltyOverdueCode);
+		model.addAttribute("royaltyOverdue", royaltyOverdue);
+		return "/royaltyOverdue/addroyaltyForm";
+		
+		
+	}
 }

@@ -12,9 +12,10 @@ public class Royalty {
 	private String subSellProfitMonth;
 	private String headSellProfitBySubMonth;
 	private String royaltyPayActualDate;
-	private String royaltyActualAmount;
+	private int royaltyActualAmount;
 	private String subName;
 	private String subCode;
+	private String royaltyOverdueIdentify;
 	
 	public String getLastMonth() {
 		return lastMonth;
@@ -40,7 +41,12 @@ public class Royalty {
 	public void setRoyaltyMonth(String royaltyMonth) {
 		this.royaltyMonth = royaltyMonth;
 	}
-	
+	public String getRoyaltyDeadline() {
+		return royaltyDeadline;
+	}
+	public void setRoyaltyDeadline(String royaltyDeadline) {
+		this.royaltyDeadline = royaltyDeadline;
+	}
 	public String getRoyaltyPaid() {
 		return royaltyPaid;
 	}
@@ -71,38 +77,30 @@ public class Royalty {
 	public void setRoyaltyPayActualDate(String royaltyPayActualDate) {
 		this.royaltyPayActualDate = royaltyPayActualDate;
 	}
-	public String getRoyaltyActualAmount() {
+	public int getRoyaltyActualAmount() {
 		return royaltyActualAmount;
 	}
-	public void setRoyaltyActualAmount(String royaltyActualAmount) {
+	public void setRoyaltyActualAmount(int royaltyActualAmount) {
 		this.royaltyActualAmount = royaltyActualAmount;
 	}
-
 	public String getSubName() {
 		return subName;
 	}
 	public void setSubName(String subName) {
 		this.subName = subName;
 	}
-	public String getRoyaltyDeadline() {
-		return royaltyDeadline;
-	}
-	public void setRoyaltyDeadline(String royaltyDeadline) {
-		this.royaltyDeadline = royaltyDeadline;
-	}
-	@Override
-	public String toString() {
-		return "Royalty [lastMonth=" + lastMonth + ", RoyaltyCode=" + RoyaltyCode + ", contractCode=" + contractCode
-				+ ", royaltyMonth=" + royaltyMonth + ", royaltyDeadline=" + royaltyDeadline + ", royaltyPaid="
-				+ royaltyPaid + ", subPracticalSellPriceMonth=" + subPracticalSellPriceMonth + ", subSellProfitMonth="
-				+ subSellProfitMonth + ", headSellProfitBySubMonth=" + headSellProfitBySubMonth
-				+ ", royaltyPayActualDate=" + royaltyPayActualDate + ", royaltyActualAmount=" + royaltyActualAmount
-				+ ", subName=" + subName + "]";
-	}
 	public String getSubCode() {
 		return subCode;
 	}
 	public void setSubCode(String subCode) {
 		this.subCode = subCode;
-	}	
+	}
+	public String getRoyaltyOverdueIdentify() {
+		return royaltyOverdueIdentify;
+	}
+	public void setRoyaltyOverdueIdentify(String royaltyOverdueIdentify) {
+		this.royaltyOverdueIdentify = royaltyOverdueIdentify;
+	}
+	
+	
 }	
