@@ -84,4 +84,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE 
 			delivery_code = #{deliveryCode}
 	</update>
+	
+	<insert id="insertReDelivery" parameterType="java.util.Map">
+		<selectKey resultType="hashmap" keyProperty="deliveryCode" order="BEFORE">
+			SELECT IF( EXISTS(
+            	SELECT delivery_code
+             	FROM delivery), concat('delivery_code', MAX(CONVERT(SUBSTRING(delivery_code,14), UNSIGNED))+1), 'delivery_code1') as deliveryCode
+			FROM delivery
+		</selectKey>
+		
+		INSERT INTO delivery 	
+			          (delivery_code,  orders_code,           delivery_date, delivery_receive, delivery_location, head_staff_id, delivery_return, delivery_person)
+		       VALUES (#{deliveryCode},  #{returns.ordersCode}, now(),         'N',              '안성시물류창고',      'head_staff_id1',       'Y',             '홍길동')     
+		       
+	
+	
+	</insert>
 </mapper>

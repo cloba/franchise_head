@@ -19,11 +19,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="returnsCancel" column="returns_cancel"/>
 		<result property="returnsApproval" column="returns_approval"/>
 		<result property="returnsApprovalDate" column="returns_approval_date"/>
-		
-		
+		<result property="returnsGroupCode" column="returns_group_code"/>
 	</resultMap>
 	
-	<!-- 로얄티 리스트 조회 메서드 -->
+	<!-- 반품 상품 리스트 조회 메서드 -->
 	<select id="selectReturnsList" resultMap="ReturnsResultMap" parameterType="java.util.Map">
 		SELECT 
 			returns_code,          orders_code, 
@@ -42,7 +41,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			</if>
 		</trim>
 	</select>
-
+	
+	<!-- 반품 상품 상세 정보 조회 메서드 -->
 	<select id="selectReturnDetail" parameterType="java.util.Map" resultMap="ReturnsResultMap">
 		SELECT 
 			returns_code,        orders_code,              specific_item_code,
@@ -53,18 +53,27 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM 
 			`returns`
 		WHERE returns_code= #{returns.returnsCode}
-	
 	</select>
-	<update id="updateReturnsApproval" parameterType="java.lang.String">
+	
+	
+	<update id="updateReturnsApproval" parameterType="java.util.Map">
 		UPDATE `returns`
 	SET
-		returns_approval=#{returnsApprovalIdenfity},
+		returns_approval=#{returnsProcess.returnsApprovalIdenfity},
 		returns_approval_date=NOW()
 	WHERE
-		returns_code=#{returnsCode} 
+		returns_code=#{returnsProcess.returnsCode} 
 	</update>
 
-
+	<select id="selectReturnsGroupCode" parameterType="java.util.Map" resultMap="ReturnsResultMap">
+		SELECT 
+			returns_code, returns_group_code, orders_code
+		FROM 
+			`returns`
+		WHERE 
+		    returns_group_code=#{returnsProcess.returnsGroupCode}	
+	
+	</select>
 
 
 </mapper>

@@ -15,7 +15,7 @@ public class Returns {
 	private String returnsApprovalDate;
 	private String returnsApproval;
 	private String returnReason;
-	
+	private String returnsGroupCode;
 	
 	public String getReturnsCode() {
 		return returnsCode;
@@ -100,6 +100,12 @@ public class Returns {
 	}
 	public void setReturnReason(String returnReason) {
 		this.returnReason = returnReason;
+	}
+	public String getReturnsGroupCode() {
+		return returnsGroupCode;
+	}
+	public void setReturnsGroupCode(String returnsGroupCode) {
+		this.returnsGroupCode = returnsGroupCode;
 	}
 		
 	

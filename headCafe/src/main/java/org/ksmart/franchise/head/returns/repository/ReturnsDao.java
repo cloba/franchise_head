@@ -3,6 +3,7 @@ package org.ksmart.franchise.head.returns.repository;
 import java.util.List;
 
 import org.ksmart.franchise.head.returns.model.Returns;
+import org.ksmart.franchise.head.returns.model.ReturnsProcess;
 import org.ksmart.franchise.head.util.Search;
 
 public interface ReturnsDao {
@@ -11,6 +12,10 @@ public interface ReturnsDao {
 
 	Returns viewReturnsDetail(Returns returns);
 
-	int modifyReturnsApproval(String returnsCode, String returnApprovalIdenfity);
+	int modifyReturnsApproval(ReturnsProcess returnsProcess);
+
+	void addReDelivery(Returns returns);
+
+	List<Returns> selectReturnsGroupCode(ReturnsProcess returnsProcess);
 
 }
