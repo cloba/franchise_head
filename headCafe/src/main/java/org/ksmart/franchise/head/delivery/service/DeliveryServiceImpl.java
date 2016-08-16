@@ -116,14 +116,14 @@ public class DeliveryServiceImpl implements DeliveryService {
 
 	@Override
 	//배송상태정보를 변경하는 메서드입니다
-	public void updateStatusService(String[] checked, String status) {
+	public void updateStatusService(String[] checked, String deliveryStatus) {
 		System.out.println("DeliveryServiceImpl의 requestDeliveryService메서드 호출");
 		for(String deliveryCode : checked){
 			System.out.println(deliveryCode+" <==== deliveryCode");
 			
 			DeliveryCommand deliveryCommand = new DeliveryCommand();
 			deliveryCommand.setDeliveryCode(deliveryCode);
-			deliveryCommand.setDeliveryStatus(status);
+			deliveryCommand.setDeliveryStatus(deliveryStatus);
 			deliveryDao.updateStatus(deliveryCommand);	
 			
 		}

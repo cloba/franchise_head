@@ -33,7 +33,7 @@ public class DeliveryController {
 	}
 	
 	//배송상세를 보여줍니다
-	@RequestMapping(value="/viewDeliveryDetail")
+	@RequestMapping(value="/viewDeliveryDetail.do")
 	public String viewDeliveryDetail(String deliveryCode, Model model){
 		System.out.println("DeliveryController의 viewDeliveryDetail 메서드 호출");
 		Delivery delivery = deliveryService.getDeliveryDetailService(deliveryCode);
@@ -43,7 +43,7 @@ public class DeliveryController {
 	}
 	
 	//선택한 판매내역에 대해 배송을 요청합니다
-	@RequestMapping(value="/requestDelivery")
+	@RequestMapping(value="/requestDelivery.do")
 	public String requestDelivery(String[] checkedOrders, String[] inteCode, int[] headSellQuantity){
 		System.out.println("SellController의 requestDelivery 메서드 호출");
 		System.out.println("checkedOrders ====> "+Arrays.toString(checkedOrders));
@@ -51,17 +51,17 @@ public class DeliveryController {
 		System.out.println("headSellQuantity ====> "+Arrays.toString(headSellQuantity));
 		deliveryService.requestDeliveryService(checkedOrders, inteCode, headSellQuantity);
 
-		return "redirect:/viewDeliveryList";
+		return "redirect:/viewDeliveryList.do";
 	}
 	
 	//배송상품의 현재 위치를 변경합니다
-	@RequestMapping(value="/updateStatus", method=RequestMethod.POST)
-	public String updateStatus(String[] checked, String status){
+	@RequestMapping(value="/updateStatus.do", method=RequestMethod.POST)
+	public String updateStatus(String[] checked, String deliveryStatus){
 		System.out.println("SellController의 updateStatus 메서드 호출");
 	//	System.out.println(checked+" <===== checked");
 	//	System.out.println(status+" <===== status");
-		deliveryService.updateStatusService(checked, status);
+		deliveryService.updateStatusService(checked, deliveryStatus);
 		
-		return "redirect:/viewDeliveryList";
+		return "redirect:/viewDeliveryList.do";
 	}
 }

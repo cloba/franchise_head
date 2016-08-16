@@ -33,7 +33,7 @@
 		});
 		
 		/* 검색 버튼 눌렀을 때 유효성 검사 */
-	/* 	$('#searchBtn').click(function(){
+	 	$('#searchBtn').click(function(){
 			console.log('버튼클릭');
 			searchValid($('#menuList'));
 		});
@@ -44,14 +44,14 @@
 		
 		$('#nameDown').click(function(){
 			upDown('nameDown',$('#menuList'));
-		}); */
+		}); 
 		
 	});
 
 </script>
 <h1>받은 주문 리스트</h1>
 	<!--  검색 -->
-	<form name="searchForm" id="searchForm" action="/viewReceivedOrder" method="post">
+	<form name="searchForm" id="searchForm" action="/viewReceivedOrder.do" method="post">
 		<!-- 오름차/내림차순 정렬을 위한 input 태그 -->
 		<input type="hidden" name="criteria" id="criteria" value=""/>
 		<input type="hidden" name="upDown" id="upDown" value=""/>

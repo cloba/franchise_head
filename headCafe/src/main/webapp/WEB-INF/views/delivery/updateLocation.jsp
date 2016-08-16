@@ -16,7 +16,7 @@
 <body>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 <h1>상품 위치 변경</h1>
-	<form name="form" action="/updateStatus" method="post">
+	<form name="form" action="/updateStatus.do" method="post">
 		<div> 
 		배송관리코드: <input type="text" name="deliveryCode" required="required"/> 
 		</div>

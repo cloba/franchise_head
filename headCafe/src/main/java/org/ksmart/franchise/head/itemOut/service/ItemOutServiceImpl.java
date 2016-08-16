@@ -5,6 +5,7 @@ import java.util.List;
 import org.ksmart.franchise.head.itemOut.model.ItemOut;
 import org.ksmart.franchise.head.itemOut.model.ItemOutSearch;
 import org.ksmart.franchise.head.itemOut.repository.ItemOutDao;
+import org.ksmart.franchise.head.util.Search;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +16,7 @@ public class ItemOutServiceImpl implements ItemOutService {
 	private ItemOutDao itemOutDao;
 
 	@Override
-	public List<ItemOut> viewItemOutListService(ItemOutSearch search) {
+	public List<ItemOut> viewItemOutListService(Search search) {
 		System.out.println("ItemOutServiceImpl의 viewItemOutListService메서드 호출");
 		
 		return itemOutDao.viewItemOutList(search);

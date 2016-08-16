@@ -45,7 +45,7 @@
 		</tr>
 	</table>
 
-	<a href="/modifyDelivery?deliveryCode=${delivery.deliveryCode}">[수정:구현전]</a>
-	<a href="/viewDeliveryList">[돌아가기]</a>
+	<a href="/modifyDelivery.do?deliveryCode=${delivery.deliveryCode}">[수정:구현전]</a>
+	<a href="/viewDeliveryList.do">[돌아가기]</a>
 </body>
 </html>

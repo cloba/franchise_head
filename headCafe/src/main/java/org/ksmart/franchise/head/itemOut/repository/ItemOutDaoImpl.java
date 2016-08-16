@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.ksmart.franchise.head.itemOut.model.ItemOut;
 import org.ksmart.franchise.head.itemOut.model.ItemOutSearch;
+import org.ksmart.franchise.head.util.Search;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -19,7 +20,7 @@ public class ItemOutDaoImpl implements ItemOutDao {
 	private SqlSessionTemplate sqlSessionItemOut;
 
 	@Override
-	public List<ItemOut> viewItemOutList(ItemOutSearch search) {
+	public List<ItemOut> viewItemOutList(Search search) {
 		System.out.println("ItemOutDaoImpl의 viewItemOutList 메서드 호출");
 		
 		Map<String, Object> map = new HashMap<String, Object>();

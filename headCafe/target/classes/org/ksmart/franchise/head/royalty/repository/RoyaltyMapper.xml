@@ -30,7 +30,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</resultMap>
 
  	
-	<!-- 로얄티 리스트구 하는메서드 -->
+	<!-- 로얄티 리스트구 하는 메서드 -->
 	<select id="selectRoyaltyList" resultMap="RoyaltyResultMap">
 		SELECT
 			royalty_code, contract_code, royalty_month, royalty_deadline, royalty_paid, sub_practical_sell_price_month, 

@@ -5,6 +5,7 @@ import java.util.List;
 import org.ksmart.franchise.head.itemOut.model.ItemOut;
 import org.ksmart.franchise.head.itemOut.model.ItemOutSearch;
 import org.ksmart.franchise.head.itemOut.service.ItemOutService;
+import org.ksmart.franchise.head.util.Search;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,7 +19,7 @@ public class ItemOutController {
 	
 	// 상품 리스트를 보여줍니다 (검색포함)
 	@RequestMapping(value="/viewItemOutList")
-	public String viewItemOutList(ItemOutSearch search, Model model){
+	public String viewItemOutList(Search search, Model model){
 		System.out.println("ItemOutController의 viewItemOutList 메서드 호출");
 
 		List<ItemOut> outList = itemOutService.viewItemOutListService(search);
