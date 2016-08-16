@@ -2,6 +2,7 @@ package org.ksmart.franchise.head.accounting.controller;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.ksmart.franchise.head.accounting.model.Accounting;
 import org.ksmart.franchise.head.accounting.service.AccountingService;
 
@@ -17,51 +18,15 @@ public class AccountingController {
 	
 	@Autowired
 	private AccountingService accountingService;
-
+	Logger log = Logger.getLogger(this.getClass());
+	
 	//본사통합회계 리스트 조회
 	@RequestMapping(value="/viewHeadAccountingList.do", method=RequestMethod.GET)
 	public String viewHeadAccountingList(Model model, Search search){
-		System.out.println("AccountingController의 viewHeadAccountingList메서드");
-	
+		log.debug("AccountingController의 viewHeadAccountingList메서드");
 		
 		List<Accounting> list = accountingService.headAccountingListService(search);
 		model.addAttribute("list", list);
-		System.out.println("쿼리완료");
 		return "/accounting/viewHeadAccountingList";
 	}
-	
-	
-	
-
-	
-	
-	
-	
-/*	
-  //거래처 리스트 조회
-	@RequestMapping(value="/viewHeadClientList", method=RequestMethod.GET)
-	public String viewHeadClientList(Model model, Search search){
-		System.out.println("ClientController의 headViewHeadClientList메서드 ");
-		
-		
-		List<Client> list = clientService.HeadClientListService(search);
-		
-		model.addAttribute("list", list);
-		
-		return "/client/viewHeadClientList";
-		
-		
-	}
-	//거래처 상세 정보 보는 메서드
-	@RequestMapping(value="/viewHeadClientDetail", method=RequestMethod.GET)
-	public String HeadClientDetail(Model model, String headClientCode){
-		
-		Client client = clientService.headClientDetailService(headClientCode);
-		model.addAttribute("client", client);
-		
-		return "/client/viewHeadClientDetail";
-		
-	}
-	*/
-
 }

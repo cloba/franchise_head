@@ -2,7 +2,6 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
 <mapper namespace="org.ksmart.franchise.head.accounting.repository.AccountingMapper">
 
 	<resultMap id="AccountingResultMap" type="org.ksmart.franchise.head.accounting.model.Accounting" >
@@ -10,6 +9,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="subjectCode" column="subject_code" />
 		<result property="headClientCode" column="head_client_code" />
 		<result property="headAccountFlow" column="head_account_flow" />
+		<result property="headAccountGroupCode" column="head_account_group_code" />
 		<result property="headAccountTable" column="head_account_table" />
 		<result property="headAccountSum" column="head_account_sum" />
 		<result property="headAccountRequestDate" column="head_account_request_date" />
@@ -19,6 +19,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="headStaffIdConfirm" column="head_staff_id_confirm" />
 	</resultMap>
 
+	<!-- 회계 데이터 리스트를 불러옵니다 -->
 	<select id="selectHeadAccountingList" parameterType="java.util.Map" resultMap="AccountingResultMap">
 		SELECT 
 			head_account_code,   subject_code, 		    head_client_code,           head_account_flow,      head_account_group_code, 

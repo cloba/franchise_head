@@ -6,6 +6,7 @@ public class Accounting {
 	private String subjectCode;
 	private String headClientCode;
 	private String headAccountFlow;
+	private String headAccountGroupCode;
 	private String headAccountTable;
 	private String headAccountSum;
 	private String headAccountRequestDate;
@@ -38,6 +39,12 @@ public class Accounting {
 	}
 	public void setHeadAccountFlow(String headAccountFlow) {
 		this.headAccountFlow = headAccountFlow;
+	}
+	public String getHeadAccountGroupCode() {
+		return headAccountGroupCode;
+	}
+	public void setHeadAccountGroupCode(String headAccountGroupCode) {
+		this.headAccountGroupCode = headAccountGroupCode;
 	}
 	public String getHeadAccountTable() {
 		return headAccountTable;

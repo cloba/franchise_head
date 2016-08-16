@@ -17,7 +17,6 @@ public class AccountingServiceImpl implements AccountingService{
 	//본사 통합 회계 리스트 조회
 	@Override
 	public List<Accounting> headAccountingListService(Search search) {
-		
 		return accountingDao.HeadAccountingList(search);
 	}
 
