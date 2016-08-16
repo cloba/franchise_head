@@ -63,7 +63,7 @@
 </script>
 <h1>결제방식 리스트</h1>
 	<!-- 결제방식 검색 -->
-	<form name="paymentList" id="paymentList" action="/viewPaymentList" method="post">
+	<form name="paymentList" id="paymentList" action="/viewPaymentList.do" method="post">
 		<!-- 오름차/내림차순 정렬을 위한 input 태그 -->
 		<input type="hidden" name="criteria" id="criteria" value=""/>
 		<input type="hidden" name="upDown" id="upDown" value=""/>
@@ -83,16 +83,16 @@
 	<br>
 	<!-- 마감여부에 따른 a태그 분리 -->
 		<c:if test="${search.status == 'Y'}"> 
-			<a href="/viewPaymentList?status=N">[미적용 결제방식 보기]</a>
-			<a href="/viewPaymentList">[전체 결제방식 보기]</a>
+			<a href="/viewPaymentList.do?status=N">[미적용 결제방식 보기]</a>
+			<a href="/viewPaymentList.do">[전체 결제방식 보기]</a>
 		</c:if>
 		<c:if test="${search.status == 'N'}"> 
-			<a href="/viewPaymentList?status=Y">[적용중인 결제방식 보기]</a>
-			<a href="/viewPaymentList">[전체 결제방식 보기]</a>
+			<a href="/viewPaymentList.do?status=Y">[적용중인 결제방식 보기]</a>
+			<a href="/viewPaymentList.do">[전체 결제방식 보기]</a>
 		</c:if>
 		<c:if test="${search.status == null}">
-			<a href="/viewPaymentList?status=N">[미적용 결제방식 보기]</a> 
-			<a href="/viewPaymentList?status=Y">[적용중인 결제방식 보기]</a>
+			<a href="/viewPaymentList.do?status=N">[미적용 결제방식 보기]</a> 
+			<a href="/viewPaymentList.do?status=Y">[적용중인 결제방식 보기]</a>
 		</c:if>	
 	
 	
@@ -109,13 +109,13 @@
 		</tr>
 		<c:forEach var="list" items="${paymentList}">
 			<tr>
-				<th><a href="/viewPaymentDetail?payMethodCode=${list.payMethodCode}">${list.payMethodCode}</a></th>
+				<th><a href="/viewPaymentDetail.do?payMethodCode=${list.payMethodCode}">${list.payMethodCode}</a></th>
 				<th>${list.payMethod}</th>
 				<th>${list.profitPercent}%</th>
 			</tr>
 		</c:forEach>
 	</table>
-	<a href="/addPaymentForm">[신규등록]</a>
+	<a href="/addPaymentForm.do">[신규등록]</a>
 	<a href="/">[홈으로]</a>
 </body>
 </html>

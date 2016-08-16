@@ -56,6 +56,18 @@
 			$('#sellList').submit();
 		});
 		
+		//배송요청 유효성
+		$('#DeliveyRequestBtn').click(function(){
+			if(($('input[name=checkedOrders]:checkbox:checked').length <1)){
+				alert('선택하세요');
+				console.log($('input[name=checkedOrders]:checkbox:checked').length);
+			}else{
+				console.log($('input[name=checkedOrders]:checkbox:checked').length);
+				$('#requestDeliveryForm').submit();
+			}
+		});
+		
+		
 	});
 
 </script>
@@ -137,14 +149,14 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    <form action="/requestDelivery.do" method="post">
+                                    <form action="/requestDelivery.do" method="post" id="requestDeliveryForm">
 										<c:forEach var="list" items="${sellList}">
 											<input type="hidden" name="inteCode" value="${list.inteCode}"/>
 											<input type="hidden" name="headSellQuantity" value="${list.headSellQuantity}"/>
 											<tr>
 												<td>
 													<c:if test="${list.headSellDelivery eq 'N'}">
-														<center><input type="checkbox" name="checkedOrders" value="${list.headSellCode}"/></center>
+														<center><input type="checkbox" id="checkedOrders" name="checkedOrders" value="${list.headSellCode}"/></center>
 													</c:if>
 												</td>
 												<td>
@@ -160,7 +172,9 @@
 												<td>${list.headSellDelivery}</td>
 											</tr>
 										</c:forEach>
-										<p style="float:right"><button class="btn btn-primary">배송요청</button></p>
+ 										<p style="float:right"><input type="button" id="DeliveyRequestBtn" name="DeliveyRequestBtn" class="btn btn-primary" value="배송요청"> 
+										
+										<!-- <button id="DeliveyRequestBtn" name="DeliveyRequestBtn" class="btn btn-primary">배송요청</button> -->   </p> 
 									</form>
                                  </tbody>
                                </table>

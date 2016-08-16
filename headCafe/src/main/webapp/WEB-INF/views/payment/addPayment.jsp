@@ -16,12 +16,12 @@
 <body>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 <h1>결제방식 등록</h1>
-	<form name="addForm" action="/addPayment" method="post">
+	<form name="addForm" action="/addPayment.do" method="post">
 		<div> 
 		결제방식: <input type="text" name="payMethod" required="required"/> 
 		</div>
 		<div> 
-		수수료: <input type="text" name="profitPercent" required="required"/> 
+		수수료: <input type="text" name="profitPercent" required="required" onkeypress="if (event.keyCode<48|| event.keyCode>57)  event.returnValue=false;" style='IME-MODE:disabled;'/> 
 		</div>
 		<button>등록</button>
 	</form>

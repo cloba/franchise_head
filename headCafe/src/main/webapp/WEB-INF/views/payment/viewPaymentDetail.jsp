@@ -39,8 +39,8 @@
 	</table>
 	
 	<c:if test="${payment.profitStatus eq 'Y'}">
-		<a href="/invalidPayment?payMethodCode=${payment.payMethodCode}">[미적용으로 변경]</a>
+		<a href="/invalidPayment.do?payMethodCode=${payment.payMethodCode}">[미적용으로 변경]</a>
 	</c:if>
-	<a href="/viewPaymentList">[돌아가기]</a>
+	<a href="/viewPaymentList.do">[돌아가기]</a>
 </body>
 </html>
