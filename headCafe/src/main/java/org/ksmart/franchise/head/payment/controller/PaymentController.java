@@ -20,7 +20,7 @@ public class PaymentController {
 	private PaymentService paymentService;
 	
 	// 결제방식 리스트를 보여줍니다 (검색포함)
-	@RequestMapping(value="/viewPaymentList")
+	@RequestMapping(value="/viewPaymentList.do")
 	public String viewPaymentList(PaymentSearch search, Model model){
 		System.out.println("PaymentController의 viewPaymentList 메서드 호출");
 
@@ -32,7 +32,7 @@ public class PaymentController {
 	}
 	
 	//결제방식의 상세내용를 보여줍니다
-	@RequestMapping(value="/viewPaymentDetail")
+	@RequestMapping(value="/viewPaymentDetail.do")
 	public String viewPaymentDetail(String payMethodCode, Model model){
 		System.out.println("PaymentController의 viewPaymentDetail 메서드 호출");
 
@@ -43,7 +43,7 @@ public class PaymentController {
 	}
 	
 	//결제방식을 등록하는 form으로 이동합니다
-	@RequestMapping(value="/addPaymentForm", method=RequestMethod.GET)
+	@RequestMapping(value="/addPaymentForm.do", method=RequestMethod.GET)
 	public String addPaymentForm(){
 		System.out.println("PaymentController의 addPaymentForm메서드 호출");
 		
@@ -51,7 +51,7 @@ public class PaymentController {
 	}
 	
 	//결제방식을 등록합니다
-	@RequestMapping(value="/addPayment", method=RequestMethod.POST)
+	@RequestMapping(value="/addPayment.do", method=RequestMethod.POST)
 	public String addPayment(PaymentCommand paymentCommand){
 		System.out.println("PaymentController의 addPayment 메서드 호출");
 
@@ -61,12 +61,12 @@ public class PaymentController {
 	}
 	
 	//결제방식의 적용상태를 변경합니다
-	@RequestMapping(value="/invalidPayment", method=RequestMethod.GET)
+	@RequestMapping(value="/invalidPayment.do", method=RequestMethod.GET)
 	public String invalidPayment(String payMethodCode){
 		System.out.println("PaymentController의 invalidPayment 메서드 호출");
 
 		paymentService.modifyPaymentService(payMethodCode);
 		
-		return "redirect:/viewPaymentDetail?payMethodCode="+payMethodCode;
+		return "redirect:/viewPaymentDetail.do?payMethodCode="+payMethodCode;
 	}
 }
