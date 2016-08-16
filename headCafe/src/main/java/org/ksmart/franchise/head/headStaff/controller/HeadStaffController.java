@@ -52,7 +52,7 @@ public class HeadStaffController {
 	}
 	
 	//본사직원 로그인 메서드  
-	@RequestMapping(value="/loginAction.go")
+	@RequestMapping(value="/loginAction.go", method=RequestMethod.POST)
 	public String loginStaff(Model model, @ModelAttribute HeadStaffLogin login){
 		log.debug("HeadStaffController의 loginStaff실행");
 		String re = null;
@@ -65,7 +65,7 @@ public class HeadStaffController {
 		}else if(result == "success"){
 			log.debug("로그인 완료");
 			model.addAttribute("login", login);
-			re = "/home";
+			re = "/index";
 		}
 		return re;   //(로그인 못 했다는 메서지와 함께) 로그인창 다시보여줘야함
 	}

@@ -23,7 +23,7 @@ public class SellController {
 	Logger log = Logger.getLogger(this.getClass());
 	
 	//판매 리스트를 보여줍니다 (검색포함)
-	@RequestMapping(value="/viewSellList")
+	@RequestMapping(value="/viewSellList.do")
 	public String viewSellList(SellSearch search, Model model){
 		log.debug("SellController의 viewSellList 메서드 호출");
 		List<Sell> sellList = sellService.viewSellListService(search);
@@ -34,7 +34,7 @@ public class SellController {
 	}
 	
 	//판매 상세를 보여줍니다
-	@RequestMapping(value="/viewSellDetail")
+	@RequestMapping(value="/viewSellDetail.do")
 	public String viewSellDetail(@RequestParam("headSellCode") String headSellCode, Model model){
 		log.debug("SellController의 viewSellDetail 메서드 호출");
 		Sell sell = sellService.getSellDetailService(headSellCode);
@@ -55,12 +55,12 @@ public class SellController {
 	}
 	
 	//들어온 주문을 승인합니다
-	@RequestMapping(value="/confirmOrder")
+	@RequestMapping(value="/confirmOrder.do")
 	public String confirmOrder(Sell sell){
 		log.debug("SellController의 confirmOrder 메서드 호출");
 		sellService.confirmOrderService(sell);
 		
-		return "redirect:/viewReceivedOrder";
+		return "redirect:/viewReceivedOrder.do";
 	}
 	
 }

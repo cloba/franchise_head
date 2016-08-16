@@ -1,51 +1,53 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>	
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">		
-<title>Home</title>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
 <script>
-	//·Î±×ÀÎ ¸Ş¼­µå
+	//ë¡œê·¸ì¸ ë©”ì„œë“œ
 	$(document).ready(function() {
 		if( 'fail' == $('#result').val() ){
-			alert('¾ÆÀÌµğ¿Í ºñ¹Ğ¹øÈ£¸¦ ´Ù½Ã È®ÀÎÇØÁÖ¼¼¿ä');
+			alert('ì•„ì´ë””ì™€ ë¹„ë°€ë²ˆí˜¸ë¥¼ ë‹¤ì‹œ í™•ì¸í•´ì£¼ì„¸ìš”');
 		}
 		
 		$('#loginBtn').click(function() {
-			console.log('·Î±×ÀÎ¹öÆ° Å¬¸¯');
+			console.log('ë¡œê·¸ì¸ë²„íŠ¼ í´ë¦­');
 			if ($('#headStaffId').val() == "") {
-				alert('¾ÆÀÌµğ¸¦ ÀÔ·ÂÇÏ¼¼¿ä.');
+				alert('ì•„ì´ë””ë¥¼ ì…ë ¥í•˜ì„¸ìš”.');
 			} else if ($('#headStaffPw').val() == "") {
-				alert('ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇÏ¼¼¿ä.');
+				alert('ë¹„ë°€ë²ˆí˜¸ë¥¼ ì…ë ¥í•˜ì„¸ìš”.');
 			}else{
-				$('#loginForm').attr('action','/loginAction.go');  //¹Ù²Ş
+				$('#loginForm').attr('action','/loginAction.go');  //ë°”ê¿ˆ
 				$('#loginForm').submit();
 			}
 		});
 	});
 </script>	
-</head>
-<body>
-	<!-- ·Î±×ÀÎ Æû -->
-	<div class="join">
-		<input type="hidden" id="result" value="${result}"/>
-		<form id="loginForm" action="" method="post" >
-			<h2>·Î±×ÀÎ</h2>
-			
-			<div class="form-group">
-				<label for="staffId">¾ÆÀÌµğ : </label>
-				<input type="text" class="form-control" id="headStaffId" name="headStaffId" placeholder="Enter ID">
-			</div>
-			<div class="form-group">
-				<label for="staffPw">ºñ¹Ğ¹øÈ£:</label>
-				<input type="password" class="form-control" id="headStaffPw" name="headStaffPw" placeholder="Enter password">
-			</div>
-			<div id="right">
-				<input type="button" class="btn btn-default" id="loginBtn" value="·Î±×ÀÎ"/>
-			</div>
-		</form>
-	</div>
+	<input type="text" id="result" value="${result }"/>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <div class="login-panel panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Please Sign In</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form action="" id="loginForm" role="form" method="post">
+                            <fieldset>
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="Enter ID" id="headStaffId" name="headStaffId" type="text" autofocus>
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="Enter password" id="headStaffPw" name="headStaffPw" type="password" value="">
+                                </div>
+                                <input type="button" class="btn btn-outline btn-primary btn-lg btn-block" id="loginBtn" value="Login"/>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
 </body>
+
 </html>

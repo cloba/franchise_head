@@ -4,6 +4,7 @@
     <param-name>contextConfigLocation</param-name>
     <param-value>/WEB-INF/spring/root-context.xml</param-value>
   </context-param>
+  
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
@@ -41,4 +42,20 @@
     <filter-name>CharacterEncodingFilter</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
+  
+  
+	<jsp-config>
+		<!-- /member/ 로 시작하는 모든 JSP 파일의 앞 뒤에 각각 삽입한다. -->
+		<jsp-property-group>
+			<url-pattern>/WEB-INF/views/*</url-pattern>
+			<include-prelude>/WEB-INF/css/nav.jspf</include-prelude>
+		</jsp-property-group>
+	</jsp-config>
+  
+ <!--   <jsp-config>
+  	<jsp-property-group>
+  		<url-pattern>/WEB-INF/views/*.jsp</url-pattern>
+  		<include-prelude>/WEB-INF/css/nav.jspf</include-prelude>
+  	</jsp-property-group>
+  </jsp-config> -->
 </web-app>
