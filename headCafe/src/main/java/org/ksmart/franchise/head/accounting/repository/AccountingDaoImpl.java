@@ -23,7 +23,7 @@ public class AccountingDaoImpl implements AccountingDao {
 	//본사통합회계 리스트 조회 메서드                        
 	@Override
 	public List<Accounting> HeadAccountingList(Search search) {
-	Map<String, Object> map = new HashMap<String, Object>();
+		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("search", search);
 		
 		return sqlSessionHeadAccounting.selectList(NS+".selectHeadAccountingList", map);
