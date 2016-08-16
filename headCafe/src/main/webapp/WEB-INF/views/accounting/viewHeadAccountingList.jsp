@@ -211,138 +211,158 @@ $(document).ready(function(){
 </script>
 
 <!-- Page Content -->
-        <div id="page-wrapper">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1 class="page-header">통합회계리스트</h1>
-                    </div>
-                    <!-- /.col-lg-12 -->
-                </div>
-                <!-- /.row -->
-                <!-- Nav tabs -->
-                <ul class="nav nav-tabs">
-                     <li class="active"><a href="/viewHeadAccountingList.do">전체내역</a>
-                     </li>
-                 </ul> 
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                          	<!-- 회계 검색 -->
-							<form action="/viewHeadAccountingList.do" id="HeadAccountingForm">
-								<!-- 검색조건 보내는 곳 -->
-								<input type="hidden" name="criteria" id="criteria" value=""/>
-								<input type="hidden" name="upDown" id="upDown" value=""/>
-								
-								<div class="form-group">
-								<!-- 검색 조건 선택  -->
-									<select class="form-control" name="searchKey">    
-										<option value="">선택</option>   
-										<option value="head_account_code" <c:if test="${'head_account_code' eq search.searchKey }">selected="selected"</c:if>>본사 통합회계 전표번호</option>
-										<option value="subject_code"<c:if test="${'subject_code' eq search.searchKey }">selected="selected"</c:if>>계정과목 코드</option>
-										<option value="head_client_code" <c:if test="${'head_client_code' eq search.searchKey }">selected="selected"</c:if>>본사 거래처</option>
-										<option value="head_account_flow" <c:if test="${'head_account_flow' eq search.searchKey }">selected="selected"</c:if>>출금/입금</option>
-										<option value="head_account_group_code" <c:if test="${'head_account_group_code' eq search.searchKey }">selected="selected"</c:if>>통합 출/입금 관련 그룹 코드</option>
-										<option value="head_account_table" <c:if test="${'head_account_table' eq search.searchKey }">selected="selected"</c:if>>해당 테이블명</option>
-										<option value="head_account_sum" <c:if test="${'head_account_sum' eq search.searchKey }">selected="selected"</c:if>>합계</option>
-										<option value="head_account_request_date" <c:if test="${'head_account_request_date' eq search.searchKey }">selected="selected"</c:if>>직원 요청일자</option>
-										<option value="head_staff_id_request" <c:if test="${'head_staff_id_request' eq search.searchKey }">selected="selected"</c:if>>요청 직원 아이디</option>
-										<option value="head_account_detail" <c:if test="${'head_account_detail' eq search.searchKey }">selected="selected"</c:if>>상세내역</option>
-										<option value="request_check_date" <c:if test="${'request_check_date' eq search.searchKey }">selected="selected"</c:if>>직원요청 확인일자</option>
-										<option value="head_staff_id_confirm" <c:if test="${'head_staff_id_confirm' eq search.searchKey }">selected="selected"</c:if>>확인 직원 아이디</option>	
-									</select>
-									
-									<!-- 검색어랑 검색버튼 -->
-									<input type="text" class="form-control"  name="searchItem" value="${search.searchItem}">
-									</div>
-									<button class="btn btn-default" id="searchBtn">
-										<i class="fa fa-search"></i>
-									</button>
-									<!-- <input type="button" id="searchheadStaffBtn" name="searchheadStaffBtn" value="검색"> -->
-							</form>
-                        </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                            <div class="dataTable_wrapper fa col-lg-12">
-                                <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
-                                    <thead>
-                                        <tr>
-                                            <th><small>통합회계 전표번호</small>
-                                            	<span id="headAccountCodeUp" class="fa-sort-up"></span>
-												<span id="headAccountCodeDown" class=" fa-sort-down"></span>
-                                            </th>
-                                            <th><small>계정과목 코드</small>
-                                            	<span id="subjectCodeUp" class="fa-sort-up"></span>
-												<span id="subjectCodeDown" class=" fa-sort-down"></span>
-                                            </th>
-                                            <th><small>본사 거래처</small>
-                                            	<span id="headClientCodeUp" class="fa-sort-up"></span>
-												<span id="headClientCodeDown" class=" fa-sort-down"></span>
-                                            </th>
-                                            <th><small>출금/입금</small></th>
-                                            <th><small>그룹 코드</small>
-                                            	<span id="headAccountGroupCodeUp" class="fa-sort-up"></span>
-												<span id="headAccountGroupCodeDown" class=" fa-sort-down"></span>
-                                            </th>
-                                            <th><small>해당테이블</small>
-           	                                 	<span id="headAccountTableUp" class="fa-sort-up"></span>
-												<span id="headAccountTableDown" class=" fa-sort-down"></span>
-                                            </th>
-                                            <th>합계
-                                            	<span id="headAccountSumUp" class="fa-sort-up"></span>
-												<span id="headAccountSumDown" class=" fa-sort-down"></span>
-                                            </th>
-                                            <th>직원 요청일자
-                                            	<span id="headAccountRequestDateUp" class="fa-sort-up"></span>
-												<span id="headAccountRequestDateDown" class=" fa-sort-down"></span>
-                                            </th>
-                                            <th>요청 직원 아이디
-                                            	<span id="headStaffIdRequestUp"></span>
-												<span id="headStaffIdRequestDown"></span>
-                                            </th>
-                                            <th>상세내역</th>
-                                            <th>확인일자
-                                            	<span id="requestCheckDateUp" class="fa-sort-up"></span>
-												<span id="requestCheckDateDown" class=" fa-sort-down"></span>
-                                            </th>
-                                            <th>확인 직원 아이디
-                                            	<span id="headStaffIdConfirmUp"></span>
-												<span id="headStaffIdConfirmDown"></span>
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-										<c:forEach var="Accounting" items="${list}">
-											<tr>
-												<td>${Accounting.headAccountCode }</td>
-												<td>${Accounting.subjectCode }</td>
-												<td><a href="viewHeadClientDetail.do?headClientCode=${ Accounting.headClientCode}">${Accounting.headClientCode }</a></td>
-												<td>${Accounting.headAccountFlow }</td>
-												<td>${Accounting.headAccountGroupCode }</td>
-												<td>${Accounting.headAccountTable }</td>
-												<td>${Accounting.headAccountSum }</td>
-												<td><fmt:parseDate value="${Accounting.headAccountRequestDate}" pattern="yyyy-MM-dd HH:mm:ss" var="date"/>
-													<fmt:formatDate pattern="yyyy-MM-dd" type="both" value="${date}" /></td>
-												<td>${Accounting.headStaffIdRequest }</td>
-												<td>${Accounting.headAccountDetail }</td>
-												<td><fmt:parseDate value="${Accounting.requestCheckDate }" pattern="yyyy-MM-dd HH:mm:ss" var="date"/>
-													<fmt:formatDate pattern="yyyy-MM-dd" type="both" value="${date}" /></td>
-												<td>${Accounting.headStaffIdConfirm }</td>
-											</tr>
-										</c:forEach>
-                                 </tbody>
-                               </table>
-                           </div>
-                       </div>
-                       <!-- /.panel-body -->
-                   </div>
-                   <!-- /.panel -->
-               </div>
-               <!-- /.col-lg-12 -->
-           </div>
+<div id="page-wrapper">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="page-header">통합회계리스트</h1>
+			</div>
+			<!-- /.col-lg-12 -->
 		</div>
-         <!-- /.container-fluid -->
-     </div>
+		<!-- /.row -->
+		<!-- Nav tabs -->
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="/viewHeadAccountingList.do">전체내역</a>
+			</li>
+		</ul>
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<!-- 회계 검색 -->
+						<form action="/viewHeadAccountingList.do" id="HeadAccountingForm">
+							<!-- 검색조건 보내는 곳 -->
+							<input type="hidden" name="criteria" id="criteria" value="" /> 
+							<input type="hidden" name="upDown" id="upDown" value="" />
+
+							<div class="form-group">
+								<!-- 검색 조건 선택  -->
+								<select class="form-control" name="searchKey">
+									<option value="">선택</option>
+									<option value="head_account_code"
+										<c:if test="${'head_account_code' eq search.searchKey }">selected="selected"</c:if>>본사
+										통합회계 전표번호</option>
+									<option value="subject_code"
+										<c:if test="${'subject_code' eq search.searchKey }">selected="selected"</c:if>>계정과목
+										코드</option>
+									<option value="head_client_code"
+										<c:if test="${'head_client_code' eq search.searchKey }">selected="selected"</c:if>>본사
+										거래처</option>
+									<option value="head_account_flow"
+										<c:if test="${'head_account_flow' eq search.searchKey }">selected="selected"</c:if>>출금/입금</option>
+									<option value="head_account_group_code"
+										<c:if test="${'head_account_group_code' eq search.searchKey }">selected="selected"</c:if>>통합
+										출/입금 관련 그룹 코드</option>
+									<option value="head_account_table"
+										<c:if test="${'head_account_table' eq search.searchKey }">selected="selected"</c:if>>해당
+										테이블명</option>
+									<option value="head_account_sum"
+										<c:if test="${'head_account_sum' eq search.searchKey }">selected="selected"</c:if>>합계</option>
+									<option value="head_account_request_date"
+										<c:if test="${'head_account_request_date' eq search.searchKey }">selected="selected"</c:if>>직원
+										요청일자</option>
+									<option value="head_staff_id_request"
+										<c:if test="${'head_staff_id_request' eq search.searchKey }">selected="selected"</c:if>>요청
+										직원 아이디</option>
+									<option value="head_account_detail"
+										<c:if test="${'head_account_detail' eq search.searchKey }">selected="selected"</c:if>>상세내역</option>
+									<option value="request_check_date"
+										<c:if test="${'request_check_date' eq search.searchKey }">selected="selected"</c:if>>직원요청
+										확인일자</option>
+									<option value="head_staff_id_confirm"
+										<c:if test="${'head_staff_id_confirm' eq search.searchKey }">selected="selected"</c:if>>확인
+										직원 아이디</option>
+								</select>
+
+								<!-- 검색어랑 검색버튼 -->
+								<input type="text" class="form-control" name="searchItem"
+									value="${search.searchItem}">
+							</div>
+							<button class="btn btn-default" id="searchBtn">
+								<i class="fa fa-search"></i>
+							</button>
+							<!-- <input type="button" id="searchheadStaffBtn" name="searchheadStaffBtn" value="검색"> -->
+						</form>
+					</div>
+					<!-- /.panel-heading -->
+					<div class="panel-body">
+						<div class="dataTable_wrapper fa col-lg-12">
+							<table width="100%"
+								class="table table-striped table-bordered table-hover"
+								id="dataTables-example">
+								<thead>
+									<tr>
+										<th><small>통합회계 전표번호</small> <span id="headAccountCodeUp"
+											class="fa-sort-up"></span> <span id="headAccountCodeDown"
+											class=" fa-sort-down"></span></th>
+										<th><small>계정과목 코드</small> <span id="subjectCodeUp"
+											class="fa-sort-up"></span> <span id="subjectCodeDown"
+											class=" fa-sort-down"></span></th>
+										<th><small>본사 거래처</small> <span id="headClientCodeUp"
+											class="fa-sort-up"></span> <span id="headClientCodeDown"
+											class=" fa-sort-down"></span></th>
+										<th><small>출금/입금</small></th>
+										<th><small>그룹 코드</small> <span
+											id="headAccountGroupCodeUp" class="fa-sort-up"></span> <span
+											id="headAccountGroupCodeDown" class=" fa-sort-down"></span></th>
+										<th><small>해당테이블</small> <span id="headAccountTableUp"
+											class="fa-sort-up"></span> <span id="headAccountTableDown"
+											class=" fa-sort-down"></span></th>
+										<th>합계 <span id="headAccountSumUp" class="fa-sort-up"></span>
+											<span id="headAccountSumDown" class=" fa-sort-down"></span>
+										</th>
+										<th>직원 요청일자 <span id="headAccountRequestDateUp"
+											class="fa-sort-up"></span> <span
+											id="headAccountRequestDateDown" class=" fa-sort-down"></span>
+										</th>
+										<th>요청 직원 아이디 <span id="headStaffIdRequestUp"></span> <span
+											id="headStaffIdRequestDown"></span>
+										</th>
+										<th>상세내역</th>
+										<th>확인일자 <span id="requestCheckDateUp" class="fa-sort-up"></span>
+											<span id="requestCheckDateDown" class=" fa-sort-down"></span>
+										</th>
+										<th>확인 직원 아이디 <span id="headStaffIdConfirmUp"></span> <span
+											id="headStaffIdConfirmDown"></span>
+										</th>
+									</tr>
+								</thead>
+								<tbody>
+									<c:forEach var="Accounting" items="${list}">
+										<tr>
+											<td>${Accounting.headAccountCode }</td>
+											<td>${Accounting.subjectCode }</td>
+											<td><a
+												href="viewHeadClientDetail.do?headClientCode=${ Accounting.headClientCode}">${Accounting.headClientCode }</a></td>
+											<td>${Accounting.headAccountFlow }</td>
+											<td>${Accounting.headAccountGroupCode }</td>
+											<td>${Accounting.headAccountTable }</td>
+											<td>${Accounting.headAccountSum }</td>
+											<td><fmt:parseDate
+													value="${Accounting.headAccountRequestDate}"
+													pattern="yyyy-MM-dd HH:mm:ss" var="date" /> <fmt:formatDate
+													pattern="yyyy-MM-dd" type="both" value="${date}" /></td>
+											<td>${Accounting.headStaffIdRequest }</td>
+											<td>${Accounting.headAccountDetail }</td>
+											<td><fmt:parseDate
+													value="${Accounting.requestCheckDate }"
+													pattern="yyyy-MM-dd HH:mm:ss" var="date" /> <fmt:formatDate
+													pattern="yyyy-MM-dd" type="both" value="${date}" /></td>
+											<td>${Accounting.headStaffIdConfirm }</td>
+										</tr>
+									</c:forEach>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<!-- /.panel-body -->
+				</div>
+				<!-- /.panel -->
+			</div>
+			<!-- /.col-lg-12 -->
+		</div>
+	</div>
+	<!-- /.container-fluid -->
+</div>
 </body>
 </html>

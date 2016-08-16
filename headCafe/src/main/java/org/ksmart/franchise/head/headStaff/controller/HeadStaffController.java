@@ -71,7 +71,7 @@ public class HeadStaffController {
 	}
 	
 	//회원가입 form을 보여주는 메서드
-	@RequestMapping(value="/addHeadStaff", method=RequestMethod.GET)
+	@RequestMapping(value="/addHeadStaff.do", method=RequestMethod.GET)
 	public String addHeadStaff(){
 		log.debug("HeadStaffController의 GET 메서드");
 
@@ -79,7 +79,7 @@ public class HeadStaffController {
 	}
 	
 	// 회원가입 form에서 넘어오는 데이터를 받아서 처리하는 메서드
-	@RequestMapping(value="/addHeadStaff", method=RequestMethod.POST)
+	@RequestMapping(value="/addHeadStaff.do", method=RequestMethod.POST)
 	public String addHeadStaff1(HeadStaffCommand headStaffCommand, Model model){
 		//1. form에서 보낸 데이터가 담긴 headStaff 객체를 매개변수로 하는 메서드를 호출합니당
 		headStaffService.addHeadStaff(headStaffCommand);
@@ -92,7 +92,7 @@ public class HeadStaffController {
 	
 	
 	//본사 직원리스트 보는 메서드(박종무 0722) 
-	@RequestMapping(value="/viewHeadStaffList", method=RequestMethod.GET)
+	@RequestMapping(value="/viewHeadStaffList.do", method=RequestMethod.GET)
 	public String ViewHeadStaffList(Model model, HeadStaffSearch headStaffSearch, HeadStaff headStaff) {
 		log.debug("HeadStaffController의 ViewHeadStaffList메서드 ");
 	//	log.debug("SearchHeadStaffInfo :"+headStaffSearch.getSearchHeadStaffInfo());
@@ -111,7 +111,7 @@ public class HeadStaffController {
 	}
 	
 	  //본사 직원 디테일보는 메서드
-	  @RequestMapping(value="/headStaffDetail", method=RequestMethod.GET)
+	  @RequestMapping(value="/headStaffDetail.do", method=RequestMethod.GET)
 	  public String ViewHeadStaffDetail(Model model, String headStaffId ){
 		  log.debug("HeadStaffController의 ViewHeadStaffDetail메서드 ");
 		  HeadStaff headStaff = headStaffService.headStaffDetail(headStaffId);
@@ -121,7 +121,7 @@ public class HeadStaffController {
 	  }
 	  
 	  //본사직원 정보 수정 폼불러내는 메서드
-	  @RequestMapping(value="/modifyFormHeadStaff", method=RequestMethod.GET)
+	  @RequestMapping(value="/modifyFormHeadStaff.do", method=RequestMethod.GET)
 	  public String ModifyFormHeadStaff(Model model, String headStaffId){
 		  log.debug("HeadStaffController의 ModifyFormHeadStaff메서드 ");
 		  HeadStaff headStaff =headStaffService.headStaffDetail(headStaffId); 
@@ -133,19 +133,19 @@ public class HeadStaffController {
 	  }
 	  
 	  //본사직원 정보 수정 처리하는 메서드
-	  @RequestMapping(value="/modifyHeadStaff", method=RequestMethod.POST)
+	  @RequestMapping(value="/modifyHeadStaff.do", method=RequestMethod.POST)
 	  public String ModifyHeadStaff(Model model, HeadStaff headStaff){
 		  log.debug("HeadStaffController의 ModifyHeadStaff메서드 ");
 		  headStaffService.modifyHeadStaff(headStaff);
 		  log.debug("HeadStaffId() :"+headStaff.getHeadStaffId());
 		  String headStaffId = headStaff.getHeadStaffId();
-		 return "redirect:/headStaffDetail?headStaffId="+headStaffId;
+		 return "redirect:/headStaffDetail.do?headStaffId="+headStaffId;
 		 		/*"/headStaffDetail?headStaffId="+headStaffId;*/
 		  
 	  }
 	  
 	  //퇴사자 조회하는 메서드
-	  @RequestMapping(value="/viewResignStaffList", method=RequestMethod.GET)
+	  @RequestMapping(value="/viewResignStaffList.do", method=RequestMethod.GET)
 	  public String viewResignStaffList(Model model, HeadStaffSearch headStaffSearch, HeadStaff headStaff){
 		  log.debug("HeadStaffController의 viewResignStaffList메서드 ");
 		  resignIdentify = "Y";
@@ -157,12 +157,12 @@ public class HeadStaffController {
 	  }
 	  
 	  //퇴사 등록 하는 메서드
-	  @RequestMapping(value="/addResignStaff", method=RequestMethod.GET)
+	  @RequestMapping(value="/addResignStaff.do", method=RequestMethod.GET)
 	  public String addResignStaff(Model model, HeadStaff headStaff){
 		  log.debug("HeadStaffController의 addResignStaff메서드 ");
 	//	  log.debug(headStaff.getHeadStaffId());
 		  headStaffService.addResignStaffService(headStaff);
 		  
-		  return "redirect:/viewResignStaffList";
+		  return "redirect:/viewResignStaffList.do";
 	  }
 }
