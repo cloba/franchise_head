@@ -80,9 +80,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 본사 가맹간의 현재 계약 건수 조회 메서드 -->
 	<select id="selectContractCount" resultType="java.lang.String">
-		select count(contract_code) from contract where contract_expire = 'N'
+		select count(contract_code) from contract where contract_status = 1
 	</select>
-	<!-- 한 가맹에 대한 로얄티 상세정보 조회 메서드-->
+	
+	<!-- 한 가맹에 대한 로얄티 상세정보 조회 쿼리-->
 	<select id="selectRoyaltyDetail" parameterType="java.lang.String" resultMap="RoyaltyResultMap">
 		SELECT
 			royalty_code,             contract_code,                    royalty_month,  
@@ -96,7 +97,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			royalty_code = #{royaltyCode}
 	</select>
 	
-	<!-- 로얄티 연체 구하 확인하는 메서드 -->
+	<!-- 로얄티 연체 구하 확인하는 쿼리 -->
 	<select id="selectRoyaltyOverdueIdentify" parameterType="java.util.Map" resultMap="RoyaltyOverdueAddResultMap">
 		SELECT
 			 royalty_code, head_sell_profit_by_sub_month, royalty_pay_actual_date, royalty_actual_amount, contract_code
@@ -108,7 +109,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		AND royalty_code IN (SELECT royalty_code FROM royalty WHERE royalty_deadline >= date_format(now(),'%d') ))
 	</select>
 	
-	<!-- 로얄티 연체 테이블 이동후 연체에 추가 됐다는 확인컬럼 메서드 -->
+	<!-- 로얄티 연체 테이블 이동후 연체에 추가 됐다는 확인컬럼 쿼리 -->
 	<update id="updateRoyaltyOverdueIdentify" parameterType="java.lang.String">
 		UPDATE 
 			royalty
@@ -118,6 +119,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			royalty_code = #{royaltyCode}
 	</update>
 	
+	<!-- 로얄티 지불 입력 쿼리 -->
 	<update id="updateRoyaltyPay" parameterType="java.util.Map">
 		UPDATE 
 			royalty
