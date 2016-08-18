@@ -62,38 +62,37 @@
 		});
 	});
 </script>
- <!-- Page Content -->
-        <div id="page-wrapper">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1 class="page-header">판매내역</h1>
-                    </div>
-                    <!-- /.col-lg-12 -->
-                </div>
-                <div class="panel-body">
-                <!-- Nav tabs -->
-                <ul class="nav nav-tabs">
-                     <li class="active"><a href="/viewSellList.do">전체내역</a>
-                     </li>
-                     <li><a href="/viewSellList.do?status=N">마감 전 내역</a>
-                     </li>
-                     <li><a href="/viewSellList.do?status=Y">마감 된 내역</a>
-                     </li>
-                 </ul> 
-                
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                          	<!-- 판매 내역 검색 -->
-							<form name="sellList" id="sellList" action="/viewSellList.do" method="post">
+<!-- Page Content -->
+	<div id="page-wrapper">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-lg-12">
+					<h1 class="page-header">판매내역</h1>
+				</div>
+				<!-- /.col-lg-12 -->
+				</div>
+				<div class="panel-body">
+				<!-- Nav tabs -->
+				<ul class="nav nav-tabs">
+					<li class="active"><a href="/viewSellList.do">전체내역</a>
+					</li>
+					<li><a href="/viewSellList.do?status=N">마감 전 내역</a>
+					</li>
+					<li><a href="/viewSellList.do?status=Y">마감 된 내역</a>
+					</li>
+				</ul> 
+				<div class="row">
+				<div class="col-lg-12">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<!-- 판매 내역 검색 -->
+							<form id="sellList" action="/viewSellList.do" method="post">
 								<!-- 오름차/내림차순 정렬을 위한 input 태그 -->
 								<input type="hidden" name="criteria" id="criteria" value=""/>
 								<input type="hidden" name="upDown" id="upDown" value=""/>
 								<!-- 적용/미적용 조건 적용을 위한 input 태그 -->
 								<input type="hidden" name="status" value="${search.status}"/>
-								
+
 								<div class="form-group">
 									<label>판매일자</label>
 									<input type="date" class="form-control" id="regitDateStart" name="regitDateStart" value="${search.regitDateStart}"/> ~
@@ -112,35 +111,35 @@
 									<i class="fa fa-search"></i>
 								</button>
 							</form>
-                        </div>
-                        <!-- /.panel-heading -->
-                         <div class="panel-body">
-                            <div class="dataTable_wrapper fa col-lg-12">
-                                <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
-                                    <thead>
-                                        <tr>
-                                            <th>선택</th>
-                                            <th>판매코드
-                                            	<span id="codeUp" class="fa-sort-up"></span>
-												<span id="codeDown" class=" fa-sort-down"></span>
-                                            </th>
-                                            <th>상품메뉴 통합코드</th>
-                                            <th>판매수량</th>
-                                            <th>가맹일련번호</th>
-                                            <th>판매그룹번호
-                                            	<span id="groupUp" class="fa-sort-up"></span>
-												<span id="groupDown" class=" fa-sort-down"></span>
-                                            </th>
-                                            <th>판매금액</th>
-                                            <th>판매일자
-                                            	<span id="dateUp" class="fa-sort-up"></span>
-												<span id="dateDown" class=" fa-sort-down"></span>
-                                            </th>
-                                            <th>배송요청여부</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    <form action="/requestDelivery.do" method="post" id="requestDeliveryForm">
+						</div>
+						<!-- /.panel-heading -->
+ 						<div class="panel-body">
+							<div class="dataTable_wrapper fa col-lg-12">
+								<table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+									<thead>
+										<tr>
+											<th>선택</th>
+											<th>판매코드
+												<span id="codeUp" class="fa-sort-up"></span>
+												<span id="codeDown" class="fa-sort-down"></span>
+											</th>
+											<th>상품메뉴 통합코드</th>
+											<th>판매수량</th>
+											<th>가맹일련번호</th>
+											<th>판매그룹번호
+												<span id="groupUp" class="fa-sort-up"></span>
+												<span id="groupDown" class="fa-sort-down"></span>
+											</th>
+											<th>판매금액</th>
+											<th>판매일자
+												<span id="dateUp" class="fa-sort-up"></span>
+												<span id="dateDown" class="fa-sort-down"></span>
+											</th>
+											<th>배송요청여부</th>
+										</tr>
+									</thead>
+									<tbody>
+									<form action="/requestDelivery.do" method="post" id="requestDeliveryForm">
 										<c:forEach var="list" items="${sellList}">
 											<input type="hidden" name="inteCode" value="${list.inteCode}"/>
 											<input type="hidden" name="headSellQuantity" value="${list.headSellQuantity}"/>
@@ -164,8 +163,6 @@
 											</tr>
 										</c:forEach>
  										<p style="float:right"><input type="button" id="DeliveyRequestBtn" name="DeliveyRequestBtn" class="btn btn-primary" value="배송요청"> 
-										
-										<!-- <button id="DeliveyRequestBtn" name="DeliveyRequestBtn" class="btn btn-primary">배송요청</button> -->   </p> 
 									</form>
                                  </tbody>
                                </table>
