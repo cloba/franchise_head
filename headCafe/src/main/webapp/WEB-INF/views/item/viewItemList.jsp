@@ -1,20 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-<style>
-	body{
-	 width: 1000px;
-	 margin: 0 auto;
-	}
-</style>
-</head>
-<body>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+
 <!-- 검색과 정렬 유효성 검사하는 함수가 있는 js파일 -->
 <script type="text/javascript" src="resources/js/validation.js"></script>
 
@@ -91,7 +78,7 @@
 </script>
 <h1>상품 리스트</h1>
 	<!-- 상품 검색 -->
-	<form name="itemList" id="itemList" action="/viewItemList" method="post">
+	<form name="itemList" id="itemList" action="/viewItemList.do" method="post">
 		<!-- 오름차/내림차순 정렬을 위한 input 태그 -->
 		<input type="hidden" name="criteria" id="criteria" value=""/>
 		<input type="hidden" name="upDown" id="upDown" value=""/>
@@ -102,14 +89,14 @@
 		<br/><br/>
 		<select id="searchKey" name="searchKey">
 			<option value="">::선택::</option>
-			<option value="h_item_code" <c:if test="${itemSearch.searchKey eq 'h_item_code'}">selected="selected"</c:if>>상품코드</option>
-			<option value="inte_code" <c:if test="${itemSearch.searchKey eq 'inte_code'}">selected="selected"</c:if>>상품 통합코드</option>
-			<option value="h_item_name" <c:if test="${itemSearch.searchKey eq 'h_item_name'}">selected="selected"</c:if>>상품명</option>
-			<option value="head_client_code" <c:if test="${itemSearch.searchKey eq 'head_client_code'}">selected="selected"</c:if>>거래처 코드</option>
-			<option value="head_staff_id" <c:if test="${itemSearch.searchKey eq 'head_staff_id'}">selected="selected"</c:if>>등록직원 아이디</option>
+			<option value="h_item_code" <c:if test="${search.searchKey eq 'h_item_code'}">selected="selected"</c:if>>상품코드</option>
+			<option value="inte_code" <c:if test="${search.searchKey eq 'inte_code'}">selected="selected"</c:if>>상품 통합코드</option>
+			<option value="h_item_name" <c:if test="${search.searchKey eq 'h_item_name'}">selected="selected"</c:if>>상품명</option>
+			<option value="head_client_code" <c:if test="${search.searchKey eq 'head_client_code'}">selected="selected"</c:if>>거래처 코드</option>
+			<option value="head_staff_id" <c:if test="${search.searchKey eq 'head_staff_id'}">selected="selected"</c:if>>등록직원 아이디</option>
 		</select>
-		<input type="text" id="searchItem" name="searchItem" value="${itemSearch.searchItem}"/>
-		<input type="button" id="searchBtn" value="검색"/>
+		<input type="text" id="searchItem" name="searchItem" value="${search.searchItem}"/>
+		<input type="submit" id="searchBtn" value="검색"/>
 	</form>
 	
 	<!-- 조회 결과 -->
@@ -140,7 +127,7 @@
 		
 		<c:forEach var="itemList" items="${itemList}">
 			<tr ondblclick="modifyPop('${itemList.hItemCode}')">
-				<th><a href="/viewItemDetail?hItemCode=${itemList.hItemCode}">${itemList.hItemName}</a></th>
+				<th><a href="/viewItemDetail.do?hItemCode=${itemList.hItemCode}">${itemList.hItemName}</a></th>
 				<th>${itemList.hItemCode}</th>
 				<th>${itemList.inteCode}</th>
 				<th>${itemList.hItemQuantity}</th>
@@ -154,7 +141,7 @@
 			</tr>
 		</c:forEach>
 	</table>
-	<a href="/headAddItem">[신규등록]</a>
+	<a href="/headAddItem.do">[신규등록]</a>
 	<a href="/">[홈으로]</a>
 </body>
 </html>

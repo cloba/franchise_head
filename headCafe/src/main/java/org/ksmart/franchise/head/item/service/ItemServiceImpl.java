@@ -5,8 +5,8 @@ import java.util.List;
 import org.ksmart.franchise.head.item.model.HeadLogin;
 import org.ksmart.franchise.head.item.model.Item;
 import org.ksmart.franchise.head.item.model.ItemCommand;
-import org.ksmart.franchise.head.item.model.ItemSearch;
 import org.ksmart.franchise.head.item.repository.ItemDao;
+import org.ksmart.franchise.head.util.Search;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,13 +24,6 @@ public class ItemServiceImpl  implements ItemService {
 	}
 
 	@Override
-	public List<Item> viewItemListService(ItemSearch itemSearch) {
-		System.out.println("ItemServiceImpl의 viewItemListService메서드 호출");
-		
-		return itemDao.viewItemList(itemSearch);
-	}
-
-	@Override
 	public Item getItemDetailService(String hItemCode) {
 		System.out.println("ItemServiceImpl의 getItemDetailService메서드 호출");
 		
@@ -42,6 +35,13 @@ public class ItemServiceImpl  implements ItemService {
 		System.out.println("ItemServiceImpl의 headModifyItemService메서드 호출");
 		
 		return itemDao.headModifyItem(itemCommand, headLogin);
+	}
+
+	@Override
+	public List<Item> viewItemListService(Search search) {
+		System.out.println("ItemServiceImpl의 viewItemListService메서드 호출");
+		
+		return itemDao.viewItemList(search);
 	}
 
 }

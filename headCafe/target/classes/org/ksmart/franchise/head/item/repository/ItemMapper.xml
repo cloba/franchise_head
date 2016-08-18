@@ -50,19 +50,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT h_item_code, h_item_name, inte_code, h_item_quantity, h_item_unit, h_item_purchase_price, h_item_regit_date, head_staff_id, head_client_code 
 		FROM head_item
 		<where>
-			<if test="itemSearch.regitDateStart != null and itemSearch.regitDateEnd != null and itemSearch.regitDateStart !='' and itemSearch.regitDateEnd !=''">
-				<![CDATA[date(h_item_regit_date) >= #{itemSearch.regitDateStart} and date(h_item_regit_date) <= #{itemSearch.regitDateEnd}]]>  
+			<if test="search.regitDateStart != null and search.regitDateEnd != null and search.egitDateStart !='' and search.regitDateEnd !=''">
+				<![CDATA[date(h_item_regit_date) >= #{search.regitDateStart} and date(h_item_regit_date) <= #{search.regitDateEnd}]]>  
 			</if>
-			<if test="itemSearch.searchKey != null and itemSearch.searchKey != '' and itemSearch.searchItem != null and itemSearch.searchItem != ''">
-				AND  ${itemSearch.searchKey} like CONCAT('%',#{itemSearch.searchItem},'%') 
+			<if test="search.searchKey != null and search.searchKey != '' and search.searchItem != null and search.searchItem != ''">
+				AND  ${search.searchKey} like CONCAT('%',#{search.searchItem},'%') 
 			</if> 
 		</where> 
 		<trim prefix="ORDER BY">
-			<if test="itemSearch.criteria == null or itemSearch.criteria == ''">
+			<if test="search.criteria == null or search.criteria == ''">
 				h_item_regit_date
 			</if>
-			<if test="itemSearch.criteria != null or itemSearch.criteria != ''">
-				${itemSearch.criteria} ${itemSearch.upDown}
+			<if test="search.criteria != null or search.criteria != ''">
+				${search.criteria} ${search.upDown}
 			</if>
 		</trim>
 	</select>

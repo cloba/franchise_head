@@ -84,7 +84,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE 
 			delivery_code = #{deliveryCode}
 	</update>
-	
+	<!-- 반품 상품 재배송 해주는 쿼리 -->
 	<insert id="insertReDelivery" parameterType="java.util.Map">
 		<selectKey resultType="hashmap" keyProperty="deliveryCode" order="BEFORE">
 			SELECT IF( EXISTS(
@@ -94,8 +94,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</selectKey>
 		
 		INSERT INTO delivery 	
-			          (delivery_code,  orders_code,           delivery_date, delivery_receive, delivery_location, head_staff_id, delivery_return, delivery_person)
-		       VALUES (#{deliveryCode},  #{returns.ordersCode}, now(),         'N',              '안성시물류창고',      'head_staff_id1',       'Y',             '홍길동')     
+			          (delivery_code,  orders_code,           delivery_date, delivery_receive, head_staff_id, delivery_return, delivery_person, received_order_code, delivery_confirm_date)
+		       VALUES (#{deliveryCode},  #{returns.ordersCode}, now(),         'N',            'head_staff_id1',       'Y',             '홍길동', #{returns.receivedOrderCode}, now())     
 		       
 	
 	

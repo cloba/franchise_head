@@ -50,7 +50,7 @@
 		});
 		
 		// 폼 제출
-		$('#joinBtn').click(function(){
+		$('#headDumpBtn').click(function(){
 			if ($('#hItemCode').val() == ""){
 				alert("상품코드를 입력해주세요.");
 			}else if ($('#specificItemCode').val() == ""){
@@ -83,7 +83,7 @@
 			<span id="headDumpReasonHelper"></span>
 		</div>
 		<div>
-			<input type="button" value="등록" id="joinBtn">
+			<input type="button" value="등록" id="headDumpBtn">
 		</div>
 	</form>
 </body>

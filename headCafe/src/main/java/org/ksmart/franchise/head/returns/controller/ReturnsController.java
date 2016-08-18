@@ -45,10 +45,9 @@ public class ReturnsController {
     @RequestMapping(value="/modifyReturnsApproval.do", method=RequestMethod.GET)
 	public String modifyReturnsApproval(Model model, ReturnsProcess returnsProcess){
     	System.out.println("ReturnsController의 modifyReturnsApproval post메서드 ");
-    	returnsService.addHeadDumpService(returnsProcess);
     	
-	  
-    	//수정된 정보의 pk를 가져와 수정된 내역을 보여주는 페이지로 이동(디테일페이지)
+    	returnsService.addHeadDumpService(returnsProcess);    		
+ 
     	return "redirect:/viewReturnsList.do";
   }
 }

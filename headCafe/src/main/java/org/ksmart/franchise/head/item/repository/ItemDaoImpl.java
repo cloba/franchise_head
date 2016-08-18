@@ -7,7 +7,7 @@ import java.util.Map;
 import org.ksmart.franchise.head.item.model.HeadLogin;
 import org.ksmart.franchise.head.item.model.Item;
 import org.ksmart.franchise.head.item.model.ItemCommand;
-import org.ksmart.franchise.head.item.model.ItemSearch;
+import org.ksmart.franchise.head.util.Search;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -38,11 +38,11 @@ public class ItemDaoImpl implements ItemDao{
 
 	@Override
 	// head_item의 목록을 보여주는 메서드입니다
-	public List<Item> viewItemList(ItemSearch itemSearch) {
+	public List<Item> viewItemList(Search search) {
 		System.out.println("ItemDaoImpl의 viewItemList 메서드 호출");
 		
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("itemSearch", itemSearch);
+		map.put("search", search);
 		
 		return sqlSessionItem.selectList(NS+".selectItem", map);
 	}

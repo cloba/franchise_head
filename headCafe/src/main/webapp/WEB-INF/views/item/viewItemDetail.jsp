@@ -48,7 +48,7 @@
 			<th>${item.headClientCode}</th>
 		</tr>
 	</table>
-	<a href="/headModifyItem?hItemCode=${item.hItemCode}">[수정]</a>
-	<a href="/viewItemList">[상품목록]</a>
+	<a href="/headModifyItem.do?hItemCode=${item.hItemCode}">[수정]</a>
+	<a href="/viewItemList.do">[상품목록]</a>
 </body>
 </html>

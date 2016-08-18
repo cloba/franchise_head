@@ -23,7 +23,7 @@
 <a href="/viewSellList">본사판매관리</a>
 <a href="/viweHeadStockList.do">재고관리</a>
 <a href="/viewPaymentList.do?status=Y">결제방식 관리</a>
-<a href="/viewItemList">상품관리</a>
+<a href="/viewItemList.do">상품관리</a>
 <a href="/viewHeadStaffList">본사직원조회</a>
 <a href="/viewMenuList.do?status=Y">메뉴관리</a>
 <a href="/viewSubList">가맹관리</a>

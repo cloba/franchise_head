@@ -15,6 +15,7 @@
 	<div><label>반품가격 : </label>${returns.returnsPrice}</div>
 	<div><label>가맹보고날짜 : </label>${returns.returnsReportDate}</div>
 	<div><label>본사확인 : </label>
+	<div><label>주문받은 코드 </label>${returns.receivedOrderCode}</div>
 			<c:if test="${returns.returnsHeadCheck eq 'N'}">			   확인 안함			       </c:if>
 			<c:if test="${returns.returnsHeadCheck eq 'Y'}">           확인 함                                    </c:if></div>
 	<div>
@@ -38,9 +39,14 @@
 	<c:if test="${returns.returnsApproval=='N'}">
 		<a href="/modifyReturnsApproval.do?returnsCode=${returns.returnsCode}&returnsApprovalIdenfity=Y&returnsGroupCode=${returns.returnsGroupCode}">[승인]</a>
 	</c:if>	
-	<c:if test="${returns.returnsApproval=='Y'}">
-		<a href="/modifyReturnsApproval.do?returnsCode=${returns.returnsCode}&returnsApprovalIdenfity=N&returnsGroupCode=${returns.returnsGroupCode}">[승인 취소]</a>
-	</c:if>	
+	
+	<%--
+		<!-- 승인 취소 구현x --> 
+		<c:if test="${returns.returnsApproval=='Y'}">
+			<a href="/modifyReturnsApproval.do?returnsCode=${returns.returnsCode}&returnsApprovalIdenfity=N&returnsGroupCode=${returns.returnsGroupCode}">[승인 취소]</a>
+		</c:if>	
+	 --%>
+	
 		<a href="/viewReturnsList.do">[되돌아가기]</a>
 	</div>
 </body>
