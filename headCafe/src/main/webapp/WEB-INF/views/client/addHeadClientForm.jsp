@@ -100,12 +100,12 @@
 							<form action="/addHeadClient.do" role="form" method="POST" id="joinForm">
 								<div class="form-group">
 									<label>거래처명</label> 
-									<input class="form-control" name="headClientName" id="headClientName" value="">
+									<input class="form-control" name="headClientName" id="headClientName" value="" required="required"/>
 									<p id="nameHelper" class="help-block"></p>
 								</div>
 								<div class="form-group">
 									<label>담당자명</label> 
-									<input class="form-control" name="headClientInCharge" id="headClientInCharge" value="">
+									<input class="form-control" name="headClientInCharge" id="headClientInCharge" value="" required="required"/>
 									<p id="inChargeHelper" class="help-block"></p>
 								</div>
 								<div class="form-group phone" >

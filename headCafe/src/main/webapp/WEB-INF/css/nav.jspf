@@ -161,6 +161,9 @@
 										<a href="/viewContractList.do">계약 관리</a>
 									</li>
 									<li>
+										<a href="/viewSubList.do">가맹점 관리</a>
+									</li>
+									<li>
 										<a href="/viewRoyaltyList.do">로얄티 관리</a>
 									</li>
 									<li>
