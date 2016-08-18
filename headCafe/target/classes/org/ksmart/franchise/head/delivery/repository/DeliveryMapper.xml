@@ -45,7 +45,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- delivery 하나를 봅니다  -->
 	<select id="selectOneDelivery" parameterType="java.util.Map" resultMap="deliveryResultMap">
-		SELECT delivery_code, received_order_code, delivery_date, delivery_receive, delivery_receive_date, delivery_status, head_staff_id, delivery_return, delivery_person
+		SELECT delivery_code, received_order_code, delivery_date, delivery_status, head_staff_id, delivery_confirm_date, delivery_person, delivery_return, delivery_receive, delivery_receive_date, orders_code 
 		FROM delivery
 		WHERE delivery_code = #{deliveryCode}
 	</select>

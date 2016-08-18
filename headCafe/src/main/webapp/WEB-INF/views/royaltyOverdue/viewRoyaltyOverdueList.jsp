@@ -90,7 +90,7 @@ $(document).ready(function(){
 							<!-- 오름차/내림차순 정렬을 위한 input 태그 -->
 							<input type="hidden" name="criteria" id="criteria" value=""/>
 							<input type="hidden" name="upDown" id="upDown" value=""/>
-							<input type="hidden" value="${search.searchKey}"><br/><br/>
+							<input type="hidden" value="${search.searchKey}">
 							
 							<div class="form-group">
 							<!-- 검색 조건 선택  -->

@@ -1,6 +1,5 @@
 package org.ksmart.franchise.head.delivery.controller;
 
-import java.util.Arrays;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -24,7 +23,7 @@ public class DeliveryController {
 	//배송 리스트를 보여줍니다 (검색포함)
 	@RequestMapping(value="/viewDeliveryList.do")
 	public String viewDeliveryList(Deliverysearch search, Model model){
-		System.out.println("DeliveryController의 viewDeliveryList 메서드 호출");
+		log.debug("DeliveryController의 viewDeliveryList 메서드 호출");
 		List<Delivery> deliveryList = deliveryService.viewDeliveryListService(search);
 		model.addAttribute("deliveryList", deliveryList);
 		model.addAttribute("search", search);
@@ -35,20 +34,19 @@ public class DeliveryController {
 	//배송상세를 보여줍니다
 	@RequestMapping(value="/viewDeliveryDetail.do")
 	public String viewDeliveryDetail(String deliveryCode, Model model){
-		System.out.println("DeliveryController의 viewDeliveryDetail 메서드 호출");
+		log.debug("DeliveryController의 viewDeliveryDetail 메서드 호출");
 		Delivery delivery = deliveryService.getDeliveryDetailService(deliveryCode);
 		model.addAttribute("delivery", delivery);
-		
 		return "/delivery/viewDeliveryDetail";
 	}
 	
 	//선택한 판매내역에 대해 배송을 요청합니다
 	@RequestMapping(value="/requestDelivery.do")
 	public String requestDelivery(String[] checkedOrders, String[] inteCode, int[] headSellQuantity){
-		System.out.println("SellController의 requestDelivery 메서드 호출");
-		System.out.println("checkedOrders ====> "+Arrays.toString(checkedOrders));
-		System.out.println("inteCode ====> "+Arrays.toString(inteCode));
-		System.out.println("headSellQuantity ====> "+Arrays.toString(headSellQuantity));
+		log.debug("SellController의 requestDelivery 메서드 호출");
+	//	log.debug("checkedOrders ====> "+Arrays.toString(checkedOrders));
+	//	log.debug("inteCode ====> "+Arrays.toString(inteCode));
+	//	log.debug("headSellQuantity ====> "+Arrays.toString(headSellQuantity));
 		deliveryService.requestDeliveryService(checkedOrders, inteCode, headSellQuantity);
 
 		return "redirect:/viewDeliveryList.do";
@@ -57,9 +55,9 @@ public class DeliveryController {
 	//배송상품의 현재 위치를 변경합니다
 	@RequestMapping(value="/updateStatus.do", method=RequestMethod.POST)
 	public String updateStatus(String[] checked, String deliveryStatus){
-		System.out.println("SellController의 updateStatus 메서드 호출");
-	//	System.out.println(checked+" <===== checked");
-	//	System.out.println(status+" <===== status");
+		log.debug("SellController의 updateStatus 메서드 호출");
+	//	log.debug(checked+" <===== checked");
+	//	log.debug(status+" <===== status");
 		deliveryService.updateStatusService(checked, deliveryStatus);
 		
 		return "redirect:/viewDeliveryList.do";

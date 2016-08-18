@@ -190,5 +190,6 @@
 		</div>
          <!-- /.container-fluid -->
      </div>
+     </div>
 </body>
 </html>
