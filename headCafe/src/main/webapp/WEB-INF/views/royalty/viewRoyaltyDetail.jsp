@@ -1,86 +1,56 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
-</head>
-<body>
-<h1>·Î¾âÆ¼ µðÅ×ÀÏ</h1>
-
-	<div>
-		<label>·Î¿­Æ¼ÁöºÒ ÄÚµå : </label>
-		<input type="text" name="royaltyCode" value="${royalty.royaltyCode}" readonly="readonly">
-	</div><br/>	
-	
-	<div>
-		<label>°¡¸Í Á¡ Æ÷¸í : </label>
-		<input type="text" name="subName" value="${royalty.subName}" readonly="readonly">
-	</div>
-
-	<div>
-		<label>°è¾àÄÚµå : </label>
-		<input type="text" name="contractCode" value="${royalty.contractCode}" readonly="readonly">
-	</div>
-
-	<div>
-		<label>ÇØ´ç¿ù : </label>
-		<input type="text" name="royaltyMonth" value="${royalty.royaltyMonth}" readonly="readonly">
-	</div>
-		
-	<div>
-		<label>°¡¸Í´ëÇ¥ÄÚµå : </label>
-		<input type="text" name="subCode" value="${royalty.subCode}" readonly="readonly">	
-	</div>
-		
-	<div>
-		<label>·Î¿­Æ¼ Áö±Þ ±âÀÏ : </label>
-		<input type="text" name="royaltyDeadline" value="${royalty.royaltyDeadline}" readonly="readonly">	
-	</div>
-	
-	<div>
-		<label>·Î¿­Æ¼ Áö±Þ ¿©ºÎ : </label>
-		<input type="text" name="royaltyPaid" value="${royalty.royaltyPaid}" readonly="readonly">
-	</div>
-	
-	<div>
-		<label>ÇØ´ç ¿ù ½ÇÁ¦ ÆÇ¸Å ±Ý¾× : </label>
-		<input type="text" name="subPracticalSellPriceMonth" value="${royalty.subPracticalSellPriceMonth}" readonly="readonly">	
-	</div>
-	
-	<div>
-		<label>ÇØ´ç ¿ù °¡¸Í ÀÌÀÍ ±Ý¾× : </label>
-		<input type="text" name="subSellProfitMonth" value="${royalty.subSellProfitMonth}" readonly="readonly">
-	</div>
-	
-	<div>
-		<label>ÇØ´ç ¿ù ÀÌ °¡¸Í¿¡ ´ëÇÑº»»ç ·Î¾âÆ¼ : </label>
-		<input type="text" name="headSellProfitBySubMonth" value="${royalty.headSellProfitBySubMonth}" readonly="readonly">
-	</div>
-
-	<div>
-		<label>ÇØ´ç¿ù¿¡ ½ÇÁ¦ Áö±ÞÇÑ ±Ý¾× : </label>
-		<input type="text" name="royaltyActualAmount" value="${royalty.royaltyActualAmount}" readonly="readonly">
-	</div>
-
-	<div>
-		<label>½ÇÁ¦ Áö±Þ ³¯Â¥ : </label>
-		<c:if test="${royalty.royaltyPayActualDate eq null}">	¹ÌÁö±Þ			</c:if>
-		<c:if test="${royalty.royaltyPayActualDate ne null}">						
-			<input type="text" name="royaltyPayActualDate" value="${royalty.royaltyPayActualDate}">	
-		</c:if>
-	</div><br>
-	
-	<!-- ¸¸¾à ·Î¾âÆ¼ Áö±Þ±âÀÏÀ» ³Ñ¾î°¡¸é ·Î¾âÆ¼ ¿¬Ã¼¿¡¼­ °ü¸® ÇØ¾ß ÇÏ¹Ç·Î ¿©±â¼­´Â ·Î¾âÆ¼ ±âÀÔÀ» ¸øÇÏ°Ô ¸·À½. -->
-	<div>
-		<c:if test="${royalty.royaltyOverdueIdentify eq 'Y'}">
-			 [·Î¾âÆ¼ ¿¬Ã¼·Î ³Ñ¾î°¬À¸¹Ç·Î, ·Î¾âÆ¼ ÁöºÒ ±âÀÔ ºÒ°¡]
-	 	</c:if>
-		<c:if test="${royalty.royaltyOverdueIdentify eq 'N'}">
-			<a href="/modifyRoyaltyPay.do?royaltyCode=${royalty.royaltyCode}">[·Î¾âÆ¼ ÁöºÒ ±âÀÔ]</a>
-		</c:if>
-	</div>
-	
-</body>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<style>
+	.btn {
+		float: right;
+		margin-top: 0px;
+		padding-top: 0px;
+	}
+</style>
+<div id="page-wrapper">
+	<div class="container-fluid">
+		  <div class="row">
+		  	<br/>
+		  	<br/>
+                <div class="col-lg-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                       		ê°€ë§¹ë¹„ ìƒì„¸
+                       		 <!-- ë§Œì•½ ë¡œì–„í‹° ì§€ê¸‰ê¸°ì¼ì„ ë„˜ì–´ê°€ë©´ ë¡œì–„í‹° ì—°ì²´ì—ì„œ ê´€ë¦¬ í•´ì•¼ í•˜ë¯€ë¡œ ì—¬ê¸°ì„œëŠ” ë¡œì–„í‹° ê¸°ìž…ì„ ëª»í•˜ê²Œ ë§‰ìŒ. -->
+							<div class="btn">
+								<c:if test="${royalty.royaltyOverdueIdentify eq 'Y'}">
+									 ì—°ì²´ë¡œ ë„˜ì–´ê°„ ë‚´ì—­ìž…ë‹ˆë‹¤
+							 	</c:if>
+								<c:if test="${royalty.royaltyOverdueIdentify eq 'N'}">
+									<div class="btn"><a href="/modifyRoyaltyPay.do?royaltyCode=${royalty.royaltyCode}">ë¡œì–„í‹° ì§€ë¶ˆ ê¸°ìž…</a></div>
+								</c:if>
+							</div>
+                        </div>
+                         <div class="panel-body">
+                            <p>ì¼ë ¨ì½”ë“œ : ${royalty.royaltyCode}
+                            <p><strong>ê°€ë§¹ì ëª… : ${royalty.subName} (${royalty.subCode})</strong>
+                            <address>
+                                <br>í•´ë‹¹ì›” : ${royalty.royaltyMonth}
+                                <br>íŒë§¤ê¸ˆì•¡ : ${royalty.subPracticalSellPriceMonth}ì›”
+                                <br>ê°€ë§¹ ì´ìµ ê¸ˆì•¡: ${royalty.subSellProfitMonth}
+                                <br>ë³¸ì‚¬ì— ë‚©ë¶€í•  ê¸ˆì•¡: ${royalty.headSellProfitBySubMonth}
+                                <br>ìƒíƒœ: <c:if test="${royalty.royaltyPaid == 'N'}">ë¯¸ë‚©</c:if>
+										<c:if test="${royalty.royaltyPaid == 'Y'}">ì™„ë‚©</c:if>
+								<br>ì‹¤ ë‚©ë¶€ê¸ˆì•¡: ${royalty.royaltyActualAmount}
+								<br>ì‹¤ ë‚©ë¶€ë‚ ì§œ: <c:if test="${royalty.royaltyPayActualDate eq null}">ë¯¸ì§€ê¸‰</c:if>
+											<c:if test="${royalty.royaltyPayActualDate ne null}">${royalty.royaltyPayActualDate}</c:if>
+                            </address>
+                            <address>
+                            	<strong>ë¡œì—´í‹° ë‚©ë¶€ê¸°ì¼: ${royalty.royaltyDeadline}</strong>
+                            	<br>ë‚©ë¶€ì—¬ë¶€: ${royalty.royaltyPaid}
+                            </address>
+                           </div>
+                          <!-- /.panel-body -->
+                    </div>
+                    <div class="btn"><a href="/viewRoyaltyList.do">ëª©ë¡</a></div>
+                    <!-- /.panel -->
+                </div>
+           </div>
+       </div>
+     </div>
+   </body>
 </html>

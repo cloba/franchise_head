@@ -1,14 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-<title>Insert title here</title>
-</head>
-<script>
+<style>
+	.form-control, .form-group {
+		width: 250px;
+		height: 31px;
+		display: inline;
+	}
 	
+	#p {
+		text-align: center;
+	}
+	
+</style>
+<script>
 $(document).ready(function(){
 	/* 오름차/내림차순 정렬 설정 */
 	$('#royaltyCodeUp').click(function(){
@@ -60,93 +63,106 @@ $(document).ready(function(){
 		$('#royaltyForm').submit();
 	});
 });	
-	
 </script>
-<body>
-<h1>전 가맹 로얄티  리스트</h1>
 
-<form id="royaltyForm" action="/viewRoyaltyList.do" >
-	<div> 	
-		<!-- 검색조건 보내는 곳 -->
-		<input type="hidden" name="criteria" id="criteria" value=""/>
-		<input type="hidden" name="upDown" id="upDown" value=""/>
-		
-		<input type="text" value="${search.searchKey}"><br/><br/>
-		
-		
-		
-		<!-- 검색 조건 선택  -->
-		<select name="searchKey">    
-			<option value="">선택</option>   
-			<option value="royalty_code" <c:if test="${'royalty_code' eq search.searchKey }">selected="selected"</c:if>>로열티지불 코드</option>
-			<option value="contract_code"<c:if test="${'contract_code' eq search.searchKey }">selected="selected"</c:if>>계약코드</option>
-			<option value="royalty_month" <c:if test="${'royalty_month' eq search.searchKey }">selected="selected"</c:if>>해당 월</option>
-		</select>
-		
-		<!-- 검색어랑 검색버튼 -->
-		<input type="text" name="searchItem" value="${search.searchItem}">
-		<input type="submit" id="searchheadStaffBtn" name="searchheadStaffBtn" value="검색">
-	</div>
-</form>
-
-	<!-- 로얄티 상단 메뉴 -->
-	<div>  
-		<label>로열티지불 코드
-			<span id="royaltyCodeUp">▲</span>
-			<span id="royaltyCodeDown">▼/</span></label>
-		<label>가맹 점포 명
-			<span id="subNameUp">▲</span>
-			<span id="subNameDown">▼/</span></label>			
-<!-- 		<label>계약코드/
-			<span id="contractCodeUp">▲</span>
-			<span id="contractCodeDown">▼</span></label> -->
-		<label>해당 월
-			<span id="royaltyMonthUp">▲</span>
-			<span id="royaltyMonthDown">▼/</span></label>
-		<!-- <label>로열티 지급 기일/
-			<span id="royaltyDealineUp"></span>
-			<span id="royaltyDealineDown"></span></label> -->	
-		<!-- <label>로열티 지급 여부/
-			<span id="royaltyPaidUp"></span>
-			<span id="royaltyPaidDown"></span></label> -->		
-<!-- 		<label>월 실제 판매 금액/
-			<span id="subPracticalSellPriceMonthUp"></span>
-			<span id="subPracticalSellPriceMonthDown"></span></label>		
-		<label>월 가맹의 이익 금액/
-			<span id="subSellProfitMonthUp"></span>
-			<span id="subSellProfitMonthDown"></span></label>	 -->
-		<label>월 본사 로얄티/
-			<span id="headSellProfitBySubMonthUp"></span>
-			<span id="headSellProfitBySubMonthDown"></span></label>	
-		<label>실제 지급 날짜/
-			<span id="royaltyPayActualDateUp"></span>
-			<span id="royaltyPayActualDateDown"></span></label>	
-		<label>월 실제 지급한 금액
-			<span id="royaltyActualAmountUp"></span>
-			<span id="royaltyActualAmountDown"></span></label>	
-	</div>
-
-	
-		<!-- 로얄티 실제 보여주는 정보 -->
-		<c:forEach var="Royalty" items="${royaltyList}">
-			<div>
-				<label>${Royalty.royaltyCode}																</label>
-				<label><a href="/viewRoyaltyDetail.do?royaltyCode=${Royalty.royaltyCode}">${Royalty.subName}</a>	</label>
-		<%--    <label>${Royalty.contractCode}																</label> --%>
-				<label>${Royalty.royaltyMonth}월																</label>
-		<%--    <label>${Royalty.royaltyDeadline}															</label>
-				<label>${Royalty.royaltyPaid} 																</label> --%>
-		<%--    <label>${Royalty.subPracticalSellPriceMonth}												</label>
-				<label>${Royalty.subSellProfitMonth}														</label> --%>
-				<label>${Royalty.headSellProfitBySubMonth}													</label>
-				<label>
-					<c:if test="${Royalty.royaltyPayActualDate eq null}">미지급							</c:if>
-					<c:if test="${Royalty.royaltyPayActualDate ne null}">${Royalty.royaltyPayActualDate}</c:if></label>
-
-				<label>${Royalty.royaltyActualAmount}														</label>
+<!-- Page Content -->
+<div id="page-wrapper">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="page-header">가맹비 관리</h1>
 			</div>
-		</c:forEach>
-
-
+			<!-- /.col-lg-12 -->
+		</div>
+		<!-- /.row -->
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="/viewRoyaltyList.do">전체 목록 보기</a>
+			</li>
+		</ul>
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<!--검색 -->
+						<form id="royaltyForm" action="/viewRoyaltyList.do" method="post">
+							<!-- 오름차/내림차순 정렬을 위한 input 태그 -->
+							<input type="hidden" name="criteria" id="criteria" value=""/>
+							<input type="hidden" name="upDown" id="upDown" value=""/>
+							<input type="hidden" value="${search.searchKey}"><br/><br/>
+							
+							<div class="form-group">
+							<!-- 검색 조건 선택  -->
+								<label>키워드검색</label>
+								<select class="form-control" id="searchKey" name="searchKey">
+									<option value="">::선택::</option>
+									<option value="royalty_code" <c:if test="${'royalty_code' eq search.searchKey }">selected="selected"</c:if>>로열티지불 코드</option>
+									<option value="contract_code"<c:if test="${'contract_code' eq search.searchKey }">selected="selected"</c:if>>계약코드</option>
+									<option value="royalty_month" <c:if test="${'royalty_month' eq search.searchKey }">selected="selected"</c:if>>해당 월</option>
+								</select>
+								<!-- 검색어 입력과 검색 버튼 -->
+								<input type="text" class="form-control" id="searchItem" name="searchItem" value="${subSearch.searchItem}"/>
+								</div>
+							<button class="btn btn-default"><i class="fa fa-search"></i></button>
+						</form>
+					</div>
+					<!-- /.panel-heading -->
+					<div class="panel-body">
+						<div class="dataTable_wrapper fa col-lg-12">
+							<table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+								<thead>
+									<tr>
+										<th>일련코드
+											<span id="royaltyCodeUp" class="fa-sort-up"></span>
+											<span id="royaltyCodeDown" class="fa-sort-down"></span>
+										</th>
+										<th>가맹점명
+											<span id="subNameUp" class="fa-sort-up"></span>
+											<span id="subNameDown" class="fa-sort-down"></span>
+										</th>
+										<th>해당 월
+											<span id="royaltyMonthUp" class="fa-sort-up"></span>
+											<span id="royaltyMonthDown" class="fa-sort-down"></span>
+										</th>
+										<th>월 본사 로얄티
+											<span id="headSellProfitBySubMonthUp" class="fa-sort-up"></span>
+											<span id="headSellProfitBySubMonthDown" class="fa-sort-down"></span>
+										</th>
+										<th>실제 납부 날짜
+											<span id="royaltyPayActualDateUp" class="fa-sort-up"></span>
+											<span id="royaltyPayActualDateDown" class="fa-sort-down"></span>
+										</th>
+										<th>실제 납부 금액
+											<span id="royaltyActualAmountUp" class="fa-sort-up"></span>
+											<span id="royaltyActualAmountDown" class="fa-sort-down"></span>
+										</th>
+										</th>
+									</tr>
+								</thead>
+								<tbody>			
+									<c:forEach var="Royalty" items="${royaltyList}">
+										<tr>
+											<th><a href="/viewRoyaltyDetail.do?royaltyCode=${Royalty.royaltyCode}">${Royalty.royaltyCode}</a></th>
+											<th>${Royalty.subName}</th>
+											<th>${Royalty.royaltyMonth}월</th>
+											<th>${Royalty.headSellProfitBySubMonth}</th>
+											<th><c:if test="${Royalty.royaltyPayActualDate eq null}">미지급							</c:if>
+												<c:if test="${Royalty.royaltyPayActualDate ne null}">${Royalty.royaltyPayActualDate}</c:if>
+											</th>
+											<th>${Royalty.royaltyActualAmount}</th>
+										</tr>
+									</c:forEach>
+								</tbody>
+								</table>
+							</div>
+						</div>
+						<!-- /.panel-body -->
+					</div>
+					<!-- /.panel -->
+				</div>
+				<!-- /.col-lg-12 -->
+			</div>
+		</div>
+		<!-- /.container-fluid -->
+	</div>
 </body>
 </html>

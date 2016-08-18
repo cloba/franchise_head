@@ -26,7 +26,7 @@ public class RoyaltyController {
 	Logger log = Logger.getLogger(this.getClass());
 
 	//전가맹 로얄티 리스트 조회하는 메서드
-	@RequestMapping(value="/viewRoyaltyList.do", method=RequestMethod.GET)
+	@RequestMapping(value="/viewRoyaltyList.do")
 	public String viewRoyaltyList(Model model, Royalty royalty, Search search) {
 		  System.out.println("RoyaltyController의 viewRecipeList메서드 ");
 		  
