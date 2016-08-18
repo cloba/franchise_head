@@ -90,7 +90,7 @@
 							<button class="btn btn-default"><i class="fa fa-search"></i></button>
 						</form>
 					</div>
-						<!-- /.panel-heading -->
+					<!-- /.panel-heading -->
 					<div class="panel-body">
 						<div class="dataTable_wrapper fa col-lg-12">
 							<table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">

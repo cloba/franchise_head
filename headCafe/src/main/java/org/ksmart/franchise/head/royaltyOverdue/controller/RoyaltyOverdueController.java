@@ -7,6 +7,7 @@ import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Locale;
 
+import org.apache.log4j.Logger;
 import org.ksmart.franchise.head.royaltyOverdue.model.RoyaltyOverdue;
 import org.ksmart.franchise.head.royaltyOverdue.service.RoyaltyOverdueService;
 import org.ksmart.franchise.head.util.Search;
@@ -22,11 +23,12 @@ public class RoyaltyOverdueController {
 	
 	@Autowired
 	private RoyaltyOverdueService royaltyOverdueService;
+	Logger log = Logger.getLogger(this.getClass());
 	
 	//로얄티 연체 리스트 조회 메서드
-	@RequestMapping(value="/viewRoyaltyOverdueList.do", method=RequestMethod.GET)
+	@RequestMapping(value="/viewRoyaltyOverdueList.do")
 	public String viewRoyaltyList(Model model, Search search, RoyaltyOverdue royaltyOverdue) {
-		  System.out.println("RoyaltyOverdueController의 viewRoyaltyList메서드 ");
+		  log.debug("RoyaltyOverdueController의 viewRoyaltyList메서드 ");
 		  
 		//지난 달 구하기
 		  Calendar cal = new GregorianCalendar(Locale.KOREA);
@@ -37,9 +39,9 @@ public class RoyaltyOverdueController {
 		  List<RoyaltyOverdue> royaltyOverduelist =  royaltyOverdueService.royaltyOverdueListService(search, royaltyOverdue);
 		
 		  for(RoyaltyOverdue a:royaltyOverduelist){
-			  System.out.println("getRoyaltyPayActualDate"+a.getRoyaltyOverduePayDate()); 
+		//	  log.debug("getRoyaltyPayActualDate"+a.getRoyaltyOverduePayDate()); 
 		  }
-		  System.out.println("royaltyOverduelist.size:"+ royaltyOverduelist.size());
+	//   log.debug("royaltyOverduelist.size:"+ royaltyOverduelist.size());
 		  model.addAttribute("royaltyOverduelist", royaltyOverduelist);
 		  
 		  return "/royaltyOverdue/viewRoyaltyOverdueList";
@@ -55,9 +57,9 @@ public class RoyaltyOverdueController {
     }
 	
 	//로얄티 연체테이블에 로얄티 납부금액 추가하는 메서드
-	@RequestMapping(value="/addRoyaltyPay", method=RequestMethod.GET)
+	@RequestMapping(value="/addRoyaltyPay.do", method=RequestMethod.GET)
 	public String addroyalty(Model model, String royaltyOverdueCode){
-		System.out.println("RoyaltyOverdueController의 addRoyaltyPay메서드 ");
+		log.debug("RoyaltyOverdueController의 addRoyaltyPay메서드 ");
 		RoyaltyOverdue royaltyOverdue = royaltyOverdueService.royaltyOverdueDetailService(royaltyOverdueCode);
 		model.addAttribute("royaltyOverdue", royaltyOverdue);
 		return "/royaltyOverdue/addroyaltyForm";

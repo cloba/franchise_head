@@ -1,11 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-<title>Insert title here</title>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<style>
+	.form-control, .form-group {
+		width: 250px;
+		height: 31px;
+		display: inline;
+	}
+	
+	#p {
+		text-align: center;
+	}
+	
+</style>
 <script>
 	
 $(document).ready(function(){
@@ -60,77 +67,112 @@ $(document).ready(function(){
 	});
 
 });	
-	
 </script>
-<body>
-<h1>전 가맹 로얄티  리스트</h1>
-
-<form id="royaltyOverdueForm" action="/viewRoyaltyOverdueList.do" >
-	<div> 	
-		<!-- 검색조건 보내는 곳 -->
-		<input type="hidden" name="criteria" id="criteria" value=""/>
-		<input type="hidden" name="upDown" id="upDown" value=""/>
-		
-		<input type="text" value="${search.searchKey}"><br/><br/>
-		
-		
-		
-		<!-- 검색 조건 선택  -->
-		<select name="searchKey">    
-			<option value="">선택</option>   
-			<option value="royalty_overdue_code" <c:if test="${'royalty_overdue_code' eq search.searchKey }">selected="selected"</c:if>>로열티 지급예정 코드</option>
-			<option value="royalty_overdue_status"<c:if test="${'royalty_overdue_status' eq search.searchKey }">selected="selected"</c:if>>지불 상태</option>
-			<option value="royalty_overdue_pay_date" <c:if test="${'royalty_overdue_pay_date' eq search.searchKey }">selected="selected"</c:if>>납부 일자</option>
-			<option value="sub_name" <c:if test="${'sub_name' eq search.searchKey }">selected="selected"</c:if>>점포 명</option>
-		</select>
-		
-		<!-- 검색어랑 검색버튼 -->
-		<input type="text" name="searchItem" value="${search.searchItem}">
-		<input type="submit" id="searchheadStaffBtn" name="searchheadStaffBtn" value="검색">
-	</div>
-</form>
-
-	<!-- 로얄티 상단 메뉴 -->
-	<div>  
-		<label>로열티 지급예정 코드
-			<span id="royaltyOvrdueCodeUp">▲</span>
-			<span id="royaltyOvrdueCodeDown">▼/</span></label>	
-		<label>점포 명
-			<span id="subNameUp">▲</span>
-			<span id="subNameDown">▼/</span></label>				
-		<label>지불 상태/
-			<span id="royaltyOverdueStatusUp">▲</span>
-			<span id="royaltyOverdueStatusDown">▼</span></label>	
-		<label>월 원금/
-			<span id="royaltyTotalOverduePayUp"></span>
-			<span id="royaltyTotalOverduePayDown"></span></label>		
-		<label>납부 금액/
-			<span id="royaltyOverduePaidUp"></span>
-			<span id="royaltyOverduePaidDown"></span></label>	
-		<label>납부 일자/
-			<span id="royaltyOverduePayDateUp">▲</span>
-			<span id="royaltyOverduePayDateDown">▼</span></label>	
-		<label>남은 금액
-			<span id="royaltyOverdueRestUp"></span>
-			<span id="royaltyOverdueRestDown"></span></label>	
-	</div>
-
-	
-		<!-- 로얄티 실제 보여주는 정보 -->
-		<c:forEach var="royaltyOverdue" items="${royaltyOverduelist}">
-			<div>
-				<label>${royaltyOverdue.royaltyOverdueCode}																						</label>
-				<label><a href="/viewRoyaltyOverdueDetail.do?royaltyOverdueCode=${royaltyOverdue.royaltyOverdueCode}">${royaltyOverdue.subName}</a>	</label>
-			    <label>${royaltyOverdue.royaltyOverdueStatus}																					</label> 
-				<label>${royaltyOverdue.royaltyTotalOverduePay}																					</label>
-				<label>${royaltyOverdue.royaltyOverduePaid}																						</label>
-				<label>
-					<c:if test="${royaltyOverdue.royaltyOverduePayDate eq null}">미납										</c:if>
-					<c:if test="${royaltyOverdue.royaltyOverduePayDate ne null}">${royaltyOverdue.royaltyOverduePayDate}</c:if>					</label>
-				<label>${royaltyOverdue.royaltyOverdueRest}																						</label>
+<!-- Page Content -->
+<div id="page-wrapper">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-lg-12">
+				<h1 class="page-header">연체 관리</h1>
 			</div>
-		</c:forEach>
-
-
+			<!-- /.col-lg-12 -->
+		</div>
+		<!-- /.row -->
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="/viewRoyaltyOverdueList.do">전체 목록 보기</a>
+			</li>
+		</ul>
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<!-- 거래처 검색 -->
+						<form id="royaltyOverdueForm" action="/viewRoyaltyOverdueList.do" method="post">
+							<!-- 오름차/내림차순 정렬을 위한 input 태그 -->
+							<input type="hidden" name="criteria" id="criteria" value=""/>
+							<input type="hidden" name="upDown" id="upDown" value=""/>
+							<input type="hidden" value="${search.searchKey}"><br/><br/>
+							
+							<div class="form-group">
+							<!-- 검색 조건 선택  -->
+								<label>키워드검색</label>
+								<select class="form-control" id="searchKey" name="searchKey">
+									<option value="">::선택::</option>
+									<option value="royalty_overdue_code" <c:if test="${'royalty_overdue_code' eq search.searchKey }">selected="selected"</c:if>>로열티 지급예정 코드</option>
+									<option value="royalty_overdue_status"<c:if test="${'royalty_overdue_status' eq search.searchKey }">selected="selected"</c:if>>지불 상태</option>
+									<option value="royalty_overdue_pay_date" <c:if test="${'royalty_overdue_pay_date' eq search.searchKey }">selected="selected"</c:if>>납부 일자</option>
+									<option value="sub_name" <c:if test="${'sub_name' eq search.searchKey }">selected="selected"</c:if>>점포 명</option>
+								</select>
+								<!-- 검색어 입력과 검색 버튼 -->
+								<input type="text" class="form-control" id="searchItem" name="searchItem" value="${subSearch.searchItem}"/>
+								</div>
+							<button class="btn btn-default"><i class="fa fa-search"></i></button>
+						</form>
+					</div>
+					<!-- /.panel-heading -->
+					<div class="panel-body">
+						<div class="dataTable_wrapper fa col-lg-12">
+							<table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+								<thead>
+									<tr>
+										<th>일련코드
+											<span id="royaltyOvrdueCodeUp" class="fa-sort-up"></span>
+											<span id="royaltyOvrdueCodeDown" class="fa-sort-down"></span>
+										</th>
+										<th>가맹점명
+											<span id="subNameUp" class="fa-sort-up"></span>
+											<span id="subNameDown" class="fa-sort-down"></span>
+										</th>
+										<th>지불상태
+											<span id="royaltyOverdueStatusUp" class="fa-sort-up"></span>
+											<span id="royaltyOverdueStatusDown" class="fa-sort-down"></span>
+										</th>
+										<th>월 원금
+											<span id="royaltyTotalOverduePayUp" class="fa-sort-up"></span>
+											<span id="royaltyTotalOverduePayDown" class="fa-sort-down"></span>
+										</th>
+										<th>납부 금액
+											<span id="royaltyOverduePaidUp" class="fa-sort-up"></span>
+											<span id="royaltyOverduePaidDown" class="fa-sort-down"></span>
+										</th>
+										<th>납부 일자
+											<span id="royaltyOverduePayDateUp" class="fa-sort-up"></span>
+											<span id="royaltyOverduePayDateDown" class="fa-sort-down"></span>
+										</th>
+										<th>남은 금액
+											<span id="royaltyOverdueRestUp" class="fa-sort-up"></span>
+											<span id="royaltyOverdueRestDown" class="fa-sort-down"></span>
+										</th>
+									</tr>
+								</thead>
+								<tbody>			
+									<c:forEach var="royaltyOverdue" items="${royaltyOverduelist}">
+										<tr>
+											<th><a href="/viewRoyaltyOverdueDetail.do?royaltyOverdueCode=${royaltyOverdue.royaltyOverdueCode}">${royaltyOverdue.royaltyOverdueCode}</a></th>
+											<th>${royaltyOverdue.subName}</th>
+											<th>${royaltyOverdue.royaltyOverdueStatus}</th>
+											<th>${royaltyOverdue.royaltyTotalOverduePay}</th>
+											<th>${royaltyOverdue.royaltyOverduePaid}</th>
+											<th>
+												<c:if test="${royaltyOverdue.royaltyOverduePayDate eq null}">미납										</c:if>
+												<c:if test="${royaltyOverdue.royaltyOverduePayDate ne null}">${royaltyOverdue.royaltyOverduePayDate}</c:if>	
+											</th>
+											<th>${royaltyOverdue.royaltyOverdueRest}	</th>
+										</tr>
+									</c:forEach>
+								</tbody>
+								</table>
+							</div>
+						</div>
+						<!-- /.panel-body -->
+					</div>
+					<!-- /.panel -->
+				</div>
+				<!-- /.col-lg-12 -->
+			</div>
+			<a id="addBtn" class="btn btn-default" href="/addHeadClient.do">신규등록</a>
+		</div>
+		<!-- /.container-fluid -->
+	</div>
 </body>
 </html>
