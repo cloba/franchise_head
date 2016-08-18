@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<!-- 검색과 정렬 유효성 검사하는 함수가 있는 js파일 -->
-<script type="text/javascript" src="resources/js/validation.js"></script>
 <style>
 	.nav nav-tabs:HOVER {
 	}

@@ -2,6 +2,7 @@ package org.ksmart.franchise.head.stock.controller;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.ksmart.franchise.head.stock.model.Stock;
 import org.ksmart.franchise.head.stock.service.StockService;
 import org.ksmart.franchise.head.util.Search;
@@ -16,14 +17,15 @@ public class StockController {
 	
 	@Autowired
 	private StockService stockService;
+	Logger log = Logger.getLogger(this.getClass());
+	
 	//재고리스트 조회 메서드
-	@RequestMapping(value="/viweHeadStockList.do", method=RequestMethod.GET)
+	@RequestMapping(value="/viweHeadStockList.do")
 	public String viweHeadStrockList(Model model, Search search){
-		System.out.println("StockController의 viweHeadStrockList 메서드");
-		
+		log.debug("StockController의 viweHeadStrockList 메서드");
 		//재고리스트 받아옴
 		List<Stock> list = stockService.viweHeadStrockList(search);
-		System.out.println("list size :"+list.size());
+	//	log.debug("list size :"+list.size());
 		model.addAttribute("list", list);
 		
 		//리스트 폼으로 이동
@@ -33,14 +35,12 @@ public class StockController {
 	//단일 재고의 자세한 정보를 보는 메서드
 	@RequestMapping(value="/viewHeadStrockDetail.do", method=RequestMethod.GET)
 	public String viewHeadStrockDetail(Model model, Stock stock){
-		System.out.println("StockController의 viewHeadStrockDetail 메서드");
-		System.out.println("getSpecificItemCode"+stock.getSpecificItemCode());
+		log.debug("StockController의 viewHeadStrockDetail 메서드");
+	//	log.debug("getSpecificItemCode"+stock.getSpecificItemCode());
 		stock = stockService.viewHeadStrockDetailService(stock);
 		model.addAttribute("stock", stock);
 
 		return "/stock/viewHeadStockDetail";
-		
-		
 	}
 	
 	
