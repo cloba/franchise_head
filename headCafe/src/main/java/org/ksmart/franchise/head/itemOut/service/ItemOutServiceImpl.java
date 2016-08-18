@@ -2,8 +2,8 @@ package org.ksmart.franchise.head.itemOut.service;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.ksmart.franchise.head.itemOut.model.ItemOut;
-import org.ksmart.franchise.head.itemOut.model.ItemOutSearch;
 import org.ksmart.franchise.head.itemOut.repository.ItemOutDao;
 import org.ksmart.franchise.head.util.Search;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,17 +14,18 @@ public class ItemOutServiceImpl implements ItemOutService {
 	
 	@Autowired
 	private ItemOutDao itemOutDao;
+	Logger log = Logger.getLogger(this.getClass());
 
 	@Override
 	public List<ItemOut> viewItemOutListService(Search search) {
-		System.out.println("ItemOutServiceImpl의 viewItemOutListService메서드 호출");
+		log.debug("ItemOutServiceImpl의 viewItemOutListService메서드 호출");
 		
 		return itemOutDao.viewItemOutList(search);
 	}
 
 	@Override
 	public ItemOut getItemOutDetailService(String headOutCode) {
-		System.out.println("ItemOutServiceImpl의 getItemOutDetailService메서드 호출");
+		log.debug("ItemOutServiceImpl의 getItemOutDetailService메서드 호출");
 		
 		return itemOutDao.getItemOutDetail(headOutCode);
 	}

@@ -57,7 +57,4 @@ public class Search {
 				+ searchKey + ", searchItem=" + searchItem + ", criteria=" + criteria + ", upDown=" + upDown
 				+ ", status=" + status + "]";
 	}
-	
-	
-	
 }

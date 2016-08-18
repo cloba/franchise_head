@@ -1,26 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 <!-- 검색과 정렬 유효성 검사하는 함수가 있는 js파일 -->
 <script type="text/javascript" src="resources/js/validation.js"></script>
 <style>
 	.nav nav-tabs:HOVER {
-		
 	}
-	
 	.form-control, .form-group {
 		width: 250px;
 		height: 31px;
 		display: inline;
 	}
-	
 	#p {
 		text-align: center;
 	}
-	
 </style>
 <script>
-
 	$(document).ready(function(){
 		
 		$('#codeUp').click(function(){
@@ -66,10 +60,7 @@
 				$('#requestDeliveryForm').submit();
 			}
 		});
-		
-		
 	});
-
 </script>
  <!-- Page Content -->
         <div id="page-wrapper">
@@ -80,8 +71,8 @@
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
-                 <div class="panel-body">
-                 <!-- Nav tabs -->
+                <div class="panel-body">
+                <!-- Nav tabs -->
                 <ul class="nav nav-tabs">
                      <li class="active"><a href="/viewSellList.do">전체내역</a>
                      </li>

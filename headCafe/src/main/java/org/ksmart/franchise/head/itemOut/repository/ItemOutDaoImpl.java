@@ -4,8 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
 import org.ksmart.franchise.head.itemOut.model.ItemOut;
-import org.ksmart.franchise.head.itemOut.model.ItemOutSearch;
 import org.ksmart.franchise.head.util.Search;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,20 +18,19 @@ public class ItemOutDaoImpl implements ItemOutDao {
 	
 	@Autowired
 	private SqlSessionTemplate sqlSessionItemOut;
+	Logger log = Logger.getLogger(this.getClass());
+
 
 	@Override
 	public List<ItemOut> viewItemOutList(Search search) {
-		System.out.println("ItemOutDaoImpl의 viewItemOutList 메서드 호출");
-		
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("search", search);
-		
-		return sqlSessionItemOut.selectList(NS+".selectItemOut", map);
+		log.debug("ItemOutDaoImpl의 viewItemOutList 메서드 호출");
+		log.debug("test::: "+search.toString());
+		return sqlSessionItemOut.selectList(NS+".selectItemOut", search);
 	}
 
 	@Override
 	public ItemOut getItemOutDetail(String headOutCode) {
-		System.out.println("ItemOutDaoImpl의 getItemOutDetail 메서드 호출");
+		log.debug("ItemOutDaoImpl의 getItemOutDetail 메서드 호출");
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("headOutCode", headOutCode);
