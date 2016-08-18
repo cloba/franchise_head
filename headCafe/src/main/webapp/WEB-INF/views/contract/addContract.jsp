@@ -33,10 +33,10 @@
 		가맹금: <input type="text" name="contractDeposit" required="required"/> 
 		</div>
 		<div> 
-		이익배분율: <input type="text" name="contractProfitPercent" required="required"/> 
+		이익배분율: <input type="number" name="contractProfitPercent" required="required" onkeypress="if (event.keyCode<48|| event.keyCode>57)  event.returnValue=false;" style='IME-MODE:disabled;' /> 
 		</div>
 		<div> 
-		로열티 지급기일: <input type="text" name="royaltyDeadline" required="required" onkeypress="if (event.keyCode<48|| event.keyCode>57)  event.returnValue=false;" style='IME-MODE:disabled;' /> 
+		로열티 지급기(일)생략: <input type="text" name="royaltyDeadline" required="required" onkeypress="if (event.keyCode<48|| event.keyCode>57)  event.returnValue=false;" style='IME-MODE:disabled;' maxlength=2 /> 
 		</div>
 		<div> 
 		계약서첨부파일: <input type="file" name="file" required="required"/> 
