@@ -4,6 +4,7 @@ public class ReturnsProcess {
 	private String returnsCode;
 	private String returnsApprovalIdenfity; 
 	private String returnsGroupCode;
+	private String receivedOrderCode;
 	
 	public String getReturnsCode() {
 		return returnsCode;
@@ -22,6 +23,12 @@ public class ReturnsProcess {
 	}
 	public void setReturnsGroupCode(String returnsGroupCode) {
 		this.returnsGroupCode = returnsGroupCode;
+	}
+	public String getReceivedOrderCode() {
+		return receivedOrderCode;
+	}
+	public void setReceivedOrderCode(String receivedOrderCode) {
+		this.receivedOrderCode = receivedOrderCode;
 	}
 	
 	

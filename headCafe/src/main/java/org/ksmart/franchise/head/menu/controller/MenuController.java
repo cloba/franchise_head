@@ -66,8 +66,8 @@ public class MenuController {
 
 		return "/menu/viewMenuDetail";
 	}
-	
-	// 메뉴를 추가하는 form으로 이동합니다
+	 
+	// 메뉴를 추가하는 form으로 이동합니다            
 	@RequestMapping(value="/headAddMenu.do", method=RequestMethod.GET)
 	public String addMenuForm(){
 		log.debug("MenuController의 addMenuForm메서드 호출");
@@ -75,7 +75,7 @@ public class MenuController {
 		return "/menu/headAddMenu";
 	}
 	
-	//메뉴를 추가합니다
+	//메뉴를 추가합니다         
 	@RequestMapping(value="/headAddMenu.do", method=RequestMethod.POST)
 	public String addMenu(MenuDomain menu){
 		log.debug("MenuController의 addMenu 메서드 호출");

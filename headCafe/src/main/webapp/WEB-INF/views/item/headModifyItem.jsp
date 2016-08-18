@@ -15,7 +15,7 @@
 <body>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 <h1>상품 수정</h1>
-	<form id="modifyForm" action="/headModifyItem" method="post">
+	<form id="modifyForm" action="/headModifyItem.do" method="post">
 		<div> 
 		상품명: <input type="text" id="hItemName" name="hItemName" value="${item.hItemName}" required="required"/> 
 		</div>

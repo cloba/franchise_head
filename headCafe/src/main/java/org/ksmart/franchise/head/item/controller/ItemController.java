@@ -5,8 +5,8 @@ import java.util.List;
 import org.ksmart.franchise.head.item.model.HeadLogin;
 import org.ksmart.franchise.head.item.model.Item;
 import org.ksmart.franchise.head.item.model.ItemCommand;
-import org.ksmart.franchise.head.item.model.ItemSearch;
 import org.ksmart.franchise.head.item.service.ItemService;
+import org.ksmart.franchise.head.util.Search;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,7 +21,7 @@ public class ItemController {
 	private ItemService itemService;
 	
 	// 상품을 추가하는 form으로 이동합니다
-	@RequestMapping(value="/headAddItem", method=RequestMethod.GET)
+	@RequestMapping(value="/headAddItem.do", method=RequestMethod.GET)
 	public String addItemForm(){
 		System.out.println("ItemController의 addItemForm메서드 호출");
 		
@@ -29,29 +29,29 @@ public class ItemController {
 	}
 	
 	// 상품을 추가하는 head_item form을 제출합니다
-	@RequestMapping(value="/headAddItem", method=RequestMethod.POST)
+	@RequestMapping(value="/headAddItem.do", method=RequestMethod.POST)
 	public String addItem(ItemCommand itemCommand, HeadLogin headLogin){
 		System.out.println("ItemController의 addItem 메서드 호출");
 
 		itemService.addItemService(itemCommand, headLogin);
 		
-		return "redirect:/viewItemList";
+		return "redirect:/viewItemList.do";
 	}
 	
 	// 상품 리스트를 보여줍니다 (검색포함)
-	@RequestMapping(value="/viewItemList")
-	public String viewItemList(ItemSearch itemSearch, Model model){
+	@RequestMapping(value="/viewItemList.do")
+	public String viewItemList(Search search, Model model){
 		System.out.println("ItemController의 viewItemList 메서드 호출");
 
-		List<Item> itemList = itemService.viewItemListService(itemSearch);
+		List<Item> itemList = itemService.viewItemListService(search);
 		model.addAttribute(itemList);
-		model.addAttribute(itemSearch);
+		model.addAttribute(search);
 		
 		return "/item/viewItemList";
 	}
 	
 	// 상품 상세를 보여줍니다
-	@RequestMapping(value="/viewItemDetail")
+	@RequestMapping(value="/viewItemDetail.do")
 	public String viewItemDetail(@RequestParam("hItemCode") String hItemCode, Model model){
 		System.out.println("ItemController의 viewItemDetail 메서드 호출");
 
@@ -75,14 +75,14 @@ public class ItemController {
 	}
 	
 	// 상품을 수정합니다
-	@RequestMapping(value="/headModifyItem", method=RequestMethod.POST)
+	@RequestMapping(value="/headModifyItem.do", method=RequestMethod.POST)
 	public String modifyItem(ItemCommand itemCommand, HeadLogin headLogin){
 		System.out.println("ItemController의 modifyItem 메서드 호출");
 		
 		int result = itemService.headModifyItemService(itemCommand, headLogin);
 		//System.out.println("update 결과: "+result);
 		
-		return "redirect:/viewItemDetail?hItemCode="+itemCommand.gethItemCode();
+		return "redirect:/viewItemDetail.do?hItemCode="+itemCommand.gethItemCode();
 	}
 	
 }

@@ -20,6 +20,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="returnsApproval" column="returns_approval"/>
 		<result property="returnsApprovalDate" column="returns_approval_date"/>
 		<result property="returnsGroupCode" column="returns_group_code"/>
+		<result property="receivedOrderCode" column="received_order_code"/>
 	</resultMap>
 	
 	<!-- 반품 상품 리스트 조회 메서드 -->
@@ -45,11 +46,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 반품 상품 상세 정보 조회 메서드 -->
 	<select id="selectReturnDetail" parameterType="java.util.Map" resultMap="ReturnsResultMap">
 		SELECT 
-			returns_code,        orders_code,              specific_item_code,
+			returns_code,        orders_code,               specific_item_code,
 			returns_reason,      returns_price,             returns_report_date,              
 			returns_head_check,  returns_head_check_date,   head_staff_id, 		 
 			returns_cancel,      returns_approval,          returns_approval_date,
-			returns_re_delivery, returns_group_code
+			returns_re_delivery, returns_group_code,        received_order_code
 		FROM 
 			`returns`
 		WHERE returns_code= #{returns.returnsCode}
@@ -67,7 +68,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<select id="selectReturnsGroupCode" parameterType="java.util.Map" resultMap="ReturnsResultMap">
 		SELECT 
-			returns_code, returns_group_code, orders_code
+			returns_code, returns_group_code, orders_code, received_order_code
 		FROM 
 			`returns`
 		WHERE 

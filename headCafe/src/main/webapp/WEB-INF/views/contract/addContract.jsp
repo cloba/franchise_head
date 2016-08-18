@@ -36,7 +36,7 @@
 		이익배분율: <input type="text" name="contractProfitPercent" required="required"/> 
 		</div>
 		<div> 
-		로열티 지급기일: <input type="text" name="royaltyDeadline" required="required"/> 
+		로열티 지급기일: <input type="text" name="royaltyDeadline" required="required" onkeypress="if (event.keyCode<48|| event.keyCode>57)  event.returnValue=false;" style='IME-MODE:disabled;' /> 
 		</div>
 		<div> 
 		계약서첨부파일: <input type="file" name="file" required="required"/> 

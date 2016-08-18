@@ -17,7 +17,7 @@
 <script type="text/javascript" src="resources/js/itemListPop.js"></script>
 <!-- head_item에 아이템을 등록하는 페이지입니다 -->
 <h1>아이템 등록</h1>
-	<form name="addForm" action="/headAddItem" method="post">
+	<form name="addForm" action="/headAddItem.do" method="post">
 		<div> 
 		상품명: <input type="text" name="hItemName" id="hItemName" required="required" /> 
 		</div>

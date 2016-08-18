@@ -16,6 +16,7 @@ public class Returns {
 	private String returnsApproval;
 	private String returnReason;
 	private String returnsGroupCode;
+	private String receivedOrderCode;
 	
 	public String getReturnsCode() {
 		return returnsCode;
@@ -106,6 +107,12 @@ public class Returns {
 	}
 	public void setReturnsGroupCode(String returnsGroupCode) {
 		this.returnsGroupCode = returnsGroupCode;
+	}
+	public String getReceivedOrderCode() {
+		return receivedOrderCode;
+	}
+	public void setReceivedOrderCode(String receivedOrderCode) {
+		this.receivedOrderCode = receivedOrderCode;
 	}
 		
 	
