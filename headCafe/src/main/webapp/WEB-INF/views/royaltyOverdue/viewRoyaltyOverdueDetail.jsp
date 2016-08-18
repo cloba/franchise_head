@@ -1,27 +1,44 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-<h1>로얄티 연체 디테일</h1>
-<div>
-	<div><label>로열티 지급예정 코드: </label>${royaltyOverdue.royaltyOverdueCode}</div>
-	<div><label>점포명: </label>${royaltyOverdue.subName}</div>
-	<div><label>계약코드: </label>${royaltyOverdue.contractCode}</div>
-	<div><label>지불 상태: </label> 
-		<c:if test="${royaltyOverdue.royaltyOverdueStatus == 'N'}">미납</c:if>
-		<c:if test="${royaltyOverdue.royaltyOverdueStatus == 'Y'}">완납</c:if></div>
-		
-	<div><label>납부 금액: </label>${royaltyOverdue.royaltyOverduePaid}</div>
-	<div><label>납부 일자: </label>${royaltyOverdue.royaltyOverduePayDate}</div>
-	<div><label>남은 금액: </label>${royaltyOverdue.royaltyOverdueRest}</div>
-	
-	<a href="/addRoyaltyPay">로얄티 연체 추가</a>
-</div>	
-</body>
-
+<style>
+	.btn {
+		float: right;
+		margin-top: 0px;
+		padding-top: 0px;
+	}
+</style>
+<div id="page-wrapper">
+	<div class="container-fluid">
+		  <div class="row">
+		  	<br/>
+		  	<br/>
+                <div class="col-lg-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                       		연체 상세
+                       		<div class="btn"><a href="/viewRoyaltyOverdueList.do">목록</a></div>
+                       		<div class="btn"><a href="/addRoyaltyPay.do?royaltyOverdueCode=${royaltyOverdue.royaltyOverdueCode}">&nbsp&nbsp&nbsp연체추가</a></div>
+                        </div>
+                         <div class="panel-body">
+                            <p>연체코드 : ${royaltyOverdue.royaltyOverdueCode}
+                            <p><strong>가맹점명 : ${royaltyOverdue.subName}</strong>
+                            <br>
+                            <address>
+                                <br>계약코드 : ${royaltyOverdue.contractCode}
+                                <br>지불상태: <c:if test="${royaltyOverdue.royaltyOverdueStatus == 'N'}">미납</c:if>
+											<c:if test="${royaltyOverdue.royaltyOverdueStatus == 'Y'}">완납</c:if>
+                            </address>
+                            <address>
+                            	<strong>남부금액: ${royaltyOverdue.royaltyOverduePaid}</strong>
+                            	<br>납부일자: ${royaltyOverdue.royaltyOverduePayDate}
+                            	<br>남은금액: ${royaltyOverdue.royaltyOverdueRest}
+                            </address>
+                           </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+           </div>
+       </div>
+     </div>
+   </body>
 </html>
