@@ -9,6 +9,7 @@ import java.util.Locale;
 
 import org.apache.log4j.Logger;
 import org.ksmart.franchise.head.royaltyOverdue.model.RoyaltyOverdue;
+import org.ksmart.franchise.head.royaltyOverdue.model.RoyaltyOverduePayAdd;
 import org.ksmart.franchise.head.royaltyOverdue.service.RoyaltyOverdueService;
 import org.ksmart.franchise.head.util.Search;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,10 +39,6 @@ public class RoyaltyOverdueController {
 		  royaltyOverdue.setLastMonth(Month.format(cal.getTime()));  //royaltyOverdue객체에 지난 달 입력.
 		  List<RoyaltyOverdue> royaltyOverduelist =  royaltyOverdueService.royaltyOverdueListService(search, royaltyOverdue);
 		
-		  for(RoyaltyOverdue a:royaltyOverduelist){
-		//	  log.debug("getRoyaltyPayActualDate"+a.getRoyaltyOverduePayDate()); 
-		  }
-	//   log.debug("royaltyOverduelist.size:"+ royaltyOverduelist.size());
 		  model.addAttribute("royaltyOverduelist", royaltyOverduelist);
 		  
 		  return "/royaltyOverdue/viewRoyaltyOverdueList";
@@ -56,14 +53,22 @@ public class RoyaltyOverdueController {
 	      return "/royaltyOverdue/viewRoyaltyOverdueDetail";
     }
 	
-	//로얄티 연체테이블에 로얄티 납부금액 추가하는 메서드
+	//로얄티 연체테이블에 로얄티 납부금액 추가하는 폼 연결 메서드
 	@RequestMapping(value="/addRoyaltyPay.do", method=RequestMethod.GET)
 	public String addroyalty(Model model, String royaltyOverdueCode){
 		log.debug("RoyaltyOverdueController의 addRoyaltyPay메서드 ");
 		RoyaltyOverdue royaltyOverdue = royaltyOverdueService.royaltyOverdueDetailService(royaltyOverdueCode);
 		model.addAttribute("royaltyOverdue", royaltyOverdue);
-		return "/royaltyOverdue/addroyaltyForm";
+		return "/royaltyOverdue/addroyaltyForm";	
+	}
+	
+	//로얄티 연체테이블에 로얄티 납부금액 추가하는 메서드
+	@RequestMapping(value="/addRoyaltyPay.do", method=RequestMethod.POST)
+	public String addroyalty(Model model, RoyaltyOverduePayAdd royaltyOverduePayAdd){
 		
+		royaltyOverdueService.royaltyOverduePadyAddService(royaltyOverduePayAdd);
+		
+		return null;
 		
 	}
 }

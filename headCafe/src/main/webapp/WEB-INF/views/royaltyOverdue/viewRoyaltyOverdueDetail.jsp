@@ -15,8 +15,10 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                        		연체 상세
-                       		<div class="btn"><a href="/viewRoyaltyOverdueList.do">목록</a></div>
-                       		<div class="btn"><a href="/addRoyaltyPay.do?royaltyOverdueCode=${royaltyOverdue.royaltyOverdueCode}">&nbsp&nbsp&nbsp연체추가</a></div>
+                       		<div class="btn">
+                       			<a href="/viewRoyaltyOverdueList.do">목록</a>
+                       			<a href="/addRoyaltyPay.do?royaltyOverdueCode=${royaltyOverdue.royaltyOverdueCode}">연체추가</a>
+                       		</div>
                         </div>
                          <div class="panel-body">
                             <p>연체코드 : ${royaltyOverdue.royaltyOverdueCode}

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.ksmart.franchise.head.royalty.model.RoyaltyOverdueAdd;
 import org.ksmart.franchise.head.royaltyOverdue.model.RoyaltyOverdue;
+import org.ksmart.franchise.head.royaltyOverdue.model.RoyaltyOverduePayAdd;
 import org.ksmart.franchise.head.util.Search;
 
 public interface RoyaltyOverdueDao {
@@ -16,5 +17,8 @@ public interface RoyaltyOverdueDao {
 
 	RoyaltyOverdue royaltyOverDetatil(String royaltyOverdueCode);
 
+	int royaltyOverduePadyAdd(RoyaltyOverduePayAdd royaltyOverduePayAdd);
+
 
 }
+

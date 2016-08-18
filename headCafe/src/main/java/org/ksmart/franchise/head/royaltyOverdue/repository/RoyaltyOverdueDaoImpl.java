@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.ksmart.franchise.head.royalty.model.RoyaltyOverdueAdd;
 import org.ksmart.franchise.head.royaltyOverdue.model.RoyaltyOverdue;
+import org.ksmart.franchise.head.royaltyOverdue.model.RoyaltyOverduePayAdd;
 import org.ksmart.franchise.head.util.Search;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,9 +65,21 @@ public class RoyaltyOverdueDaoImpl implements RoyaltyOverdueDao{
 			}
 		}	
 	}
+	
+	//로얄티 연체 상세정보 조회 메서드
 	@Override
 	public RoyaltyOverdue royaltyOverDetatil(String royaltyOverdueCode) {
 		System.out.println("RoyaltyOverdueDaoImpl의 royaltyOverDetatil메서드");
-		return sqlSessionRoyaltyOverdue.selectOne(NS+".selectROyaltyOverdueDetail", royaltyOverdueCode);
+		return sqlSessionRoyaltyOverdue.selectOne(NS+".selectRoyaltyOverdueDetail", royaltyOverdueCode);
+	}
+	
+	//로얄티 납부 추가 메서드
+	@Override
+	public int royaltyOverduePadyAdd(RoyaltyOverduePayAdd royaltyOverduePayAdd) {
+		System.out.println("RoyaltyOverdueDaoImpl의 royaltyOverDetatil메서드");
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("royaltyOverduePayAdd", royaltyOverduePayAdd);
+		return sqlSessionRoyaltyOverdue.update(NS+".updateRoyaltyOverduePadyAdd", map);
 	}
 }
