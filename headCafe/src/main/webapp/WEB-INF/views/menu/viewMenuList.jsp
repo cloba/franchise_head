@@ -38,20 +38,15 @@
 			$('#menuList').submit();
 		});
 		
-		
-		/* 검색 버튼 눌렀을 때 유효성 검사 */
-	/* 	$('#searchBtn').click(function(){
-			console.log('버튼클릭');
-			searchValid($('#menuList'));
+		//검색 유효성
+		$('#searchBtn').click(function(){
+			if(  $('#searchKey').val() == "" || $('#searchItem').val() == "" ){
+				alert('검색분류를 선택하고 검색어를 입력해주세요');
+			}else{
+				$('#menuList').submit();
+			}
 		});
 		
-		$('#nameUp').click(function(){
-			upDown('nameUp',$('#menuList'));
-		});
-		
-		$('#nameDown').click(function(){
-			upDown('nameDown',$('#menuList'));
-		}); */
 	});
 </script>
 <!-- Page Content -->
@@ -78,7 +73,7 @@
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							<!-- 판매 내역 검색 -->
-							<form id="menuList" action=""/viewMenuList.do" method="post">
+							<form id="menuList" action="/viewMenuList.do" method="post">
 								<!-- 오름차/내림차순 정렬을 위한 input 태그 -->
 								<input type="hidden" name="criteria" id="criteria" value=""/>
 								<input type="hidden" name="upDown" id="upDown" value=""/>
@@ -95,9 +90,7 @@
 									</select>
 									<input type="text" class="form-control" id="searchItem" name="searchItem" value="${menuSearch.searchItem}"/>
 								</div>
-								<button class="btn btn-default" id="searchBtn">
-									<i class="fa fa-search"></i>
-								</button>
+								<input type="button" class="btn btn-default" id="searchBtn" value="search">
 							</form>
 							</div>
 							<!-- /.panel-heading -->
