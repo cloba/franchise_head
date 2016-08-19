@@ -31,9 +31,7 @@ public class MenuController {
 	@RequestMapping(value="/viewMenuList.do")
 	public String viewMenuList(Search menuSearch, Model model){
 		log.debug("MenuController의 viewMenuList 메서드 호출");
-
 		List<Menu> menuList = menuService.viewMenuListService(menuSearch);
-		
 		model.addAttribute("menuList", menuList);
 		model.addAttribute("menuSearch", menuSearch);
 		
@@ -126,16 +124,14 @@ public class MenuController {
 	public String modifyMenu(MenuDomain menu){
 		log.debug("MenuController의 modifyMenu 메서드 호출");
 		
-		log.debug("menu domain===> "+menu.toString());
+	//	log.debug("menu domain===> "+menu.toString());
 		return "";
-		
 	}
 	
 	//재료를 검색합니다
 	@RequestMapping(value="/searchIngre.do")
 	public @ResponseBody List<Item> searchIngre(String ingreName) {
 		log.debug("MenuController의 searchIngre 메서드 호출");
-		
 		List<Item> Item = menuService.searchIngreService(ingreName);
 		
 		return Item;

@@ -1,22 +1,18 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-<style>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css"/>
-</style>
-</head>
-<body>
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+<style>
+	#joinBtn {
+		background: hsl(50, 100%, 97%);
+		display: block; height: auto; margin: 0 auto; 
+	}
+	
+	.phone-group {
+		display: inline;
+	}
+	
+</style>
 <script>
-
-
 	$(document).ready(function(){
-		
 		console.log('길이: '+$('.ingreName').length)
 		
 		$('#addIngreBtn').click(function(){
@@ -29,7 +25,7 @@
 				
 			}
 			
-			$('#addIngreDiv').append('<div> 재료명: <input type="text" id="ingreName'+order+'" class="ingreName" name="hItemCodeArr" required="required" /> 사용량: <input type="text" name="ingreAmountArr" required="required"/> <p id="unit'+order+'"></p></div>');
+			$('#addIngreDiv').append('<div> 재료명: <input type="text" id="ingreName'+order+'" class="ingreName form-control" name="hItemCodeArr" required="required" /> 사용량: <input type="text" class="form-control" name="ingreAmountArr" required="required"/> <span id="unit'+order+'"></span></div>');
 			
 			var id = 'ingreName'+order;
 			var unit = 'unit'+order;
@@ -62,28 +58,42 @@
 					},
 				});
 			});   
-
 		});
-		
 	});
 </script>
-<!-- menu에 메뉴를 등록하는 페이지입니다 -->
-<h1>메뉴 등록</h1>
-	<form name="addForm" action="/headAddMenu.do" method="post">
-		<!-- menu 정보입력 -->
-		<div> 
-		메뉴이름: <input type="text" name="menuName" id="menuName" required="required" /> 
+<div id="page-wrapper">
+	<div class="row">
+		<div class="col-lg-12">
+			<h1 class="page-header">메뉴등록</h1>
 		</div>
-		<!-- <div> 
-		재료구입가: <input type="text" name="menuIngrePrice" required="required"/> 
-		</div> -->
-		<div> 
-		소비자가격: <input type="text" name="menuSellingPrice" required="required"/> 
+	</div>
+	<div class="row">
+		<div class="col-lg-6">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-lg-6">
+							<form action="/headAddMenu.do" role="form" method="POST" id="addForm">
+								<div class="form-group">
+									<label>메뉴이름</label> 
+									<input class="form-control" name="menuName" id="menuName" value=""  required="required" />
+								</div>
+								<div class="form-group">
+									<label>소비자가격</label> 
+									<input class="form-control" name="menuSellingPrice" id="menuSellingPrice" value=""  required="required" />
+								</div>
+								<div id="addIngreDiv"></div>
+								<input type="button" id="addIngreBtn" class="btn btn-default" value="재료추가">
+								<input type="submit" class="btn btn-default" value="저장"/>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<a href="/viewMenuList.do">돌아가기</a>
 		</div>
-		
-		<div id="addIngreDiv"></div>
-		<input type="button" id="addIngreBtn" value="재료추가"/>
-		<input type="submit" value="저장">
-	</form>
+	</div>
+</div>
+
 </body>
 </html>

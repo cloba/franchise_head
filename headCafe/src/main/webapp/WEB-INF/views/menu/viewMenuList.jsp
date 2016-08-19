@@ -1,22 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
 <style>
-	body{
-	 width: 1000px;
-	 margin: 0 auto;
+	.nav nav-tabs:HOVER {
+	}
+	.form-control, .form-group {
+		width: 250px;
+		height: 31px;
+		display: inline;
+	}
+	#p {
+		text-align: center;
 	}
 </style>
-</head>
-<body>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-<!-- 검색과 정렬 유효성 검사하는 함수가 있는 js파일 -->
-<script type="text/javascript" src="resources/js/validation.js"></script>
 <script>
 
 	$(document).ready(function(){
@@ -57,73 +52,95 @@
 		$('#nameDown').click(function(){
 			upDown('nameDown',$('#menuList'));
 		}); */
-		
 	});
-
 </script>
-<h1>메뉴 리스트</h1>
-	<!-- 메뉴 검색 -->
-	<form name="menuList" id="menuList" action="/viewMenuList.do" method="post">
-		<!-- 오름차/내림차순 정렬을 위한 input 태그 -->
-		<input type="hidden" name="criteria" id="criteria" value=""/>
-		<input type="hidden" name="upDown" id="upDown" value=""/>
-		
-		<!-- 적용/미적용 조건 적용을 위한 input 태그 -->
-		<input type="hidden" name="status" value="${menuSearch.status}"/>
-	
-		<select id="searchKey" name="searchKey">
-			<option value="">::선택::</option>
-			<option value="menu_code" <c:if test="${menuSearch.searchKey eq 'menu_code'}">selected="selected"</c:if>>메뉴코드</option>
-			<option value="inte_code" <c:if test="${menuSearch.searchKey eq 'inte_code'}">selected="selected"</c:if>>상품메뉴 통합코드</option>
-			<option value="menu_name" <c:if test="${menuSearch.searchKey eq 'menu_name'}">selected="selected"</c:if>>메뉴이름</option>
-		</select>
-		<input type="text" id="searchItem" name="searchItem" value="${menuSearch.searchItem}"/>
-		<input type="submit" id="searchBtn" value="검색"/>
-	</form>
-	
-	<br>
-	<!-- 적용상태에 따른 a태그 분리 -->
-		<c:if test="${menuSearch.status == 'Y'}"> 
-			<a href="/viewMenuList.do?status=N">[미적용메뉴 보기]</a>
-			<a href="/viewMenuList.do">[전체메뉴 보기]</a>
-		</c:if>
-		<c:if test="${menuSearch.status == 'N'}"> 
-			<a href="/viewMenuList.do?status=Y">[적용메뉴 보기]</a>
-			<a href="/viewMenuList.do">[전체메뉴 보기]</a>
-		</c:if>
-		<c:if test="${menuSearch.status == null}">
-			<a href="/viewMenuList.do?status=N">[미적용메뉴 보기]</a> 
-			<a href="/viewMenuList.do?status=Y">[적용메뉴 보기]</a>
-		</c:if>	
-	
-	
-	<!-- 조회 결과 -->
-	<table border="1">
-		<tr>
-			<th>
-				메뉴명
-				<span id="nameUp">▲</span>
-				<span id="nameDown">▼</span>
-			</th>
-			<th>메뉴코드</th>
-			<th>상품메뉴 통합코드</th>
-			<th>
-				적용상태
-				<span id="statusUp">▲</span>
-				<span id="statusDown">▼</span>
-			</th>
-		</tr>
-		
-		<c:forEach var="menuList" items="${menuList}">
-			<tr>
-				<th><a href="/viewMenuDetail.do?menuCode=${menuList.menuCode}">${menuList.menuName}</a></th>
-				<th>${menuList.menuCode}</th>
-				<th>${menuList.inteCode}</th>
-				<th>${menuList.menuStatus}</th>
-			</tr>
-		</c:forEach>
-	</table>
-	<a href="/headAddMenu.do">[신규등록]</a>
-	<a href="/">[홈으로]</a>
+<!-- Page Content -->
+	<div id="page-wrapper">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-lg-12">
+					<h1 class="page-header">메뉴 목록</h1>
+				</div>
+				<!-- /.col-lg-12 -->
+				</div>
+				<div class="panel-body">
+				<!-- Nav tabs -->
+				<ul class="nav nav-tabs">
+					<li class="active"><a href="/viewMenuList.do">전체메뉴</a>
+					</li>
+					<li><a href="/viewMenuList.do?status=Y">적용메뉴</a>
+					</li>
+					<li><a href="/viewMenuList.do?status=N">미적용메뉴</a>
+					</li>
+				</ul> 
+				<div class="row">
+				<div class="col-lg-12">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<!-- 판매 내역 검색 -->
+							<form id="menuList" action=""/viewMenuList.do" method="post">
+								<!-- 오름차/내림차순 정렬을 위한 input 태그 -->
+								<input type="hidden" name="criteria" id="criteria" value=""/>
+								<input type="hidden" name="upDown" id="upDown" value=""/>
+								<!-- 적용/미적용 조건 적용을 위한 input 태그 -->
+								<input type="hidden" name="status" value="${menuSearch.status}"/>
+								
+								<div class="form-group">
+									<label>키워드</label>
+									<select class="form-control" id="searchKey" name="searchKey">
+										<option value="">::선택::</option>
+										<option value="menu_code" <c:if test="${menuSearch.searchKey eq 'menu_code'}">selected="selected"</c:if>>메뉴코드</option>
+										<option value="inte_code" <c:if test="${menuSearch.searchKey eq 'inte_code'}">selected="selected"</c:if>>상품메뉴 통합코드</option>
+										<option value="menu_name" <c:if test="${menuSearch.searchKey eq 'menu_name'}">selected="selected"</c:if>>메뉴이름</option>
+									</select>
+									<input type="text" class="form-control" id="searchItem" name="searchItem" value="${menuSearch.searchItem}"/>
+								</div>
+								<button class="btn btn-default" id="searchBtn">
+									<i class="fa fa-search"></i>
+								</button>
+							</form>
+							</div>
+							<!-- /.panel-heading -->
+	 						<div class="panel-body">
+								<div class="dataTable_wrapper fa col-lg-12">
+									<table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+										<thead>
+											<tr>
+												<th>메뉴명
+													<span id="nameUp" class="fa-sort-up"></span>
+													<span id="nameDown" class="fa-sort-down"></span>
+												</th>
+												<th>메뉴코드</th>
+												<th>상품메뉴 통합코드</th>
+												<th>적용상태
+													<span id="statusUp" class="fa-sort-up"></span>
+													<span id="statusDown" class="fa-sort-down"></span>
+												</th>
+											</tr>
+										</thead>
+										<tbody>
+											<c:forEach var="menuList" items="${menuList}">
+												<tr>
+													<td><a href="/viewMenuDetail.do?menuCode=${menuList.menuCode}">${menuList.menuName}</a></td>
+													<td>${menuList.menuCode}</td>
+													<td>${menuList.inteCode}</td>
+													<td>${menuList.menuStatus}</td>
+												</tr>
+											</c:forEach>
+										</tbody>
+	                               </table>
+	                           </div>
+	                       </div>
+                       <!-- /.panel-body -->
+	                   </div>
+	                   <!-- /.panel -->
+	               </div>
+               <!-- /.col-lg-12 -->
+	           </div>
+	           <a class="btn btn-default" href="/headAddMenu.do">신규등록</a>
+			</div>
+	         <!-- /.container-fluid -->
+	     </div>
+     </div>
 </body>
 </html>
