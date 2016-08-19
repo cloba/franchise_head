@@ -19,7 +19,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	
 	<!-- 로얄티 연체 상세 정보 조회 쿼리 -->
-	<select id="selectROyaltyOverdueDetail" parameterType="org.ksmart.franchise.head.royaltyOverdue.model.RoyaltyOverdue" resultMap="RoyaltyOverdueResultMap">
+	<select id="selectRoyaltyOverdueDetail" parameterType="org.ksmart.franchise.head.royaltyOverdue.model.RoyaltyOverdue" resultMap="RoyaltyOverdueResultMap">
 		SELECT	
 			s.sub_name, 
 			s.sub_code, 
@@ -87,5 +87,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		VALUES        
 		    (#{royaltyOverdueCode},  #{contractCode}, (select case when royalty_actual_amount=0 then '1' else '2' END as royaltyActualAmount FROM royalty where royalty_code = #{royaltyCode}), #{royaltyActualAmount},   (select if(isnull(#{royaltyPayActualDate}),null, #{royaltyPayActualDate})) ,          #{royaltyOverdueRest},             #{headSellProfitBySubMonth},   #{royaltyCode} );  
 	</insert>
-
+	
+	<!-- 로얄티 연체 납부 추가 쿼리 -->
+	<update id="updateRoyaltyOverduePadyAdd" parameterType="java.util.Map"> 
+		UPDATE 
+			royalty_overdue
+		SET
+			royalty_overdue_paid = #{royaltyOverduePayAdd.totalRoyaltyOverduePaid},
+			royalty_overdue_pay_date = #{royaltyOverduePayAdd.royaltyOverdueAddPayDate},
+			royalty_overdue_rest = #{royaltyOverduePayAdd.totalRoyaltyOverdueRest}
+	WHERE royalty_overdue_code = #{royaltyOverduePayAdd.royaltyOverdueCode}
+	</update>
 </mapper>
