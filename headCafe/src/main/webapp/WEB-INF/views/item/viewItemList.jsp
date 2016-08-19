@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <style>
 	.nav nav-tabs:HOVER {
 	}
@@ -16,7 +15,6 @@
 	}
 </style>
 <script>
-
 	$(document).ready(function(){
 		
 		$('#nameUp').click(function(){
@@ -60,11 +58,7 @@
 			console.log('searchBtn클릭');
 			$('#itemList').submit();
 		});
-		
-	
-		
 	});
-
 </script>
 <!-- Page Content -->
 	<div id="page-wrapper">
@@ -85,7 +79,7 @@
 				<div class="col-lg-12">
 					<div class="panel panel-default">
 						<div class="panel-heading">
-							<!-- 판매 내역 검색 -->
+							<!-- 검색 -->
 							<form id="itemList" action="/viewItemList.do" method="post">
 								<!-- 오름차/내림차순 정렬을 위한 input 태그 -->
 								<input type="hidden" name="criteria" id="criteria" value=""/>
@@ -107,6 +101,7 @@
 									<option value="head_client_code" <c:if test="${search.searchKey eq 'head_client_code'}">selected="selected"</c:if>>거래처 코드</option>
 									<option value="head_staff_id" <c:if test="${search.searchKey eq 'head_staff_id'}">selected="selected"</c:if>>등록직원 아이디</option>
 								</select>
+								<!-- 검색어와 검색버튼 -->
 								<input type="text" class="form-control" id="searchItem" name="searchItem" value="${search.searchItem}"/>
 								</div>
 								<input type="button" class="btn btn-default" id="searchBtn" value="search"/>

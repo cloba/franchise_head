@@ -52,7 +52,7 @@
 		
 	});
 </script>
- <script type="text/javascript" src="/resources/js/comma.js"></script>
+<script type="text/javascript" src="/resources/js/comma.js"></script>
 <div id="page-wrapper">
 	<div class="row">
 		<div class="col-lg-12">
@@ -112,6 +112,5 @@
 			</div>
 			</form>
 		</div>
-		
 	</body>
 </html>
