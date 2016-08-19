@@ -30,37 +30,46 @@ $(document).ready(function(){
 		console.log('거래처 코드 내림차순 정렬');
 		$('#criteria').attr('value','head_client_code');
 		$('#upDown').attr('value','DESC');
-		$('#HeadClientForm').submit();
+		$('#headClientForm').submit();
 	});
 	$('#headClientCodeDown').click(function(){
 		console.log('거래처 코드 오름차순 정렬');
 		$('#criteria').attr('value','head_client_code');
 		$('#upDown').attr('value','ASC');
-		$('#HeadClientForm').submit();
+		$('#headClientForm').submit();
 	});/////////////////////
 	$('#headClientNameUp').click(function(){
 		console.log('거래처 명 내림차순 정렬');
 		$('#criteria').attr('value','head_client_name');
 		$('#upDown').attr('value','DESC');
-		$('#HeadClientForm').submit();
+		$('#headClientForm').submit();
 	});
 	$('#headClientNameDown').click(function(){
 		console.log('거래처 명 오름차순 정렬');
 		$('#criteria').attr('value','head_client_name');
 		$('#upDown').attr('value','ASC');
-		$('#HeadClientForm').submit();
+		$('#headClientForm').submit();
 	});/////////////////////////////
 	$('#headClientInChargeUp').click(function(){
 		console.log('담당자 명 내림차순 정렬');
 		$('#criteria').attr('value','head_client_in_charge');
 		$('#upDown').attr('value','DESC');
-		$('#HeadClientForm').submit();
+		$('#headClientForm').submit();
 	});
 	$('#headClientInChargeDown').click(function(){
 		console.log('담당자 명 오름차순 정렬');
 		$('#criteria').attr('value','head_client_in_charge');
 		$('#upDown').attr('value','ASC');
-		$('#HeadClientForm').submit();
+		$('#headClientForm').submit();
+	});
+	
+	//검색 유효성
+	$('#searchBtn').click(function(){
+		if(  $('#searchKey').val() == "" || $('#searchItem').val() == "" ){
+			alert('검색분류를 선택하고 검색어를 입력해주세요');
+		}else{
+			$('#headClientForm').submit();
+		}
 	});
 	
 });	
@@ -86,22 +95,22 @@ $(document).ready(function(){
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<!-- 거래처 검색 -->
-						<form action="/viewHeadClientList.do" id="HeadClientForm">
+						<form action="/viewHeadClientList.do" id="headClientForm">
 						<!-- 검색조건 보내는 곳 -->
 						<input type="hidden" name="criteria" id="criteria" value="" /> 
 						<input type="hidden" name="upDown" id="upDown" value="" />
 						<div class="form-group">
 						<!-- 검색 조건 선택  -->
-						<select class="form-control" name="searchKey">    
+						<select class="form-control" name="searchKey" id="searchKey">    
 							<option value="">선택</option>   
 							<option value="head_client_code" <c:if test="${'head_client_code' eq search.searchKey }">selected="selected"</c:if>>거래처 코드</option>
 							<option value="head_client_name"<c:if test="${'head_client_name' eq search.searchKey }">selected="selected"</c:if>>거래처 명</option>
 							<option value="head_client_in_charge" <c:if test="${'head_client_in_charge' eq search.searchKey }">selected="selected"</c:if>>담당자 명</option>
 						</select>
 						<!-- 검색어랑 검색버튼 -->
-						<input type="text" class="form-control" name="searchItem" value="${search.searchItem}">
+						<input type="text" class="form-control" name="searchItem" id="searchItem" value="${search.searchItem}">
 					</div>
-					<button class="btn btn-default" id="searchheadStaffBtn" name="searchheadStaffBtn"><i class="fa fa-search"></i></button>
+					<input type="button" id="searchBtn" name="searchBtn" value="search">
 				</form>
 			</div>
 			<!-- /.panel-heading -->
