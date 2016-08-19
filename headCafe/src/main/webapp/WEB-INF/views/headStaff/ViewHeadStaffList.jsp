@@ -1,91 +1,94 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <style>
-tabel , td, th, tr{
-	border: 1px solid;
-}
+	.nav nav-tabs:HOVER {
+	}
+	.form-control, .form-group {
+		width: 250px;
+		height: 31px;
+		display: inline;
+	}
+	#p {
+		text-align: center;
+	}
+	#addBtn {
+		float: right;
+	}
 </style>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script type="text/javascript" src="resources/js/headStaffPop.js"></script>
 <script>
 	$(document).ready(function(){
-		/* ¿À¸§Â÷/³»¸²Â÷¼ø Á¤·Ä ¼³Á¤ */
+		/* ì˜¤ë¦„ì°¨/ë‚´ë¦¼ì°¨ìˆœ ì •ë ¬ ì„¤ì • */
 		$('#idUp').click(function(){
-			console.log('¾ÆÀÌµğ ³»¸²Â÷¼ø Á¤·Ä');
+			console.log('ì•„ì´ë”” ë‚´ë¦¼ì°¨ìˆœ ì •ë ¬');
 			$('#criteria').attr('value','head_staff_id');
 			$('#upDown').attr('value','DESC');
 			$('#HeadStaffSearchForm').submit();
 		});
 		$('#idDown').click(function(){
-			console.log('¾ÆÀÌµğ ¿À¸§Â÷¼ø Á¤·Ä');
+			console.log('ì•„ì´ë”” ì˜¤ë¦„ì°¨ìˆœ ì •ë ¬');
 			$('#criteria').attr('value','head_staff_id');
 			$('#upDown').attr('value','ASC');
 			$('#HeadStaffSearchForm').submit();
 		});
 		$('#nameUp').click(function(){
-			console.log('ÀÌ¸§ ³»¸²Â÷¼ø Á¤·Ä');
+			console.log('ì´ë¦„ ë‚´ë¦¼ì°¨ìˆœ ì •ë ¬');
 			$('#criteria').attr('value','head_staff_name');
 			$('#upDown').attr('value','DESC');
 			$('#HeadStaffSearchForm').submit();
 		});
 		$('#nameDown').click(function(){
-			console.log('ÀÌ¸§ ¿À¸§Â÷¼ø Á¤·Ä');
+			console.log('ì´ë¦„ ì˜¤ë¦„ì°¨ìˆœ ì •ë ¬');
 			$('#criteria').attr('value','head_staff_name');
 			$('#upDown').attr('value','ASC');
 			$('#HeadStaffSearchForm').submit();
 		});
 		$('#levelUp').click(function(){
-			console.log('°Å·¡Ã³·Î ³»¸²Â÷¼ø Á¤·Ä');
+			console.log('ê±°ë˜ì²˜ë¡œ ë‚´ë¦¼ì°¨ìˆœ ì •ë ¬');
 			$('#criteria').attr('value','head_staff_level');
 			$('#upDown').attr('value','DESC');
 			$('#HeadStaffSearchForm').submit();
 		});
 		$('#levelDown').click(function(){
-			console.log('°Å·¡Ã³·Î ¿À¸§Â÷¼ø Á¤·Ä');
+			console.log('ê±°ë˜ì²˜ë¡œ ì˜¤ë¦„ì°¨ìˆœ ì •ë ¬');
 			$('#criteria').attr('value','head_staff_level');
 			$('#upDown').attr('value','ASC');
 			$('#HeadStaffSearchForm').submit();
 		});
 		$('#DepUp').click(function(){
-			console.log('°Å·¡Ã³·Î ³»¸²Â÷¼ø Á¤·Ä');
+			console.log('ê±°ë˜ì²˜ë¡œ ë‚´ë¦¼ì°¨ìˆœ ì •ë ¬');
 			$('#criteria').attr('value','head_staff_dep');
 			$('#upDown').attr('value','DESC');
 			$('#HeadStaffSearchForm').submit();
 		});
 		$('#DepDown').click(function(){
-			console.log('°Å·¡Ã³·Î ¿À¸§Â÷¼ø Á¤·Ä');
+			console.log('ê±°ë˜ì²˜ë¡œ ì˜¤ë¦„ì°¨ìˆœ ì •ë ¬');
 			$('#criteria').attr('value','head_staff_dep');
 			$('#upDown').attr('value','ASC');
 			$('#HeadStaffSearchForm').submit();
 		});
 		
 		$('#joinUp').click(function(){
-			console.log('°¡ÀÔÀÏ ¿À¸§Â÷¼ø Á¤·Ä');
+			console.log('ê°€ì…ì¼ ì˜¤ë¦„ì°¨ìˆœ ì •ë ¬');
 			$('#criteria').attr('value','headStaffJoin');
 			$('#upDown').attr('value','ASC');
 			$('#HeadStaffSearchForm').submit();
 		});
 		
 		$('#joinDown').click(function(){
-			console.log('°¡ÀÔÀÏ ³»¸²Â÷¼ø Á¤·Ä');
+			console.log('ê°€ì…ì¼ ë‚´ë¦¼ì°¨ìˆœ ì •ë ¬');
 			$('#criteria').attr('value','headStaffJoin');
 			$('#upDown').attr('value','DESC');
 			$('#HeadStaffSearchForm').submit();
 		});
 		$('#resignUp').click(function(){
-			console.log('Åğ»çÀÏ ¿À¸§Â÷¼ø Á¤·Ä');
+			console.log('í‡´ì‚¬ì¼ ì˜¤ë¦„ì°¨ìˆœ ì •ë ¬');
 			$('#criteria').attr('value','headStaffResign');
 			$('#upDown').attr('value','ASC');
 			$('#HeadStaffSearchForm').submit();
 		});
 		
 		$('#resignDown').click(function(){
-			console.log('Åğ»çÀÏ ³»¸²Â÷¼ø Á¤·Ä');
+			console.log('í‡´ì‚¬ì¼ ë‚´ë¦¼ì°¨ìˆœ ì •ë ¬');
 			$('#criteria').attr('value','headStaffResign');
 			$('#upDown').attr('value','DESC');
 			$('#HeadStaffSearchForm').submit();
@@ -93,139 +96,115 @@ tabel , td, th, tr{
 		
 	});
 </script>
-<body>
-	<form action="/viewHeadStaffList" id="HeadStaffSearchForm">
-		<div> 	
-			<!-- °Ë»öÁ¶°Ç º¸³»´Â °÷ -->
-			<input type="hidden" name="criteria" id="criteria" value=""/>
-			<input type="hidden" name="upDown" id="upDown" value=""/>
-			
-			<input type="text" value="${ headStaffSearch.searchHeadStaffKey}"><br/><br/>
-			
-			<!-- °Ë»ö Á¶°Ç ¼±ÅÃ  -->
-			<select name="searchHeadStaffKey">    
-				<option value="">¼±ÅÃ</option>   
-				<option value="head_staff_id" <c:if test="${'head_staff_id' eq headStaffSearch.searchHeadStaffKey }">selected="selected"</c:if>> ¾ÆÀÌµğ</option>
-				<option value="head_staff_name"<c:if test="${'head_staff_name' eq headStaffSearch.searchHeadStaffKey }">selected="selected"</c:if>>ÀÌ¸§</option>
-				<option value="head_staff_level" <c:if test="${'head_staff_level' eq headStaffSearch.searchHeadStaffKey }">selected="selected"</c:if>>Á÷±Ş</option>
-				<option value="head_staff_dep" <c:if test="${'head_staff_dep' eq headStaffSearch.searchHeadStaffKey }">selected="selected"</c:if>>ºÎ¼­</option>
-				<option value="head_staff_join" <c:if test="${'head_staff_join' eq headStaffSearch.searchHeadStaffKey }">selected="selected"</c:if>>µî·ÏÇÑ¾ÆÀÌµğ</option>
-			</select>
-			
-			<!-- °Ë»ö¾î¶û °Ë»ö¹öÆ° -->
-			<input type="text" name="searchHeadStaffInfo" value="${headStaffSearch.searchHeadStaffInfo}">
-			<input type="submit" id="searchheadStaffBtn" name="searchheadStaffBtn" value="°Ë»ö">
+<!-- Page Content -->
+	<div id="page-wrapper">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-lg-12">
+					<h1 class="page-header">ì§ì› ëª©ë¡</h1>
+				</div>
+				<!-- /.col-lg-12 -->
+				</div>
+				<div class="panel-body">
+				<!-- Nav tabs -->
+				<ul class="nav nav-tabs">
+					<li class="active"><a href="/viewHeadStaffList.do">ì „ì²´ëª©ë¡</a>
+					</li>
+					<li><a href="/viewResignStaffList.do">í‡´ì‚¬ì</a>
+					</li>
+					<li><a href="/viewHeadStaffList.do">í˜„ ì§ì›</a>
+					</li>
+				</ul> 
+				<div class="row">
+				<div class="col-lg-12">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<!-- ê²€ìƒ‰ -->
+							<form id="HeadStaffSearchForm" action="/viewHeadStaffList.do" method="post">
+								<!-- ì˜¤ë¦„ì°¨/ë‚´ë¦¼ì°¨ìˆœ ì •ë ¬ì„ ìœ„í•œ input íƒœê·¸ -->
+								<input type="hidden" name="criteria" id="criteria" value=""/>
+								<input type="hidden" name="upDown" id="upDown" value=""/>
+								<!-- ì ìš©/ë¯¸ì ìš© ì¡°ê±´ ì ìš©ì„ ìœ„í•œ input íƒœê·¸ -->
+								<input type="hidden" name="status" value="${headStaffSearch.searchHeadStaffKey}"/>
+								
+								<div class="form-group">
+								<label>í‚¤ì›Œë“œê²€ìƒ‰</label>
+								<select class="form-control" id="searchKey" name="searchHeadStaffKey">
+									<option value="">::ì„ íƒ::</option>
+									<option value="head_staff_id" <c:if test="${'head_staff_id' eq headStaffSearch.searchHeadStaffKey }">selected="selected"</c:if>> ì•„ì´ë””</option>
+									<option value="head_staff_name"<c:if test="${'head_staff_name' eq headStaffSearch.searchHeadStaffKey }">selected="selected"</c:if>>ì´ë¦„</option>
+									<option value="head_staff_level" <c:if test="${'head_staff_level' eq headStaffSearch.searchHeadStaffKey }">selected="selected"</c:if>>ì§ê¸‰</option>
+									<option value="head_staff_dep" <c:if test="${'head_staff_dep' eq headStaffSearch.searchHeadStaffKey }">selected="selected"</c:if>>ë¶€ì„œ</option>
+									<option value="head_staff_join" <c:if test="${'head_staff_join' eq headStaffSearch.searchHeadStaffKey }">selected="selected"</c:if>>ë“±ë¡í•œì•„ì´ë””</option>
+								</select>
+								<!-- ê²€ìƒ‰ì–´ì™€ ê²€ìƒ‰ë²„íŠ¼ -->
+								<input type="text" class="form-control" id="searchItem" name="searchHeadStaffInfo" value="${headStaffSearch.searchHeadStaffInfo}"/>
+								</div>
+								<input type="button" class="btn btn-default" id="searchheadStaffBtn" name="searchheadStaffBtn" value="search"/>
+							</form>
+						</div>
+						<!-- /.panel-heading -->
+ 						<div class="panel-body">
+							<div class="dataTable_wrapper fa col-lg-12">
+								<table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+									<thead>
+										<tr>
+											<th>ì•„ì´ë””
+												<span id="idUp" class="fa-sort-up"></span>
+												<span id="idDown" class="fa-sort-down"></span>
+											</th>
+											<th>ì´ë¦„
+												<span id="nameUp" class="fa-sort-up"></span>
+												<span id="nameDown" class="fa-sort-down"></span>
+											</th>
+											<th>ì§ê¸‰(ê¶Œí•œ)
+												<span id="levelUp" class="fa-sort-up"></span>
+												<span id="levelDown" class="fa-sort-down"></span>
+											</th>
+											<th>ë¶€ì„œ
+												<span id="DepUp" class="fa-sort-up"></span>
+												<span id="DepDown" class="fa-sort-down"></span>
+											</th>
+											<th>ì…ì‚¬ì¼
+												<span id="joinUp" class="fa-sort-up"></span>
+												<span id="joinDown" class="fa-sort-down"></span>
+											</th>
+											<c:if test="${headStaff.resignIdentify == 'Y' }">
+												<th>í‡´ì‚¬ì¼
+													<span id="resignUp" class="fa-sort-up"></span>
+													<span id="resignDown" class="fa-sort-down"></span>
+												</th>
+											</c:if>
+										</tr>
+									</thead>
+									<tbody>
+										<c:forEach var="HeadStaff" items="${list}">
+											<tr>
+												<td><a href="/headStaffDetail.do?headStaffId=${HeadStaff.headStaffId}">${HeadStaff.headStaffId}</a></td>
+												<td>${HeadStaff.headStaffName}</td>
+												<td>${HeadStaff.headStaffLevel}</td>
+												<td>${HeadStaff.headStaffDep}</td>
+												<td>${HeadStaff.headStaffJoin}</td>
+												<c:if test="${headStaff.resignIdentify == 'Y' }">
+													<td>${HeadStaff.headStaffResign}</td>
+												</c:if>
+											</tr>
+										</c:forEach>
+									</tbody>
+                               </table>
+                           </div>
+                       </div>
+                       
+                       <!-- /.panel-body -->
+                   </div>
+                   <!-- /.panel -->
+               </div>
+               <!-- /.col-lg-12 -->
+           </div>
+           <a id="addBtn" class="btn btn-default" href="/addHeadStaff.do">ì‹ ê·œë“±ë¡</a>
 		</div>
-	</form>
-	
-<%-- 	<c:choose> --%>
-	<!-- Åğ»çÀÚ ¸®½ºÆ® º¸¿©ÁÖ´Â Æû -->    
-<%-- 	<c:when test="${headStaff.resignIdentify == 'Y'"> --%>
-	<c:if test="${headStaff.resignIdentify == 'Y' }">
-	console.log("Åğ»çÀÚ ¸®½ºÆ® º¸¿©ÁÖ´Â Æû" );
-	<h1>Åğ»çÀÚ ¸®½ºÆ®</h1>
-		<table>
-			<tr>
-				<th><span>¾ÆÀÌµğ</span>
-					<span id="idUp">¡ã</span>
-					<span id="idDown">¡å</span>
-				<th><span>ÀÌ¸§</span>
-					<span id="nameUp">¡ã</span>
-					<span id="nameDown">¡å</span>
-					
-				<th><span>Á÷±Ş(±ÇÇÑ)</span>
-					<span id="levelUp">¡ã</span>
-					<span id="levelDown">¡å</span>
-					
-				<th><span>ºÎ¼­</span>
-					<span id="DepUp">¡ã</span>
-					<span id="DepDown">¡å</span>
-	
-				<th><span>ÀÔ»çÀÏ</span>
-					<span id="joinUp">¡ã</span>
-					<span id="joinDown">¡å</span>
-					
-				<th><span>Åğ»çÀÏ</span>
-					<span id="resignUp">¡ã</span>
-					<span id="resignDown">¡å</span>		
-			</tr>
-			
-			<!-- ¸®½ºÆ®  µ¥ÀÌÅÍ -->
-			<c:forEach var="HeadStaff" items="${list}">
-				<tr ondblclick="detailPop('${HeadStaff.headStaffId}')">
-					<td>${HeadStaff.headStaffId }</td>
-					<td><a href = "/headStaffDetail?headStaffId=${HeadStaff.headStaffId}">${HeadStaff.headStaffName }</a></td>
-					<td>${HeadStaff.headStaffLevel }</td>
-					<td>${HeadStaff.headStaffDep }</td>
-					<td>${HeadStaff.headStaffJoin }</td> 
-<%-- 					<c:if test="${HeadStaff.resignIdentify == 'Y' }"> --%>
-					<td>${HeadStaff.headStaffResign }</td> 
-<%-- 					</c:if>  --%>
-				</tr>
-			</c:forEach>
-		</table>
-		<div>		
-			<a href="/viewHeadStaffList"><input id="modifyHeadStaff" type="button" value="Çö Á÷¿ø Á¶È¸"></a>
-		</div>
-	</c:if> 	
-	<c:if test="${headStaff.resignIdentify == 'N' }">
-	console.log("Çö Á÷¿ø ¸®½ºÆ® º¸¿©ÁÖ´Â Æû" );
-	
-<%-- 	<c:otherwise> --%>
-	<!-- Çö Á÷¿ø ¸®½ºÆ® º¸¿©ÁÖ´Â Æû -->
-	<h1>º»»çÁ÷¿ø ¸®½ºÆ®</h1>
-	<div>
-		<table>
-			<tr>
-				<th><span>¾ÆÀÌµğ</span>
-					<span id="idUp">¡ã</span>
-					<span id="idDown">¡å</span>
-				<th><span>ÀÌ¸§</span>
-					<span id="nameUp">¡ã</span>
-					<span id="nameDown">¡å</span>
-					
-				<th><span>Á÷±Ş(±ÇÇÑ)</span>
-					<span id="levelUp">¡ã</span>
-					<span id="levelDown">¡å</span>
-					
-				<th><span>ºÎ¼­</span>
-					<span id="DepUp">¡ã</span>
-					<span id="DepDown">¡å</span>
-	
-				<th><span>ÀÔ»çÀÏ</span>
-					<span id="joinUp">¡ã</span>
-					<span id="joinDown">¡å</span>
-			</tr>
-			
-			<!-- ¸®½ºÆ® º¸¿©ÁÖ´Â È­¸é -->
-			<c:forEach var="HeadStaff" items="${list}">
-				<tr ondblclick="detailPop('${HeadStaff.headStaffId}')">
-					<td>${HeadStaff.headStaffId }</td>
-					<td><a href = "/headStaffDetail?headStaffId=${HeadStaff.headStaffId}">${HeadStaff.headStaffName }</a></td>
-					<td>${HeadStaff.headStaffLevel }</td>
-					<td>${HeadStaff.headStaffDep }</td>
-					<td>${HeadStaff.headStaffJoin }</td> 
-					
-			<!--  	<c:if test="${HeadStaff.resignIdentify == 'Y' }">
-						<td>${HeadStaff.headStaffResign }</td> 
-					</c:if>
-			-->		
-				</tr>
-			</c:forEach>
-		</table>
-		<div>
-			<a href="/viewResignStaffList"><input id="modifyHeadStaff" type="button" value="Åğ»çÀÚ Á¶È¸"></a>
-		</div>
-	</div>
-	</c:if>
-		
-<%-- 	</c:choose> --%>
-	
-	<!-- Á÷¿øµî·Ï, ¸ŞÀÎÈ­¸é, Åğ»çÀÚÁ¶È¸  ¹öÆ° -->
-	<div>
-		<a href="/addHeadStaff"><input type="button" value="Á÷¿ø µî·Ï"></a>
-		<a href="/"><input id="modifyHeadStaff" type="button" value="µÇµ¹¾Æ °¡±â"></a>
-<!-- 		<a href="/addResignStaffList"><input id="modifyHeadStaff" type="button" value="Åğ»ç µî·Ï"></a> -->
-	</div>
+         <!-- /.container-fluid -->
+     </div>
+     </div>
 </body>
-</html>
+</html>	

@@ -1,67 +1,59 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-<script type="text/javascript" src="resources/js/addressAPI.js"></script>
-<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<title>Insert title here</title>
-
-</head>
 <style>
-tabel , td, th, tr{
-	border: 1px solid;
-}
+	.btn {
+		float: right;
+		margin-top: 0px;
+		padding-top: 0px;
+	}
+	#resignBtn {
+		text-align: center;
+	}
 </style>
-<body>
-<h1>본사직원 디테일</h1>
-<div>
-	<table>
-		<tr>
-			<th>아이디</th>
-			<th>비밀번호</th>
-			<th>이름</th>
-			<th>직급(권한)</th>
-			<th>부서</th>
-			<th>입사일</th>
-			<th>핸드폰번호</th>
-			<th>우편번호</th>
-			<th>도로명주소</th>
-			<th>지번주소</th>
-			<!-- 퇴사한 직원에 한해서 퇴사일을 보여줌 -->
-			<c:if test="${HeadStaff.resignIdentify == 'Y' }"> 
-				<th>퇴사일</th>
-			</c:if>
-			<th>등록일</th>
-			<th>등록한 직원</th>
-			
-		</tr>
-		<tr>
-			<td>${headStaff.headStaffId }</td>
-			<td>${headStaff.headStaffPw }</td>
-			<td>${headStaff.headStaffName }</td>
-			<td>${headStaff.headStaffLevel }</td>
-			<td>${headStaff.headStaffDep }</td>
-			<td>${headStaff.headStaffJoin }</td>
-			<td>${headStaff.headStaffPhoneFirst } - ${headStaff.headStaffPhoneSecond } - ${headStaff.headStaffPhoneThird}</td>
-			<td>${headStaff.headStaffPost }</td>
-			<td>${headStaff.headStaffRoadAddr }</td>
-			<td>${headStaff.headStaffParcleAddr }</td>
-			<!-- 퇴사한 직원에 한해서 퇴사일을 보여줌 -->
-			<c:if test="${HeadStaff.resignIdentify == 'Y' }"> 
-				<td>${HeadStaff.headStaffResign }</td> 
- 			</c:if>  
-			<td>${headStaff.headStaffRegitDate }</td>
-			<td>${headStaff.headStaffRegitId }</td>
-		</tr>
-	</table>
-	<div>
-		<a href="/modifyFormHeadStaff?headStaffId=${headStaff.headStaffId }"><input id="modifyHeadStaff" type="button" value="회원정보 관리"></a>
-		<a href = "/addResignStaff?headStaffId=${headStaff.headStaffId}"><input type="button" value="퇴사등록"></a>
-		<a href="/viewHeadStaffList"><input id="cancel" type="button" value="되돌아가기"></a>
-	</div>	
-</div>
-</body>
+
+<div id="page-wrapper">
+	<div class="container-fluid">
+		  <div class="row">
+		  	<br/>
+		  	<br/>
+                <div class="col-lg-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                       		직원 정보
+                       		<div class="btn"><a href="/viewHeadStaffList.do">목록</a></div>
+                       		<div class="btn"><a href="/modifyFormHeadStaff.do?headStaffId=${headStaff.headStaffId}">&nbsp&nbsp&nbsp수정</a></div>
+                        </div>
+                         <div class="panel-body">
+							<address>
+								<p><strong>아이디 : ${headStaff.headStaffId}</strong>
+								<br>이름 : ${headStaff.headStaffName }
+								<br>직급(권한) : ${headStaff.headStaffLevel }
+								<br>부서 : ${headStaff.headStaffDep }
+								<br>입사일 : ${headStaff.headStaffJoin }
+								<c:if test="${HeadStaff.resignIdentify == 'Y' }"> 
+									<br>퇴사일 : ${HeadStaff.headStaffResign }
+								</c:if>
+							</address>
+							<br>
+							<address>
+	                          	<p><strong>개인정보</strong>
+	                            <br>연락처: ${headStaff.headStaffPhoneFirst} - ${headStaff.headStaffPhoneSecond } - ${headStaff.headStaffPhoneThird}
+	                            <br>우편번호: ${headStaff.headStaffPost}
+	                            <br>도로명주소: ${headStaff.headStaffRoadAddr }
+	                            <br>지번주소: ${headStaff.headStaffParcleAddr }
+							</address>
+							<address>
+								<p>등록일자: <fmt:parseDate value="${headStaff.headStaffRegitDate }" pattern="yyyy-MM-dd HH:mm:ss" var="date"/>
+											<fmt:formatDate pattern="yyyy-MM-dd" type="both" value="${date}" />
+								<br>등록직원: ${headStaff.headStaffRegitId }
+							</address>
+						</div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <a id="resignBtn" class="btn btn-default" href="/addResignStaff.do?headStaffId=${headStaff.headStaffId}">퇴사등록</a>
+                    <!-- /.panel -->
+                </div>
+           </div>
+       </div>
+     </div>
+   </body>
 </html>

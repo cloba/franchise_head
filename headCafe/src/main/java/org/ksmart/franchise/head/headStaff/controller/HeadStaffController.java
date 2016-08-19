@@ -92,7 +92,7 @@ public class HeadStaffController {
 	
 	
 	//본사 직원리스트 보는 메서드(박종무 0722) 
-	@RequestMapping(value="/viewHeadStaffList.do", method=RequestMethod.GET)
+	@RequestMapping(value="/viewHeadStaffList.do")
 	public String ViewHeadStaffList(Model model, HeadStaffSearch headStaffSearch, HeadStaff headStaff) {
 		log.debug("HeadStaffController의 ViewHeadStaffList메서드 ");
 	//	log.debug("SearchHeadStaffInfo :"+headStaffSearch.getSearchHeadStaffInfo());
