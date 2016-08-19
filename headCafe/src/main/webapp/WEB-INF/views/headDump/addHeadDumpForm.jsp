@@ -1,11 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-<title>Insert title here</title>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<style>
+	#joinBtn {
+		background: hsl(50, 100%, 97%);
+		display: block; height: auto; margin: 0 auto; 
+	}
+	.btns{
+		 margin-left: 300px;
+	}
+</style>
 <script>
 	$(document).ready(function(){
 		//상품코드 유효성
@@ -64,27 +67,45 @@
 	});
 </script>
 </head>
-<body>
-	<form action="/addHeadDump.do" method="POST" id="joinForm">
-		<div>
-			<label>상품코드: </label>
-			<input type="text" name="hItemCode" id="hItemCode">
-			<span id="hItemCodeHelper"></span>
+<div id="page-wrapper">
+	<div class="row">
+		<div class="col-lg-12">
+			<h1 class="page-header">신규등록</h1>
 		</div>
-		
-		<div>
-			<label>개별상품 코드: </label>
-			<input type="text" name="specificItemCode" id="specificItemCode">
-			<span id="specificItemCodeHelper"></span>
+	</div>
+	<form action="/addHeadDump.do" role="form" method="POST" id="joinForm">
+	<div class="row">
+		<div class="col-lg-6">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-lg-6">
+							<div class="form-group">
+								<label>상품코드</label> 
+								<input class="form-control" name="hItemCode" id="hItemCode" required="required" />
+								<span id="hItemCodeHelper"></span>
+							</div>
+							<div class="form-group">
+								<label>개별상품코드</label> 
+								<input class="form-control" name="specificItemCode" id="specificItemCode" required="required" />
+								<span id="specificItemCodeHelper"></span>
+							</div>
+							<div class="form-group">
+								<label>폐기사유</label> 
+								<input class="form-control" name="headDumpReason" id="headDumpReason" required="required" />
+								<span id="headDumpReasonHelper"></span>
+							</div>
+							</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="btns">
+				<a class="btn btn-default" href="/viewHeadDumpList.do">돌아가기</a>
+				<input type="button" id="headDumpBtn" class="btn btn-default" value="등록">
+			</div>
+			</form>
 		</div>
-		<div>
-			<label>폐기 사유: </label>  
-			<input type="text" name="headDumpReason" id="headDumpReason">
-			<span id="headDumpReasonHelper"></span>
-		</div>
-		<div>
-			<input type="button" value="등록" id="headDumpBtn">
-		</div>
-	</form>
-</body>
+	</body>
 </html>

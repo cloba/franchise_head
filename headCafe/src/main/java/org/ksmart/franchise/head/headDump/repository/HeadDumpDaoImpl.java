@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
 import org.ksmart.franchise.head.headDump.model.HeadDump;
 import org.ksmart.franchise.head.headDump.model.HeadDumpCommand;
 import org.ksmart.franchise.head.util.Search;
@@ -17,12 +18,12 @@ public class HeadDumpDaoImpl implements HeadDumpDao{
 	
 	@Autowired		
 	private SqlSessionTemplate sqlSessionHeadDump;
+	Logger log = Logger.getLogger(this.getClass());
 		
 	//판매 불가 상품 리스트 조회 메서드
 	@Override
 	public List<HeadDump> viewHeadDumpList(HeadDump headDump, Search search) {
-		System.out.println("HeadDumpDaoImpl의 RoyaltyList 메서드");
-		
+		log.debug("HeadDumpDaoImpl의 RoyaltyList 메서드");
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("search", search);
 		map.put("headDump", headDump);
@@ -32,7 +33,7 @@ public class HeadDumpDaoImpl implements HeadDumpDao{
 	//판매 불가 상품 등록 메서드
 	@Override
 	public int addHeadDump(HeadDumpCommand headDumpCommand) {
-		System.out.println("HeadDumpDaoImpl의 RoyaltyListaddHeadDump 메서드");
+		log.debug("HeadDumpDaoImpl의 RoyaltyListaddHeadDump 메서드");
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("headDumpCommand", headDumpCommand);
 		return sqlSessionHeadDump.insert(NS+".insertHeadDump", map);
@@ -40,18 +41,15 @@ public class HeadDumpDaoImpl implements HeadDumpDao{
 	//판매 불가 상품 상세정보 조회 메서드
 	@Override
 	public HeadDump viewHeadDumpDetail(String headDumpCode) {
-		System.out.println("HeadDumpDaoImpl의 viewHeadDumpDetail 메서드");
-		
+		log.debug("HeadDumpDaoImpl의 viewHeadDumpDetail 메서드");
 		return sqlSessionHeadDump.selectOne(NS+".selectHeadDumpDetail", headDumpCode);
 	}
 
 	@Override
 	public int modifyHeadDump(HeadDump headDump) {
-		System.out.println("HeadDumpDaoImpl의 modifyHeadDump 메서드");
+		log.debug("HeadDumpDaoImpl의 modifyHeadDump 메서드");
 		Map<String, Object> map = new HashMap<String, Object>();
-		
 		map.put("headDump", headDump);
 		return sqlSessionHeadDump.update(NS+".updateHeadDump", map);
 	}
-
 }

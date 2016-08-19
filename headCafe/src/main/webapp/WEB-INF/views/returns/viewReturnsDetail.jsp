@@ -1,53 +1,65 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-<h1>반품상품 디테일</h1>
-	<div><label>반품 코드 : </label>${returns.returnsCode}</div><br/>	
-	<div><label>가맹발주 번호 : </label>${returns.ordersCode}</div>
-	<div><label>개별상품코드 : </label>${returns.specificItemCode}</div>
-	<div><label>반품사유 : </label>${returns.returnsReason}</div>
-	<div><label>반품가격 : </label>${returns.returnsPrice}</div>
-	<div><label>가맹보고날짜 : </label>${returns.returnsReportDate}</div>
-	<div><label>본사확인 : </label>
-	<div><label>주문받은 코드 </label>${returns.receivedOrderCode}</div>
-			<c:if test="${returns.returnsHeadCheck eq 'N'}">			   확인 안함			       </c:if>
-			<c:if test="${returns.returnsHeadCheck eq 'Y'}">           확인 함                                    </c:if></div>
-	<div>
-			<c:if test="${returns.returnsHeadCheckDate ne null}"><label>본사확인날짜 : </label></c:if> 
-			<c:if test="${returns.returnsHeadCheckDate ne null}">   ${returns.returnsHeadCheckDate}</c:if></div>
-			
-	
-	<div><label>확인한 직원 아이디 : </label>${returns.headStaffId}</div>
-	<div><label>재배송 요청 유무 :  </label>
-			<c:if test="${returns.returnsReDelivery eq 'N'}">			    환불 요청(재배송 아님)			          </c:if>
-			<c:if test="${returns.returnsReDelivery eq 'Y'}">              재배송 요청                                    </c:if></div>
-	<div><label>반품 취소 여부 : </label>
-			<c:if test="${returns.returnsCancel eq 'N'}">			   반품 진행 중			       </c:if>
-			<c:if test="${returns.returnsCancel eq 'Y'}">              반품 취소                                 </c:if></div>
-
-	<div><label>본사 확인 여부 : </label>${returns.returnsApproval}</div>
-	
-	<div><label>반품 그룹 코드</label>${returns.returnsGroupCode}</div>
-	<!-- 본사가 반품 첫 확인 했다는 버튼(물건 보고 승인 아님)   -->
-	<div>
-	<c:if test="${returns.returnsApproval=='N'}">
-		<a href="/modifyReturnsApproval.do?returnsCode=${returns.returnsCode}&returnsApprovalIdenfity=Y&returnsGroupCode=${returns.returnsGroupCode}">[승인]</a>
-	</c:if>	
-	
-	<%--
-		<!-- 승인 취소 구현x --> 
-		<c:if test="${returns.returnsApproval=='Y'}">
-			<a href="/modifyReturnsApproval.do?returnsCode=${returns.returnsCode}&returnsApprovalIdenfity=N&returnsGroupCode=${returns.returnsGroupCode}">[승인 취소]</a>
-		</c:if>	
-	 --%>
-	
-		<a href="/viewReturnsList.do">[되돌아가기]</a>
-	</div>
-</body>
+<style>
+	.btn {
+		float: right;
+		margin-top: 0px;
+		padding-top: 0px;
+	}
+</style>
+<div id="page-wrapper">
+	<div class="container-fluid">
+		  <div class="row">
+		  	<br/>
+		  	<br/>
+                <div class="col-lg-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                       		반품 상세
+                       		<div class="btn"><a href="/viewReturnsList.do">목록</a></div>
+                       		<div class="btn"><c:if test="${returns.returnsApproval=='N'}">
+												<a href="/modifyReturnsApproval.do?returnsCode=${returns.returnsCode}&returnsApprovalIdenfity=Y&returnsGroupCode=${returns.returnsGroupCode}">승인하기</a>
+											</c:if></div>
+                        </div>
+                         <div class="panel-body">
+							<address>
+								<p><strong>반품코드 : ${returns.returnsCode}</strong>
+								<br>개별상품코드 : ${returns.specificItemCode}
+								<br>가맹주문번호 : ${returns.ordersCode}
+								<br>주문받은 코드 : ${returns.receivedOrderCode}
+							</address>
+							<br>
+							<address>
+	                          	<p><strong>반품정보</strong>
+	                            <br>반품사유: ${returns.returnsReason}
+	                            <br>반품그룹코드: ${returns.returnsGroupCode}
+	                            <br>금액: <fmt:formatNumber value="${returns.returnsPrice}" pattern="#,###"/>
+							</address>
+							<address>
+								<p>가맹 보고일자: <fmt:parseDate value="${returns.returnsReportDate}" pattern="yyyy-MM-dd HH:mm:ss" var="date"/>
+											<fmt:formatDate pattern="yyyy-MM-dd" type="both" value="${date}" />
+								<br>본사 확인: <c:if test="${returns.returnsHeadCheck eq 'N'}">확인하지 않음</c:if>
+												<c:if test="${returns.returnsHeadCheck eq 'Y'}">확인완료 </c:if>
+								<c:if test="${returns.returnsHeadCheckDate ne null}">
+									<br>확인일자: ${returns.returnsHeadCheckDate}
+									<br>확인직원: ${returns.headStaffId}
+								</c:if>
+							</address>
+							<address>
+	                          	<p><strong>기타</strong>
+	                            <br>재배송 요청여부: <c:if test="${returns.returnsReDelivery eq 'N'}">환불만 요청됨</c:if>
+												<c:if test="${returns.returnsReDelivery eq 'Y'}">재배송 요청됨</c:if>
+							</address>
+							<p><strong>상태: <c:if test="${returns.returnsCancel eq 'N'}">반품 진행 중</c:if>
+													<c:if test="${returns.returnsCancel eq 'Y'}">반품 취소 </c:if>
+								</strong>
+							</div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+           </div>
+       </div>
+     </div>
+   </body>
 </html>
+								

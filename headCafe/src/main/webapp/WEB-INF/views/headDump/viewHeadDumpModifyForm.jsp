@@ -1,12 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-<title>Insert title here</title>
-</head>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<style>
+	#btn {
+		float: right;
+	}
+	.buttons{
+		text-align: right;
+	}
+</style>
 <script>
 	$(document).ready(function(){
 		//상품코드 유효성
@@ -64,33 +64,56 @@
 		});
 	});
 </script>
-<body>
-<h1>반품상품 수정 폼</h1>
-
-<form action="/modifyHeadDump.do" method="POST" id="modifyHeadDumpForm">
-		<div>
-			<label>판매 불가 상품 코드</label> 
-			<input type="text" name="headDumpCode" value="${headDump.headDumpCode }" readonly="readonly">
+<div id="page-wrapper">
+	<div class="row">
+		<div class="col-lg-12">
+			<h1 class="page-header">판매불가 상품 수정</h1>
 		</div>
-		<div>
-			<label>상품코드: </label>
-			<input type="text" name="hItemCode" id="hItemCode" value="${headDump.hItemCode }">
-			<span id="hItemCodeHelper"></span>
+		<!-- /.col-lg-12 -->
+	</div>
+	<!-- /.row -->
+	<div class="row">
+		<div class="col-lg-9">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					상세 수정
+					<span id="btn">
+						<a href="/viewHeadDumpDetail.do?headDumpCode=${headDump.headDumpCode }">돌아가기</a>
+					</span>
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-lg-6">
+							<form id="modifyHeadDumpForm" role="form" action="/modifyHeadDump.do" method="POST">
+								<div class="form-group">
+									<label>판매불가코드</label> 
+									<input class="form-control" name="headDumpCode" value="${headDump.headDumpCode }" readonly="readonly"/>
+								</div>
+								<div class="form-group">
+									<label>상품코드</label> 
+									<input class="form-control" name="hItemCode" id="hItemCode" value="${headDump.hItemCode}" required="required"/>
+									<span id="hItemCodeHelper"></span>
+								</div>
+								<div class="form-group">
+									<label>개별상품코드</label> 
+									<input class="form-control" name="specificItemCode" id="specificItemCode" value="${headDump.specificItemCode}" required="required"/>
+									<span id="specificItemCodeHelper"></span>
+								</div>
+								<div class="form-group">
+									<label>폐기사유</label> 
+									<input class="form-control" name="headDumpReason" id="headDumpReason" value="${headDump.headDumpReason}" required="required"/>
+									<span id="headDumpReasonHelper"></span>
+								</div>
+								<div class="buttons">
+									<input type="submit" id="modifyFormBtn" class="btn btn-default" value="저장">
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
-		
-		<div>
-			<label>개별상품 코드: </label>
-			<input type="text" name="specificItemCode" id="specificItemCode"  value="${headDump.specificItemCode }">
-			<span id="specificItemCodeHelper"></span>
-		</div>
-		<div>
-			<label>폐기 사유: </label>  
-			<input type="text" name="headDumpReason" id="headDumpReason" value="${headDump.headDumpReason }">
-			<span id="headDumpReasonHelper"></span>
-		</div>
-		<div>
-			<input type="button" value="수정" id="modifyBtn">
-		</div>
-	</form>
+	</div>
+</div>
 </body>
-</html>
+</html>	

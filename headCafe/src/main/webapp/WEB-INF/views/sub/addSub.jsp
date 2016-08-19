@@ -29,17 +29,17 @@
 							<form action="/addSub.do" role="form" method="POST" id="addForm">
 								<div class="form-group">
 									<label>가맹점명</label> 
-									<input class="form-control" name="subName" id="subName" value=""  required="required" />
+									<input class="form-control" name="subName" id="subName" required="required" />
 								</div>
 								<div class="form-group">
 									<label>점주명</label> 
-									<input class="form-control" name="subOwner" id="subOwner" value="" required="required"/>
+									<input class="form-control" name="subOwner" id="subOwner" required="required"/>
 								</div>
 								<div class="form-group phone-group">
 									<label>연락처</label> 
-									<input class="form-control" name="subPhoneFirst" id="subPhoneFirst" value="" required="required"/>-
-									<input class="form-control" name="subPhoneSecond" id="subPhoneSecond" value="" required="required"/>-
-									<input class="form-control" name="subPhoneThird" id="subPhoneThird" value="" required="required"/>
+									<input class="form-control" name="subPhoneFirst" id="subPhoneFirst" required="required"/>-
+									<input class="form-control" name="subPhoneSecond" id="subPhoneSecond" required="required"/>-
+									<input class="form-control" name="subPhoneThird" id="subPhoneThird" required="required"/>
 								</div>
 								<div class="form-group">
 									<label>우편번호</label> 
