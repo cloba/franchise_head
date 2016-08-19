@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
 import org.ksmart.franchise.head.recipe.model.Recipe;
 import org.ksmart.franchise.head.recipe.model.RecipeCommand;
 import org.ksmart.franchise.head.util.Search;
@@ -18,11 +19,12 @@ public class RecipeDaoImpl implements RecipeDao{
 	
 	@Autowired   
 	private SqlSessionTemplate sqlSessionRecipe;
+	Logger log = Logger.getLogger(this.getClass());
 	
 	//레시피 리스트보는 메서드
 	@Override
 	public List<Recipe> viewRecipeList(Recipe recipe, Search search) {
-		System.out.println("RecipeDaoImpl의 viewRecipeList메서드");
+		log.debug("RecipeDaoImpl의 viewRecipeList메서드");
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("recipe", recipe);
 		map.put("search", search);
@@ -33,16 +35,15 @@ public class RecipeDaoImpl implements RecipeDao{
 	//레시피 상세정보 보는 메서드
 	@Override
 	public List<Recipe> viewRecipeDetail(String menuCode) {
-		System.out.println("RecipeDaoImpl의 viewRecipeDetail메서드");
-/*		Map<String, String> map = new HashMap<String, String>();
-		map.put("menuCode", menuCode);*/
+		log.debug("RecipeDaoImpl의 viewRecipeDetail메서드");
 		return sqlSessionRecipe.selectList(NS+".selectRecipeDetail", menuCode);
 	}
+	
 	// 레시피 등록 하는 메서드
 	@Override
 	public int addRecipe(RecipeCommand recipeCommand) {
-		System.out.println("RecipeDaoImpl의 addRecipe메서드");
-		System.out.println("getRecipeActArr::"+recipeCommand.getRecipeActArr().length);
+		log.debug("RecipeDaoImpl의 addRecipe메서드");
+		log.debug("getRecipeActArr::"+recipeCommand.getRecipeActArr().length);
 		int result = 0;
 		for(int i=0;  i<recipeCommand.getRecipeActArr().length; i++){
 			recipeCommand.setRecipeAct(recipeCommand.getRecipeActArr()[i]);
@@ -53,8 +54,6 @@ public class RecipeDaoImpl implements RecipeDao{
 			
 			result = sqlSessionRecipe.insert(NS+".insertAddRecipe", map);
 		}
-		
 		return result;
 	}
-	
 }

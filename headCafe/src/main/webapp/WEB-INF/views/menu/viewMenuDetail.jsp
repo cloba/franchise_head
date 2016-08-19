@@ -59,16 +59,16 @@
                        </div>
                         <!-- /.panel-body -->
                     </div>
+                    <div class="select">
+						<c:if test="${menu.recipeIdentify != 0}">
+							<a href="/viewRecipeDetail.do?menuCode=${menu.menuCode}">레시피보기</a>
+						</c:if>
+						<c:if test="${menu.recipeIdentify == 0}">
+							<a href="/addRecipe.do?menuCode=${menu.menuCode}">레시피 등록</a>
+						</c:if>
+					</div>
                     <!-- /.panel -->
                 </div>
-			</div>
-			<div class="select">
-				<c:if test="${menu.recipeIdentify ne 0}">
-					<a href="/viewRecipeDetail.do?menuCode=${menu.menuCode}">레시피보기</a>
-				</c:if>
-				<c:if test="${menu.recipeIdentify eq 0}">
-					<a href="/addRecipe.do?menuCode=${menu.menuCode}">레시피 등록</a>
-				</c:if>
 			</div>
        </div>
      </div>

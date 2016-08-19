@@ -1,20 +1,22 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
-<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
 <style>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css"/>
 </style>
-</head>
-<body>
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<style>
+	#btn {
+		float: right;
+	}
+	.post{
+		display: inline;
+	}
+	
+	.buttons{
+		text-align: right;
+	}
+</style>
 <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
 <script>
-
 
 	$(document).ready(function(){
 		
@@ -69,33 +71,61 @@
 		
 	});
 </script>
-<!-- 메뉴를 수정하는 페이지입니다 -->
-<h1>메뉴 수정!</h1>
-	<form name="addForm" action="/headModifyMenu.do" method="post">
-		<!-- 메뉴정보입력 -->
-		<div> 
-		메뉴이름: <input type="text" name="menuName" id="menuName" value="${menu.menuName }" required="required" /> 
+
+<div id="page-wrapper">
+	<div class="row">
+		<div class="col-lg-12">
+			<h1 class="page-header">메뉴 수정</h1>
 		</div>
-		<div> 
-		소비자가격: <input type="text" name="menuSellingPrice" value="${menu.menuSellingPrice}" required="required"/> 
-		</div>
-		<hr/>
-		
-		<div id="addIngreDiv">
-		<!-- 재료정보입력 -->재료정보
-		<c:forEach var="ingreList" items="${ingreList}">
-			<div> 
-			재료이름: <input type="text" id="ingreName0" class="ingreName" name="hItemCodeArr" value="${ingreList.ingreName}" required="required"/> 
+		<!-- /.col-lg-12 -->
+	</div>
+	<!-- /.row -->
+	<div class="row">
+		<div class="col-lg-9">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					menu
+					<span id="btn">
+						<a href="/viewMenuDetail.do?menuCode=${menu.menuCode}">돌아가기</a>
+					</span>
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-lg-6">
+							<form role="form" action="/headModifyMenu.do" method="POST">
+								<div class="form-group">
+									<label>메뉴명</label> 
+									<input class="form-control" name="menuName" id="menuName" value="${menu.menuName }" readonly="readonly"/>
+								</div>
+								<div class="form-group">
+									<label>소비자가격</label> 
+									<input class="form-control" name="menuSellingPrice" value="${menu.menuSellingPrice}" required="required"/>
+								</div>
+								<br><br>
+								<div id="addIngreDiv"></div>
+								<c:forEach var="ingreList" items="${ingreList}">
+									<div class="form-group">
+										<strong>재료정보</strong>
+										<label>재료이름</label> 
+										<input class="form-control" id="ingreName0" class="ingreName" name="hItemCodeArr" value="${ingreList.ingreName}" required="required"/>
+									</div>
+									<div class="form-group">
+										<label>사용량</label> 
+										<input class="form-control" name="ingreAmountArr" value="${ingreList.ingreAmount}" required="required"/>
+										<p id="unit0"></p>
+									</div>
+								</c:forEach>
+								<div class="buttons">
+									<input type="button" id="addIngreBtn" class="btn btn-default" value="재료추가">
+									<input type="submit" class="btn btn-default" value="저장">
+								</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
-			<div> 
-			사용량: <input type="text" name="ingreAmountArr" value="${ingreList.ingreAmount}" required="required"/> 
-			</div>
-			<p id="unit0"></p>
-		</c:forEach>
 		</div>
-		
-		<input type="button" id="addIngreBtn" value="재료추가"/>
-		<input type="submit" value="저장">
-	</form>
+	</div>
 </body>
 </html>

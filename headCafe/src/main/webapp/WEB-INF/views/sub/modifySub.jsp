@@ -1,12 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
 <script type="text/javascript" src="resources/js/addressAPI.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <style>
 	#btn {
 		float: right;
 	}
-
+	.buttons{
+		text-align: right;
+	}
+	.post{
+		display: inline;
+	}
 	/* .phoneSelect{
 
 		width: 10%;
@@ -20,14 +24,6 @@
 	.phone{
 		width: 100%;
 	} */
-	
-	.post{
-		display: inline;
-	}
-	
-	.buttons{
-		text-align: right;
-	}
 </style>
 
 <div id="page-wrapper">

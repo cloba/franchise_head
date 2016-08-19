@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
 import org.ksmart.franchise.head.item.model.Item;
 import org.ksmart.franchise.head.menu.model.Menu;
 import org.ksmart.franchise.head.menu.model.MenuDomain;
@@ -22,14 +23,14 @@ public class MenuDaoImpl implements MenuDao {
 	
 	@Autowired
 	private SqlSessionTemplate sqlSessionMenu;
-	
 	@Autowired   
 	private SqlSessionTemplate sqlSessionRecipe;
 	
+	Logger log = Logger.getLogger(this.getClass());
+	
 	// menu의 정보를 보여주는 메서드입니다
 	public List<Menu> viewMenuList(Search menuSearch) {
-		System.out.println("MenuDaoImpl의 viewItemList 메서드 호출");
-		
+		log.debug("MenuDaoImpl의 viewItemList 메서드 호출");
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("menuSearch", menuSearch);
 		
@@ -39,8 +40,7 @@ public class MenuDaoImpl implements MenuDao {
 	@Override
 	// menu의 상세정보를 불러오는 메서드입니다
 	public Menu getMenuDetail(String menuCode) {
-		System.out.println("MenuDaoImpl의 getMenuDetail 메서드 호출");
-		
+		log.debug("MenuDaoImpl의 getMenuDetail 메서드 호출");
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("menuCode", menuCode);
 		
@@ -50,7 +50,7 @@ public class MenuDaoImpl implements MenuDao {
 	@Override
 	// 한 menu의 재료 정보를 불러오는 메서드 입니다
 	public List<MenuIngre> getIngre(String menuCode) {
-		System.out.println("MenuDaoImpl의 getIngre 메서드 호출");
+		log.debug("MenuDaoImpl의 getIngre 메서드 호출");
 		
 		//Mapper로 보낼 menuCode를 map에 담습니다
 		Map<String, String> map = new HashMap<String, String>();
@@ -66,7 +66,7 @@ public class MenuDaoImpl implements MenuDao {
 	@Override
 	// menu를 추가하는 메서드입니다
 	public String addMenu(MenuDomain menu) {
-		System.out.println("MenuDaoImpl의 addMenu 메서드 호출");
+		log.debug("MenuDaoImpl의 addMenu 메서드 호출");
 		
 		String menuCode = null;
 		
@@ -74,7 +74,7 @@ public class MenuDaoImpl implements MenuDao {
 		map.put("menu", menu);
 		
 		int result = sqlSessionMenu.insert(NS+".insertMenu", map);
-		System.out.println("result addMenu===> "+result);
+	//	log.debug("result addMenu===> "+result);
 		
 		if( result != 0 ){
 			//menu에 추가된 데이터의 PK값을 받습니다
@@ -88,7 +88,7 @@ public class MenuDaoImpl implements MenuDao {
 	@Override
 	//재료를 검색합니다
 	public List<Item> searchIngre(String ingreName) {
-		System.out.println("MenuDaoImpl의 searchIngre 메서드 호출");
+		log.debug("MenuDaoImpl의 searchIngre 메서드 호출");
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("itemName", ingreName);
@@ -100,11 +100,11 @@ public class MenuDaoImpl implements MenuDao {
 	@Override
 	// menu에 따른 재료를 추가하는 메서드입니다
 	public int addIngre(MenuDomain menu) {
-		System.out.println("MenuDaoImpl의 addIngre 메서드 호출");
+		log.debug("MenuDaoImpl의 addIngre 메서드 호출");
 		int result = 0;
 		
 		for(int i = 0; i<menu.gethItemCodeArr().length; i++){
-			System.out.println("for문 돌아감");
+		//	log.debug("for문 돌아감");
 			
 			menu.sethItemCode(menu.gethItemCodeArr()[i]);
 			menu.setIngreAmount(menu.getIngreAmountArr()[i]);
@@ -113,7 +113,7 @@ public class MenuDaoImpl implements MenuDao {
 			map.put("menu", menu);
 			
 			result = sqlSessionMenu.insert(NS+".insertIngreWithMenu", map);
-			System.out.println("result::::: " + result);
+		//	log.debug("result::::: " + result);
 		}
 		
 		return result;
@@ -122,7 +122,7 @@ public class MenuDaoImpl implements MenuDao {
 	@Override
 	// menu에 따른 재료의 재료값을 업데이트 하는 메서드입니다
 	public int updateMenuIngrePrice(String menuCode) {
-		System.out.println("MenuDaoImpl의 updateMenuIngrePrice 메서드 호출");
+		log.debug("MenuDaoImpl의 updateMenuIngrePrice 메서드 호출");
 		int result = sqlSessionMenu.update(NS+".updateMenuIngrePrice", menuCode);
 		
 		return result;
@@ -131,7 +131,7 @@ public class MenuDaoImpl implements MenuDao {
 	@Override
 	// 추가된 메뉴를 삭제하는 메서드입니다 - MylSAM에서 트랜잭션을 지원하지 않기 때문에 만든 대용 메서드.
 	public void deleteMenu(String menuCode) {
-		System.out.println("MenuDaoImpl의 deleteMenu 메서드 호출");
+		log.debug("MenuDaoImpl의 deleteMenu 메서드 호출");
 		
 		sqlSessionMenu.delete(NS+".deleteMenu", menuCode);
 	}
@@ -139,18 +139,16 @@ public class MenuDaoImpl implements MenuDao {
 	@Override
 	// 추가된 재료를 삭제하는 메서드입니다 - MylSAM에서 트랜잭션을 지원하지 않기 때문에 만든 대용 메서드.
 	public void deleteIngre(String menuCode) {
-		System.out.println("MenuDaoImpl의 deleteIngre 메서드 호출");
+		log.debug("MenuDaoImpl의 deleteIngre 메서드 호출");
 		
 		sqlSessionMenu.delete(NS+".deleteIngre", menuCode);
 	}
 
+	//레시피 
 	@Override
 	public int recipeCount(String menuCode) {
-		System.out.println("MenuDaoImpl의 reciperecipecount 메서드 호출");
+		log.debug("MenuDaoImpl의 reciperecipecount 메서드 호출");
 		
 		return sqlSessionRecipe.selectOne(R+".selectCountRecipe", menuCode);
 	}
-
-
-	
 }
