@@ -19,13 +19,12 @@ public class ContractDaoImpl implements ContractDao {
 	
 	@Autowired
 	private SqlSessionTemplate sqlSessionContract;
-	
 	Logger log = Logger.getLogger(this.getClass());
 
 	@Override
 	//contract리스트를 봅니다
 	public List<Contract> viewContractList(Search contractSearch) {
-		System.out.println("ContractDaoImpl의 viewContractList 메서드 호출");
+		log.debug("ContractDaoImpl의 viewContractList 메서드 호출");
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("contractSearch", contractSearch);
 		return sqlSessionContract.selectList(NS+".selectContract", map);
@@ -34,7 +33,7 @@ public class ContractDaoImpl implements ContractDao {
 	@Override
 	//contract하나의 상세를 봅니다
 	public Contract getContractDetail(String contractCode) {
-		System.out.println("ContractDaoImpl의 getContractDetail 메서드 호출");
+		log.debug("ContractDaoImpl의 getContractDetail 메서드 호출");
 		Contract contract = sqlSessionContract.selectOne(NS+".selectOneContract", contractCode);
 	//	log.debug("contract===> "+contract.toString());
 		return contract;
@@ -43,7 +42,7 @@ public class ContractDaoImpl implements ContractDao {
 	@Override
 	//계약만료 실행 메서드입니다
 	public void expireContract(Contract contract) {
-		System.out.println("ContractDaoImpl의 modifyContract 메서드 호출");
+		log.debug("ContractDaoImpl의 modifyContract 메서드 호출");
 		sqlSessionContract.update(NS+".expireContract", contract);		
 	}
 

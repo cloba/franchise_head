@@ -24,20 +24,17 @@ public class ContractServiceImpl implements ContractService {
 	private ContractDao contractDao;
 	@Resource(name="fileUtils")
     private FileUtils fileUtils;
-	
 	Logger log = Logger.getLogger(this.getClass());
 
 	@Override
 	public List<Contract> viewContractListService(Search contractSearch) {
-		System.out.println("ContractServiceImpl의 viewContractListService메서드 호출");
-		
+		log.debug("ContractServiceImpl의 viewContractListService메서드 호출");
 		return contractDao.viewContractList(contractSearch);
 	}
 
 	@Override
 	public Contract getContractDetailService(String contractCode) {
-		System.out.println("ContractServiceImpl의 getContractDetailService메서드 호출");
-		
+		log.debug("ContractServiceImpl의 getContractDetailService메서드 호출");
 		return contractDao.getContractDetail(contractCode);	
 	}
 

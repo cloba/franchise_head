@@ -47,8 +47,6 @@
 			console.log('클릭')
 			$('#addForm').submit();
 		});
-		
-		
 	});
 </script>
 <script type="text/javascript" src="/resources/js/comma.js"></script>

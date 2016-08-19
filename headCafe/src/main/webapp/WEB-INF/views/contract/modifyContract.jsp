@@ -1,21 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
-<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
 <style>
-	body{
-	 width: 1000px;
-	 margin: 0 auto;
+	#btn {
+		float: right;
+	}
+	.buttons{
+		text-align: right;
 	}
 </style>
-</head>
-<body>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 <script type="text/javascript"> 
-
 	$(document).ready(function(){
 		var target = $('#status').val();
 		console.log(target);
@@ -27,28 +19,58 @@
 			$('#option4').attr('selected','selected');
 		};
 	});
-	
 </script>
-<h1>계약 수정</h1>
-	<form id="modifyForm" action="/modifyContract" method="POST" enctype="multipart/form-data">
-		<div> 
-		계약코드: <input type="text" name="contractCode" value="${contract.contractCode}" readonly="readonly"/> 
+<div id="page-wrapper">
+	<div class="row">
+		<div class="col-lg-12">
+			<h1 class="page-header">계약 수정</h1>
 		</div>
-		<div> 
-		가맹일련번호: <input type="text" id="subCode" name="subCode" value="${contract.subCode}" readonly="readonly"/> 
+		<!-- /.col-lg-12 -->
+	</div>
+	<!-- /.row -->
+	<div class="row">
+		<div class="col-lg-9">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					계약을 수정합니다
+					<span id="btn">
+						<a href="/viewContractDetail.do?contractCode=${contract.contractCode}">돌아가기</a>
+					</span>
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-lg-6">
+							<form id="modifyForm" role="form" action="/modifyContract.do" method="POST" enctype="multipart/form-data">
+								<div class="form-group">
+									<label>계약코드</label> 
+									<input class="form-control" name="contractCode" id="contractCode" value="${contract.contractCode}" readonly="readonly"/>
+								</div>
+								<div class="form-group">
+									<label>가맹일련번호</label> 
+									<input class="form-control" name="subCode" id="subCode" value="${contract.subCode}" readonly="readonly"/>
+								</div>
+								<div class="form-group">
+									<label>계약상태</label> 
+									<select class="form-control" id="contractStatus" name="contractStatus">
+										<option id="option1" value="1">계약중</option>
+										<option id="option2" value="2">계약연기</option>
+										<option id="option4" value="4">계약만료</option>
+									</select>
+								</div>
+								<div class="form-group">
+									<label>첨부파일</label> 
+									${contract.contractFileOriginalName}<input type="file" class="form-control" name="file" required="required"/>
+								</div>
+								<div class="buttons">
+									<input type="submit" id="modifyFormBtn" class="btn btn-default" value="저장">
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
-		<div> 
-		계약상태: 
-			<select id="contractStatus" name="contractStatus">
-				<option id="option1" value="1">계약중</option>
-				<option id="option2" value="2">계약연기</option>
-				<option id="option4" value="4">계약만료</option>
-			</select>
-		</div>
-		<div> 
-		계약서 첨부파일: ${contract.contractFileOriginalName}<input type="file" name="file" required="required"/> 
-		</div>
-		<input type="submit" value="수정"/>
-	</form>
+	</div>
+</div>
 </body>
-</html>
+</html>	
