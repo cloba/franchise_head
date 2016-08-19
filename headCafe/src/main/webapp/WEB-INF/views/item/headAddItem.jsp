@@ -1,46 +1,117 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>아이템 등록화면</title>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 <style>
-	body{
-	 width: 1000px;
-	 margin: 0 auto;
+	#joinBtn {
+		background: hsl(50, 100%, 97%);
+		display: block; height: auto; margin: 0 auto; 
+	}
+	.btns{
+		 margin-left: 300px;
+	}
+	#percent {
+		width: 80%;
+	}
+	.margin {
+		display: inline;
 	}
 </style>
-</head>
-<body>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-<!-- 상품 더블 클릭시 수정 페이지가 open 되는 함수가 있는 js파일 -->
-<script type="text/javascript" src="resources/js/itemListPop.js"></script>
-<!-- head_item에 아이템을 등록하는 페이지입니다 -->
-<h1>아이템 등록</h1>
-	<form name="addForm" action="/headAddItem.do" method="post">
-		<div> 
-		상품명: <input type="text" name="hItemName" id="hItemName" required="required" /> 
+<script>
+	$(document).ready(function(){
+		//단위-EX 선택시 수량 입력 불가능
+		$('.unit').change(function(){
+			var unit = $('.unit:checked').val()
+			if( unit == 'EX' ){
+			//	console.log('EX선택');
+				$('#hItemQuantity').val(1);
+				$('#hItemQuantity').attr('readonly',true);
+			}else{
+				console.log('BOX선택');
+				$('#hItemQuantity').attr('readonly',false);
+			}
+		});
+		
+		//천단위 마다 콤마 찍기
+		$('.comma').blur(function(){
+		//	console.log($(this).val());
+			var result = inputNumberFormat($(this).val());
+			$(this).val(result);
+		});
+		
+		$('.comma').focus(function(){
+		//	console.log('focus');
+			var result = uncomma($(this).val());
+			$(this).val(result);
+		});
+		
+		//test용 form submit
+		$('#addBtn').click(function(){
+			console.log('클릭')
+			$('#addForm').submit();
+		});
+		
+		
+	});
+</script>
+ <script type="text/javascript" src="/resources/js/comma.js"></script>
+<div id="page-wrapper">
+	<div class="row">
+		<div class="col-lg-12">
+			<h1 class="page-header">신규 상품 등록</h1>
 		</div>
-		<div> 
-		아이템 갯수: <input type="text" name="hItemQuantity" required="required"/> 
+	</div>
+	<form action="/headAddItem.do" role="form" method="POST" id="addForm">
+	<div class="row">
+		<div class="col-lg-6">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-lg-6">
+								<div class="form-group">
+									<label>상품명</label> 
+									<input class="form-control" name="hItemName" id="hItemName" required="required" />
+								</div>
+								<div class="form-group">
+									<label>단위</label> 
+									<div>
+										<input type="radio" class="unit" name="hItemUnit" id="unitBox" value="BOX" required="required"/> 박스
+										<input type="radio" class="unit" name="hItemUnit" id="unitEx" value="EX"/> 개별
+									</div>
+								</div>
+								<div class="form-group">
+									<label>수량</label> 
+									<input class="form-control" name="hItemQuantity" id="hItemQuantity" required="required" />
+								</div>
+								<div class="form-group">
+									<label>매입가</label> 
+									<input class="form-control comma" name="hItemPurchasePrice" id="hItemPurchasePrice" required="required" />
+								</div>
+								<div class="form-group">
+									<label>이익율</label> 
+									<div class="margin">
+										<input id="percent" type="text" class="form-control" name="hItemMarginPercent" id="hItemMarginPercent" required="required" />
+										<span>%</span>
+									</div>
+								</div>
+								<div class="form-group">
+									<label>소비자금액</label> 
+									<input class="form-control comma" name="hItemRetailPrice" id="hItemRetailPrice" required="required" />
+								</div>
+								<div class="form-group">
+									<label>매입처</label> 
+									<input class="form-control" name="headClientCode" id="headClientCode" required="required" />
+								</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="btns">
+				<a class="btn btn-default" href="/viewItemList.do">돌아가기</a>
+				<input type="button" id="addBtn" class="btn btn-default" value="등록">
+			</div>
+			</form>
 		</div>
-		<div> 
-		단위: <input type="radio" name="hItemUnit" value="BOX" required="required"/> 박스
-			<input type="radio" name="hItemUnit" value="EX"/> 개별
-		</div>
-		<div> 
-		매입금액: <input type="text" name="hItemPurchasePrice" required="required"/> 
-		</div>
-		<div> 
-		이익율: <input type="text" name="hItemMarginPercent" required="required" /> %
-		</div>
-		<div> 
-		소비자 금액: <input type="text" name="hItemRetailPrice" required="required" /> 
-		</div>
-		<div> 
-		매입처: <input type="text" name="headClientCode" required="required" /> 
-		</div>
-		<input type="submit" value="저장">
-	</form>
-</body>
+		
+	</body>
 </html>

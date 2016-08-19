@@ -1,61 +1,123 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
-<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 <style>
-	body{
-	 width: 1000px;
-	 margin: 0 auto;
+	#btn {
+		float: right;
+	}
+	.buttons{
+		text-align: right;
 	}
 </style>
-</head>
-<body>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-<h1>상품 수정</h1>
-	<form id="modifyForm" action="/headModifyItem.do" method="post">
-		<div> 
-		상품명: <input type="text" id="hItemName" name="hItemName" value="${item.hItemName}" required="required"/> 
+<script>
+	$(document).ready(function(){
+		//단위-EX 선택시 수량 입력 불가능
+		$('.unit').change(function(){
+			var unit = $('.unit:checked').val()
+			console.log('unit:'+unit);
+			if( unit == 'EX' ){
+				console.log('EX선택');
+				$('#hItemQuantity').val(1);
+				$('#hItemQuantity').attr('readonly',true);
+			}else{
+				console.log('BOX선택');
+				$('#hItemQuantity').attr('readonly',false);
+			}
+		});
+		
+		//천단위 마다 콤마 찍기
+		$('.comma').blur(function(){
+		//	console.log($(this).val());
+			var result = inputNumberFormat($(this).val());
+			$(this).val(result);
+		});
+		
+		$('.comma').focus(function(){
+		//	console.log('focus');
+			var result = uncomma($(this).val());
+			$(this).val(result);
+		});
+	});
+</script>
+<script type="text/javascript" src="/resources/js/comma.js"></script>
+<div id="page-wrapper">
+	<div class="row">
+		<div class="col-lg-12">
+			<h1 class="page-header">상품 수정</h1>
 		</div>
-		<div> 
-		상품코드: <input type="text" id="hItemCode" name="hItemCode" value="${item.hItemCode}" readonly="readonly"/> 
-		</div>
-		<div> 
-		통합코드: <input type="text" value="${item.inteCode}" readonly="readonly"/> 
-		</div>
-		<div> 
-		아이템 갯수: <input type="text" name="hItemQuantity" value="${item.hItemQuantity}" required="required"/> 
-		</div>
-		<c:if test="${item.hItemUnit eq 'BOX'}">
-			<div> 
-			단위: <input type="radio" name="hItemUnit" value="BOX" checked="checked"/> 박스
-				<input type="radio" name="hItemUnit" value="EX"/> 개별
+		<!-- /.col-lg-12 -->
+	</div>
+	<!-- /.row -->
+	<div class="row">
+		<div class="col-lg-9">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					item - <strong>${item.hItemName}</strong>
+					<span id="btn">
+						<a href="/viewItemDetail.do?hItemCode=${item.hItemCode}">돌아가기</a>
+					</span>
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-lg-6">
+							<form id="modifyForm" role="form" action="/headModifyItem.do" method="POST">
+								<div class="form-group">
+									<label>상품명</label> 
+									<input class="form-control" name="hItemName" id="hItemName" value="${item.hItemName}" required="required"/>
+								</div>
+								<div class="form-group">
+									<label>상품코드</label> 
+									<input class="form-control" name="hItemCode" id="hItemCode" value="${item.hItemCode}" readonly="readonly"/>
+								</div>
+								<div class="form-group">
+									<label>통합코드</label> 
+									<input class="form-control" name="inteCode" id="inteCode" value="${item.inteCode}" readonly="readonly"/>
+								</div>
+								<div class="form-group">
+									<c:if test="${item.hItemUnit eq 'BOX'}">
+										<label>단위</label> 
+										<input type="radio" class="unit" name="hItemUnit" value="BOX" checked="checked"/> 박스
+										<input type="radio" class="unit" name="hItemUnit" value="EX"/> 개별
+									</c:if>
+									<c:if test="${item.hItemUnit eq 'EX'}">
+										<label>단위</label> 
+										<input type="radio" class="unit" name="hItemUnit" value="BOX"/> 박스
+										<input type="radio" class="unit" name="hItemUnit" value="EX" checked="checked"/> 개별
+									</c:if>
+								</div>
+								<div class="form-group">
+									<label>아이템 갯수</label> 
+									<input class="form-control" id="hItemQuantity" name="hItemQuantity" value="${item.hItemQuantity}" required="required"/>
+								</div>
+								<div class="form-group">
+									<label>매입가격</label> 
+									<input class="form-control comma" name="hItemPurchasePrice" value="<fmt:formatNumber value="${item.hItemPurchasePrice}" pattern="#,###"/>" required="required"/>
+								</div>
+								<div class="form-group">
+									<label>이익률</label> 
+									<input class="form-control" name="hItemMarginPercent" value="${item.hItemMarginPercent}" required="required"/>%
+								</div>
+								<div class="form-group">
+									<label>판매가격</label> 
+									<input class="form-control comma" name="hItemSellingPrice" value="<fmt:formatNumber value="${item.hItemSellingPrice}" pattern="#,###"/>" required="required"/>
+								</div>
+								<div class="form-group">
+									<label>소비자가격</label> 
+									<input class="form-control comma" name="hItemRetailPrice" value="<fmt:formatNumber value="${item.hItemRetailPrice}" pattern="#,###"/>" required="required"/>
+								</div>
+								<div class="form-group">
+									<label>매입처</label> 
+									<input class="form-control" name="headClientCode" value="${item.headClientCode}" required="required"/>
+								</div>
+								<div class="buttons">
+									<input type="submit" id="modifyFormBtn" class="btn btn-default" value="저장">
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
 			</div>
-		</c:if>
-		<c:if test="${item.hItemUnit eq 'EX'}">
-			<div> 
-			단위: <input type="radio" name="hItemUnit" value="BOX"/> 박스
-				<input type="radio" name="hItemUnit" value="EX" checked="checked"/> 개별
-			</div>
-		</c:if>
-		<div> 
-		매입금액: <input type="text" name="hItemPurchasePrice" value="${item.hItemPurchasePrice}" required="required"/> 
 		</div>
-		<div> 
-		이익율: <input type="text" name="hItemMarginPercent" value="${item.hItemMarginPercent*100}" required="required"/>%
-		</div>
-		<div> 
-		가맹에 파는 금액: <input type="text" value="${item.hItemSellingPrice}" readonly="readonly"/>
-		</div>
-		<div> 
-		소비자 금액: <input type="text" name="hItemRetailPrice" value="${item.hItemRetailPrice}" required="required"/> 
-		</div>
-		<div> 
-		매입처: <input type="text" name="headClientCode" value="${item.headClientCode}" required="required"/> 
-		</div>
-		<button>저장</button>
-	</form>
+	</div>
+</div>
 </body>
-</html>
+</html>	

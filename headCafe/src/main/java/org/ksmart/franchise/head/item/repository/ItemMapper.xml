@@ -46,23 +46,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	
 	<!-- head_item의 리스트를 봅니다 (검색포함)-->
-	<select id="selectItem" parameterType="java.util.Map" resultMap="itemResultMap">
+	<select id="selectItem" parameterType="org.ksmart.franchise.head.util.Search" resultMap="itemResultMap">
 		SELECT h_item_code, h_item_name, inte_code, h_item_quantity, h_item_unit, h_item_purchase_price, h_item_regit_date, head_staff_id, head_client_code 
 		FROM head_item
 		<where>
-			<if test="search.regitDateStart != null and search.regitDateEnd != null and search.egitDateStart !='' and search.regitDateEnd !=''">
-				<![CDATA[date(h_item_regit_date) >= #{search.regitDateStart} and date(h_item_regit_date) <= #{search.regitDateEnd}]]>  
+			<if test="regitDateStart != null and regitDateEnd != null and regitDateStart !='' and regitDateEnd !=''">
+				<![CDATA[date(h_item_regit_date) >= #{regitDateStart} and date(h_item_regit_date) <= #{regitDateEnd}]]>  
 			</if>
-			<if test="search.searchKey != null and search.searchKey != '' and search.searchItem != null and search.searchItem != ''">
-				AND  ${search.searchKey} like CONCAT('%',#{search.searchItem},'%') 
+			<if test="searchKey != null and searchKey != '' and searchItem != null and searchItem != ''">
+				AND  ${searchKey} like CONCAT('%',#{searchItem},'%') 
 			</if> 
 		</where> 
 		<trim prefix="ORDER BY">
-			<if test="search.criteria == null or search.criteria == ''">
+			<if test="criteria == null or criteria == ''">
 				h_item_regit_date
 			</if>
-			<if test="search.criteria != null or search.criteria != ''">
-				${search.criteria} ${search.upDown}
+			<if test="criteria != null or criteria != ''">
+				${criteria} ${upDown}
 			</if>
 		</trim>
 	</select>

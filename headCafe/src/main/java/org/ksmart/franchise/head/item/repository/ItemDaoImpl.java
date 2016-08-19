@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
 import org.ksmart.franchise.head.item.model.HeadLogin;
 import org.ksmart.franchise.head.item.model.Item;
 import org.ksmart.franchise.head.item.model.ItemCommand;
@@ -19,6 +20,7 @@ public class ItemDaoImpl implements ItemDao{
 	
 	@Autowired
 	private SqlSessionTemplate sqlSessionItem;
+	Logger log = Logger.getLogger(this.getClass());
 	
 	@Override
 	// head_item을 추가하는 메서드입니다
@@ -39,12 +41,8 @@ public class ItemDaoImpl implements ItemDao{
 	@Override
 	// head_item의 목록을 보여주는 메서드입니다
 	public List<Item> viewItemList(Search search) {
-		System.out.println("ItemDaoImpl의 viewItemList 메서드 호출");
-		
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("search", search);
-		
-		return sqlSessionItem.selectList(NS+".selectItem", map);
+		log.debug("ItemDaoImpl의 viewItemList 메서드 호출");
+		return sqlSessionItem.selectList(NS+".selectItem", search);
 	}
 	
 	@Override
