@@ -22,7 +22,7 @@ import org.springframework.web.bind.support.SessionStatus;
 @SessionAttributes("login")
 public class HeadStaffController {
 	
-	@ModelAttribute("headStaffLogin")
+	@ModelAttribute("login")
 	public HeadStaffLogin headStaffLogin(){
 		return new HeadStaffLogin();
 	}
@@ -47,7 +47,6 @@ public class HeadStaffController {
 	public String logout(SessionStatus sessionStatus){
 		log.debug("HeadStaffController의 logout실행");
 		sessionStatus.setComplete();
-		
 		return "redirect:/";
 	}
 	
@@ -93,10 +92,11 @@ public class HeadStaffController {
 	
 	//본사 직원리스트 보는 메서드(박종무 0722) 
 	@RequestMapping(value="/viewHeadStaffList.do", method=RequestMethod.GET)
-	public String ViewHeadStaffList(Model model, HeadStaffSearch headStaffSearch, HeadStaff headStaff) {
+	public String ViewHeadStaffList(Model model, HeadStaffSearch headStaffSearch, HeadStaff headStaff, @ModelAttribute("login") HeadStaffLogin login) {
 		log.debug("HeadStaffController의 ViewHeadStaffList메서드 ");
 	//	log.debug("SearchHeadStaffInfo :"+headStaffSearch.getSearchHeadStaffInfo());
 	//	log.debug("SearchHeadStaffKey :"+headStaffSearch.getSearchHeadStaffKey());
+		log.debug("login:::::::::::::::"+login.toString());
 		resignIdentify = "N";
 		headStaff.setResignIdentify(resignIdentify);
 		  

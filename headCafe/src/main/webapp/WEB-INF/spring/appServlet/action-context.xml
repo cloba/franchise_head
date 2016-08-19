@@ -18,7 +18,11 @@
         <mvc:interceptor>
 			<mvc:mapping path="/**/*.do"/>
 			<!-- <mvc:exclude-mapping path="/org/ksmart/franchise/HomeController"/> -->
-		    <bean id="sessionInterceptor" class="org.ksmart.franchise.head.util.session.SessionInterceptor"/>
+		    <bean id="sessionInterceptor" class="org.ksmart.franchise.head.util.session.SessionInterceptor">
+
+		    </bean>
+		    
+		    
 	    </mvc:interceptor>
     </mvc:interceptors>
      

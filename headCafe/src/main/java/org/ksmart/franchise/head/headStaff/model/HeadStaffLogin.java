@@ -1,5 +1,8 @@
 package org.ksmart.franchise.head.headStaff.model;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class HeadStaffLogin {
 
 	private String headStaffId;
