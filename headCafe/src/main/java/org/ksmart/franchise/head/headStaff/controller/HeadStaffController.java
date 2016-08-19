@@ -22,7 +22,7 @@ import org.springframework.web.bind.support.SessionStatus;
 @SessionAttributes("login")
 public class HeadStaffController {
 	
-	@ModelAttribute("headStaffLogin")
+	@ModelAttribute("login")
 	public HeadStaffLogin headStaffLogin(){
 		return new HeadStaffLogin();
 	}
@@ -47,7 +47,6 @@ public class HeadStaffController {
 	public String logout(SessionStatus sessionStatus){
 		log.debug("HeadStaffController의 logout실행");
 		sessionStatus.setComplete();
-		
 		return "redirect:/";
 	}
 	
@@ -97,6 +96,7 @@ public class HeadStaffController {
 		log.debug("HeadStaffController의 ViewHeadStaffList메서드 ");
 	//	log.debug("SearchHeadStaffInfo :"+headStaffSearch.getSearchHeadStaffInfo());
 	//	log.debug("SearchHeadStaffKey :"+headStaffSearch.getSearchHeadStaffKey());
+	//	log.debug("login:::::::::::::::"+login.toString());
 		resignIdentify = "N";
 		headStaff.setResignIdentify(resignIdentify);
 		  

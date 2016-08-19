@@ -3,26 +3,32 @@ package org.ksmart.franchise.head.stock.controller;
 import java.util.List;
 
 import org.apache.log4j.Logger;
+import org.ksmart.franchise.head.headStaff.model.HeadStaffLogin;
 import org.ksmart.franchise.head.stock.model.Stock;
 import org.ksmart.franchise.head.stock.service.StockService;
 import org.ksmart.franchise.head.util.Search;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
+@SessionAttributes("login")
 public class StockController {
 	
 	@Autowired
 	private StockService stockService;
 	Logger log = Logger.getLogger(this.getClass());
 	
+
 	//재고리스트 조회 메서드
 	@RequestMapping(value="/viweHeadStockList.do")
-	public String viweHeadStrockList(Model model, Search search){
+	public String viweHeadStrockList(Model model, Search search, @ModelAttribute("login") HeadStaffLogin login){
 		log.debug("StockController의 viweHeadStrockList 메서드");
+		log.debug("login stock:::::::::::::::"+login.toString());
 		//재고리스트 받아옴
 		List<Stock> list = stockService.viweHeadStrockList(search);
 	//	log.debug("list size :"+list.size());
