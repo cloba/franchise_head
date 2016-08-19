@@ -1,22 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
 <style>
-	body{
-	 width: 1000px;
-	 margin: 0 auto;
+	.nav nav-tabs:HOVER {
+	}
+	.form-control, .form-group {
+		width: 250px;
+		height: 31px;
+		display: inline;
+	}
+	#p {
+		text-align: center;
+	}
+	#addBtn {
+		float: right;
 	}
 </style>
-</head>
-<body>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-<!-- 검색과 정렬 유효성 검사하는 함수가 있는 js파일 -->
-<script type="text/javascript" src="resources/js/validation.js"></script>
 <script>
 
 	$(document).ready(function(){
@@ -42,80 +39,89 @@
 			$('#upDown').val('DESC');
 			$('#paymentList').submit();
 		});
-		
-		
-		/* 검색 버튼 눌렀을 때 유효성 검사 */
-	/* 	$('#searchBtn').click(function(){
-			console.log('버튼클릭');
-			searchValid($('#menuList'));
-		});
-		
-		$('#nameUp').click(function(){
-			upDown('nameUp',$('#menuList'));
-		});
-		
-		$('#nameDown').click(function(){
-			upDown('nameDown',$('#menuList'));
-		}); */
-		
 	});
-
 </script>
-<h1>결제방식 리스트</h1>
-	<!-- 결제방식 검색 -->
-	<form name="paymentList" id="paymentList" action="/viewPaymentList.do" method="post">
-		<!-- 오름차/내림차순 정렬을 위한 input 태그 -->
-		<input type="hidden" name="criteria" id="criteria" value=""/>
-		<input type="hidden" name="upDown" id="upDown" value=""/>
-		
-		<!-- 적용/미적용 조건 적용을 위한 input 태그 -->
-		<input type="hidden" name="status" value="${search.status}"/>
-	
-		<select id="searchKey" name="searchKey">
-			<option value="">::선택::</option>
-			<option value="pay_method_code" <c:if test="${search.searchKey eq 'pay_method_code'}">selected="selected"</c:if>>결제방식 코드</option>
-			<option value="pay_method" <c:if test="${search.searchKey eq 'pay_method'}">selected="selected"</c:if>>결제 방식</option>
-		</select>
-		<input type="text" id="searchItem" name="searchItem" value="${search.searchItem}"/>
-		<input type="submit" id="searchBtn" value="검색"/>
-	</form>
-	
-	<br>
-	<!-- 마감여부에 따른 a태그 분리 -->
-		<c:if test="${search.status == 'Y'}"> 
-			<a href="/viewPaymentList.do?status=N">[미적용 결제방식 보기]</a>
-			<a href="/viewPaymentList.do">[전체 결제방식 보기]</a>
-		</c:if>
-		<c:if test="${search.status == 'N'}"> 
-			<a href="/viewPaymentList.do?status=Y">[적용중인 결제방식 보기]</a>
-			<a href="/viewPaymentList.do">[전체 결제방식 보기]</a>
-		</c:if>
-		<c:if test="${search.status == null}">
-			<a href="/viewPaymentList.do?status=N">[미적용 결제방식 보기]</a> 
-			<a href="/viewPaymentList.do?status=Y">[적용중인 결제방식 보기]</a>
-		</c:if>	
-	
-	
-	<!-- 조회 결과 -->
-	<table border="1">
-		<tr>
-			<th>
-				결제방식 코드
-				<span id="codeUp">▲</span>
-				<span id="codeDown">▼</span>
-			</th>
-			<th>결제방식</th>
-			<th>수익</th>
-		</tr>
-		<c:forEach var="list" items="${paymentList}">
-			<tr>
-				<th><a href="/viewPaymentDetail.do?payMethodCode=${list.payMethodCode}">${list.payMethodCode}</a></th>
-				<th>${list.payMethod}</th>
-				<th>${list.profitPercent}%</th>
-			</tr>
-		</c:forEach>
-	</table>
-	<a href="/addPaymentForm.do">[신규등록]</a>
-	<a href="/">[홈으로]</a>
+<!-- Page Content -->
+	<div id="page-wrapper">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-lg-12">
+					<h1 class="page-header">결제방식 목록</h1>
+				</div>
+				<!-- /.col-lg-12 -->
+				</div>
+				<div class="panel-body">
+				<!-- Nav tabs -->
+				<ul class="nav nav-tabs">
+					<li class="active"><a href="/viewPaymentList.do">전체목록</a>
+					</li>
+					<li><a href="/viewPaymentList.do?status=N">미적용 목록</a>
+					</li>
+					<li><a href="/viewPaymentList.do?status=Y">적용 목록</a>
+					</li>
+				</ul> 
+				<div class="row">
+				<div class="col-lg-12">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<!-- 검색 -->
+							<form id="paymentList" action="/viewPaymentList.do" method="post">
+								<!-- 오름차/내림차순 정렬을 위한 input 태그 -->
+								<input type="hidden" name="criteria" id="criteria" value=""/>
+								<input type="hidden" name="upDown" id="upDown" value=""/>
+								<!-- 적용/미적용 조건 적용을 위한 input 태그 -->
+								<input type="hidden" name="status" value="${search.status}"/>
+								
+								<div class="form-group">
+								<label>키워드검색</label>
+								<select class="form-control" id="searchKey" name="searchKey">
+									<option value="">::선택::</option>
+									<option value="pay_method_code" <c:if test="${search.searchKey eq 'pay_method_code'}">selected="selected"</c:if>>결제방식 코드</option>
+									<option value="pay_method" <c:if test="${search.searchKey eq 'pay_method'}">selected="selected"</c:if>>결제 방식</option>
+								</select>
+								<!-- 검색어와 검색버튼 -->
+								<input type="text" class="form-control" id="searchItem" name="searchItem" value="${search.searchItem}"/>
+								</div>
+								<input type="button" class="btn btn-default" id="searchBtn" value="search"/>
+							</form>
+							</div>
+						<!-- /.panel-heading -->
+ 						<div class="panel-body">
+							<div class="dataTable_wrapper fa col-lg-12">
+								<table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+									<thead>
+										<tr>
+											<th>결제방식 코드
+												<span id="codeUp" class="fa-sort-up"></span>
+												<span id="codeDown" class="fa-sort-down"></span>
+											</th>
+											<th>결제방식</th>
+											<th>수익</th>
+										</tr>
+									</thead>
+									<tbody>
+										<c:forEach var="list" items="${paymentList}">
+											<tr>
+												<td><a href="/viewPaymentDetail.do?payMethodCode=${list.payMethodCode}">${list.payMethodCode}</a></td>
+												<td>${list.payMethod}</td>
+												<td>${list.profitPercent}%</td>
+											</tr>
+										</c:forEach>
+									</tbody>
+                               </table>
+                           </div>
+                       </div>
+                       
+                       <!-- /.panel-body -->
+                   </div>
+                   <!-- /.panel -->
+               </div>
+               <!-- /.col-lg-12 -->
+           </div>
+           <a id="addBtn" class="btn btn-default" href="/addPaymentForm.do">신규등록</a>
+		</div>
+         <!-- /.container-fluid -->
+     </div>
+     </div>
 </body>
 </html>

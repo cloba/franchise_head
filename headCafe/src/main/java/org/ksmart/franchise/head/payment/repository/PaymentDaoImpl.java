@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
 import org.ksmart.franchise.head.payment.model.Payment;
 import org.ksmart.franchise.head.payment.model.PaymentCommand;
 import org.ksmart.franchise.head.payment.model.PaymentSearch;
@@ -18,11 +19,11 @@ public class PaymentDaoImpl implements PaymentDao {
 	
 	@Autowired
 	private SqlSessionTemplate sqlSessionPayment;
+	Logger log = Logger.getLogger(this.getClass());
 
 	@Override
 	public List<Payment> viewPaymentList(PaymentSearch search) {
-		System.out.println("PaymentDaoImpl의 viewPaymentList 메서드 호출");
-		
+		log.debug("PaymentDaoImpl의 viewPaymentList 메서드 호출");
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("search", search);
 		
@@ -31,8 +32,7 @@ public class PaymentDaoImpl implements PaymentDao {
 
 	@Override
 	public Payment getPaymentDetail(String payMethodCode) {
-		System.out.println("PaymentDaoImpl의 getPaymentDetail 메서드 호출");
-		
+		log.debug("PaymentDaoImpl의 getPaymentDetail 메서드 호출");
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("payMethodCode", payMethodCode);
 		
@@ -42,8 +42,7 @@ public class PaymentDaoImpl implements PaymentDao {
 	@Override
 	//결제방식을 등록합니다
 	public void addPayment(PaymentCommand paymentCommand) {
-		System.out.println("PaymentDaoImpl의 addPayment 메서드 호출");		
-		
+		log.debug("PaymentDaoImpl의 addPayment 메서드 호출");		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("pay", paymentCommand);
 		
@@ -53,7 +52,7 @@ public class PaymentDaoImpl implements PaymentDao {
 	@Override
 	//결제방식을 수정합니다 (미적용으로 변경)
 	public void modifyPayment(String payMethodCode) {
-		System.out.println("PaymentDaoImpl의 modifyPayment 메서드 호출");		
+		log.debug("PaymentDaoImpl의 modifyPayment 메서드 호출");		
 		
 		sqlSessionPayment.update(NS+".updatePayment", payMethodCode);
 	}

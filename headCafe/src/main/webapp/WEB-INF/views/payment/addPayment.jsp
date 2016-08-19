@@ -1,29 +1,42 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script type="text/javascript" src="resources/js/addressAPI.js"></script>
-<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<title> 등록화면</title>
 <style>
-	body{
-	 width: 1000px;
-	 margin: 0 auto;
+	.btns{
+		 margin-left: 300px;
 	}
 </style>
-</head>
-<body>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-<h1>결제방식 등록</h1>
-	<form name="addForm" action="/addPayment.do" method="post">
-		<div> 
-		결제방식: <input type="text" name="payMethod" required="required"/> 
+
+<div id="page-wrapper">
+	<div class="row">
+		<div class="col-lg-12">
+			<h1 class="page-header">결제방식 등록</h1>
 		</div>
-		<div> 
-		수수료: <input type="text" name="profitPercent" required="required" onkeypress="if (event.keyCode<48|| event.keyCode>57)  event.returnValue=false;" style='IME-MODE:disabled;'/> 
+	</div>
+	<form action="/addPayment.do" role="form" method="POST" id="addForm">
+	<div class="row">
+		<div class="col-lg-6">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-lg-6">
+								<div class="form-group">
+									<label>결제방식</label> 
+									<input class="form-control" name="payMethod" required="required" />
+								</div>
+								<div class="form-group">
+									<label>수수료</label> 
+									<input class="form-control" name="profitPercent" required="required" onkeypress="if (event.keyCode<48|| event.keyCode>57)  event.returnValue=false;" style='IME-MODE:disabled;'/>%
+								</div>
+								</div>
+						</div>
+					</div>
+				</div>
+				<div class="btns">
+				<a class="btn btn-default" href="/viewPaymentList.do">돌아가기</a>
+				<input type="button" id="addBtn" class="btn btn-default" value="등록">
+			</div>
+			</div>
+			</div>
+			</form>
 		</div>
-		<button>등록</button>
-	</form>
-</body>
+	</body>
 </html>
