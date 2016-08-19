@@ -17,6 +17,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="headAccountDetail" column="head_account_detail" />
 		<result property="requestCheckDate" column="request_check_date" />
 		<result property="headStaffIdConfirm" column="head_staff_id_confirm" />
+		<result property="headStaffId" column="head_staff_id"/>
 	</resultMap>
 
 	<!-- 회계 데이터 리스트를 불러옵니다 -->

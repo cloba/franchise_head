@@ -64,7 +64,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			head_client
 				(head_client_code,  head_client_name,                  head_client_regit_date, head_client_in_charge,               head_client_contract,  head_client_phone_first,                head_client_phone_second,             head_client_phone_third,                    head_client_road_addr,                 head_client_post,                head_client_parcle_addr,               head_staff_id)
 		VALUES 
-				(#{headClientCode},  #{clientCommand.headClientName} ,  NOW(),                  #{clientCommand.headClientInCharge},  '1',                  #{clientCommand.headClientPhoneFirst},  #{clientCommand.headClientPhoneSecond},   #{clientCommand.headClientPhoneThird}, #{clientCommand.headClientRoadAddr},  #{clientCommand.headClientPost},  #{clientCommand.headClientParcleAddr}, 'id001')
+				(#{headClientCode},  #{clientCommand.headClientName} ,  NOW(),                  #{clientCommand.headClientInCharge},  '1',                  #{clientCommand.headClientPhoneFirst},  #{clientCommand.headClientPhoneSecond},   #{clientCommand.headClientPhoneThird}, #{clientCommand.headClientRoadAddr},  #{clientCommand.headClientPost},  #{clientCommand.headClientParcleAddr}, #{clientCommand.headStaffId} )
 	</insert>
 
 
