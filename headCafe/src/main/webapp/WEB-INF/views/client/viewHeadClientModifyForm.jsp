@@ -128,7 +128,7 @@
 							<form id="modifyForm" role="form" action="/modifyClient.do" method="POST">
 								<div class="form-group">
 									<label>거래처명</label> 
-									<input class="form-control" name="headClientName" id="headClientName" value="${client.headClientName }">
+									<input class="form-control" name="headClientInCharge" id="headClientInCharge" value="${client.headClientInCharge }">
 									<p id="nameHelper" class="help-block"></p>
 								</div>
 								<div class="form-group">

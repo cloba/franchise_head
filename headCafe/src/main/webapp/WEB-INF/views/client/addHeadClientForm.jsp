@@ -136,6 +136,7 @@
 									<label>지번 주소</label> 
 									<input class="form-control" id="sample4_jibunAddress" name="headClientParcleAddr" style="width: 300px" value="" readonly="readonly" />
 								</div>
+								<input type="hidden" name="headStaffId" value="${login.headStaffId }">
 								<input type="hidden" name="headClientCode" value="${client.headClientCode }"> 
 								<input type="button" id="joinBtn" class="btn btn-default" value="저장">
 							</form>

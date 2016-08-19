@@ -10,6 +10,7 @@ public class ClientCommand {
 	private String headClientRoadAddr;
 	private String headClientPost;
 	private String headClientParcleAddr;
+	private String headStaffId;
 	
 	public String getHeadClientName() {
 		return headClientName;
@@ -58,6 +59,12 @@ public class ClientCommand {
 	}
 	public void setHeadClientPhoneSecond(String headClientPhoneSecond) {
 		this.headClientPhoneSecond = headClientPhoneSecond;
+	}
+	public String getHeadStaffId() {
+		return headStaffId;
+	}
+	public void setHeadStaffId(String headStaffId) {
+		this.headStaffId = headStaffId;
 	}
 
 	
