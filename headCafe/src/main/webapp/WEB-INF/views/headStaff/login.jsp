@@ -33,10 +33,10 @@
                         <form action="" id="loginForm" role="form" method="post">
                             <fieldset>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Enter ID" id="headStaffId" name="headStaffId" type="text" autofocus>
+                                    <input class="form-control" placeholder="Enter ID" id="headStaffId" name="headStaffId" value="head_staff_id1" type="text" autofocus>
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Enter password" id="headStaffPw" name="headStaffPw" type="password" value="">
+                                    <input class="form-control" placeholder="Enter password" id="headStaffPw" name="headStaffPw" type="password" value="0000">
                                 </div>
                                 <input type="button" class="btn btn-outline btn-primary btn-lg btn-block" id="loginBtn" value="Login"/>
                             </fieldset>

@@ -41,7 +41,7 @@ public class RoyaltyOverduePayAdd {
 		this.totalRoyaltyOverduePaid = totalRoyaltyOverduePaid;
 	}
 	public int getTotalRoyaltyOverdueRest() {
-		this.totalRoyaltyOverdueRest = this.royaltyOverduePaid - this.royaltyOverdueAddPaid;
+		this.totalRoyaltyOverdueRest = this.royaltyOverdueRest - this.royaltyOverdueAddPaid;
 		return totalRoyaltyOverdueRest;
 	}
 	public void setTotalRoyaltyOverdueRest(int totalRoyaltyOverdueRest) {

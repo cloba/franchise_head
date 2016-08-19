@@ -65,10 +65,11 @@ public class RoyaltyOverdueController {
 	//로얄티 연체테이블에 로얄티 납부금액 추가하는 메서드
 	@RequestMapping(value="/addRoyaltyPay.do", method=RequestMethod.POST)
 	public String addroyalty(Model model, RoyaltyOverduePayAdd royaltyOverduePayAdd){
-		
+		System.out.println(royaltyOverduePayAdd.getTotalRoyaltyOverduePaid());
+		System.out.println(royaltyOverduePayAdd.getTotalRoyaltyOverdueRest());
 		royaltyOverdueService.royaltyOverduePadyAddService(royaltyOverduePayAdd);
 		
-		return null;
+		return "redirect:/viewRoyaltyOverdueDetail.do?royaltyOverdueCode="+royaltyOverduePayAdd.getRoyaltyOverdueCode();
 		
 	}
 }

@@ -94,6 +94,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			royalty_overdue
 		SET
 			royalty_overdue_paid = #{royaltyOverduePayAdd.totalRoyaltyOverduePaid},
+			<if test="royaltyOverduePayAdd.totalRoyaltyOverdueRest == 0">
+				royalty_overdue_status = 'Y',
+			</if>
 			royalty_overdue_pay_date = #{royaltyOverduePayAdd.royaltyOverdueAddPayDate},
 			royalty_overdue_rest = #{royaltyOverduePayAdd.totalRoyaltyOverdueRest}
 	WHERE royalty_overdue_code = #{royaltyOverduePayAdd.royaltyOverdueCode}
