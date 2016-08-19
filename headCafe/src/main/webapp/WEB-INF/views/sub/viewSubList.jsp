@@ -42,6 +42,22 @@
 			$('#subList').submit();
 		});
 		
+		//검색 유효성
+		$('#searchBtn').click(function(){
+			if( $('#regitDateStart').val() == "" && $('#regitDateEnd').val() == ""){
+				if(  $('#searchKey').val() == "" || $('#searchItem').val() == "" ){
+					alert('검색분류를 선택하고 검색어를 입력해주세요');
+				}else if( $('#searchKey').val() != "" && $('#searchItem').val() != "" ){
+					$('#subList').submit();
+				}
+			}else if($('#regitDateStart').val() != "" && $('#regitDateEnd').val() == ""){
+				alert('날짜를 정확히 선택해 주세요');
+			}else if($('#regitDateStart').val() == "" && $('#regitDateEnd').val() != ""){
+				alert('날짜를 정확히 선택해 주세요');
+			}else{
+				$('#subList').submit();
+			}
+		});
 	});
 
 </script>
@@ -87,7 +103,7 @@
 								<!-- 검색어 입력과 검색 버튼 -->
 								<input type="text" class="form-control" id="searchItem" name="searchItem" value="${subSearch.searchItem}"/>
 							</div>
-							<button class="btn btn-default"><i class="fa fa-search"></i></button>
+							<input type="button" class="btn btn-default" id="searchBtn" value="search">
 						</form>
 					</div>
 					<!-- /.panel-heading -->

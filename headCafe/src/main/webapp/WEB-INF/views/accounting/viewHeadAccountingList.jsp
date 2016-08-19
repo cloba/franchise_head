@@ -25,7 +25,7 @@ $(document).ready(function(){
 		console.log('본사 통합회계 전표번호내림차순 정렬');
 		$('#criteria').attr('value','head_account_code');
 		$('#upDown').attr('value','DESC');
-		$('#HeadAccountingForm').submit();
+		$('#headAccountingForm').submit();
 	});
 	
 	// 본사 통합회계 전표번호 오름순 정렬
@@ -33,7 +33,7 @@ $(document).ready(function(){
 		console.log('본사 통합회계 전표번호 오름차순 정렬');
 		$('#criteria').attr('value','head_account_code');
 		$('#upDown').attr('value','ASC');
-		$('#HeadAccountingForm').submit();
+		$('#headAccountingForm').submit();
 	});
 	
 	// 계정과목 내림차순 정렬
@@ -41,7 +41,7 @@ $(document).ready(function(){
 		console.log('계정과목 코드 내림차순 정렬');
 		$('#criteria').attr('value','subject_code');
 		$('#upDown').attr('value','DESC');
-		$('#HeadAccountingForm').submit();
+		$('#headAccountingForm').submit();
 	});
 	
 	// 계정과목 오름차순 정렬
@@ -49,7 +49,7 @@ $(document).ready(function(){
 		console.log('계정과목 코드 오름차순 정렬');
 		$('#criteria').attr('value','subject_code');
 		$('#upDown').attr('value','ASC');
-		$('#HeadAccountingForm').submit();
+		$('#headAccountingForm').submit();
 	});
 	
 	// 본사 거래처 내림차순 정렬
@@ -57,7 +57,7 @@ $(document).ready(function(){
 		console.log('본사 거래처 내림차순 정렬');
 		$('#criteria').attr('value','head_client_code');
 		$('#upDown').attr('value','DESC');
-		$('#HeadAccountingForm').submit();
+		$('#headAccountingForm').submit();
 	});
 	
 	// 본사 거래처 오름차순 정렬
@@ -65,7 +65,7 @@ $(document).ready(function(){
 		console.log('본사 거래처 오름차순 정렬');
 		$('#criteria').attr('value','head_client_code');
 		$('#upDown').attr('value','ASC');
-		$('#HeadAccountingForm').submit();
+		$('#headAccountingForm').submit();
 	});
 	
 	// 출금/입금 내림차순 정렬
@@ -73,7 +73,7 @@ $(document).ready(function(){
 		console.log('출금/입금 내림차순 정렬');
 		$('#criteria').attr('value','head_account_flow');
 		$('#upDown').attr('value','DESC');
-		$('#HeadAccountingForm').submit();
+		$('#headAccountingForm').submit();
 	});
 	
 	// 출금/입금 오름차순 정렬
@@ -81,7 +81,7 @@ $(document).ready(function(){
 		console.log('출금/입금 오름차순 정렬');
 		$('#criteria').attr('value','head_account_flow');
 		$('#upDown').attr('value','ASC');
-		$('#HeadAccountingForm').submit();
+		$('#headAccountingForm').submit();
 	});
 	
 	// 통합 출/입금 관련 그룹코드 내림차순 정렬
@@ -89,7 +89,7 @@ $(document).ready(function(){
 		console.log('통합 출/입금 관련 그룹 코드 내림차순 정렬');
 		$('#criteria').attr('value','head_account_group_code');
 		$('#upDown').attr('value','DESC');
-		$('#HeadAccountingForm').submit();
+		$('#headAccountingForm').submit();
 	});
 	
 	// 통합 출/입금 관련 그룹코드 오름차순 정렬
@@ -97,7 +97,7 @@ $(document).ready(function(){
 		console.log('통합 출/입금 관련 그룹 코드 오름차순 정렬');
 		$('#criteria').attr('value','head_account_group_code');
 		$('#upDown').attr('value','ASC');
-		$('#HeadAccountingForm').submit();
+		$('#headAccountingForm').submit();
 	});
 	
 	// 테이블명 내림차순 정렬
@@ -105,7 +105,7 @@ $(document).ready(function(){
 		console.log('해당 테이블명 내림차순 정렬');
 		$('#criteria').attr('value','head_account_table');
 		$('#upDown').attr('value','DESC');
-		$('#HeadAccountingForm').submit();
+		$('#headAccountingForm').submit();
 	});
 	
 	// 테이블명 오름차순 정렬
@@ -113,7 +113,7 @@ $(document).ready(function(){
 		console.log('해당 테이블명 오름차순 정렬');
 		$('#criteria').attr('value','head_account_table');
 		$('#upDown').attr('value','ASC');
-		$('#HeadAccountingForm').submit();
+		$('#headAccountingForm').submit();
 	});
 	
 	// 합계 내림차순정렬
@@ -121,7 +121,7 @@ $(document).ready(function(){
 		console.log('합계 내림차순 정렬');
 		$('#criteria').attr('value','head_account_sum');
 		$('#upDown').attr('value','DESC');
-		$('#HeadAccountingForm').submit();
+		$('#headAccountingForm').submit();
 	});
 	
 	// 합계 오름차순정렬
@@ -129,7 +129,7 @@ $(document).ready(function(){
 		console.log('합계 오름차순 정렬');
 		$('#criteria').attr('value','head_account_sum');
 		$('#upDown').attr('value','ASC');
-		$('#HeadAccountingForm').submit();
+		$('#headAccountingForm').submit();
 	});
 	
  	// 직원요청일자  오름/내림 차순
@@ -137,74 +137,37 @@ $(document).ready(function(){
 		console.log('직원 요청일자 내림차순 정렬');
 		$('#criteria').attr('value','head_account_request_date');
 		$('#upDown').attr('value','DESC');
-		$('#HeadAccountingForm').submit();
+		$('#headAccountingForm').submit();
 	});
 	$('#headAccountRequestDateDown').click(function(){
 		console.log('직원 요청일자 오름차순 정렬');
 		$('#criteria').attr('value','head_account_request_date');
 		$('#upDown').attr('value','ASC');
-		$('#HeadAccountingForm').submit();
+		$('#headAccountingForm').submit();
 	}); 
 	
-	
-	/*   요청 직원 아이디 오름/내림차순
-	$('#headStaffIdRequestUp').click(function(){
-		console.log('요청 직원 아이디 내림차순 정렬');
-		$('#criteria').attr('value','head_staff_id_request');
-		$('#upDown').attr('value','DESC');
-		$('#HeadAccountingForm').submit();
-	});
-	$('#headStaffIdRequestDown').click(function(){
-		console.log('요청 직원 아이디 오름차순 정렬');
-		$('#criteria').attr('value','head_staff_id_request');
-		$('#upDown').attr('value','ASC');
-		$('#HeadAccountingForm').submit();
-	});
-	*/
-	
-	/* 상세내역 오름/내림차순
-	$('#headAccountDetailUp').click(function(){
-		console.log('상세내역 내림차순 정렬');
-		$('#criteria').attr('value','head_account_detail');
-		$('#upDown').attr('value','DESC');
-		$('#HeadAccountingForm').submit();
-	});
-	$('#headAccountDetailDown').click(function(){
-		console.log('상세내역 오름차순 정렬');
-		$('#criteria').attr('value','head_account_detail');
-		$('#upDown').attr('value','ASC');
-		$('#HeadAccountingForm').submit();
-	});
-	
-	*/
 	$('#requestCheckDateUp').click(function(){
 		console.log('직원요청 확인일자 내림차순 정렬');
 		$('#criteria').attr('value','request_check_date');
 		$('#upDown').attr('value','DESC');
-		$('#HeadAccountingForm').submit();
+		$('#headAccountingForm').submit();
 	});
 	
 	$('#requestCheckDateDown').click(function(){
 		console.log('직원요청 확인일자 오름차순 정렬');
 		$('#criteria').attr('value','request_check_date');
 		$('#upDown').attr('value','ASC');
-		$('#HeadAccountingForm').submit();
+		$('#headAccountingForm').submit();
 	});
-	/*  확인직원 아이디 오름/내림차순 
-	$('#headStaffIdConfirmUp').click(function(){
-		console.log('확인 직원 아이디 내림차순 정렬');
-		$('#criteria').attr('value','head_staff_id_confirm');
-		$('#upDown').attr('value','DESC');
-		$('#HeadAccountingForm').submit();
-	});
-	$('#headStaffIdConfirmDown').click(function(){
-		console.log('확인 직원 아이디 오름차순 정렬');
-		$('#criteria').attr('value','head_staff_id_confirm');
-		$('#upDown').attr('value','ASC');
-		$('#HeadAccountingForm').submit();
-	});
-	*/
 	
+	//검색 유효성
+	$('#searchBtn').click(function(){
+		if(  $('#searchKey').val() == "" || $('#searchItem').val() == "" ){
+			alert('검색분류를 선택하고 검색어를 입력해주세요');
+		}else{
+			$('#headAccountingForm').submit();
+		}
+	});
 	
 });	
 	
@@ -230,14 +193,14 @@ $(document).ready(function(){
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<!-- 회계 검색 -->
-						<form action="/viewHeadAccountingList.do" id="HeadAccountingForm">
+						<form action="/viewHeadAccountingList.do" id="headAccountingForm">
 							<!-- 검색조건 보내는 곳 -->
 							<input type="hidden" name="criteria" id="criteria" value="" /> 
 							<input type="hidden" name="upDown" id="upDown" value="" />
 
 							<div class="form-group">
 								<!-- 검색 조건 선택  -->
-								<select class="form-control" name="searchKey">
+								<select class="form-control" name="searchKey" id="searchKey">
 									<option value="">선택</option>
 									<option value="head_account_code"
 										<c:if test="${'head_account_code' eq search.searchKey }">selected="selected"</c:if>>본사
@@ -275,12 +238,10 @@ $(document).ready(function(){
 								</select>
 
 								<!-- 검색어랑 검색버튼 -->
-								<input type="text" class="form-control" name="searchItem"
+								<input type="text" class="form-control" name="searchItem" id="searchItem"
 									value="${search.searchItem}">
 							</div>
-							<button class="btn btn-default" id="searchBtn">
-								<i class="fa fa-search"></i>
-							</button>
+							<input type="button" class="btn btn-default" id="searchBtn" value="search" >
 							<!-- <input type="button" id="searchheadStaffBtn" name="searchheadStaffBtn" value="검색"> -->
 						</form>
 					</div>

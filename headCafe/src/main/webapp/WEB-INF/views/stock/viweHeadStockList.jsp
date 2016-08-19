@@ -63,6 +63,15 @@
 			$('#upDown').attr('value','ASC');
 			$('#HeadStaffStockForm').submit();
 		});
+		
+		//검색 유효성
+		$('#searchheadStaffBtn').click(function(){
+			if(  $('#searchKey').val() == "" || $('#searchItem').val() == "" ){
+				alert('검색분류를 선택하고 검색어를 입력해주세요');
+			}else{
+				$('#HeadStaffStockForm').submit();
+			}
+		});
 });	
 </script>
 </head>
@@ -104,9 +113,7 @@
 									</select>
 									<input type="text" class="form-control" id="searchItem" name="searchItem" value="${search.searchItem}"/>
 									</div>
-									<button class="btn btn-default" id="searchheadStaffBtn">
-										<i class="fa fa-search"></i>
-									</button>
+									<input type="button" class="btn btn-default" id="searchheadStaffBtn" value="search" >
 								</form>
 							</div>
 							<!-- /.panel-heading -->

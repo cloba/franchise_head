@@ -38,6 +38,24 @@
 			$('#upDown').val('DESC');
 			$('#outList').submit();
 		});
+		
+		//검색 유효성
+		$('#searchBtn').click(function(){
+			if( $('#regitDateStart').val() == "" && $('#regitDateEnd').val() == ""){
+				if(  ($('#searchKey').val() == "" || $('#searchItem').val() == "")&& ($('#status').val()=="")){
+					alert('검색분류를 선택하고 검색어를 입력해주세요');
+				}else if( ($('#searchKey').val() != "" && $('#searchItem').val() !="")||($('#status').val() !="" )){
+					console.log('submit');
+					$('#outList').submit();
+				}
+			}else if($('#regitDateStart').val() != "" && $('#regitDateEnd').val() == ""){
+				alert('날짜를 정확히 선택해 주세요');
+			}else if($('#regitDateStart').val() == "" && $('#regitDateEnd').val() != ""){
+				alert('날짜를 정확히 선택해 주세요');
+			}else{
+				$('#outList').submit();
+			}
+		});
 	});
 </script>
 
@@ -97,9 +115,8 @@
 									</select> 
 									<input type="text" class="form-control" id="searchItem" name="searchItem" value="${search.searchItem}" />
 								</div>
-								<button class="btn btn-default" id="searchBtn">
-									<i class="fa fa-search"></i>
-								</button>
+								<input type="button" class="btn btn-default" id="searchBtn" value="search"> 
+								
 							</form>
 						</div>
 						<!-- /.panel-heading -->

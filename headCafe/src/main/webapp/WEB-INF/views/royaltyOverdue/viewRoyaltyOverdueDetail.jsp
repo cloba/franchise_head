@@ -17,7 +17,7 @@
                        		연체 상세
                        		<div class="btn">
                        			<a href="/viewRoyaltyOverdueList.do">목록</a>
-                       			<a href="/addRoyaltyPay.do?royaltyOverdueCode=${royaltyOverdue.royaltyOverdueCode}">연체추가</a>
+                       			<a href="/addRoyaltyPay.do?royaltyOverdueCode=${royaltyOverdue.royaltyOverdueCode}">연체납부</a>
                        		</div>
                         </div>
                          <div class="panel-body">

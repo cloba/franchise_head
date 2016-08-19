@@ -79,8 +79,8 @@
 									<input class="form-control" name="menuName" id="menuName" value=""  required="required" />
 								</div>
 								<div class="form-group">
-									<label>소비자가격</label> 
-									<input class="form-control" name="menuSellingPrice" id="menuSellingPrice" value=""  required="required" />
+									<label>소비자가격(원)</label> 
+									<input class="form-control" name="menuSellingPrice" id="menuSellingPrice" value=""  required="required"  onkeypress="if (event.keyCode<48|| event.keyCode>57)  event.returnValue=false;" style='IME-MODE:disabled;' type="text"/>
 								</div>
 								<div id="addIngreDiv"></div>
 								<input type="button" id="addIngreBtn" class="btn btn-default" value="재료추가">

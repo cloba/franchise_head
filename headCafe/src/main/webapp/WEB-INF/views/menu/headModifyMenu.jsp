@@ -98,8 +98,8 @@
 									<input class="form-control" name="menuName" id="menuName" value="${menu.menuName }" readonly="readonly"/>
 								</div>
 								<div class="form-group">
-									<label>소비자가격</label> 
-									<input class="form-control" name="menuSellingPrice" value="${menu.menuSellingPrice}" required="required"/>
+									<label>소비자가격(원)</label> 
+									<input class="form-control" name="menuSellingPrice" value="${menu.menuSellingPrice}" required="required" onkeypress="if (event.keyCode<48|| event.keyCode>57)  event.returnValue=false;" style='IME-MODE:disabled;' type="text"/>
 								</div>
 								<br><br>
 								<div id="addIngreDiv"></div>
