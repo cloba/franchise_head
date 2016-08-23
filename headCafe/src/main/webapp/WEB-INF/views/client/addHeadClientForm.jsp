@@ -64,7 +64,7 @@
 			
 		});
 		
-		// 폼 제출
+		// 폼 유효성
 		$('#joinBtn').click(function(){
 			if ($('#headClientName').val() == ""){
 				alert("거래처명을 입력해주세요.");

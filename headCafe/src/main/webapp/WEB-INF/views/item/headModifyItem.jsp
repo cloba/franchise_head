@@ -35,6 +35,27 @@
 			var result = uncomma($(this).val());
 			$(this).val(result);
 		});
+		
+		// 폼 유효성
+		$('#modifyFormBtn').click(function(){
+			if ($('#hItemName').val() == ""){
+				alert("상품명을 입력해주세요.");
+			 }else if ($('#hItemQuantity').val()== ""){
+				alert("수량을 입력 해주세요.");
+			}else if ($('#hItemPurchasePrice').val()== ""){
+				alert("매입가를 입력 해주세요.");
+			}else if ($('#hItemMarginPercent').val()== ""){              
+				alert("이익률을 입력 해주세요.");
+			}else if ($('#hItemSellingPrice').val()== ""){
+				alert("판매가격을 입력 해주세요.");	
+			}else if ($('#hItemRetailPrice').val()== ""){
+				alert("소비자 금액을 입력 해주세요.");  
+			}else if ($('#headClientCode').val()== ""){
+				alert("매입처를 입력 해주세요.");
+			}else {
+				$('#modifyForm').submit();
+			} 
+		});
 	});
 </script>
 <script type="text/javascript" src="/resources/js/comma.js"></script>
@@ -85,30 +106,30 @@
 								</div>
 								<div class="form-group">
 									<label>아이템 갯수</label> 
-									<input class="form-control" id="hItemQuantity" name="hItemQuantity" value="${item.hItemQuantity}" required="required"/>
+									<input class="form-control" id="hItemQuantity" name="hItemQuantity" value="${item.hItemQuantity}" required="required" onkeypress="if (event.keyCode<48|| event.keyCode>57)  event.returnValue=false;" style='IME-MODE:disabled;' type="text"/>
 								</div>
 								<div class="form-group">
 									<label>매입가격</label> 
-									<input class="form-control comma" name="hItemPurchasePrice" value="<fmt:formatNumber value="${item.hItemPurchasePrice}" pattern="#,###"/>" required="required"/>
+									<input class="form-control comma" id="hItemPurchasePrice" name="hItemPurchasePrice" value="<fmt:formatNumber value="${item.hItemPurchasePrice}" pattern="#,###"/>" required="required" onkeypress="if (event.keyCode<48|| event.keyCode>57)  event.returnValue=false;" style='IME-MODE:disabled;' type="text"/>
 								</div>
 								<div class="form-group">
 									<label>이익률</label> 
-									<input class="form-control" name="hItemMarginPercent" value="${item.hItemMarginPercent}" required="required"/>%
+									<input class="form-control" id="hItemMarginPercent" name="hItemMarginPercent" value="${item.hItemMarginPercent}" required="required"/>%
 								</div>
 								<div class="form-group">
 									<label>판매가격</label> 
-									<input class="form-control comma" name="hItemSellingPrice" value="<fmt:formatNumber value="${item.hItemSellingPrice}" pattern="#,###"/>" required="required"/>
+									<input class="form-control comma" id="hItemSellingPrice" name="hItemSellingPrice" value="<fmt:formatNumber value="${item.hItemSellingPrice}" pattern="#,###"/>" required="required" onkeypress="if (event.keyCode<48|| event.keyCode>57)  event.returnValue=false;" style='IME-MODE:disabled;' type="text"/>
 								</div>
 								<div class="form-group">
 									<label>소비자가격</label> 
-									<input class="form-control comma" name="hItemRetailPrice" value="<fmt:formatNumber value="${item.hItemRetailPrice}" pattern="#,###"/>" required="required"/>
+									<input class="form-control comma" name="hItemRetailPrice" id="hItemRetailPrice" value="<fmt:formatNumber value="${item.hItemRetailPrice}" pattern="#,###"/>" required="required" onkeypress="if (event.keyCode<48|| event.keyCode>57)  event.returnValue=false;" style='IME-MODE:disabled;' type="text"/>
 								</div>
 								<div class="form-group">
 									<label>매입처</label> 
-									<input class="form-control" name="headClientCode" value="${item.headClientCode}" required="required"/>
+									<input class="form-control" id="headClientCode" name="headClientCode" value="${item.headClientCode}" required="required"/>
 								</div>
 								<div class="buttons">
-									<input type="submit" id="modifyFormBtn" class="btn btn-default" value="저장">
+									<input type="button" id="modifyFormBtn" class="btn btn-default" value="저장">
 								</div>
 							</form>
 						</div>
