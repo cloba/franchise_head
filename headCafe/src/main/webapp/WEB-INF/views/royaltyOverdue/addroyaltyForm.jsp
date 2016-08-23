@@ -1,7 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<script>
+
+$(document).ready(function(){
+	$('#addBtn').click(function(){
+		if ($('#royaltyOverdueAddPaid').val() == ""){
+			alert("추가납부 금액을 입력해주세요.");
+		}else if ($('#royaltyOverdueAddPayDate').val() == ""){
+			alert("추가 납부일자를 입력해주세요.");	
+		}else {
+			$('#addForm').submit();
+		}
+	});
+});	
+</script>    
 <h1>로얄티 연체 납부</h1>
-<form action="/addRoyaltyPay.do" method="POST">
+<form action="/addRoyaltyPay.do" method="POST" id="addForm">
 <div id="page-wrapper">
 	<div class="container-fluid">
 		  <div class="row">
@@ -30,7 +45,7 @@
                             	<br>추가 납부금액: <input type="text" name="royaltyOverdueAddPaid" value="">
                             </address>
                             <input type="hidden" name="royaltyOverdueHeadStaffId" value="${login.headStaffId}">
-                            <div class="btn"><input type="submit" value="금액 추가"></div>
+                            <div class="btn"><input type="button" id="addBtn" value="금액 추가"></div>
                            </div>
                            
                         <!-- /.panel-body -->
