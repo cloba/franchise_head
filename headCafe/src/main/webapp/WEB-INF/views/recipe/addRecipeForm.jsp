@@ -65,6 +65,7 @@ $(document).ready(function(){
 									<input type="submit" class="btn btn-default" value="저장">
 								</div>
 								<div>
+									<input type="hidden" name="headStaffId" value="${login.headStaffId}">
 									<input type="hidden" name="menuCode" value="${recipeCommand.menuCode}">
 								</div>
 								</form>

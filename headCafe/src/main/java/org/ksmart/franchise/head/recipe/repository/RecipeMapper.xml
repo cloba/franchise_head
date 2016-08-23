@@ -69,8 +69,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			      
 	     </selectKey>
 	     INSERT INTO recipe
-				(recipe_code,      menu_code,                  recipe_act,    head_staff_id,  recipe_regit_date,   recipe_order)
-		VALUES  (#{recipeCode},   #{recipeCommand.menuCode},  #{recipeCommand.recipeAct},  'id001',         NOW(),              #{recipeCommand.recipeOrder})
+				(recipe_code,      menu_code,                  recipe_act,                  head_staff_id,  recipe_regit_date,   recipe_order)
+		VALUES  (#{recipeCode},   #{recipeCommand.menuCode},  #{recipeCommand.recipeAct},  #{recipeCommand.headStaffId},         NOW(),              #{recipeCommand.recipeOrder})
 	     
 	</insert> 
 	<select id="selectCountRecipe" parameterType="java.lang.String" resultType="java.lang.Integer"   >

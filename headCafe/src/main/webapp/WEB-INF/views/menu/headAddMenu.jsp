@@ -85,6 +85,7 @@
 								<div id="addIngreDiv"></div>
 								<input type="button" id="addIngreBtn" class="btn btn-default" value="재료추가">
 								<input type="submit" class="btn btn-default" value="저장"/>
+								<input type="hidden" name="headStaffId" value="${login.headStaffId}">
 							</form>
 						</div>
 					</div>

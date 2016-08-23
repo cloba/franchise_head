@@ -103,7 +103,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				#{menu.menuIngrePrice}, 
 				#{menu.menuSellingPrice},
 				<!-- 시큐리티 적용 전 임시값 --> 
-				'head_staff_id1', 
+				#{menu.headStaffId},
 				NOW(),
 				'Y')
 	</insert>

@@ -13,6 +13,8 @@ public class MenuDomain {
 	private String[] hItemCodeArr;
 	private String ingreAmount;
 	private String[] ingreAmountArr;
+	private String headStaffId;
+	
 	public String getMenuCode() {
 		return menuCode;
 	}
@@ -79,6 +81,12 @@ public class MenuDomain {
 				+ ", menuSellingPrice=" + menuSellingPrice + ", ingrePriceCode=" + ingrePriceCode + ", ingreName="
 				+ ingreName + ", hItemCode=" + hItemCode + ", hItemCodeArr=" + Arrays.toString(hItemCodeArr)
 				+ ", ingreAmount=" + ingreAmount + ", ingreAmountArr=" + Arrays.toString(ingreAmountArr) + "]";
+	}
+	public String getHeadStaffId() {
+		return headStaffId;
+	}
+	public void setHeadStaffId(String headStaffId) {
+		this.headStaffId = headStaffId;
 	}
 	
 	
