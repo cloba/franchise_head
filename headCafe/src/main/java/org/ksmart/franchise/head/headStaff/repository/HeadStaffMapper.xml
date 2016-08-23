@@ -45,19 +45,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			head_staff_regit_id,
 			head_staff_resign_identify
 		From head_staff
-		where head_staff_resign_identify = #{headStaff.resignIdentify}
 		<where>
-			
-			<if test='headStaffSearch.searchHeadStaffInfo != null and headStaffSearch.searchHeadStaffInfo != "" '>
-				AND ${headStaffSearch.searchHeadStaffKey} like CONCAT('%',#{headStaffSearch.searchHeadStaffInfo},'%')
+			head_staff_resign_identify = #{headStaff.resignIdentify}
+			<if test='search.searchItem != null and search.searchItem != "" '>
+				AND ${search.searchKey} like CONCAT('%',#{search.searchItem},'%')
 			</if>
 		</where>
 		<trim prefix="ORDER BY">
-			<if test="headStaffSearch.criteria == null or headStaffSearch.criteria == ''">
+			<if test="search.criteria == null or search.criteria == ''">
 				head_staff_join DESC
-			</if>
-			<if test="headStaffSearch.criteria != null or headStaffSearch.criteria != ''">
-				${headStaffSearch.criteria} ${headStaffSearch.upDown}
+			</if> 
+			<if test="search.criteria != null or search.criteria != ''">
+				${search.criteria} ${search.upDown}
 			</if>
 		</trim> 
 	</select> 

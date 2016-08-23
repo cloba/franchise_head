@@ -14,7 +14,6 @@
 		float: right;
 	}
 </style>
-<script type="text/javascript" src="resources/js/headStaffPop.js"></script>
 <script>
 	$(document).ready(function(){
 		/* 오름차/내림차순 정렬 설정 */
@@ -69,31 +68,39 @@
 		
 		$('#joinUp').click(function(){
 			console.log('가입일 오름차순 정렬');
-			$('#criteria').attr('value','headStaffJoin');
+			$('#criteria').attr('value','head_staff_join');
 			$('#upDown').attr('value','ASC');
 			$('#HeadStaffSearchForm').submit();
 		});
 		
 		$('#joinDown').click(function(){
 			console.log('가입일 내림차순 정렬');
-			$('#criteria').attr('value','headStaffJoin');
+			$('#criteria').attr('value','head_staff_join');
 			$('#upDown').attr('value','DESC');
 			$('#HeadStaffSearchForm').submit();
 		});
 		$('#resignUp').click(function(){
 			console.log('퇴사일 오름차순 정렬');
-			$('#criteria').attr('value','headStaffResign');
+			$('#criteria').attr('value','head_staff_resign');
 			$('#upDown').attr('value','ASC');
 			$('#HeadStaffSearchForm').submit();
 		});
 		
 		$('#resignDown').click(function(){
 			console.log('퇴사일 내림차순 정렬');
-			$('#criteria').attr('value','headStaffResign');
+			$('#criteria').attr('value','head_staff_resign');
 			$('#upDown').attr('value','DESC');
 			$('#HeadStaffSearchForm').submit();
 		});
 		
+		//검색 유효성
+		$('#searchheadStaffBtn').click(function(){
+			if(  $('#searchKey').val() == "" || $('#searchItem').val() == "" ){
+				alert('검색분류를 선택하고 검색어를 입력해주세요');
+			}else{
+				$('#HeadStaffSearchForm').submit();
+			}
+		});
 	});
 </script>
 <!-- Page Content -->
@@ -124,21 +131,21 @@
 								<!-- 오름차/내림차순 정렬을 위한 input 태그 -->
 								<input type="hidden" name="criteria" id="criteria" value=""/>
 								<input type="hidden" name="upDown" id="upDown" value=""/>
-								<!-- 적용/미적용 조건 적용을 위한 input 태그 -->
-								<input type="hidden" name="status" value="${headStaffSearch.searchHeadStaffKey}"/>
+								<!-- 적용/미적용 조건 적용을 위한 input 태그 --> 
+								<input type="hidden" name="status" value="${search.searchKey}"/>
 								
 								<div class="form-group">
 								<label>키워드검색</label>
-								<select class="form-control" id="searchKey" name="searchHeadStaffKey">
+								<select class="form-control" id="searchKey" name="searchKey">
 									<option value="">::선택::</option>
-									<option value="head_staff_id" <c:if test="${'head_staff_id' eq headStaffSearch.searchHeadStaffKey }">selected="selected"</c:if>> 아이디</option>
-									<option value="head_staff_name"<c:if test="${'head_staff_name' eq headStaffSearch.searchHeadStaffKey }">selected="selected"</c:if>>이름</option>
-									<option value="head_staff_level" <c:if test="${'head_staff_level' eq headStaffSearch.searchHeadStaffKey }">selected="selected"</c:if>>직급</option>
-									<option value="head_staff_dep" <c:if test="${'head_staff_dep' eq headStaffSearch.searchHeadStaffKey }">selected="selected"</c:if>>부서</option>
-									<option value="head_staff_join" <c:if test="${'head_staff_join' eq headStaffSearch.searchHeadStaffKey }">selected="selected"</c:if>>등록한아이디</option>
+									<option value="head_staff_id" <c:if test="${'head_staff_id' eq search.searchKey }">selected="selected"</c:if>> 아이디</option>
+									<option value="head_staff_name"<c:if test="${'head_staff_name' eq search.searchKey }">selected="selected"</c:if>>이름</option>
+									<option value="head_staff_level" <c:if test="${'head_staff_level' eq search.searchKey }">selected="selected"</c:if>>직급</option>
+									<option value="head_staff_dep" <c:if test="${'head_staff_dep' eq search.searchKey }">selected="selected"</c:if>>부서</option>
+									<option value="head_staff_join" <c:if test="${'head_staff_join' eq search.searchKey }">selected="selected"</c:if>>등록한아이디</option>
 								</select>
 								<!-- 검색어와 검색버튼 -->
-								<input type="text" class="form-control" id="searchItem" name="searchHeadStaffInfo" value="${headStaffSearch.searchHeadStaffInfo}"/>
+								<input type="text" class="form-control" id="searchItem" name="searchItem" value="${search.searchItem}"/>
 								</div>
 								<input type="button" class="btn btn-default" id="searchheadStaffBtn" name="searchheadStaffBtn" value="search"/>
 							</form>

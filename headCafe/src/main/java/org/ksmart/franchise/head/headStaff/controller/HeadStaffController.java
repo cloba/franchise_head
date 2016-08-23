@@ -7,8 +7,8 @@ import org.apache.log4j.Logger;
 import org.ksmart.franchise.head.headStaff.model.HeadStaff;
 import org.ksmart.franchise.head.headStaff.model.HeadStaffCommand;
 import org.ksmart.franchise.head.headStaff.model.HeadStaffLogin;
-import org.ksmart.franchise.head.headStaff.model.HeadStaffSearch;
 import org.ksmart.franchise.head.headStaff.service.HeadStaffService;
+import org.ksmart.franchise.head.util.Search;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -93,7 +93,7 @@ public class HeadStaffController {
 	
 	//본사 직원리스트 보는 메서드(박종무 0722) 
 	@RequestMapping(value="/viewHeadStaffList.do")
-	public String ViewHeadStaffList(Model model, HeadStaffSearch headStaffSearch, HeadStaff headStaff) {
+	public String ViewHeadStaffList(Model model, Search search, HeadStaff headStaff) {
 		log.debug("HeadStaffController의 ViewHeadStaffList메서드 ");
 	//	log.debug("SearchHeadStaffInfo :"+headStaffSearch.getSearchHeadStaffInfo());
 	//	log.debug("SearchHeadStaffKey :"+headStaffSearch.getSearchHeadStaffKey());
@@ -101,7 +101,7 @@ public class HeadStaffController {
 		resignIdentify = "N";
 		headStaff.setResignIdentify(resignIdentify);
 		  
-		List<Object> list =  headStaffService.headStaffListService(headStaff, headStaffSearch);
+		List<Object> list =  headStaffService.headStaffListService(headStaff, search);
 	//	log.debug("getSearchHeadStaffKey :"+headStaffSearch.getSearchHeadStaffKey());
 	
 	//	log.debug("list.size:"+ list.size());
@@ -147,11 +147,11 @@ public class HeadStaffController {
 	  
 	  //퇴사자 조회하는 메서드
 	  @RequestMapping(value="/viewResignStaffList.do", method=RequestMethod.GET)
-	  public String viewResignStaffList(Model model, HeadStaffSearch headStaffSearch, HeadStaff headStaff){
+	  public String viewResignStaffList(Model model, Search search, HeadStaff headStaff){
 		  log.debug("HeadStaffController의 viewResignStaffList메서드 ");
 		  resignIdentify = "Y";
 		  headStaff.setResignIdentify(resignIdentify);
-		  List<Object> list =  headStaffService.headStaffListService(headStaff, headStaffSearch);
+		  List<Object> list =  headStaffService.headStaffListService(headStaff, search);
 		  model.addAttribute("list", list);
 	//	  log.debug(headStaff.getResignIdentify());
 		  return "/headStaff/ViewHeadStaffList";

@@ -15,7 +15,7 @@ public class StockServiceImpl implements StockService{
 	private StockDao stockDao;
 	
 	//재고 리스트 조회 메서드
-	public List<Stock> viweHeadStrockList(Search search){
+	public List<Stock> viweHeadStrockListService(Search search){
 		System.out.println("StockServiceImpl의 viweHeadStrockList메서드 ");
 		return stockDao.viweHeadStrockList(search);
 		

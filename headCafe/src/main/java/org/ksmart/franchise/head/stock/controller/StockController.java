@@ -24,7 +24,7 @@ public class StockController {
 	public String viweHeadStrockList(Model model, Search search){
 		log.debug("StockController의 viweHeadStrockList 메서드");
 		//재고리스트 받아옴
-		List<Stock> list = stockService.viweHeadStrockList(search);
+		List<Stock> list = stockService.viweHeadStrockListService(search);
 	//	log.debug("list size :"+list.size());
 		model.addAttribute("list", list);
 		

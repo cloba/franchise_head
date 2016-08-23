@@ -8,6 +8,7 @@ import org.ksmart.franchise.head.headStaff.model.HeadStaffCommand;
 import org.ksmart.franchise.head.headStaff.model.HeadStaffLogin;
 import org.ksmart.franchise.head.headStaff.model.HeadStaffSearch;
 import org.ksmart.franchise.head.headStaff.repository.HeadStaffDao;
+import org.ksmart.franchise.head.util.Search;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,8 +32,8 @@ public class HeadStaffServiceImpl implements HeadStaffService{
 	
 	//본사 직원 리스트를 호출하는 메서드
 	@Override
-	public List<Object> headStaffListService(HeadStaff headStaff, HeadStaffSearch headStaffSearch) {
-		return headStaffDao.headStaffList(headStaff, headStaffSearch);
+	public List<Object> headStaffListService(HeadStaff headStaff, Search search) {
+		return headStaffDao.headStaffList(headStaff, search);
 	}
 	
 	//본사직원 개인의 정보를 불러오는 메서드

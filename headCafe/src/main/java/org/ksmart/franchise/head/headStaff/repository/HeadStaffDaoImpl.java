@@ -9,6 +9,7 @@ import org.ksmart.franchise.head.headStaff.model.HeadStaff;
 import org.ksmart.franchise.head.headStaff.model.HeadStaffCommand;
 import org.ksmart.franchise.head.headStaff.model.HeadStaffLogin;
 import org.ksmart.franchise.head.headStaff.model.HeadStaffSearch;
+import org.ksmart.franchise.head.util.Search;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -34,11 +35,11 @@ public class HeadStaffDaoImpl implements HeadStaffDao{
 
 	//본사직원 리스트를 호출하는 메서드
 	@Override
-	public List<Object> headStaffList(HeadStaff headStaff, HeadStaffSearch headStaffSearch) {
+	public List<Object> headStaffList(HeadStaff headStaff, Search search) {
 		System.out.println("HeadStaffDaoImpl의 HeadStaffList메서드");
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("headStaff", headStaff);
-		map.put("headStaffSearch", headStaffSearch);
+		map.put("search", search);
 		
 		return sqlSessionHeadStaff.selectList(NS+".selectHeadStaffList", map);
 	}

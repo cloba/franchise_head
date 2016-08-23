@@ -7,7 +7,7 @@ import org.ksmart.franchise.head.util.Search;
 
 public interface StockService {
 
-	List<Stock> viweHeadStrockList(Search search);
+	List<Stock> viweHeadStrockListService(Search search);
 
 	Stock viewHeadStrockDetailService(Stock stock);
 }
