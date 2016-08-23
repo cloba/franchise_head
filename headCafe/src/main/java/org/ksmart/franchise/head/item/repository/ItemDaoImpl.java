@@ -24,16 +24,13 @@ public class ItemDaoImpl implements ItemDao{
 	
 	@Override
 	// head_item을 추가하는 메서드입니다
-	public void addItem(ItemCommand itemCommand, HeadStaffLogin headLogin) {
+	public void addItem(ItemCommand itemCommand) {
 		System.out.println("ItemDaoImpl의 addItem 메서드 호출");
 		
-		//test용 session id입니다
-		headLogin.setHeadStaffId("id001");
-		//test용 끝
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("itemCommand", itemCommand);
-		map.put("headLogin", headLogin);
+
 		
 		sqlSessionItem.insert(NS+".insertItem", map);
 	}
@@ -59,18 +56,13 @@ public class ItemDaoImpl implements ItemDao{
 
 	@Override
 	// head_item을 수정하는 메서드입니다
-	public int headModifyItem(ItemCommand itemCommand, HeadStaffLogin headLogin) {
+	public int headModifyItem(ItemCommand itemCommand) {
 		System.out.println("ItemDaoImpl의 headModifyItem 메서드 호출");
-		
-		//test용 session id입니다
-		headLogin.setHeadStaffId("id002");
-		//test용 끝
 		
 		System.out.println("itemCommand확인 :"+itemCommand.toString());
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("itemCommand", itemCommand);
-		map.put("headLogin", headLogin);
 		
 		return sqlSessionItem.update(NS+".updateItem", map);
 	}

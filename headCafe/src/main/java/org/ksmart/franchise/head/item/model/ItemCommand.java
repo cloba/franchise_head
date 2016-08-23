@@ -10,6 +10,7 @@ public class ItemCommand {
 	private int hItemSellingPrice;
 	private int hItemRetailPrice;
 	private String headClientCode;
+	private String headStaffId;
 	
 	public String gethItemCode() {
 		return hItemCode;
@@ -71,6 +72,12 @@ public class ItemCommand {
 				+ ", hItemUnit=" + hItemUnit + ", hItemPurchasePrice=" + hItemPurchasePrice + ", hItemMarginPercent="
 				+ hItemMarginPercent + ", hItemSellingPrice=" + hItemSellingPrice + ", hItemRetailPrice="
 				+ hItemRetailPrice + ", headClientCode=" + headClientCode + "]";
+	}
+	public String getHeadStaffId() {
+		return headStaffId;
+	}
+	public void setHeadStaffId(String headStaffId) {
+		this.headStaffId = headStaffId;
 	}
 	
 }

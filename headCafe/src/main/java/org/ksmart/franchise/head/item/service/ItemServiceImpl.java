@@ -17,10 +17,10 @@ public class ItemServiceImpl  implements ItemService {
 	private ItemDao itemDao;
 
 	@Override
-	public void addItemService(ItemCommand itemCommand, HeadStaffLogin headLogin) {
+	public void addItemService(ItemCommand itemCommand) {
 		System.out.println("ItemServiceImpl의 addItemService메서드 호출");
 		
-		itemDao.addItem(itemCommand, headLogin);
+		itemDao.addItem(itemCommand);
 	}
 
 	@Override
@@ -31,10 +31,10 @@ public class ItemServiceImpl  implements ItemService {
 	}
 
 	@Override
-	public int headModifyItemService(ItemCommand itemCommand, HeadStaffLogin headLogin) {
+	public int headModifyItemService(ItemCommand itemCommand) {
 		System.out.println("ItemServiceImpl의 headModifyItemService메서드 호출");
 		
-		return itemDao.headModifyItem(itemCommand, headLogin);
+		return itemDao.headModifyItem(itemCommand);
 	}
 
 	@Override

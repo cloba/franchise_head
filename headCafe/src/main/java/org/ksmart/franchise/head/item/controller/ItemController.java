@@ -31,9 +31,9 @@ public class ItemController {
 	
 	// 상품을 추가하는 head_item form을 제출합니다
 	@RequestMapping(value="/headAddItem.do", method=RequestMethod.POST)
-	public String addItem(ItemCommand itemCommand, HeadStaffLogin headLogin){
+	public String addItem(ItemCommand itemCommand){
 		log.debug("ItemController의 addItem 메서드 호출");
-		itemService.addItemService(itemCommand, headLogin);
+		itemService.addItemService(itemCommand);
 		return "redirect:/viewItemList.do";
 	}
 	
@@ -72,10 +72,10 @@ public class ItemController {
 	
 	// 상품을 수정합니다
 	@RequestMapping(value="/headModifyItem.do", method=RequestMethod.POST)
-	public String modifyItem(ItemCommand itemCommand, HeadStaffLogin headLogin){
+	public String modifyItem(ItemCommand itemCommand){
 		log.debug("ItemController의 modifyItem 메서드 호출");
 		
-		int result = itemService.headModifyItemService(itemCommand, headLogin);
+		int result = itemService.headModifyItemService(itemCommand);
 		//log.debug("update 결과: "+result);
 		
 		return "redirect:/viewItemDetail.do?hItemCode="+itemCommand.gethItemCode();

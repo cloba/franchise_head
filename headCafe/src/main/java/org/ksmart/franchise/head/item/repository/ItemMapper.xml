@@ -41,7 +41,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				#{itemCommand.hItemPurchasePrice}+#{itemCommand.hItemPurchasePrice}*(#{itemCommand.hItemMarginPercent}/100), 
 				#{itemCommand.hItemRetailPrice}, 
 				NOW(), 
-				#{headLogin.headStaffId}, 
+				#{itemCommand.headStaffId}, 
 				#{itemCommand.headClientCode})
 	</insert>
 	
@@ -87,7 +87,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			h_item_selling_price=#{itemCommand.hItemPurchasePrice}+#{itemCommand.hItemPurchasePrice}*(#{itemCommand.hItemMarginPercent}/100),
 			h_item_retail_price=#{itemCommand.hItemRetailPrice},
 			h_item_regit_date=NOW(),
-			head_staff_id=#{headLogin.headStaffId},
 			head_client_code=#{itemCommand.headClientCode}
 		WHERE h_item_code = #{itemCommand.hItemCode}
 	</update>

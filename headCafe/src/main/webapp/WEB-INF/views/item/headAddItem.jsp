@@ -97,6 +97,9 @@
 									<label>매입처</label> 
 									<input class="form-control" name="headClientCode" id="headClientCode" required="required" />
 								</div>
+								<div>
+									<input type="hidden" name="headStaffId" value="${login.headStaffId}">
+ 								</div>
 								</div>
 							</div>
 						</div>

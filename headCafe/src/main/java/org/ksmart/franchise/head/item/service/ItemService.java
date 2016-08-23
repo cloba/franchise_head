@@ -9,12 +9,12 @@ import org.ksmart.franchise.head.util.Search;
 
 public interface ItemService {
 
-	public void addItemService(ItemCommand itemCommand, HeadStaffLogin headLogin);
+	public void addItemService(ItemCommand itemCommand);
 	
 	public List<Item> viewItemListService(Search search);
 	
 	public Item getItemDetailService(String hItemCode);
 	
-	public int headModifyItemService(ItemCommand itemCommand, HeadStaffLogin headLogin);
+	public int headModifyItemService(ItemCommand itemCommand);
 	
 }
