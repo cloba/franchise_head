@@ -28,6 +28,10 @@
 			var result = uncomma($(this).val());
 			$(this).val(result);
 		});
+		/* $('#addBtn').click(function(){
+			$('#addForm').submit();
+		}); */
+		
 	});
 </script>
 <script type="text/javascript" src="/resources/js/comma.js"></script>
@@ -52,14 +56,14 @@
 									<label>계약자명</label> 
 									<input class="form-control" name="contractorName" required="required" />
 								</div>
-								<div class="form-group">
+							 	<div class="form-group">
 									<label>계약일자</label> 
 									<input class="form-control" type="date" name="contractActualDate" required="required" />
 								</div>
 								<div class="form-group">
 									<label>계약만료일</label> 
 									<input class="form-control" type="date" name="contractExpiryDate" required="required" />
-								</div>
+								</div> 
 								<div class="form-group">
 									<label>가맹금</label> 
 									<input class="form-control comma" name="contractDeposit" required="required" />
@@ -75,11 +79,14 @@
 								<div class="form-group">
 									<label>계약서첨부파일</label> 
 									<input class="form-control" type="file" name="file" required="required" />
-								</div>
+								</div> --
 								<div class="form-group">
 									<label>계약차수</label> 
 									<input class="form-control" type="number" name="contractN" required="required" min="1" />
 								</div>
+								<%-- <div>
+									<input type="hidden" name="headStaffId" value="${login.headStaffId}">
+								</div> --%>
 								</div>
 							</div>
 						</div>
@@ -88,7 +95,7 @@
 			</div>
 			<div class="btns">
 				<a class="btn btn-default" href="/viewContractList.do">돌아가기</a>
-				<input type="button" id="addBtn" class="btn btn-default" value="등록">
+				<input type="submit" id="addBtn" class="btn btn-default" value="등록">
 			</div>
 			</form>
 		</div>

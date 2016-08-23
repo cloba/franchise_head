@@ -91,7 +91,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</selectKey>
 		INSERT INTO contract
 			(contract_code, head_staff_id, sub_code, contractor_name, contract_actual_date, contract_regit_date, contract_expiry_date, contract_deposit, contract_profit_percent, contract_status, contract_file, contract_file_original_name, contract_file_stored_name, contract_file_size, contract_n, royalty_deadline)
-			VALUES (#{contractCode}, 'head_staff_id1', #{subCode}, #{contractorName}, #{contractActualDate}, NOW(), #{contractExpiryDate}, #{contractDeposit}, #{contractProfitPercent}, 1, 'Y', #{contractFile.originalName}, #{contractFile.storedName}, #{contractFile.fileSize}, #{contractN}, #{royaltyDeadline})
+			VALUES (#{contractCode}, #{headStaffId}, #{subCode}, #{contractorName}, #{contractActualDate}, NOW(), #{contractExpiryDate}, #{contractDeposit}, #{contractProfitPercent}, 1, 'Y', #{contractFile.originalName}, #{contractFile.storedName}, #{contractFile.fileSize}, #{contractN}, #{royaltyDeadline})
 	</insert>
 	
 	<!-- 첨부파일 정보를 가져옵니다 -->

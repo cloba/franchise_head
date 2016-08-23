@@ -87,7 +87,7 @@ public class ContractController {
 		return "/contract/addContract";
 	}
 	
-	//계약을 등록합니다
+	//계약을 등록합니다  
 	@RequestMapping(value="/addContract.do", method=RequestMethod.POST) //HttpServletRequest에 파일정보를 담아옵니다
 	public String addContract(ContractCommand contractCommand, HttpServletRequest request){
 		log.debug("ContractController addContract 메서드 호출");

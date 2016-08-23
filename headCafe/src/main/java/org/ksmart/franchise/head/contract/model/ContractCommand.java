@@ -14,6 +14,8 @@ public class ContractCommand {
 	private int contractStatus;
 	private int contractN;
 	private int royaltyDeadline;
+	private String headStaffId;
+	
 	public String getContractCode() {
 		return contractCode;
 	}
@@ -87,6 +89,12 @@ public class ContractCommand {
 				+ contractExpiryDate + ", contractDeposit=" + contractDeposit + ", contractProfitPercent="
 				+ contractProfitPercent + ", contractFile=" + contractFile + ", contractStatus=" + contractStatus
 				+ ", contractN=" + contractN + ", royaltyDeadline=" + royaltyDeadline + "]";
+	}
+	public String getHeadStaffId() {
+		return headStaffId;
+	}
+	public void setHeadStaffId(String headStaffId) {
+		this.headStaffId = headStaffId;
 	}
 	
 	
