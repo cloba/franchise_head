@@ -10,6 +10,8 @@ public class SubCommand {
 	private int subPost;
 	private String subRoadAddr;
 	private String subParcelAddr;
+	private String headStaffId;
+	
 	public String getSubCode() {
 		return subCode;
 	}
@@ -63,5 +65,11 @@ public class SubCommand {
 	}
 	public void setSubParcelAddr(String subParcelAddr) {
 		this.subParcelAddr = subParcelAddr;
+	}
+	public String getHeadStaffId() {
+		return headStaffId;
+	}
+	public void setHeadStaffId(String headStaffId) {
+		this.headStaffId = headStaffId;
 	}
 }

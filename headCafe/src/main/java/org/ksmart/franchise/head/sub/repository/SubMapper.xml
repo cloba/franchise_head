@@ -54,10 +54,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			SELECT if(isnull(sub_code),'sub_code1', concat('sub_code', MAX(CONVERT(SUBSTRING(sub_code,9), UNSIGNED))+1)) AS subCode
 			FROM sub
 		</selectKey>
-		<!-- 임시 등록 아이디 지정함 -->
 		INSERT INTO sub
 			(sub_code, sub_name, sub_regit_date, sub_owner, sub_phone_first, sub_phone_second, sub_phone_third, sub_post, sub_road_addr, sub_parcle_addr, head_staff_id)
-			VALUES (#{subCode}, #{sub.subName}, NOW(), #{sub.subOwner}, #{sub.subPhoneFirst}, #{sub.subPhoneSecond}, #{sub.subPhoneThird}, #{sub.subPost}, #{sub.subRoadAddr}, #{sub.subParcelAddr}, 'head_staff_id1')
+			VALUES (#{subCode}, #{sub.subName}, NOW(), #{sub.subOwner}, #{sub.subPhoneFirst}, #{sub.subPhoneSecond}, #{sub.subPhoneThird}, #{sub.subPost}, #{sub.subRoadAddr}, #{sub.subParcelAddr}, #{sub.headStaffId})
 	</insert>
 	
 	<!-- sub을 수정합니다 -->
