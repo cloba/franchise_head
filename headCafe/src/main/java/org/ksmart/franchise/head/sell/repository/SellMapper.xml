@@ -22,6 +22,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="headSellFinalDate" column="head_sell_final_date"/>
 		<result property="headSellDistr" column="head_sell_distr"/>
 		<result property="headSellProfitHead" column="head_sell_profit_head"/>
+		<result property="headStaffId" column="head_staff_id"/>
 	</resultMap>
 	
 	<resultMap type="org.ksmart.franchise.head.sell.model.ReceivedOrder" id="ReceivedOrderResultMap">
@@ -91,23 +92,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<!-- 들어온 주문을 승인합니다 -->
-	<update id="confirmOrder" parameterType="java.lang.String">
+	<update id="confirmOrder" parameterType="java.util.Map">
 		UPDATE received_order
 		SET
 			received_order_check='Y',
 			received_order_date=NOW(),
-			received_order_staff='head_staff_id1'
-		WHERE received_order_code = #{code}
+			received_order_staff = #{sell.headStaffId}
+		WHERE received_order_code = #{sell.receivedOrderCode}
 	</update>
 	
 	<!-- 주문 승인을 취소합니다 -->
-	<update id="cancelConfirm" parameterType="java.lang.String">
+	<update id="cancelConfirm" parameterType="java.util.Map">
 		UPDATE received_order
 		SET
 			received_order_check='N',
 			received_order_date=null,
-			received_order_staff='head_staff_id1'
-		WHERE received_order_code = #{code}
+			received_order_staff= #{sell.headStaffId}
+		WHERE received_order_code = #{sell.receivedOrderCode}
 	</update>
 	
 	<!-- 승인한 주문건을 판매내역에 추가합니다 -->

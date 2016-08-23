@@ -54,11 +54,11 @@ public class DeliveryController {
 	
 	//배송상품의 현재 위치를 변경합니다
 	@RequestMapping(value="/updateStatus.do", method=RequestMethod.POST)
-	public String updateStatus(String[] checked, String deliveryStatus){
+	public String updateStatus(String[] checked, String deliveryStatus, String headStaffId){
 		log.debug("SellController의 updateStatus 메서드 호출");
 	//	log.debug(checked+" <===== checked");
 	//	log.debug(status+" <===== status");
-		deliveryService.updateStatusService(checked, deliveryStatus);
+		deliveryService.updateStatusService(checked, deliveryStatus, headStaffId);
 		
 		return "redirect:/viewDeliveryList.do";
 	}

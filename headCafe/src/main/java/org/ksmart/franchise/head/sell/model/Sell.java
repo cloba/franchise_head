@@ -20,6 +20,8 @@ public class Sell {
 	private String headSellFinalDate;
 	private String headSellDistr;
 	private int headSellProfitHead;
+	private String headStaffId;
+	
 	public String getHeadSellCode() {
 		return headSellCode;
 	}
@@ -115,6 +117,12 @@ public class Sell {
 	}
 	public void setHeadSellProfitHead(int headSellProfitHead) {
 		this.headSellProfitHead = headSellProfitHead;
+	}
+	public String getHeadStaffId() {
+		return headStaffId;
+	}
+	public void setHeadStaffId(String headStaffId) {
+		this.headStaffId = headStaffId;
 	}
 	
 }

@@ -4,6 +4,7 @@ public class DeliveryCommand {
 	private String deliveryCode;
 	private String receivedOrderCode;
 	private String deliveryStatus;
+	private String headStaffId;
 	
 	public String getDeliveryStatus() {
 		return deliveryStatus;
@@ -22,6 +23,12 @@ public class DeliveryCommand {
 	}
 	public void setDeliveryCode(String deliveryCode) {
 		this.deliveryCode = deliveryCode;
+	}
+	public String getHeadStaffId() {
+		return headStaffId;
+	}
+	public void setHeadStaffId(String headStaffId) {
+		this.headStaffId = headStaffId;
 	}
 	
 }

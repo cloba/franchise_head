@@ -144,7 +144,7 @@
 														<td>${list.staff}</td>
 													</c:if>
 													<c:if test="${list.check eq 'N'}">
-														<td><a href="/confirmOrder.do?receivedOrderCode=${list.code}">확인</a></td>
+														<td><a href="/confirmOrder.do?receivedOrderCode=${list.code}&headStaffId=${login.headStaffId}">확인</a></td>
 													</c:if>
 												</tr>
 											</c:forEach>

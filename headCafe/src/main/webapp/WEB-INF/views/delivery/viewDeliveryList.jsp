@@ -194,6 +194,9 @@
 									</select>
 									<input type="button" id="changeBtn" class="btn btn-primary" value="변경">
 								</div>
+								<div>
+									<input type="hidden" name="headStaffId" value="${login.headStaffId}" >
+								</div>
 								</form>
 							</div>
 						</div>

@@ -75,10 +75,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				<if test='deliveryStatus != null and deliveryStatus.equals("2")'>
 					delivery_date = NOW()
 					, delivery_status=#{deliveryStatus}
+					, head_staff_id=#{headStaffId}
 				</if>
 				<if test='deliveryStatus != null and deliveryStatus.equals("3")'>
 					delivery_receive_date = NOW()
 					, delivery_status=#{deliveryStatus}
+					, head_staff_id=#{headStaffId}
 				</if>
 			</trim>
 		WHERE 

@@ -55,18 +55,26 @@ public class SellDaoImpl implements SellDao {
 
 	@Override
 	//본사가 주문을 승인하는 메서드입니다
-	public int confirmOrder(String code) {
+	public int confirmOrder(Sell sell) {
 		System.out.println("SellDaoImpl의 confirmOrder 메서드 호출");
-		int result = sqlSessionSell.update(NS+".confirmOrder", code);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("sell", sell);
+		
+		int result = sqlSessionSell.update(NS+".confirmOrder", map);
 		
 		return result;
 	}
 
 	@Override
 	//주문승인을 취소하는 메서드입니다
-	public int cancelConfirm(String code) {
+	public int cancelConfirm(Sell sell) {
 		System.out.println("SellDaoImpl의 cancelConfirm 메서드 호출");
-		int result = sqlSessionSell.update(NS+".cancelConfirm", code);
+
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("sell", sell);
+		
+		int result = sqlSessionSell.update(NS+".cancelConfirm", map);
 		System.out.println("cancelConfirm의 리턴: "+result);
 		return result;
 	}

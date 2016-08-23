@@ -12,5 +12,5 @@ public interface DeliveryService {
 	
 	void requestDeliveryService(String[] checkedOrders, String[] inteCode, int[] headSellQuantity);
 	
-	void updateStatusService(String[] checked, String status);
+	void updateStatusService(String[] checked, String status, String headStaffId);
 }

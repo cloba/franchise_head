@@ -34,11 +34,10 @@
 							<p>수금여부: ${sell.headSellDistr}
 							<br>
 							<p>마감유무: ${sell.headSellFinal}
-							<p>담당직원: ${sell.headSellFinalStaff}
+							<p>마감직원: ${sell.headSellFinalStaff}
 							<p>마감일자: <fmt:parseDate value="${sell.headSellFinalDate}" pattern="yyyy-MM-dd HH:mm:ss" var="date"/>
 							<fmt:formatDate pattern="yyyy-MM-dd" type="both" value="${date}" />
 							<br>
-							<p>등록직원: ${sell.headSellFinal}
 							</div>
                         <!-- /.panel-body -->
                     </div>

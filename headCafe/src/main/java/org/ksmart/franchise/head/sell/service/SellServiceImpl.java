@@ -41,18 +41,18 @@ public class SellServiceImpl implements SellService {
 		System.out.println("SellServiceImpl의 confirmOrderService메서드 호출");		
 		
 		//1. 주문을 승인합니다
-		int result1 = sellDao.confirmOrder(sell.getReceivedOrderCode());
+		int result1 = sellDao.confirmOrder(sell);
 		if( result1 == 1 ){
 			//2-1.승인 성공시 판매내역 추가
 			int result2 = sellDao.addSell(sell);
 			if( result2 != 1 ){
 				//3. 판매내역 추가 실패시 추가 된 내역 삭제/승인취소
-				sellDao.cancelConfirm(sell.getReceivedOrderCode());
+				sellDao.cancelConfirm(sell);
 				sellDao.cancelSell(sell.getReceivedOrderCode());
 			}
 		}else if( result1 != 1 ){
 			//2-2.승인 실패시 승인 취소
-			sellDao.cancelConfirm(sell.getReceivedOrderCode());
+			sellDao.cancelConfirm(sell);
 			sellDao.cancelSell(sell.getReceivedOrderCode());
 		}
 	}

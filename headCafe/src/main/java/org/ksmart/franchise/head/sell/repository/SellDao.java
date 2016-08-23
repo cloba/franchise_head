@@ -15,9 +15,9 @@ public interface SellDao {
 	//본사가 받은 주문 리스트를 불러오는 메서드입니다
 	List<ReceivedOrder> viewReceivedOrder(Search search);
 	//본사가 주문을 승인하는 메서드입니다
-	int confirmOrder(String code);
+	int confirmOrder(Sell sell);
 	//본사가 승인을 취소하는 메서드입니다
-	int cancelConfirm(String code);
+	int cancelConfirm(Sell sell);
 	//승인한 주문 내용을 판매내역에 추가합니다
 	int addSell(Sell sell);
 	//판매내역 추가를 취소합니다
