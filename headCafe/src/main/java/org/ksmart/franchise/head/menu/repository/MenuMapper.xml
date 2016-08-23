@@ -102,7 +102,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				#{menu.menuName}, 
 				#{menu.menuIngrePrice}, 
 				#{menu.menuSellingPrice},
-				<!-- 시큐리티 적용 전 임시값 --> 
 				#{menu.headStaffId},
 				NOW(),
 				'Y')
@@ -136,7 +135,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 					#{menu.ingreAmount},
 					((h_item_selling_price/h_item_amount)*#{menu.ingreAmount}),
 					<!-- 임시 값 -->
-					'head_staff_id1',
+					#{menu.headStaffId},
 					NOW(),
 					'Y'
 			FROM head_item

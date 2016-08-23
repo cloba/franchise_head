@@ -25,7 +25,7 @@
 				
 			}
 			
-			$('#addIngreDiv').append('<div> 재료명: <input type="text" id="ingreName'+order+'" class="ingreName form-control" name="hItemCodeArr" required="required" /> 사용량: <input type="text" class="form-control" name="ingreAmountArr" required="required"/> <span id="unit'+order+'"></span></div>');
+			$('#addIngreDiv').append('<div> 재료명: <input type="text" id="ingreName'+order+'" class="ingreName form-control" name="hItemCodeArr" required="required" /> 사용량: <input type="text" class="form-control" name="ingreAmountArr" required="required" onkeypress="if (event.keyCode<48|| event.keyCode>57)  event.returnValue=false;" style="IME-MODE:disabled;"/> <span id="unit'+order+'"></span></div>');
 			
 			var id = 'ingreName'+order;
 			var unit = 'unit'+order;
@@ -80,7 +80,7 @@
 								</div>
 								<div class="form-group">
 									<label>소비자가격(원)</label> 
-									<input class="form-control" name="menuSellingPrice" id="menuSellingPrice" value=""  required="required"  onkeypress="if (event.keyCode<48|| event.keyCode>57)  event.returnValue=false;" style='IME-MODE:disabled;' type="text"/>
+									<input class="form-control" type="text" name="menuSellingPrice" id="menuSellingPrice" value=""  required="required"  onkeypress="if (event.keyCode<48|| event.keyCode>57)  event.returnValue=false;" style='IME-MODE:disabled;' type="text"/>
 								</div>
 								<div id="addIngreDiv"></div>
 								<input type="button" id="addIngreBtn" class="btn btn-default" value="재료추가">
