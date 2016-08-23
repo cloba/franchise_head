@@ -2,7 +2,7 @@ package org.ksmart.franchise.head.item.service;
 
 import java.util.List;
 
-import org.ksmart.franchise.head.item.model.HeadLogin;
+import org.ksmart.franchise.head.headStaff.model.HeadStaffLogin;
 import org.ksmart.franchise.head.item.model.Item;
 import org.ksmart.franchise.head.item.model.ItemCommand;
 import org.ksmart.franchise.head.item.repository.ItemDao;
@@ -17,7 +17,7 @@ public class ItemServiceImpl  implements ItemService {
 	private ItemDao itemDao;
 
 	@Override
-	public void addItemService(ItemCommand itemCommand, HeadLogin headLogin) {
+	public void addItemService(ItemCommand itemCommand, HeadStaffLogin headLogin) {
 		System.out.println("ItemServiceImpl의 addItemService메서드 호출");
 		
 		itemDao.addItem(itemCommand, headLogin);
@@ -31,7 +31,7 @@ public class ItemServiceImpl  implements ItemService {
 	}
 
 	@Override
-	public int headModifyItemService(ItemCommand itemCommand, HeadLogin headLogin) {
+	public int headModifyItemService(ItemCommand itemCommand, HeadStaffLogin headLogin) {
 		System.out.println("ItemServiceImpl의 headModifyItemService메서드 호출");
 		
 		return itemDao.headModifyItem(itemCommand, headLogin);

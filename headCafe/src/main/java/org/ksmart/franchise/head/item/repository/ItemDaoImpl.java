@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
-import org.ksmart.franchise.head.item.model.HeadLogin;
+import org.ksmart.franchise.head.headStaff.model.HeadStaffLogin;
 import org.ksmart.franchise.head.item.model.Item;
 import org.ksmart.franchise.head.item.model.ItemCommand;
 import org.ksmart.franchise.head.util.Search;
@@ -24,7 +24,7 @@ public class ItemDaoImpl implements ItemDao{
 	
 	@Override
 	// head_item을 추가하는 메서드입니다
-	public void addItem(ItemCommand itemCommand, HeadLogin headLogin) {
+	public void addItem(ItemCommand itemCommand, HeadStaffLogin headLogin) {
 		System.out.println("ItemDaoImpl의 addItem 메서드 호출");
 		
 		//test용 session id입니다
@@ -59,7 +59,7 @@ public class ItemDaoImpl implements ItemDao{
 
 	@Override
 	// head_item을 수정하는 메서드입니다
-	public int headModifyItem(ItemCommand itemCommand, HeadLogin headLogin) {
+	public int headModifyItem(ItemCommand itemCommand, HeadStaffLogin headLogin) {
 		System.out.println("ItemDaoImpl의 headModifyItem 메서드 호출");
 		
 		//test용 session id입니다

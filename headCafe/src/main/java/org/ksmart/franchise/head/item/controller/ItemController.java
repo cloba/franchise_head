@@ -3,7 +3,7 @@ package org.ksmart.franchise.head.item.controller;
 import java.util.List;
 
 import org.apache.log4j.Logger;
-import org.ksmart.franchise.head.item.model.HeadLogin;
+import org.ksmart.franchise.head.headStaff.model.HeadStaffLogin;
 import org.ksmart.franchise.head.item.model.Item;
 import org.ksmart.franchise.head.item.model.ItemCommand;
 import org.ksmart.franchise.head.item.service.ItemService;
@@ -31,7 +31,7 @@ public class ItemController {
 	
 	// 상품을 추가하는 head_item form을 제출합니다
 	@RequestMapping(value="/headAddItem.do", method=RequestMethod.POST)
-	public String addItem(ItemCommand itemCommand, HeadLogin headLogin){
+	public String addItem(ItemCommand itemCommand, HeadStaffLogin headLogin){
 		log.debug("ItemController의 addItem 메서드 호출");
 		itemService.addItemService(itemCommand, headLogin);
 		return "redirect:/viewItemList.do";
@@ -72,7 +72,7 @@ public class ItemController {
 	
 	// 상품을 수정합니다
 	@RequestMapping(value="/headModifyItem.do", method=RequestMethod.POST)
-	public String modifyItem(ItemCommand itemCommand, HeadLogin headLogin){
+	public String modifyItem(ItemCommand itemCommand, HeadStaffLogin headLogin){
 		log.debug("ItemController의 modifyItem 메서드 호출");
 		
 		int result = itemService.headModifyItemService(itemCommand, headLogin);
