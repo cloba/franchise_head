@@ -42,6 +42,7 @@
                             <address>
                             	<strong>로열티 납부기일: ${royalty.royaltyDeadline}</strong>
                             	<br>납부여부: ${royalty.royaltyPaid}
+                            	<br>담당직원: ${royalty.royaltyHeadStaffId}
                             </address>
                            </div>
                           <!-- /.panel-body -->

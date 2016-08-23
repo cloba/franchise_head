@@ -82,7 +82,8 @@ $(document).ready(function(){
 										<input type="text" name="royaltyPayActualDate" value="${royalty.royaltyPayActualDate}" readonly="readonly">	
 									</c:if>
 								</div>
-								<input type="button" id="modifyRoyaltyPayBtn" class="btn btn-default" value="저장">
+									<input type="hidden" name="royaltyHeadStaffId" value="${login.headStaffId}">
+									<input type="button" id="modifyRoyaltyPayBtn" class="btn btn-default" value="저장">
 							</form>
 						</div>
 					</div>

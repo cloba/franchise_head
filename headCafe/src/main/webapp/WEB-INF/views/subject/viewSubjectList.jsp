@@ -14,6 +14,20 @@
 		float: right;
 	}
 </style>
+<script>
+	$(document).ready(function(){
+		
+		//검색 유효성
+		$('#searchBtn').click(function(){
+			console.log("클릭");
+			if(  $('#searchKey').val() == "" || $('#searchItem').val() == "" ){
+				alert('검색분류를 선택하고 검색어를 입력해주세요');
+			}else{
+				$('#subjectList').submit();
+			}
+		});
+	});
+</script>
 <!-- Page Content -->
 	<div id="page-wrapper">
 		<div class="container-fluid">
@@ -42,14 +56,14 @@
 								<input type="hidden" name="status" value="${subjectSearch.status}"/>
 								
 								<div class="form-group">
-								<label>키워드검색</label>
-								<select class="form-control" id="searchKey" name="searchKey">
-									<option value="">::선택::</option>
-									<option value="subject_code" <c:if test="${subjectSearch.searchKey eq 'subject_code'}">selected="selected"</c:if>>계정과목코드</option>
-									<option value="subject_name" <c:if test="${subjectSearch.searchKey eq 'subject_name'}">selected="selected"</c:if>>계정과목명</option>
-								</select>
-								<!-- 검색어와 검색버튼 -->
-								<input type="text" class="form-control" id="searchItem" name="searchItem" value="${subjectSearch.searchItem}"/>
+									<label>키워드검색</label>
+									<select class="form-control" id="searchKey" name="searchKey">
+										<option value="">::선택::</option>
+										<option value="subject_code" <c:if test="${subjectSearch.searchKey eq 'subject_code'}">selected="selected"</c:if>>계정과목코드</option>
+										<option value="subject_name" <c:if test="${subjectSearch.searchKey eq 'subject_name'}">selected="selected"</c:if>>계정과목명</option>
+									</select>
+									<!-- 검색어와 검색버튼 -->
+									<input type="text" class="form-control" id="searchItem" name="searchItem" value="${subjectSearch.searchItem}"/>
 								</div>
 								<input type="button" class="btn btn-default" id="searchBtn" value="search"/>
 							</form>
@@ -84,6 +98,7 @@
                </div>
                <!-- /.col-lg-12 -->
            </div>
+           
            <a id="addBtn" class="btn btn-default" href="/addSubject.do">신규등록</a>
 		</div>
          <!-- /.container-fluid -->

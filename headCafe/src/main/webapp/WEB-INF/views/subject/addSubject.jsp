@@ -5,6 +5,20 @@
 	}
 </style>
 <script type="text/javascript" src="/resources/js/comma.js"></script>
+<script>
+	$(document).ready(function(){
+		//폼 유효성
+		$('#addBtn').click(function(){
+			if ($('#subjectName').val()==""){
+				alert("계정과목 명을 입력하세요.");
+			}else if ($('#subjectContent').val()==""){
+				alert("상세내용을 입력 해주세요.");
+			}else {
+				$('#addForm').submit();
+			}
+		});
+	});
+</script>
 <div id="page-wrapper">
 	<div class="row">
 		<div class="col-lg-12">
@@ -20,11 +34,11 @@
 						<div class="col-lg-6">
 								<div class="form-group">
 									<label>계정과목명</label> 
-									<input class="form-control" name="subjectName" required="required" />
+									<input class="form-control" name="subjectName" required="required" id="subjectName" />
 								</div>
 								<div class="form-group">
 									<label>상세내용</label> 
-									<input class="form-control" name="subjectContent" />
+									<input class="form-control" name="subjectContent" id="subjectContent" />
 								</div>
 							</div>
 							</div>

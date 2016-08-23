@@ -18,6 +18,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="subName" column="sub_name"/>
 		<result property="subCode" column="sub_code"/>
 		<result property="royaltyOverdueIdentify" column="royalty_overdue_identify"/>
+		<result property="royaltyHeadStaffId" column="royalty_head_staff_id"/>
 	</resultMap>
 
 	<resultMap id="RoyaltyOverdueAddResultMap" type="org.ksmart.franchise.head.royalty.model.RoyaltyOverdueAdd">
@@ -90,7 +91,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			royalty_paid,             sub_practical_sell_price_month,   sub_code,
 			sub_sell_profit_month,    head_sell_profit_by_sub_month,    royalty_deadline,
 			royalty_pay_actual_date,  royalty_actual_amount,            sub_name,
-			royalty_overdue_identify
+			royalty_overdue_identify, royalty_head_staff_id
 		FROM
 			royalty 
 		WHERE 
@@ -125,7 +126,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			royalty
 		SET
 			royalty_pay_actual_date = NOW(),
-			royalty_actual_amount = #{royalty.royaltyActualAmount}
+			royalty_actual_amount = #{royalty.royaltyActualAmount},
+			royalty_head_staff_id = #{royalty.royaltyHeadStaffId}
 		WHERE 
 			royalty_code = #{royalty.royaltyCode}
 		

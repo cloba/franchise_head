@@ -15,6 +15,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="headSellProfitBySubMonth" column="head_sell_profit_by_sub_month"/>
 		<result property="royaltyCode" column="royalty_code"/>
 		<result property="subName" column="sub_name"/>
+		<result property="royaltyOverdueHeadStaffId" column="royalty_overdue_head_staff_id"/>
 	</resultMap>
 	
 	
@@ -30,6 +31,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			r.royalty_overdue_paid,
 			r.royalty_overdue_pay_date,
 			r.royalty_overdue_rest,
+			royalty_overdue_head_staff_id,
 			r.royalty_total_overdue_pay
 		FROM 
 			royalty s INNER JOIN royalty_overdue r 
@@ -54,7 +56,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			r.royalty_overdue_paid,
 			r.royalty_overdue_pay_date,
 			r.royalty_overdue_rest,
-			r.royalty_total_overdue_pay
+			r.royalty_total_overdue_pay,
+			r.royalty_overdue_head_staff_id
 		FROM 
 			royalty s INNER JOIN royalty_overdue r 
 		ON
@@ -98,7 +101,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				royalty_overdue_status = 'Y',
 			</if>
 			royalty_overdue_pay_date = #{royaltyOverduePayAdd.royaltyOverdueAddPayDate},
-			royalty_overdue_rest = #{royaltyOverduePayAdd.totalRoyaltyOverdueRest}
+			royalty_overdue_rest = #{royaltyOverduePayAdd.totalRoyaltyOverdueRest},
+			royalty_overdue_head_staff_id = #{royaltyOverduePayAdd.royaltyOverdueHeadStaffId} 
 	WHERE royalty_overdue_code = #{royaltyOverduePayAdd.royaltyOverdueCode}
 	</update>
 </mapper>

@@ -1,7 +1,5 @@
 package org.ksmart.franchise.head.royalty.model;
 
-
-
 public class RoyaltyOverdueAdd {
 	
 	private String contractCode;
@@ -11,8 +9,7 @@ public class RoyaltyOverdueAdd {
 	private String royaltyOverdueCode;
 	private String royaltyCode;
 	private int royaltyOverdueRest;
-
-
+	private String royaltyOverdueHeadStaffId;
 
 	public String getContractCode() {
 		return contractCode;
@@ -66,6 +63,12 @@ public class RoyaltyOverdueAdd {
 	}
 	public void setRoyaltyPayActualDate(String royaltyPayActualDate) {
 		this.royaltyPayActualDate = royaltyPayActualDate;
+	}
+	public String getRoyaltyOverdueHeadStaffId() {
+		return royaltyOverdueHeadStaffId;
+	}
+	public void setRoyaltyOverdueHeadStaffId(String royaltyOverdueHeadStaffId) {
+		this.royaltyOverdueHeadStaffId = royaltyOverdueHeadStaffId;
 	}
 	
  

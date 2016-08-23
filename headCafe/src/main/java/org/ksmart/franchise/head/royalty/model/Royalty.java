@@ -16,6 +16,7 @@ public class Royalty {
 	private String subName;
 	private String subCode;
 	private String royaltyOverdueIdentify;
+	private String royaltyHeadStaffId;
 	
 	public String getLastMonth() {
 		return lastMonth;
@@ -100,6 +101,12 @@ public class Royalty {
 	}
 	public void setRoyaltyOverdueIdentify(String royaltyOverdueIdentify) {
 		this.royaltyOverdueIdentify = royaltyOverdueIdentify;
+	}
+	public String getRoyaltyHeadStaffId() {
+		return royaltyHeadStaffId;
+	}
+	public void setRoyaltyHeadStaffId(String royaltyHeadStaffId) {
+		this.royaltyHeadStaffId = royaltyHeadStaffId;
 	}
 	
 	

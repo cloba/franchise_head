@@ -33,6 +33,7 @@
                             	<strong>남부금액: ${royaltyOverdue.royaltyOverduePaid}</strong>
                             	<br>납부일자: ${royaltyOverdue.royaltyOverduePayDate}
                             	<br>남은금액: ${royaltyOverdue.royaltyOverdueRest}
+                            	<br>로얄티 연체 담당 직원: ${royaltyOverdue.royaltyOverdueHeadStaffId}
                             </address>
                            </div>
                         <!-- /.panel-body -->

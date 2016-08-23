@@ -29,6 +29,7 @@
                             	<br>추가 납부일자: <input type="date" name="royaltyOverdueAddPayDate" value="">
                             	<br>추가 납부금액: <input type="text" name="royaltyOverdueAddPaid" value="">
                             </address>
+                            <input type="hidden" name="royaltyOverdueHeadStaffId" value="${login.headStaffId}">
                             <div class="btn"><input type="submit" value="금액 추가"></div>
                            </div>
                            

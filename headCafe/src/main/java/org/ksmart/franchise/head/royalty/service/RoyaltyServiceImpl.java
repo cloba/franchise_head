@@ -57,7 +57,7 @@ public class RoyaltyServiceImpl implements RoyaltyService {
 		
 		
 	}
-
+	//로얄티 연체 금액 납부 하는 메서드
 	@Override
 	public int modifyRoyaltyPayService(Royalty royalty) {
 		System.out.println("RoyaltyServiceImpl의 modifyRoyaltyPayService");

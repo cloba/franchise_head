@@ -8,6 +8,7 @@ public class RoyaltyOverduePayAdd {
 	private int totalRoyaltyOverduePaid;
 	private int totalRoyaltyOverdueRest;
 	private String royaltyOverdueCode;
+	private String royaltyOverdueHeadStaffId; 
 	
 	public int getRoyaltyOverdueRest() {
 		return royaltyOverdueRest;
@@ -52,6 +53,12 @@ public class RoyaltyOverduePayAdd {
 	}
 	public void setRoyaltyOverdueCode(String royaltyOverdueCode) {
 		this.royaltyOverdueCode = royaltyOverdueCode;
+	}
+	public String getRoyaltyOverdueHeadStaffId() {
+		return royaltyOverdueHeadStaffId;
+	}
+	public void setRoyaltyOverdueHeadStaffId(String royaltyOverdueHeadStaffId) {
+		this.royaltyOverdueHeadStaffId = royaltyOverdueHeadStaffId;
 	}
 	
 	

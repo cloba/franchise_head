@@ -11,6 +11,7 @@ public class RoyaltyOverdue {
 	private String royaltyTotalOverduePay;
 	private String royaltyCode;
 	private String subName;
+	private String royaltyOverdueHeadStaffId;
 	
 	
 	public String getRoyaltyOverdueCode() {
@@ -72,6 +73,12 @@ public class RoyaltyOverdue {
 	}
 	public void setSubName(String subName) {
 		this.subName = subName;
+	}
+	public String getRoyaltyOverdueHeadStaffId() {
+		return royaltyOverdueHeadStaffId;
+	}
+	public void setRoyaltyOverdueHeadStaffId(String royaltyOverdueHeadStaffId) {
+		this.royaltyOverdueHeadStaffId = royaltyOverdueHeadStaffId;
 	}
 
 	
