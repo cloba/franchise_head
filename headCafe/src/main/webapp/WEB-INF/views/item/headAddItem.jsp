@@ -42,10 +42,34 @@
 			$(this).val(result);
 		});
 		
-		//test용 form submit
+		
+		// 폼 유효성
 		$('#addBtn').click(function(){
-			console.log('클릭')
-			$('#addForm').submit();
+			if ($('#hItemName').val() == ""){
+				alert("상품명을 입력해주세요.");
+				
+			}else if ($(':radio[name="hItemUnit"]:checked').length<1){
+				alert("단위를 선택 해주세요.");	
+			
+				//ㅍ여기부터해야함
+			/* }else if ($('#headStaffPhoneSecond').val()== ""){
+				alert("전화번호를 입력 해주세요.");
+			}else if ($('#headStaffPhoneThird').val()== ""){
+				alert("전화번호를 입력 해주세요.");
+			}else if ($('#headStaffPhoneThird').val()== ""){
+				alert("전화번호를 입력 해주세요.");
+			}else if ($('#headStaffPhoneThird').val()== ""){
+				alert("전화번호를 입력 해주세요.");
+			}else if ($('#headStaffPhoneThird').val()== ""){
+				alert("전화번호를 입력 해주세요.");
+				
+			}else if ($('#headStaffDep').val() == '0'){
+				alert("부서를 선택해주세요.");
+ 			}else if($('#sample4_postcode').val().length < 5){
+				alert("주소를 입력 해주세요."); 
+			}else {
+				$('#joinForm').submit();*/
+			} 
 		});
 	});
 </script>
@@ -104,7 +128,7 @@
 							</div>
 						</div>
 					</div>
-				</div>
+				</div>ㄹ
 			</div>
 			<div class="btns">
 				<a class="btn btn-default" href="/viewItemList.do">돌아가기</a>

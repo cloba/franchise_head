@@ -50,7 +50,7 @@
 			
 		});
 		
-		// 폼 제출
+		// 폼 유효성
 		$('#joinBtn').click(function(){
 			if ($('#headStaffName').val() == ""){
 				alert("이름 입력해주세요.");
