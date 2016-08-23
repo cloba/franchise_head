@@ -28,6 +28,31 @@
 			var result = uncomma($(this).val());
 			$(this).val(result);
 		});
+		
+		// 폼 유효성
+		$('#addBtn').click(function(){
+			if ($('#subCode').val() == ""){
+				alert("가맹일련번호를 입력 해주세요.");
+			}else if ($('#contractorName').val().length < 2){
+				alert("계약자명을 입력 해주세요.");
+			}else if ($('#contractActualDate').val()==""){
+				alert("계약일자를 입력 해주세요.");
+			}else if ($('#contractExpiryDate').val()==""){
+				alert("계약만료일을 입력 해주세요.");
+			}else if ($('#contractDeposit').val()==""){
+				alert("가맹금을 입력 해주세요.");
+			}else if ($('#contractProfitPercent').val()==""){
+				alert("이익배분율을 입력 해주세요.");
+			}else if ($('#royaltyDeadline').val()==""){
+				alert(" 로얄티 지급기일을 입력 해주세요.");
+			}else if ($('#file').val() == ""){
+				alert("파일을 첨부해주세요.");
+ 			}else if($('#contractN').val().length ==""){
+				alert("계약차수를 입력 해주세요."); 
+			}else {
+				$('#addForm').submit();
+			}
+		});
 		/* $('#addBtn').click(function(){
 			$('#addForm').submit();
 		}); */
@@ -50,39 +75,39 @@
 						<div class="col-lg-6">
 								<div class="form-group">
 									<label>가맹일련번호</label> 
-									<input class="form-control" name="subCode" required="required" />
+									<input class="form-control" name="subCode" id="subCode" required="required" />
 								</div>
 								<div class="form-group">
 									<label>계약자명</label> 
-									<input class="form-control" name="contractorName" required="required" />
+									<input class="form-control" name="contractorName" id="contractorName" required="required" />
 								</div>
 							 	<div class="form-group">
 									<label>계약일자</label> 
-									<input class="form-control" type="date" name="contractActualDate" required="required" />
+									<input class="form-control" type="date" name="contractActualDate" id="contractActualDate" required="required" />
 								</div>
 								<div class="form-group">
 									<label>계약만료일</label> 
-									<input class="form-control" type="date" name="contractExpiryDate" required="required" />
+									<input class="form-control" type="date" name="contractExpiryDate" id="contractExpiryDate" required="required" />
 								</div> 
 								<div class="form-group">
 									<label>가맹금</label> 
-									<input class="form-control comma" name="contractDeposit" required="required" />
+									<input class="form-control comma" name="contractDeposit" id="contractDeposit" required="required" />
 								</div>
 								<div class="form-group">
 									<label>이익배분율</label> 
-									<input class="form-control" name="contractProfitPercent" required="required" onkeypress="if (event.keyCode<48|| event.keyCode>57)  event.returnValue=false;" style='IME-MODE:disabled;' />
+									<input class="form-control" name="contractProfitPercent" id="contractProfitPercent" required="required" onkeypress="if (event.keyCode<48|| event.keyCode>57)  event.returnValue=false;" style='IME-MODE:disabled;' />
 								</div>
 								<div class="form-group">
 									<label>로열티 지급기일</label> 
-									<input class="form-control" name="royaltyDeadline" required="required" onkeypress="if (event.keyCode<48|| event.keyCode>57)  event.returnValue=false;" style='IME-MODE:disabled;' maxlength=2 />
+									<input class="form-control" name="royaltyDeadline" id="royaltyDeadline" required="required" onkeypress="if (event.keyCode<48|| event.keyCode>57)  event.returnValue=false;" style='IME-MODE:disabled;' maxlength=2 />
 								</div>
 								<div class="form-group">
 									<label>계약서첨부파일</label> 
-									<input class="form-control" type="file" name="file" required="required" />
-								</div> --
+									<input class="form-control" type="file" name="file" id="file" required="required" />
+								</div> 
 								<div class="form-group">
 									<label>계약차수</label> 
-									<input class="form-control" type="number" name="contractN" required="required" min="1" />
+									<input class="form-control" type="number" name="contractN" id="contractN" required="required" min="1" />
 								</div>
 								<div>
 									<input type="hidden" name="headStaffId" value="${login.headStaffId}">
@@ -95,7 +120,7 @@
 			</div>
 			<div class="btns">
 				<a class="btn btn-default" href="/viewContractList.do">돌아가기</a>
-				<input type="submit" id="addBtn" class="btn btn-default" value="등록">
+				<input type="button" id="addBtn" class="btn btn-default" value="등록">
 			</div>
 			</form>
 		</div>
