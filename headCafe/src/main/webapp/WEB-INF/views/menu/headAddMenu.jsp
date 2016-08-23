@@ -80,7 +80,7 @@
 								</div>
 								<div class="form-group">
 									<label>소비자가격(원)</label> 
-									<input class="form-control" type="text" name="menuSellingPrice" id="menuSellingPrice" value=""  required="required"  onkeypress="if (event.keyCode<48|| event.keyCode>57)  event.returnValue=false;" style='IME-MODE:disabled;' type="text"/>
+									<input class="form-control" type="text" name="menuSellingPrice" id="menuSellingPrice" value=""  required="required"  onkeypress="if (event.keyCode<48|| event.keyCode>57)  event.returnValue=false;" style='IME-MODE:disabled;'/>
 								</div>
 								<div id="addIngreDiv"></div>
 								<input type="button" id="addIngreBtn" class="btn btn-default" value="재료추가">

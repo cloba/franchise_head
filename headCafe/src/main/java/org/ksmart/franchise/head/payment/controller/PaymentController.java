@@ -49,13 +49,13 @@ public class PaymentController {
 		return "/payment/addPayment";
 	}
 	
-	//결제방식을 등록합니다
+	//결제방식을 등록합니다  
 	@RequestMapping(value="/addPayment.do", method=RequestMethod.POST)
 	public String addPayment(PaymentCommand paymentCommand){
 		log.debug("PaymentController의 addPayment 메서드 호출");
 		paymentService.addPaymentService(paymentCommand);
 		
-		return "redirect:/viewPaymentList";
+		return "redirect:/viewPaymentList.do";
 	}
 	
 	//결제방식의 적용상태를 변경합니다
