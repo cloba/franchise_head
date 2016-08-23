@@ -88,7 +88,7 @@
 								</div>
 								<div class="form-group">
 									<label>연락처</label> 
-									<select class="form-control" name="headStaffPhone" style="width: 50px" required="required">
+									<select class="form-control" name="headStaffPhoneFirst" style="width: 50px" required="required">
 										<option value="010">010</option>
 										<option value="011">011</option>
 										<option value="016">016</option>
@@ -132,6 +132,7 @@
 				</div>
 			</div>
 			<div class="btns">
+				<input type="hidden" name="regitHeadStaffId" value="${login.headStaffId}">
 				<a class="btn btn-default" href="/viewHeadStaffList.do">돌아가기</a>
 				<input type="button" id="joinBtn" class="btn btn-default" value="등록">
 			</div>

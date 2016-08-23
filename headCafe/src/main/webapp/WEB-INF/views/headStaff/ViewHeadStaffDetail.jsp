@@ -49,7 +49,9 @@
 						</div>
                         <!-- /.panel-body -->
                     </div>
-                    <a id="resignBtn" class="btn btn-default" href="/addResignStaff.do?headStaffId=${headStaff.headStaffId}">퇴사등록</a>
+                    <c:if test="${headStaff.resignIdentify == 'N' }">
+                   		<a id="resignBtn" class="btn btn-default" href="/addResignStaff.do?headStaffId=${headStaff.headStaffId}">퇴사등록</a>
+                    </c:if>
                     <!-- /.panel -->
                 </div>
            </div>

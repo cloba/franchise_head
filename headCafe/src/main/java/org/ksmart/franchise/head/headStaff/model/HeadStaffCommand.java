@@ -5,13 +5,15 @@ package org.ksmart.franchise.head.headStaff.model;
  *
  */
 public class HeadStaffCommand {
+	
+	private String regitHeadStaffId;
 	private String headStaffId;
 	private String headStaffPw;
 	private String headStaffName;
 	private String headStaffLevel;
 	private String headStaffDep;
 	private String headStaffJoin;
-	private String headStaffPhone;
+	private String headStaffPhoneFirst;
 	private String headStaffPhoneSecond;
 	private String headStaffPhoneThird;
 	private String headStaffPost;
@@ -54,12 +56,6 @@ public class HeadStaffCommand {
 	public void setHeadStaffPw(String headStaffPw) {
 		this.headStaffPw = headStaffPw;
 	}
-	public String getHeadStaffPhone() {
-		return headStaffPhone;
-	}
-	public void setHeadStaffPhone(String headStaffPhone) {
-		this.headStaffPhone = headStaffPhone;
-	}
 	public String getHeadStaffPhoneSecond() {
 		return headStaffPhoneSecond;
 	}
@@ -89,6 +85,18 @@ public class HeadStaffCommand {
 	}
 	public void setHeadStaffParcleAddr(String headStaffParcleAddr) {
 		this.headStaffParcleAddr = headStaffParcleAddr;
+	}
+	public String getRegitHeadStaffId() {
+		return regitHeadStaffId;
+	}
+	public void setRegitHeadStaffId(String regitHeadStaffId) {
+		this.regitHeadStaffId = regitHeadStaffId;
+	}
+	public String getHeadStaffPhoneFirst() {
+		return headStaffPhoneFirst;
+	}
+	public void setHeadStaffPhoneFirst(String headStaffPhoneFirst) {
+		this.headStaffPhoneFirst = headStaffPhoneFirst;
 	}
 
 	

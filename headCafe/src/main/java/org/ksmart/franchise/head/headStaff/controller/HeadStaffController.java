@@ -86,7 +86,8 @@ public class HeadStaffController {
 		model.addAttribute("headStaffCommand", headStaffCommand);
 		//log.debug("headStaffId 확인: "+headStaffCommand.getHeadStaffId());
 		
-		return "/headStaff/AddHeadStaff";
+		return "redirect:/viewHeadStaffList.do";
+	
 	}
 	
 	

@@ -24,7 +24,7 @@
                           <br>
                           <address>
 	                          <c:forEach var="Recipe" items="${list}">  
-		                              <br>${Recipe.recipeOrder}  ${Recipe.recipeAct}
+		                              <br>${Recipe.recipeOrder}번.  ${Recipe.recipeAct}
 		                      </c:forEach>
 	                      </address>
 						<br>
