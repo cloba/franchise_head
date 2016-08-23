@@ -106,7 +106,7 @@ public class ContractController {
 	//계약파기 사유를 기입하는 form으로 이동합니다
 	@RequestMapping(value="/expireContract.do", method=RequestMethod.GET)
 	public String expireContractForm(String contractCode, Model model){
-		System.out.println("ContractController의 expireContractForm 메서드 호출");
+		log.debug("ContractController의 expireContractForm 메서드 호출");
 		model.addAttribute("code", contractCode);
 		
 		return "/contract/expireContract";

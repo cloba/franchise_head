@@ -84,9 +84,9 @@
 									<label>계약차수</label> 
 									<input class="form-control" type="number" name="contractN" required="required" min="1" />
 								</div>
-								<%-- <div>
+								<div>
 									<input type="hidden" name="headStaffId" value="${login.headStaffId}">
-								</div> --%>
+								</div> 
 								</div>
 							</div>
 						</div>
