@@ -22,18 +22,29 @@ $(document).ready(function(){
 	var number = 0;
 	var orderTemp = 0;
 	$('#addRecipeBtn').click(function(){
-		/*
-		if( $('.recipeOrder').length < 1 ){
-			var orderTemp = 0;
-			var number = 1;
-		}else{ 
-			var orderTemp = eval($(".recipeOrder:last").attr('id').replace("recipeOrder",""));
-		*/
 			order = orderTemp+1;
 			number++
-			console.log('order:'+order)
-	//	}
-		$('#recipeAdd').append('<div> 순서: '+number+'<input type="hidden" id="recipeOrder'+number+'" class="recipeOrder" name="recipeOrderArr" required="required" value="'+number+'" /> <br><p>레시피 내용: <input type="text" class="recipeContent" name="recipeActArr" required="required" size="40" maxlength="35"/></div>');
+			console.log('order:'+number)
+		$('#recipeAdd').append('<div> 순서: '+number+'<input type="hidden" id="recipeOrder'+number+'" class="recipeOrder" name="recipeOrderArr" required="required" value="'+number+'" /> <br><p>레시피 내용: <input type="text" class="recipeContent" id="recipeAct'+number+'" name="recipeActArr" required="required" size="40" maxlength="35"/></div>');
+	});                                                                                                       
+	
+	var recipeAct = 0;
+	$('#addBtn').click(function(){
+		for(var i=1; i<number+1; i++){
+			console.log("check ==>"+$('#recipeAct'+i).val());
+			
+			if($('#recipeAct'+i).val() == ""){ 
+				console.log("number::"+number);
+				recipeAct++;
+			}
+		}
+		
+		if(recipeAct != 0){
+			alert('레시피 내용을 입력하세요');
+			recipeAct = 0;
+		}else{
+			$('#addForm').submit();
+		}
 		
 	});
 });
@@ -62,13 +73,13 @@ $(document).ready(function(){
 								</div>
 								<div>
 									<input type="button" class="btn btn-default" id="addRecipeBtn" value="순서 추가"/>
-									<input type="submit" class="btn btn-default" value="저장">
+									<input type="button" class="btn btn-default" id="addBtn" value="저장">
 								</div>
 								<div>
 									<input type="hidden" name="headStaffId" value="${login.headStaffId}">
 									<input type="hidden" name="menuCode" value="${recipeCommand.menuCode}">
 								</div>
-								</form>
+							</form>
 						</div>
 					</div>
 				</div>

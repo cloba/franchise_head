@@ -70,7 +70,7 @@ public class RecipeController {
 		log.debug("RecipeController의 addRecipe post메서드 ");
 		recipeService.addRecipeService(recipeCommand);
 		
-		return "redirect:/viewMenuDetail.do?menuCode="+recipeCommand.getMenuCode();
+		return "redirect:/viewRecipeDetail.do?menuCode="+recipeCommand.getMenuCode();
 	}	
 	
 	 

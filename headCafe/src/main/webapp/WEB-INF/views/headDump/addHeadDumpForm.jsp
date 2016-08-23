@@ -102,6 +102,7 @@
 				</div>
 			</div>
 			<div class="btns">
+				<input type="hidden" name="headStaffId" value="${login.headStaffId}">
 				<a class="btn btn-default" href="/viewHeadDumpList.do">돌아가기</a>
 				<input type="button" id="headDumpBtn" class="btn btn-default" value="등록">
 			</div>

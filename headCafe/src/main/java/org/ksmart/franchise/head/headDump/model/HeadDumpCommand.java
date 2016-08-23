@@ -6,6 +6,7 @@ public class HeadDumpCommand {
 	private String specificItemCode;
 	private String headDumpReason;
 	private String headStaffId;
+	
 	public String getHeadDumpCode() {
 		return headDumpCode;
 	}
