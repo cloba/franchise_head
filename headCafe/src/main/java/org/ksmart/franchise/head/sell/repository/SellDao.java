@@ -4,12 +4,11 @@ import java.util.List;
 
 import org.ksmart.franchise.head.sell.model.ReceivedOrder;
 import org.ksmart.franchise.head.sell.model.Sell;
-import org.ksmart.franchise.head.sell.model.SellSearch;
 import org.ksmart.franchise.head.util.Search;
 
 public interface SellDao {
 	//판매내역 리스트를 불러오는 메서드입니다
-	List<Sell> viewSellList(SellSearch search);
+	List<Sell> viewSellList(Search search);
 	//판매내역 하나의 상세를 불러오는 메서드입니다
 	Sell getSellDetail(String headSellCode);
 	//본사가 받은 주문 리스트를 불러오는 메서드입니다

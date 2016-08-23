@@ -5,8 +5,8 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.ksmart.franchise.head.payment.model.Payment;
 import org.ksmart.franchise.head.payment.model.PaymentCommand;
-import org.ksmart.franchise.head.payment.model.PaymentSearch;
 import org.ksmart.franchise.head.payment.repository.PaymentDao;
+import org.ksmart.franchise.head.util.Search;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +18,7 @@ public class PaymentServiceImpl implements PaymentService {
 	Logger log = Logger.getLogger(this.getClass());
 
 	@Override
-	public List<Payment> viewPaymentListService(PaymentSearch search) {
+	public List<Payment> viewPaymentListService(Search search) {
 		log.debug("PaymentServiceImpl의 viewPaymentListService메서드 호출");
 		
 		return paymentDao.viewPaymentList(search);

@@ -5,8 +5,8 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.ksmart.franchise.head.payment.model.Payment;
 import org.ksmart.franchise.head.payment.model.PaymentCommand;
-import org.ksmart.franchise.head.payment.model.PaymentSearch;
 import org.ksmart.franchise.head.payment.service.PaymentService;
+import org.ksmart.franchise.head.util.Search;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,7 +22,7 @@ public class PaymentController {
 	
 	// 결제방식 리스트를 보여줍니다 (검색포함)
 	@RequestMapping(value="/viewPaymentList.do")
-	public String viewPaymentList(PaymentSearch search, Model model){
+	public String viewPaymentList(Search search, Model model){
 		log.debug("PaymentController의 viewPaymentList 메서드 호출");
 		List<Payment> paymentList = paymentService.viewPaymentListService(search);
 		model.addAttribute("paymentList", paymentList);

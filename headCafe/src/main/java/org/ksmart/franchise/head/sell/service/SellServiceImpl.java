@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.ksmart.franchise.head.sell.model.ReceivedOrder;
 import org.ksmart.franchise.head.sell.model.Sell;
-import org.ksmart.franchise.head.sell.model.SellSearch;
 import org.ksmart.franchise.head.sell.repository.SellDao;
 import org.ksmart.franchise.head.util.Search;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +16,7 @@ public class SellServiceImpl implements SellService {
 	private SellDao sellDao;
 
 	@Override
-	public List<Sell> viewSellListService(SellSearch search) {
+	public List<Sell> viewSellListService(Search search) {
 		System.out.println("SellServiceImpl의 viewSellListService메서드 호출");
 		return sellDao.viewSellList(search);
 	}

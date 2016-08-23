@@ -25,7 +25,7 @@ public class RecipeServiceImpl implements RecipeService {
 
 	//레시피 상세정보를 보는 메서드
 	@Override
-	public List<Recipe> recipeDetail(String menuCode) {
+	public List<Recipe> recipeDetailService(String menuCode) {
 		System.out.println("RecipeServiceImpl의 recipeDetail메서드");
 		return recipeDao.viewRecipeDetail(menuCode);
 	}

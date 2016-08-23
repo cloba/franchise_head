@@ -5,7 +5,6 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.ksmart.franchise.head.sell.model.ReceivedOrder;
 import org.ksmart.franchise.head.sell.model.Sell;
-import org.ksmart.franchise.head.sell.model.SellSearch;
 import org.ksmart.franchise.head.sell.service.SellService;
 import org.ksmart.franchise.head.util.Search;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +23,7 @@ public class SellController {
 	
 	//판매 리스트를 보여줍니다 (검색포함)
 	@RequestMapping(value="/viewSellList.do")
-	public String viewSellList(SellSearch search, Model model){
+	public String viewSellList(Search search, Model model){
 		log.debug("SellController의 viewSellList 메서드 호출");
 		List<Sell> sellList = sellService.viewSellListService(search);
 		model.addAttribute("sellList", sellList);

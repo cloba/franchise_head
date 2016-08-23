@@ -37,7 +37,7 @@ public class RecipeController {
 	 @RequestMapping(value="/viewRecipeDetail.do", method=RequestMethod.GET)
 	 public String ViewRecipeDetail(Model model, String menuCode){
 		 log.debug("RecipeController의 ViewRecipeDetail메서드 ");
-		  List<Recipe> list = recipeService.recipeDetail(menuCode);
+		  List<Recipe> list = recipeService.recipeDetailService(menuCode);
 		  Recipe recipeSecond = new Recipe();
 	//	  log.debug(list.get(0));
 		  Recipe recipe = list.get(0);

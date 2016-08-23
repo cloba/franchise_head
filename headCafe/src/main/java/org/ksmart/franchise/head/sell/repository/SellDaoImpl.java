@@ -6,7 +6,6 @@ import java.util.Map;
 
 import org.ksmart.franchise.head.sell.model.ReceivedOrder;
 import org.ksmart.franchise.head.sell.model.Sell;
-import org.ksmart.franchise.head.sell.model.SellSearch;
 import org.ksmart.franchise.head.util.Search;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +21,7 @@ public class SellDaoImpl implements SellDao {
 
 	@Override
 	//본사의 판매 내역 리스트를 불러오는 메서드입니다
-	public List<Sell> viewSellList(SellSearch search) {
+	public List<Sell> viewSellList(Search search) {
 		System.out.println("SellDaoImpl의 viewSellList 메서드 호출");
 		
 		Map<String, Object> map = new HashMap<String, Object>();
