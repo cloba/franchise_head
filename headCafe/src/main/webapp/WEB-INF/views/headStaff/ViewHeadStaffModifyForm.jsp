@@ -117,7 +117,7 @@
 										<option value="017"<c:if test="${headStaff.headStaffPhoneFirst eq '017' }">selected="selected"</c:if>>017</option>
 										<option value="018"<c:if test="${headStaff.headStaffPhoneFirst eq '018' }">selected="selected"</c:if>>018</option>
 										<option value="019"<c:if test="${headStaff.headStaffPhoneFirst eq '019' }">selected="selected"</c:if>>019</option>
-									</select>
+									</select><br>
 									<input class="form-control" type="text" name="headStaffPhoneSecond" id="headStaffPhoneSecond" size=4 maxlength=4 value="${headStaff.headStaffPhoneSecond }" onkeypress="if (event.keyCode<48|| event.keyCode>57)  event.returnValue=false;" style='IME-MODE:disabled;'/>-
 									<input class="form-control" type="text" name="headStaffPhoneThird" id="headStaffPhoneThird" size=4 maxlength=4 value="${headStaff.headStaffPhoneThird }" onkeypress="if (event.keyCode<48|| event.keyCode>57)  event.returnValue=false;" style='IME-MODE:disabled;' />
 									<span id="headStaffPhoneHelper"></span>

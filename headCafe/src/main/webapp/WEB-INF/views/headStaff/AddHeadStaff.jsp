@@ -88,7 +88,7 @@
 								</div>
 								<div class="form-group">
 									<label>연락처</label> 
-									<select class="form-control" name="headStaffPhoneFirst" style="width: 50px" required="required">
+									<select class="form-control" name="headStaffPhoneFirst" style="width: 80px" required="required">
 										<option value="010">010</option>
 										<option value="011">011</option>
 										<option value="016">016</option>
