@@ -96,8 +96,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</selectKey>
 		
 		INSERT INTO delivery 	
-			          (delivery_code,  orders_code,           delivery_date, delivery_receive, head_staff_id, delivery_return, delivery_person, received_order_code, delivery_confirm_date)
-		       VALUES (#{deliveryCode},  #{returns.ordersCode}, now(),         'N',            'head_staff_id1',       'Y',             '홍길동', #{returns.receivedOrderCode}, now())     
+			          (delivery_code,    orders_code,           delivery_date,  delivery_receive, head_staff_id,           delivery_return,      delivery_person, received_order_code,          delivery_confirm_date)
+		       VALUES (#{deliveryCode},  #{returns.ordersCode}, now(),          'N',              #{returns.headStaffId},       'Y',             '홍길동',          #{returns.receivedOrderCode}, now())     
 		       
 	
 	

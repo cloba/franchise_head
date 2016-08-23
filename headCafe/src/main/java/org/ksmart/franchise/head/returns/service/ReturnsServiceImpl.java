@@ -37,10 +37,11 @@ public class ReturnsServiceImpl implements ReturnsService{
 		log.debug("ReturnsServiceImpl의 modifyHeadDumpService메서드");
 		//본사가 반품 확인하는 메서드
 		returnsDao.modifyReturnsApproval(returnsProcess);
+		
 		List<Returns> list = returnsDao.selectReturnsGroupCode(returnsProcess);
 		
 		for(int i=0; i<list.size(); i++){
-		
+			list.get(i).setHeadStaffId(returnsProcess.getHeadStaffId());
 			returnsDao.addReDelivery(list.get(i));
 		}	
 	}

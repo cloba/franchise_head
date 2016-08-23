@@ -56,7 +56,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE returns_code= #{returns.returnsCode}
 	</select>
 	
-	
+	<!-- 반품 상품 승인하는 쿼리 -->
 	<update id="updateReturnsApproval" parameterType="java.util.Map">
 		UPDATE `returns`
 	SET
@@ -66,6 +66,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		returns_code=#{returnsProcess.returnsCode} 
 	</update>
 
+	<!-- 반품상품 그룹코드 및 정보 구하는 메서드 -->
 	<select id="selectReturnsGroupCode" parameterType="java.util.Map" resultMap="ReturnsResultMap">
 		SELECT 
 			returns_code, returns_group_code, orders_code, received_order_code

@@ -6,7 +6,6 @@ import org.apache.log4j.Logger;
 import org.ksmart.franchise.head.headStaff.model.HeadStaff;
 import org.ksmart.franchise.head.headStaff.model.HeadStaffCommand;
 import org.ksmart.franchise.head.headStaff.model.HeadStaffLogin;
-import org.ksmart.franchise.head.headStaff.model.HeadStaffSearch;
 import org.ksmart.franchise.head.headStaff.repository.HeadStaffDao;
 import org.ksmart.franchise.head.util.Search;
 import org.springframework.beans.factory.annotation.Autowired;

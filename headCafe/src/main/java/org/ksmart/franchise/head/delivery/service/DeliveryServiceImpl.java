@@ -5,11 +5,10 @@ import java.util.List;
 import org.ksmart.franchise.head.accounting.model.AccountingCommand;
 import org.ksmart.franchise.head.delivery.model.Delivery;
 import org.ksmart.franchise.head.delivery.model.DeliveryCommand;
-import org.ksmart.franchise.head.delivery.model.Deliverysearch;
 import org.ksmart.franchise.head.delivery.repository.DeliveryDao;
+import org.ksmart.franchise.head.util.Search;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service("deliveryService")
 public class DeliveryServiceImpl implements DeliveryService {
@@ -18,7 +17,7 @@ public class DeliveryServiceImpl implements DeliveryService {
 	private DeliveryDao deliveryDao;
 
 	@Override
-	public List<Delivery> viewDeliveryListService(Deliverysearch search) {
+	public List<Delivery> viewDeliveryListService(Search search) {
 		System.out.println("DeliveryServiceImpl의 viewDeliveryListService메서드 호출");
 		return deliveryDao.viewDeliveryList(search);
 	}

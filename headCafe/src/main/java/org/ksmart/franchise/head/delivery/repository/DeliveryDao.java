@@ -5,11 +5,11 @@ import java.util.List;
 import org.ksmart.franchise.head.accounting.model.AccountingCommand;
 import org.ksmart.franchise.head.delivery.model.Delivery;
 import org.ksmart.franchise.head.delivery.model.DeliveryCommand;
-import org.ksmart.franchise.head.delivery.model.Deliverysearch;
+import org.ksmart.franchise.head.util.Search;
 
 public interface DeliveryDao {
 	//배송리스트를 불러오는 메서드입니다
-	List<Delivery> viewDeliveryList(Deliverysearch search);
+	List<Delivery> viewDeliveryList(Search search);
 	//배송 상세 데이터를 불러오는 메서드입니다
 	Delivery getDeliveryDetail(String deliveryCode);
 	//배송을 요청하는 메서드입니다 (배송 테이블에 insert)

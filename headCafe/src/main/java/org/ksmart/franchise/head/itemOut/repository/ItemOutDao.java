@@ -3,7 +3,6 @@ package org.ksmart.franchise.head.itemOut.repository;
 import java.util.List;
 
 import org.ksmart.franchise.head.itemOut.model.ItemOut;
-import org.ksmart.franchise.head.itemOut.model.ItemOutSearch;
 import org.ksmart.franchise.head.util.Search;
 
 public interface ItemOutDao {

@@ -17,7 +17,7 @@
                        		반품 상세
                        		<div class="btn"><a href="/viewReturnsList.do">목록</a></div>
                        		<div class="btn"><c:if test="${returns.returnsApproval=='N'}">
-												<a href="/modifyReturnsApproval.do?returnsCode=${returns.returnsCode}&returnsApprovalIdenfity=Y&returnsGroupCode=${returns.returnsGroupCode}">승인하기</a>
+												<a href="/modifyReturnsApproval.do?returnsCode=${returns.returnsCode}&returnsApprovalIdenfity=Y&returnsGroupCode=${returns.returnsGroupCode}&headStaffId=${login.headStaffId}">승인하기</a>
 											</c:if></div>
                         </div>
                          <div class="panel-body">

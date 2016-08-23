@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.ksmart.franchise.head.delivery.model.Delivery;
-import org.ksmart.franchise.head.delivery.model.Deliverysearch;
 import org.ksmart.franchise.head.delivery.service.DeliveryService;
+import org.ksmart.franchise.head.util.Search;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,7 +22,7 @@ public class DeliveryController {
 	
 	//배송 리스트를 보여줍니다 (검색포함)
 	@RequestMapping(value="/viewDeliveryList.do")
-	public String viewDeliveryList(Deliverysearch search, Model model){
+	public String viewDeliveryList(Search search, Model model){
 		log.debug("DeliveryController의 viewDeliveryList 메서드 호출");
 		List<Delivery> deliveryList = deliveryService.viewDeliveryListService(search);
 		model.addAttribute("deliveryList", deliveryList);

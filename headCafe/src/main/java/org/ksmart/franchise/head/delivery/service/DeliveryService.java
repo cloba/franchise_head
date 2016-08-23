@@ -3,10 +3,10 @@ package org.ksmart.franchise.head.delivery.service;
 import java.util.List;
 
 import org.ksmart.franchise.head.delivery.model.Delivery;
-import org.ksmart.franchise.head.delivery.model.Deliverysearch;
+import org.ksmart.franchise.head.util.Search;
 
 public interface DeliveryService {
-	List<Delivery> viewDeliveryListService(Deliverysearch search);
+	List<Delivery> viewDeliveryListService(Search search);
 	
 	Delivery getDeliveryDetailService(String deliveryCode);
 	

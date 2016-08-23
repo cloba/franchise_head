@@ -66,7 +66,7 @@ public class ReturnsDaoImpl implements ReturnsDao {
 		sqlSessionDelivery.insert(NDelivey+".insertReDelivery", map);
 		
 	}
-
+	//반품상품 그룹코드 구하는 메서드
 	@Override
 	public List<Returns> selectReturnsGroupCode(ReturnsProcess returnsProcess) {
 		log.debug("ReturnsDaoImpl의 selectReturnsGroupCode메서드");

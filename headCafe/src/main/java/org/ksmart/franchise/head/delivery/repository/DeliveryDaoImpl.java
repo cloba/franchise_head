@@ -7,8 +7,8 @@ import java.util.Map;
 import org.ksmart.franchise.head.accounting.model.AccountingCommand;
 import org.ksmart.franchise.head.delivery.model.Delivery;
 import org.ksmart.franchise.head.delivery.model.DeliveryCommand;
-import org.ksmart.franchise.head.delivery.model.Deliverysearch;
 import org.ksmart.franchise.head.stock.model.Stock;
+import org.ksmart.franchise.head.util.Search;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -34,7 +34,7 @@ public class DeliveryDaoImpl implements DeliveryDao {
 	private SqlSessionTemplate sqlSessionItem;
 	
 	@Override
-	public List<Delivery> viewDeliveryList(Deliverysearch search) {
+	public List<Delivery> viewDeliveryList(Search search) {
 		System.out.println("DeliveryDaoImpl의 viewDeliveryList 메서드 호출");
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("search", search);
