@@ -61,7 +61,7 @@
                                     <i class="fa fa-shopping-cart fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">${count.orderCount }</div>
+                                    <div class="huge">${orderCount}</div>
                                     <div>New Orders!</div>
                                 </div>
                             </div>
@@ -83,7 +83,7 @@
                                     <i class="fa fa-support fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">${count.returnsCount }</div>
+                                    <div class="huge">${returnsCount}</div>
                                     <div>New returns!</div>
                                 </div>
                             </div>
@@ -350,12 +350,20 @@
                 <div class="col-lg-4">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <i class="fa fa-bell fa-fw"></i> Notifications Panel
+                            <i class="fa fa-bell fa-fw"></i> 적정재고 대비 부족 재고 알림
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <div class="list-group">
-                                <a href="#" class="list-group-item">
+                            	<c:forEach var="storage" items="${storage}">
+                            		<i class="fa fa-warning fa-fw"></i>${storage.hItemName}
+                                    	<span class="pull-right text-muted small"><em>${storage.OptimumStorage - storage.stockCount}개 부족 </em>
+                                    </span>
+                                    <br/>
+                            	</c:forEach>
+                            
+                            
+                              <!--   <a href="#" class="list-group-item">
                                     <i class="fa fa-comment fa-fw"></i> New Comment
                                     <span class="pull-right text-muted small"><em>4 minutes ago</em>
                                     </span>
@@ -399,7 +407,7 @@
                                     <i class="fa fa-money fa-fw"></i> Payment Received
                                     <span class="pull-right text-muted small"><em>Yesterday</em>
                                     </span>
-                                </a>
+                                </a> -->
                             </div>
                             <!-- /.list-group -->
                             <a href="#" class="btn btn-default btn-block">View All Alerts</a>

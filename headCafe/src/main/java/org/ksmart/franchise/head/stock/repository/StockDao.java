@@ -11,5 +11,7 @@ public interface StockDao {
 	List<Stock> viweHeadStrockList(Search search);
 	//본사 재고 상세정보 조회 메서드
 	Stock viewHeadStrockDetail(Stock stock);
+	//특정 아이템 재고량 조회 메서드
+	int getStockCount(String hItemCode);
 
 }

@@ -67,6 +67,26 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</trim>
 	</select>
 	
+	<!-- head_item 전체 개수를 가져옵니다 -->
+	<select id="getItemCount" resultType="java.lang.Integer">
+		SELECT count(h_item_code)
+		FROM head_item
+	</select>
+	
+	<!-- head_item의 적정 재고량을 가져옵니다 -->
+	<select id="getOptimumStorage" parameterType="java.lang.String" resultType="java.lang.Integer">
+		SELECT h_item_optimum_storage
+		FROM head_item
+		WHERE h_item_code = #{hItemCode}
+	</select>
+	
+	<!-- head_item의 이름을 가져옵니다 -->
+	<select id="getItemName" parameterType="java.lang.String" resultType="java.lang.String">
+		SELECT h_item_name 
+		FROM head_item
+		WHERE h_item_code = #{hItemCode}
+	</select>
+	
 	<!-- head_item 하나를 봅니다 (update Form에 사용) -->
 	<select id="selectOneItem" parameterType="java.util.Map" resultMap="itemResultMap">
 		SELECT h_item_code, h_item_name, inte_code, h_item_quantity, h_item_unit, h_item_purchase_price, h_item_margin_percent, h_item_head_profit, h_item_selling_price, h_item_retail_price, h_item_regit_date, head_staff_id, head_client_code 

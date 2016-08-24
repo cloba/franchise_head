@@ -83,6 +83,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE specific_item_code = #{stockPK}
 	</update>
 	
+	<!-- 특정 아이템의 재고 수량을 가져오는 쿼리 -->
+	<select id="getStockCount" parameterType="java.lang.String" resultType="java.lang.Integer">
+		SELECT count(specific_item_code)
+		FROM head_stock
+		WHERE h_item_code = #{hItemCode}
+	</select>
+	
 	<!-- 수량 차감을 취소하는 쿼리 -->
 	<update id="cancelUpdateStock" parameterType="java.lang.String">
 		UPDATE head_stock

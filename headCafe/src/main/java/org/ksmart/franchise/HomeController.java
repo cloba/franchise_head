@@ -1,7 +1,8 @@
 package org.ksmart.franchise;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 
 import org.ksmart.franchise.head.home.service.HomeService;
 import org.slf4j.Logger;
@@ -21,11 +22,11 @@ public class HomeController {
 	@Autowired
 	private HomeService homeService;
 	
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	private static final Logger log = LoggerFactory.getLogger(HomeController.class);
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView main(Locale locale, Model model) {
-		logger.debug("main 실행");
+		log.debug("main 실행");
 		
 		InternalResourceView resourceView= new InternalResourceView("/WEB-INF/descriptionViews/main.jsp");
 	    return new ModelAndView(resourceView);
@@ -33,10 +34,20 @@ public class HomeController {
 	
 	@RequestMapping(value = "/index")
 	public String index(Model model){
-		logger.debug("index 실행");
+		log.debug("index 실행");
+		ArrayList<Object> count = homeService.getNewCountsService();
+	//	logger.debug("count---> "+count.toString());
+		int orderCount = (int) count.get(0);
+		int returnsCount = (int) count.get(1);
 		
-		Map<String, Integer> count = homeService.getNewCountsService();
-		model.addAttribute("count", count);
+		ArrayList<Object> storage = new ArrayList<Object>();
+		for(int i = 2; i<count.size(); i++){
+			storage.add(count.get(i));
+		}
+		
+		model.addAttribute("storage", storage);
+		model.addAttribute("orderCount", orderCount);
+		model.addAttribute("returnsCount", returnsCount);
 		
 		return "/index";
 	}
