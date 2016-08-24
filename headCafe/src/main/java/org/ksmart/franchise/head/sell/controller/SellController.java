@@ -61,5 +61,5 @@ public class SellController {
 		
 		return "redirect:/viewReceivedOrder.do";
 	}
-	
+
 }

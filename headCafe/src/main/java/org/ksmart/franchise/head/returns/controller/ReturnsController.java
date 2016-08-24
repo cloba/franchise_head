@@ -24,9 +24,9 @@ public class ReturnsController {
 	@RequestMapping(value="/viewReturnsList.do")
 	public String viewReturnsList(Model model, Returns returns, Search search) {
 		log.debug("ReturnsController의 viewReturnsList메서드 ");
-		//반품 상품 리스트 조회 메서드
 		List<Returns> returnsList = returnsService.viewReturnsListService(returns, search);
 		model.addAttribute("returnsList", returnsList);
+		model.addAttribute("search", search);
 		
 		return "/returns/viewReturnsList";
     }

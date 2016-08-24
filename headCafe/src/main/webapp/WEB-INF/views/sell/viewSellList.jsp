@@ -91,9 +91,9 @@
 				<ul class="nav nav-tabs">
 					<li class="active"><a href="/viewSellList.do">전체내역</a>
 					</li>
-					<li><a href="/viewSellList.do?status=N">마감 전 내역</a>
+					<li><a href="/viewSellList.do?status=N">배송요청완료 내역</a>
 					</li>
-					<li><a href="/viewSellList.do?status=Y">마감 된 내역</a>
+					<li><a href="/viewSellList.do?status=Y">배송 전 내역</a>
 					</li>
 				</ul> 
 				<div class="row">

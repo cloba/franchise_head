@@ -21,4 +21,6 @@ public interface SellDao {
 	int addSell(Sell sell);
 	//판매내역 추가를 취소합니다
 	void cancelSell(String code);
+	//새로 들어온 주문 개수를 불러옵니다
+	int getNewOrderCount();
 }

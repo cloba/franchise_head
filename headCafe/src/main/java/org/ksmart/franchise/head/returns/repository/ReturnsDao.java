@@ -22,5 +22,8 @@ public interface ReturnsDao {
 
 	//반품상품의 그룹코드 및 정보를 조회하는 메서드
 	List<Returns> selectReturnsGroupCode(ReturnsProcess returnsProcess);
+	
+	//반품요청 개수 조회하는 메서드
+	int getNewReturnsCount();
 
 }

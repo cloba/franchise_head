@@ -13,6 +13,7 @@
 	#addBtn {
 		float: right;
 	}
+	
 </style>
 <script>
 $(document).ready(function(){
@@ -74,15 +75,15 @@ $(document).ready(function(){
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-lg-12">
-					<h1 class="page-header">반풍상품 목록</h1>
+					<h1 class="page-header">반품상품 목록</h1>
 				</div>
 				<!-- /.col-lg-12 -->
 				</div>
 				<div class="panel-body">
 				<!-- Nav tabs -->
 				<ul class="nav nav-tabs">
-					<li class="active"><a href="/viewReturnsList.do">전체목록</a>
-					</li>
+					<li class="active"><a href="/viewReturnsList.do">전체목록</a></li>
+					<li><a href="/viewReturnsList.do?status=N">미확인 목록</a></li>
 				</ul> 
 				<div class="row">
 				<div class="col-lg-12">

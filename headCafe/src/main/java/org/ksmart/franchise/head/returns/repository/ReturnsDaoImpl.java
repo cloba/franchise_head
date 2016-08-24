@@ -70,11 +70,18 @@ public class ReturnsDaoImpl implements ReturnsDao {
 	@Override
 	public List<Returns> selectReturnsGroupCode(ReturnsProcess returnsProcess) {
 		log.debug("ReturnsDaoImpl의 selectReturnsGroupCode메서드");
-		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("returnsProcess", returnsProcess);
 		
 		return sqlSessionReturns.selectList(NS+".selectReturnsGroupCode", map);
+	}
+
+	//반품요청 개수 조회하는 메서드
+	@Override
+	public int getNewReturnsCount() {
+		log.debug("ReturnsDaoImpl의 getNewReturnsCount메서드");
+		int result = sqlSessionReturns.selectOne(NS+".getNewReturnsCount");
+		return result;
 	}
 
 }

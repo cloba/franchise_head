@@ -91,6 +91,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</trim> 
 	</select>
 	
+	<!-- 새롭게 들어온 주문 개수를 가져옵니다 -->
+	<select id="getCount" resultType="java.lang.Integer">
+		SELECT count(received_order_code) 
+		FROM received_order
+		WHERE received_order_check = 'N'
+	</select>
+	
 	<!-- 들어온 주문을 승인합니다 -->
 	<update id="confirmOrder" parameterType="java.util.Map">
 		UPDATE received_order

@@ -29,11 +29,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			returns_code,          orders_code, 
 			specific_item_code,    returns_reason, 
 			returns_price,         head_staff_id,    
-			returns_re_delivery ,  returns_group_code
+			returns_re_delivery ,  returns_group_code,	returns_head_check
 		FROM `returns`
 		<where>
 			<if test='search.searchItem != null and search.searchItem != "" '>
 				AND ${search.searchKey} like CONCAT('%',#{search.searchItem},'%')
+			</if>
+			<if test="search.status != null and search.status != ''">
+				AND returns_head_check = #{search.status}
 			</if>
 		</where>
 		<trim prefix="ORDER BY">
@@ -74,7 +77,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			`returns`
 		WHERE 
 		    returns_group_code=#{returnsProcess.returnsGroupCode}	
+	</select>
 	
+	<!-- 반품요청 수 구하는 메서드 -->
+	<select id="getNewReturnsCount" resultType="java.lang.Integer">
+		SELECT count(returns_code) 
+		FROM `returns`
+		WHERE returns_head_check = 'N'
 	</select>
 
 

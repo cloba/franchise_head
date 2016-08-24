@@ -2,6 +2,7 @@ package org.ksmart.franchise.head.sell.service;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.ksmart.franchise.head.sell.model.ReceivedOrder;
 import org.ksmart.franchise.head.sell.model.Sell;
 import org.ksmart.franchise.head.sell.repository.SellDao;
@@ -14,30 +15,31 @@ public class SellServiceImpl implements SellService {
 	
 	@Autowired
 	private SellDao sellDao;
+	Logger log = Logger.getLogger(this.getClass());
 
 	@Override
 	public List<Sell> viewSellListService(Search search) {
-		System.out.println("SellServiceImpl의 viewSellListService메서드 호출");
+		log.debug("SellServiceImpl의 viewSellListService메서드 호출");
 		return sellDao.viewSellList(search);
 	}
 
 	@Override
 	public Sell getSellDetailService(String headSellCode) {
-		System.out.println("SellServiceImpl의 getSellDetailService메서드 호출");
+		log.debug("SellServiceImpl의 getSellDetailService메서드 호출");
 		return sellDao.getSellDetail(headSellCode);
 	}
 
 	@Override
 	//본사가 받은 주문 내역을 보여줍니다
 	public List<ReceivedOrder> viewReceivedOrderService(Search search) {
-		System.out.println("SellServiceImpl의 viewReceivedOrderService메서드 호출");
+		log.debug("SellServiceImpl의 viewReceivedOrderService메서드 호출");
 		return sellDao.viewReceivedOrder(search);	
 	}
 
 	@Override
 	//본사가 들어온 주문을 승인하고 판매 내역에 추가합니다
 	public void confirmOrderService(Sell sell) {
-		System.out.println("SellServiceImpl의 confirmOrderService메서드 호출");		
+		log.debug("SellServiceImpl의 confirmOrderService메서드 호출");		
 		
 		//1. 주문을 승인합니다
 		int result1 = sellDao.confirmOrder(sell);
