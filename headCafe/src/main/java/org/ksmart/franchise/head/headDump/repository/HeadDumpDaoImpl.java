@@ -14,7 +14,11 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class HeadDumpDaoImpl implements HeadDumpDao{
 
-	private String NS = "org.ksmart.franchise.head.headDump.repository.HeadDumpMapper";
+	private final String NS = "org.ksmart.franchise.head.headDump.repository.HeadDumpMapper";
+	private final String NStock = "org.ksmart.franchise.head.stock.repository.StockMapper";
+	
+	@Autowired
+	private SqlSessionTemplate sqlSessionStock;
 	
 	@Autowired		
 	private SqlSessionTemplate sqlSessionHeadDump;
@@ -44,12 +48,24 @@ public class HeadDumpDaoImpl implements HeadDumpDao{
 		log.debug("HeadDumpDaoImpl의 viewHeadDumpDetail 메서드");
 		return sqlSessionHeadDump.selectOne(NS+".selectHeadDumpDetail", headDumpCode);
 	}
-
+	
+	//판매불가 상품 수정 메서드
 	@Override
 	public int modifyHeadDump(HeadDump headDump) {
 		log.debug("HeadDumpDaoImpl의 modifyHeadDump 메서드");
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("headDump", headDump);
 		return sqlSessionHeadDump.update(NS+".updateHeadDump", map);
+	}
+	
+	//판매불가 상품 등록에 따른 재고 차감 메서드
+	@Override
+	public int modifyStockSub(HeadDumpCommand headDumpCommand) {
+		log.debug("HeadDumpDaoImpl의 modifyStockSub 메서드");
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("headDumpCommand", headDumpCommand);
+		
+		return sqlSessionStock.update(NStock+".updateStockSub", map);
+		
 	}
 }

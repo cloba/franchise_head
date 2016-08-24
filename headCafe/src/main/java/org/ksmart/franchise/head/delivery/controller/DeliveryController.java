@@ -48,7 +48,11 @@ public class DeliveryController {
 	//	log.debug("inteCode ====> "+Arrays.toString(inteCode));
 	//	log.debug("headSellQuantity ====> "+Arrays.toString(headSellQuantity));
 		log.debug("headStaffId::"+headStaffId);
-		deliveryService.requestDeliveryService(checkedOrders, inteCode, headSellQuantity,headStaffId);
+		try {
+			deliveryService.requestDeliveryService(checkedOrders, inteCode, headSellQuantity,headStaffId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 		return "redirect:/viewDeliveryList.do";
 	}

@@ -26,9 +26,24 @@ public class HeadDumpServiceImpl implements HeadDumpService{
 	
 	//판매불가 상품 등록 메서드
 	@Override
-	public int addHeadDumpService(HeadDumpCommand headDumpCommand) {
+	public void addHeadDumpService(HeadDumpCommand headDumpCommand) throws Exception {
 		log.debug("HeadDumpServiceImpl의 addHeadDumpService메서드");
-		return headDumpDao.addHeadDump(headDumpCommand);
+		
+		try{
+			int result = headDumpDao.addHeadDump(headDumpCommand);
+			if(result==1){
+				headDumpDao.modifyStockSub(headDumpCommand);
+
+			}else{
+				Exception e = new Exception();
+				throw e;
+			}
+		}catch(Exception e){
+			log.debug("HeadDumpServiceImpl의 addHeadDumpService메서드 catch절 발생!!");
+			throw e;
+		}
+	
+		
 		
 	}
 	//판매 불가 상품 상세 정보 조회 메서드
@@ -39,7 +54,7 @@ public class HeadDumpServiceImpl implements HeadDumpService{
 	}
 
 	@Override
-	public int modifyHeadDumpService(HeadDump headDump) {
+	public int modifyHeadDumpService(HeadDump headDump)  {
 		log.debug("HeadDumpServiceImpl의 modifyHeadDumpService메서드");
 		return headDumpDao.modifyHeadDump(headDump);
 	}

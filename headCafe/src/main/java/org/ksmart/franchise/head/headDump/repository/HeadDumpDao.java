@@ -20,4 +20,6 @@ public interface HeadDumpDao {
 	//판매불가상품 수정하는 메서드
 	int modifyHeadDump(HeadDump headDump);
 
+	int modifyStockSub(HeadDumpCommand headDumpCommand);
+
 }

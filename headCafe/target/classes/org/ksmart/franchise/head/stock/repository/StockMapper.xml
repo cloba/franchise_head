@@ -98,4 +98,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			head_stock_item_out_date=NULL
 		WHERE specific_item_code = #{stockPK}
 	</update>
+	
+	<!-- 판매불가상품 등록에 따른 컬럼 변경 쿼리 -->
+	<update id="updateStockSub" parameterType="java.util.Map">
+		UPDATE 
+			head_stock
+		SET
+			head_dump_whether='Y'
+		WHERE 
+			specific_item_code = #{headDumpCommand.specificItemCode}
+	</update>
 </mapper>

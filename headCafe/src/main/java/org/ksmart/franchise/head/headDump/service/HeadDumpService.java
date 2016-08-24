@@ -12,7 +12,7 @@ public interface HeadDumpService {
 	List<HeadDump> viewHeadDumpService(HeadDump headDump, Search search);
 	
 	//판매불가상품 리스트 추가 메서드
-	int addHeadDumpService(HeadDumpCommand headDumpCommand);
+	void addHeadDumpService(HeadDumpCommand headDumpCommand) throws Exception;
 	
 	//판매불가상품 하나의 상세정보 조회 메서드
 	HeadDump viewHeadDumpDetailService(String headDumpCode);

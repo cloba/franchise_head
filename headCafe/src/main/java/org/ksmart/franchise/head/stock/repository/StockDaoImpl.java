@@ -37,7 +37,8 @@ public class StockDaoImpl implements StockDao {
 		map.put("stock", stock);
 		return sqlSessionStock.selectOne(NS+".selectStockDetail", map);
 	}
-
+	
+	//재고의 수 구하는 메서드 
 	@Override
 	public int getStockCount(String hItemCode) {
 		log.debug("StockDaoImpl의 getStockCount메서드");

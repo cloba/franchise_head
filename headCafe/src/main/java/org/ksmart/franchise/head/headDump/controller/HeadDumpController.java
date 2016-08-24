@@ -41,7 +41,11 @@ public class HeadDumpController {
 	@RequestMapping(value="/addHeadDump.do", method=RequestMethod.POST)
 	public String addHeadDump(HeadDumpCommand headDumpCommand, Model model){
 		System.out.println("HeadDumpController의 addHeadDump post메서드");
-		headDumpService.addHeadDumpService(headDumpCommand);
+		try {
+			headDumpService.addHeadDumpService(headDumpCommand);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 		return "redirect:/viewHeadDumpList.do";
 	}	

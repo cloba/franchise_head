@@ -30,7 +30,7 @@ public class DeliveryServiceImpl implements DeliveryService {
 
 	@Override
 	//배송을 요청하는 메서드입니다
-	public void requestDeliveryService(String[] checkedOrders, String[] inteCode, int[] headSellQuantity, String headStaffId){
+	public void requestDeliveryService(String[] checkedOrders, String[] inteCode, int[] headSellQuantity, String headStaffId) throws Exception{
 		System.out.println("DeliveryServiceImpl의 requestDeliveryService메서드 호출");
 		DeliveryCommand deliveryCommand = new DeliveryCommand();
 		String orderCode = null;
@@ -100,6 +100,7 @@ public class DeliveryServiceImpl implements DeliveryService {
 						deliveryDao.cancelUpdateStock(stockPK);
 						Exception e = new Exception();
 						throw e; 
+						
 					}
 				}
 			}
@@ -111,6 +112,7 @@ public class DeliveryServiceImpl implements DeliveryService {
 				deliveryCommand.setReceivedOrderCode(orderCode);
 				deliveryDao.deleteDelivery(deliveryCommand.getDeliveryCode());
 				deliveryDao.updateSellDelivery(orderCode, "N");
+				throw e;
 			}
 		}
 	}
