@@ -50,13 +50,21 @@
 			$('#itemList').submit();
 		});
 		
-		
-		//검색버튼을 "type=button"으로 해두었음
-		//아래 코드는 test용임
-		
-		 $('#searchBtn').click(function(){
-			console.log('searchBtn클릭');
-			$('#itemList').submit();
+		//검색 유효성
+		$('#searchBtn').click(function(){
+			if( $('#regitDateStart').val() == "" && $('#regitDateEnd').val() == ""){
+				if(  $('#searchKey').val() == "" || $('#searchItem').val() == "" ){
+					alert('검색분류를 선택하고 검색어를 입력해주세요');
+				}else if( $('#searchKey').val() != "" && $('#searchItem').val() != "" ){
+					$('#itemList').submit();
+				}
+			}else if($('#regitDateStart').val() != "" && $('#regitDateEnd').val() == ""){
+				alert('날짜를 정확히 선택해 주세요');
+			}else if($('#regitDateStart').val() == "" && $('#regitDateEnd').val() != ""){
+				alert('날짜를 정확히 선택해 주세요');
+			}else{
+				$('#itemList').submit();
+			}
 		});
 	});
 </script>

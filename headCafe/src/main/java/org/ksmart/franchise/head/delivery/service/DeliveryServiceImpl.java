@@ -30,7 +30,7 @@ public class DeliveryServiceImpl implements DeliveryService {
 
 	@Override
 	//배송을 요청하는 메서드입니다
-	public void requestDeliveryService(String[] checkedOrders, String[] inteCode, int[] headSellQuantity){
+	public void requestDeliveryService(String[] checkedOrders, String[] inteCode, int[] headSellQuantity, String headStaffId){
 		System.out.println("DeliveryServiceImpl의 requestDeliveryService메서드 호출");
 		DeliveryCommand deliveryCommand = new DeliveryCommand();
 		String orderCode = null;
@@ -43,6 +43,7 @@ public class DeliveryServiceImpl implements DeliveryService {
 				deliveryCommand.setReceivedOrderCode(orderCode);
 				
 				//1.상품 배송정보를 추가합니다
+				deliveryCommand.setHeadStaffId(headStaffId);
 				int result1 = deliveryDao.requestDelivery(deliveryCommand);	
 				System.out.println("result1 ===> "+result1);
 				if( result1 != 1 ){

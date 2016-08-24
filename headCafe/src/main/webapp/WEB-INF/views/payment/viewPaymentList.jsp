@@ -39,6 +39,15 @@
 			$('#upDown').val('DESC');
 			$('#paymentList').submit();
 		});
+		
+		//검색 유효성
+		$('#searchBtn').click(function(){
+			if(  $('#searchKey').val() == "" || $('#searchItem').val() == "" ){
+				alert('검색분류를 선택하고 검색어를 입력해주세요');
+			}else{
+				$('#paymentList').submit();
+			}
+		});
 	});
 </script>
 <!-- Page Content -->

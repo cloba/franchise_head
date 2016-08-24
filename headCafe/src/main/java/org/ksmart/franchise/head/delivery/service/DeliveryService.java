@@ -14,7 +14,7 @@ public interface DeliveryService {
 	Delivery getDeliveryDetailService(String deliveryCode);
 	
 	//배송을 요청하는 메서드
-	void requestDeliveryService(String[] checkedOrders, String[] inteCode, int[] headSellQuantity);
+	void requestDeliveryService(String[] checkedOrders, String[] inteCode, int[] headSellQuantity,String headStaffId);
 	
 	//배송상태를 변경 하는 메서드
 	void updateStatusService(String[] checked, String status, String headStaffId);

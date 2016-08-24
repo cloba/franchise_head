@@ -40,6 +40,21 @@
 			$('#contractList').submit();
 		});
 		
+		$('#searchBtn').click(function(){
+			if( $('#regitDateStart').val() == "" && $('#regitDateEnd').val() == ""){
+				if(  $('#searchKey').val() == "" || $('#searchItem').val() == "" ){
+					alert('검색분류를 선택하고 검색어를 입력해주세요');
+				}else if( $('#searchKey').val() != "" && $('#searchItem').val() != "" ){
+					$('#contractList').submit();
+				}
+			}else if($('#regitDateStart').val() != "" && $('#regitDateEnd').val() == ""){
+				alert('날짜를 정확히 선택해 주세요');
+			}else if($('#regitDateStart').val() == "" && $('#regitDateEnd').val() != ""){
+				alert('날짜를 정확히 선택해 주세요');
+			}else{
+				$('#contractList').submit();
+			}
+		});
 	});
 
 </script>
