@@ -15,14 +15,14 @@
       	<property name="password" value="dkfzkfkdls1" />    -->
       	
       	<!-- pjm DB사용 -->
- 	 <!--	<property name="url" value="jdbc:mysql://pjm5111.cafe24.com:3306/pjm5111?useUnicode=true&amp;characterEncoding=utf-8&amp;zeroDateTimeBehavior=convertToNull" />   
+ 	 	<property name="url" value="jdbc:mysql://pjm5111.cafe24.com:3306/pjm5111?useUnicode=true&amp;characterEncoding=utf-8&amp;zeroDateTimeBehavior=convertToNull" />   
    		<property name="username" value="pjm5111" />
-      	<property name="password" value="dkfzkfkdls1" />     -->
+      	<property name="password" value="dkfzkfkdls1" />     
      	
      	<!-- 각자 DB이용시 -->
-      	<property name="url" value="jdbc:mysql://localhost:3306/franchise_head?useUnicode=true&amp;characterEncoding=utf-8" /> 
+      <!-- 	<property name="url" value="jdbc:mysql://localhost:3306/franchise_head?useUnicode=true&amp;characterEncoding=utf-8" /> 
       	<property name="username" value="root" />
-      	<property name="password" value="java0000" /> 
+      	<property name="password" value="java0000" />  -->
       	  
     </bean>
     
