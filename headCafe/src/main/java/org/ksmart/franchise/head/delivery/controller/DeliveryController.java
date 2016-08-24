@@ -42,12 +42,13 @@ public class DeliveryController {
 	
 	//선택한 판매내역에 대해 배송을 요청합니다
 	@RequestMapping(value="/requestDelivery.do")
-	public String requestDelivery(String[] checkedOrders, String[] inteCode, int[] headSellQuantity){
+	public String requestDelivery(String[] checkedOrders, String[] inteCode, int[] headSellQuantity, String headStaffId){
 		log.debug("SellController의 requestDelivery 메서드 호출");
 	//	log.debug("checkedOrders ====> "+Arrays.toString(checkedOrders));
 	//	log.debug("inteCode ====> "+Arrays.toString(inteCode));
 	//	log.debug("headSellQuantity ====> "+Arrays.toString(headSellQuantity));
-		deliveryService.requestDeliveryService(checkedOrders, inteCode, headSellQuantity);
+		log.debug("headStaffId::"+headStaffId);
+		deliveryService.requestDeliveryService(checkedOrders, inteCode, headSellQuantity,headStaffId);
 
 		return "redirect:/viewDeliveryList.do";
 	}

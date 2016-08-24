@@ -59,8 +59,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			FROM delivery
 		</selectKey>
 		INSERT INTO delivery
-			(delivery_code, delivery_confirm_date, delivery_receive, delivery_status, head_staff_id, delivery_return, received_order_code)
-			VALUES (#{deliveryCode}, NOW(), 'N', '1', 'head_staff_id', 'N', #{receivedOrderCode})
+			(delivery_code, delivery_confirm_date, delivery_receive, delivery_status, head_staff_id, delivery_return, received_order_code, orders_code)
+			VALUES (#{deliveryCode}, NOW(), 'N', '1', #{headStaffId}, 'N', #{receivedOrderCode}, (select orders_code received_order from received_order where received_order_code = #{receivedOrderCode}) )
 	</insert>
 	
 	<!-- 추가된 delivery를 삭제하여 되돌립니다 -->

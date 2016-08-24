@@ -156,6 +156,7 @@
 										<c:forEach var="list" items="${sellList}">
 											<input type="hidden" name="inteCode" value="${list.inteCode}"/>
 											<input type="hidden" name="headSellQuantity" value="${list.headSellQuantity}"/>
+											
 											<tr>
 												<td>
 													<c:if test="${list.headSellDelivery eq 'N'}">
@@ -175,6 +176,7 @@
 												<td>${list.headSellDelivery}</td>
 											</tr>
 										</c:forEach>
+										<input type="hidden" name="headStaffId" value="${login.headStaffId}">
  										<p style="float:right"><input type="button" id="DeliveyRequestBtn" name="DeliveyRequestBtn" class="btn btn-primary" value="배송요청"> 
 									</form>
                                  </tbody>
