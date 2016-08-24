@@ -37,8 +37,8 @@ public class HomeController {
 		log.debug("index 실행");
 		ArrayList<Object> count = homeService.getNewCountsService();
 	//	logger.debug("count---> "+count.toString());
-		int orderCount = (int) count.get(0);
-		int returnsCount = (int) count.get(1);
+		int orderCount = (Integer) count.get(0);
+		int returnsCount = (Integer) count.get(1);
 		
 		ArrayList<Object> storage = new ArrayList<Object>();
 		for(int i = 2; i<count.size(); i++){
