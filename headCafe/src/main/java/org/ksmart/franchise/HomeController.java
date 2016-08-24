@@ -21,7 +21,7 @@ public class HomeController {
 	public ModelAndView main(Locale locale, Model model) {
 		logger.debug("main 실행");
 		
-		InternalResourceView resourceView= new InternalResourceView("/WEB-INF/css/main.jsp");
+		InternalResourceView resourceView= new InternalResourceView("/WEB-INF/descriptionViews/main.jsp");
 	    return new ModelAndView(resourceView);
 	}
 	

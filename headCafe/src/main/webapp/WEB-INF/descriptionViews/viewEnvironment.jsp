@@ -29,7 +29,8 @@
 <title>TEAM NAME - 개발환경</title>
 </head>
 <body id="page-top" class="index">
-
+<a href="/">돌아가기</a>
+<br>
     <!-- Team Section -->
     <section id="team" class="bg-light-gray">
         <div class="container">
@@ -40,7 +41,7 @@
                     <p class="large text-muted">개발언어: java, spring framework, jquery, bootstrap framework</p>
                     <p class="large text-muted"> mybatis, javascript, html, css, jsp</p>
                     <p class="large text-muted">사용기술: ajax  </p>
-                    <p class="large text-muted">개발환경: java 1.8, jdk 8, STS, apache-tomcat 8.0, mysql, heidisql,  </p>
+                    <p class="large text-muted">개발환경: java 1.8, jdk 8, STS, apache-tomcat 8.0, mysql </p>
                     <br><br>
                     <br><br>
                 </div>
@@ -48,7 +49,7 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2 class="section-heading">Our Amazing Team</h2>
-                    <h3 class="section-subheading text-muted">멋진 팀 우리 팀 팀이름을 정해줘</h3>
+                    <h3 class="section-subheading text-muted">기린대로 2층</h3>
                 </div>
             </div>
             <div class="row">
@@ -68,12 +69,7 @@
                         <h4>박종무</h4>
                         <p class="text-muted">Jong-Moo Park</p>
                         <ul class="list-inline social-buttons">
-                            <li><a href="#"><i class="fa fa-twitter"></i></a>
-                            </li>
-                            <li><a href="#"><i class="fa fa-facebook"></i></a>
-                            </li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a>
-                            </li>
+                            <li><a href="http://blog.naver.com/pjm5111"><img src="/resources/image/blog.PNG"></a>
                         </ul>
                     </div>
                 </div>
@@ -92,9 +88,6 @@
 
     <!-- Theme JavaScript -->
     <script src="/resources/bootstrap/js/agency.min.js"></script>
-
-   
-   
 
 </body>
 </html>

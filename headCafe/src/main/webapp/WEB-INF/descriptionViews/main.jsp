@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>TEAM NAME</title>
+    <title>기린대로 2층</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -18,20 +18,21 @@
 </head>
 <body>
  <!-- Full Width Image Header -->
-    <header class="header-image">
+	<header class="header-image">
         <div class="headline">
             <div class="container">
-                <h2>INSERT TEAM NAME</h2>
+                <h2>기린대로 2층</h2>
                 <h2>Franchisee Management System</h2>
             </div>
         </div>
-    </header>
+    </header> 
     
      <!-- Page Content -->
     <div class="container">
-
+		<br><br>
+        <a href="/index"><button class="btn btn-primary btn-lg btn-block">프로그램 시작하기</button></a>
         <hr class="featurette-divider">
-        
+      
         <!-- First Featurette -->
         <div class="featurette" id="about">
             <img class="featurette-image img-circle img-responsive pull-right" src="http://placehold.it/500x500">
@@ -45,7 +46,7 @@
 
         <!-- Second Featurette -->
         <div class="featurette" id="services">
-            <img class="featurette-image img-circle img-responsive pull-left" src="http://placehold.it/500x500">
+            <a href="/viewERD"><img class="featurette-image img-circle img-responsive pull-left" src="http://i.imgur.com/LERsjuS.png"></a>
             <h2 class="featurette-heading">개체-관계 모델
                 <span class="text-muted">(ERD)</span>
             </h2>
@@ -56,13 +57,12 @@
 
         <!-- Third Featurette -->
         <div class="featurette" id="contact">
-            <img class="featurette-image img-circle img-responsive pull-right" src="http://placehold.it/500x500">
+            <a href="/viewEnvironment"><img class="featurette-image img-circle img-responsive pull-right" src="https://s16.postimg.org/lkul9am7p/image.png"></a>
             <h2 class="featurette-heading">개발 환경 및 팀 정보
                 <span class="text-muted">를 확인해보세요</span>
             </h2>
             <p class="lead">5개월 교육 후 약 한달 간 진행한 프로젝트입니다. 본사와 가맹 간의 관리시스템을 설계했으나 작업 기간이 짧아서 설계한 부분 중 더 중요하다고 생각 되는 본사 시스템 만을 구현했습니다. 자세한 내용은 오른쪽 이미지를 클릭하시면 확인하실 수 있습니다</p>
         </div>
-		<h1><a href="/index">시작하기</a></h1>
         <hr class="featurette-divider">
         
          <!-- Footer -->
