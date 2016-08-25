@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class StockController {
@@ -41,6 +42,17 @@ public class StockController {
 		model.addAttribute("stock", stock);
 
 		return "/stock/viewHeadStockDetail";
+	}
+	//specificItemd유효성 확인 후 hItemCode 구해오는 메서드
+	
+	@RequestMapping(value="/specificHItemCodeCheck.do", method=RequestMethod.POST)
+	public @ResponseBody Stock specifichItemCodeCheck(Stock stock){
+		log.debug("StockController의 specificItemCodeCheck 메서드");
+		stock = stockService.getHItemCodeService(stock.getSpecificItemCode());
+		String hItemCode = stock.gethItemCode();
+		log.debug("hItemCode::"+hItemCode);
+		return stock;
+		
 	}
 	
 	

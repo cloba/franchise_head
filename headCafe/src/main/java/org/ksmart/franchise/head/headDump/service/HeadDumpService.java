@@ -20,4 +20,5 @@ public interface HeadDumpService {
 	//판매불가상품 수정하는 메서드
 	int modifyHeadDumpService(HeadDump headDump);
 
+
 }

@@ -36,6 +36,7 @@
 										<fmt:formatDate pattern="yyyy-MM-dd" type="both" value="${date}" />
 							<p>출고여부: ${stock.headStockItemOut }
 							<p>반품해당여부: ${stock.headStockReturn }
+							<p>판매불가상품여부: ${stock.headDumpWhether }
 						 </div>
                         <!-- /.panel-body -->
                     </div>

@@ -10,6 +10,7 @@ public class Stock {
 	private String headStockInDate;
 	private String headStockInExpiryDate;
 	private String headStockReturn;
+	private String headDumpWhether;
 	
 	
 	public String getSpecificItemCode() {
@@ -66,6 +67,12 @@ public class Stock {
 	}
 	public void setHeadBuyDate(String headBuyDate) {
 		this.headBuyDate = headBuyDate;
+	}
+	public String getHeadDumpWhether() {
+		return headDumpWhether;
+	}
+	public void setHeadDumpWhether(String headDumpWhether) {
+		this.headDumpWhether = headDumpWhether;
 	}
 	
 	

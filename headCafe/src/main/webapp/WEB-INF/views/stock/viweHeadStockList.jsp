@@ -16,50 +16,52 @@
 	$(document).ready(function(){
 		/* 오름차/내림차순 정렬 설정 */
 		$('#specificItemUp').click(function(){
-			console.log('개별상품코드 내림차순 정렬');
 			$('#criteria').attr('value','specific_item_code');
 			$('#upDown').attr('value','DESC');
 			$('#HeadStaffStockForm').submit();
 		});
 		$('#specificItemDown').click(function(){
-			console.log('개별상품코드 오름차순 정렬');
 			$('#criteria').attr('value','specific_item_code');
 			$('#upDown').attr('value','ASC');
 			$('#HeadStaffStockForm').submit();
 		});
 		$('#itemUp').click(function(){
-			console.log('이름 내림차순 정렬');
 			$('#criteria').attr('value','h_item_code');
 			$('#upDown').attr('value','DESC');
 			$('#HeadStaffStockForm').submit();
 		});
 		$('#itemDown').click(function(){
-			console.log('이름 오름차순 정렬');
 			$('#criteria').attr('value','h_item_code');
 			$('#upDown').attr('value','ASC');
 			$('#HeadStaffStockForm').submit();
 		});
 		$('#inDateUp').click(function(){
-			console.log('거래처로 내림차순 정렬');
 			$('#criteria').attr('value','head_stock_in_date');
 			$('#upDown').attr('value','DESC');
 			$('#HeadStaffStockForm').submit();
 		});
 		$('#inDateDown').click(function(){
-			console.log('거래처로 오름차순 정렬');
 			$('#criteria').attr('value','head_stock_in_date');
 			$('#upDown').attr('value','ASC');
 			$('#HeadStaffStockForm').submit();
 		});
 		$('#itemOutUp').click(function(){
-			console.log('거래처로 내림차순 정렬');
 			$('#criteria').attr('value','head_stock_item_out');
 			$('#upDown').attr('value','DESC');
 			$('#HeadStaffStockForm').submit();
 		});
 		$('#itemOutDown').click(function(){
-			console.log('거래처로 오름차순 정렬');
 			$('#criteria').attr('value','head_stock_item_out');
+			$('#upDown').attr('value','ASC');
+			$('#HeadStaffStockForm').submit();
+		});
+		$('#headDumpWhetherUp').click(function(){
+			$('#criteria').attr('value','head_dump_whether');
+			$('#upDown').attr('value','DESC');
+			$('#HeadStaffStockForm').submit();
+		});
+		$('#headDumpWhetherDown').click(function(){
+			$('#criteria').attr('value','head_dump_whether');
 			$('#upDown').attr('value','ASC');
 			$('#HeadStaffStockForm').submit();
 		});
@@ -138,6 +140,10 @@
 													<span id="itemOutUp" class="fa-sort-up"></span>
 													<span id="itemOutDown" class="fa-sort-down"></span>
 												</th>
+												<th>판매불가상품여부
+													<span id="headDumpWhetherUp" class="fa-sort-up"></span>
+													<span id="headDumpWhetherDown" class="fa-sort-down"></span>
+												</th>
 											</tr>
 										</thead>
 										<tbody>
@@ -147,6 +153,7 @@
 													<td>${Stock.hItemCode }</td>
 													<td>${Stock.headStockInDate}</td>
 													<td>${Stock.headStockItemOut}</td>
+													<td>${Stock.headDumpWhether}</td>
 												</tr>
 											</c:forEach>
 										</tbody>

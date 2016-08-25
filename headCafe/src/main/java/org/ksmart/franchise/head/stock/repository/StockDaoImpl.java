@@ -47,4 +47,12 @@ public class StockDaoImpl implements StockDao {
 		return result;
 	}
 
+	//hItemCode구하는 메서드
+	@Override
+	public Stock getHItemCode(String specificItemCode) {
+		log.debug("StockDaoImpl의 getHItemCode메서드");
+
+		return sqlSessionStock.selectOne(NS+".getHItemCode", specificItemCode);
+	}
+
 }

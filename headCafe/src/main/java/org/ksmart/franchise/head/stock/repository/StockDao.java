@@ -13,5 +13,7 @@ public interface StockDao {
 	Stock viewHeadStrockDetail(Stock stock);
 	//특정 아이템 재고량 조회 메서드
 	int getStockCount(String hItemCode);
+	//HItemCode구하는 쿼리
+	Stock getHItemCode(String specificItemCode);
 
 }
