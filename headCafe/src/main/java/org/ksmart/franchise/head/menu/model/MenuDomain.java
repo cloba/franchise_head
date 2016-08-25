@@ -75,19 +75,18 @@ public class MenuDomain {
 	public void setIngreAmountArr(String[] ingreAmountArr) {
 		this.ingreAmountArr = ingreAmountArr;
 	}
-	@Override
-	public String toString() {
-		return "MenuDomain [menuCode=" + menuCode + ", menuName=" + menuName + ", menuIngrePrice=" + menuIngrePrice
-				+ ", menuSellingPrice=" + menuSellingPrice + ", ingrePriceCode=" + ingrePriceCode + ", ingreName="
-				+ ingreName + ", hItemCode=" + hItemCode + ", hItemCodeArr=" + Arrays.toString(hItemCodeArr)
-				+ ", ingreAmount=" + ingreAmount + ", ingreAmountArr=" + Arrays.toString(ingreAmountArr) + "]";
-	}
 	public String getHeadStaffId() {
 		return headStaffId;
 	}
 	public void setHeadStaffId(String headStaffId) {
 		this.headStaffId = headStaffId;
 	}
-	
-	
+	@Override
+	public String toString() {
+		return "MenuDomain [menuCode=" + menuCode + ", menuName=" + menuName + ", menuIngrePrice=" + menuIngrePrice
+				+ ", menuSellingPrice=" + menuSellingPrice + ", ingrePriceCode=" + ingrePriceCode + ", ingreName="
+				+ ingreName + ", hItemCode=" + hItemCode + ", hItemCodeArr=" + Arrays.toString(hItemCodeArr)
+				+ ", ingreAmount=" + ingreAmount + ", ingreAmountArr=" + Arrays.toString(ingreAmountArr)
+				+ ", headStaffId=" + headStaffId + "]";
+	}
 }

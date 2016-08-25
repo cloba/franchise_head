@@ -77,10 +77,12 @@ public class MenuController {
 	@RequestMapping(value="/headAddMenu.do", method=RequestMethod.POST)
 	public String addMenu(MenuDomain menu){
 		log.debug("MenuController의 addMenu 메서드 호출");
+	//	log.debug("menu: "+menu.toString());
 		
 		try {
+		//	log.debug("MenuController의 try");
 			int result = menuService.addMenuService(menu);
-			log.debug("controller의 result: "+result);
+		//	log.debug("controller의 result: "+result);
 			if(result == 2){
 				return "/error/error";
 			}
