@@ -15,6 +15,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="headStockInDate" column="head_stock_in_date"/>
 		<result property="headStockInExpiryDate" column="head_stock_in_expiry_date"/>
 		<result property="headStockReturn" column="head_stock_return"/>	
+		<result property="headDumpWhether" column="head_dump_whether"/>	
+		
+		
 	</resultMap>
 	
 	<!-- 재고 리스트 조회 쿼리 -->
@@ -28,7 +31,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			head_stock_item_out,
 			head_stock_in_date,
 			head_stock_in_expiry_date,
-			head_stock_return
+			head_stock_return,
+			head_dump_whether
 		From 
 			head_stock
 		<where>
@@ -57,6 +61,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			head_stock_item_out,
 			head_stock_in_date,
 			head_stock_in_expiry_date,
+			head_dump_whether,
  			<if test="head_stock_in_expiry_date != null" >head_stock_in_expiry_date,</if>	 
 			head_stock_return
 		FROM
@@ -108,4 +113,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE 
 			specific_item_code = #{headDumpCommand.specificItemCode}
 	</update>
+	
+	<!-- getHItemCode구해오는쿼리 -->
+	<select id="getHItemCode" resultMap="StockResultMap"> 
+		SELECT 
+			h_item_code
+		FROM 
+			head_stock
+		WHERE 
+			specific_item_code = #{specificItemCode}
+	</select>
 </mapper>

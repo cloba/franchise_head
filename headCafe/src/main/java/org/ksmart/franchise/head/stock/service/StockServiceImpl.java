@@ -27,4 +27,11 @@ public class StockServiceImpl implements StockService{
 		System.out.println("StockServiceImpl의 viewHeadStrockDetailService메서드 ");
 		return stockDao.viewHeadStrockDetail(stock);
 	}
+	
+	//getHItemCode구해오는 메서드
+	@Override
+	public Stock getHItemCodeService(String specificItemCode) {
+		System.out.println("StockServiceImpl의 getHItemCode메서드 ");
+		return stockDao.getHItemCode(specificItemCode);
+	}
 }

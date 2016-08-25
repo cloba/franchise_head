@@ -54,15 +54,50 @@
 		
 		// 폼 제출
 		$('#headDumpBtn').click(function(){
-			if ($('#hItemCode').val() == ""){
-				alert("상품코드를 입력해주세요.");
-			}else if ($('#specificItemCode').val() == ""){
-				alert("개별상품 코드를 입력 해주세요.");	
+			if ($('#specificItemCode').val() == ""){ 
+				alert("개별상품 코드를 입력 해주세요.");  
+			}else if ($('#hItemCode').val() == ""){  
+				alert(" 상품코드를 입력해주세요.");	 
 			}else if ($('#headDumpReason').val() == ""){
 				alert("폐기사유를 입력 해주세요.");
 			}else {
 				$('#joinForm').submit();
 			}
+		});
+		
+		//개별상품코드 유효성
+		$('#specificItemCodeIdentifyBtn').click(function(){
+		
+			$.ajax({
+            	type      : "POST",
+             	url      : "/specificHItemCodeCheck.do",
+            	data      : { specificItemCode   : $('#specificItemCode').val() },
+             	dataType   : "JSON",
+             	success   : function(json) {
+                	console.log(json.hItemCode);
+                	alert(json.hItemCode);
+                	$('#hItemCode').attr('value','');
+                	$('#hItemCode').attr('value',json.hItemCode);
+                   /* $('#loginForm').attr('action',"/LoginController");
+                   $('#loginForm').attr('method',"post");
+                   $('#loginForm').submit();
+                   alert('개별상품 코드가 맞지 않습니다.'); */
+                	//$('#specificItemCode').val('');
+                },
+                error : function(json){
+                	$('#hItemCode').attr('value','');
+                //	$('#specificItemCodeHelper').innerHTML=''
+                	$('#specificItemCodeHelper').css('color','red');
+                	$('#specificItemCodeHelper').show();
+                	$('#specificItemCodeHelper').text("개별상품코드를 정확히 쓰세요");
+                //	$('#specificItemCodeHelper').val('원하는 값');
+                //	$('#upDown').attr('value', 'DESC');
+
+
+
+                	console.log(json);
+                }
+       		});
 		});
 	});
 </script>
@@ -81,14 +116,14 @@
 					<div class="row">
 						<div class="col-lg-6">
 							<div class="form-group">
-								<label>상품코드</label> 
-								<input class="form-control" name="hItemCode" id="hItemCode" required="required" />
-								<span id="hItemCodeHelper"></span>
+								<label>개별상품코드</label> 
+								<input class="form-control" name="specificItemCode" id="specificItemCode" required="required" /> <input type="button" id="specificItemCodeIdentifyBtn" value="개별상품코드 확인" style="margin-top: 10px;"><br>
+								<span id="specificItemCodeHelper"></span>
 							</div>
 							<div class="form-group">
-								<label>개별상품코드</label> 
-								<input class="form-control" name="specificItemCode" id="specificItemCode" required="required" />
-								<span id="specificItemCodeHelper"></span>
+								<label>상품코드</label> 
+								<input class="form-control" name="hItemCode" id="hItemCode" required="required" readonly="readonly"/> 
+								<span id="hItemCodeHelper"></span>
 							</div>
 							<div class="form-group">
 								<label>폐기사유</label> 
