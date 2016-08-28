@@ -1,3 +1,4 @@
+							<!-- 신규 가맹 입력 화면  -->
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <script type="text/javascript" src="resources/js/addressAPI.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>

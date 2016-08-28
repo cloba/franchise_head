@@ -1,3 +1,4 @@
+							<!-- 본사 메뉴 입력  화면 -->
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <style>
 	#joinBtn {
