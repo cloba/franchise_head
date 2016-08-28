@@ -27,4 +27,12 @@ public class DescriptionController {
 		InternalResourceView resourceView= new InternalResourceView("/WEB-INF/descriptionViews/viewEnvironment.jsp");
 		return new ModelAndView(resourceView);
 	}
+	
+	@RequestMapping(value="/system", method = RequestMethod.GET)
+	public ModelAndView system(){
+		log.debug("system 실행");
+		
+		InternalResourceView resourceView= new InternalResourceView("/WEB-INF/descriptionViews/viewSystem.jsp");
+		return new ModelAndView(resourceView);
+	}
 }

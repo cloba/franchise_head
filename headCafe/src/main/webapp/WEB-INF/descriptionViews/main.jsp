@@ -17,25 +17,20 @@
     <link href="/resources/bootstrap/css/one-page-wonder.css" rel="stylesheet">
 </head>
 <body>
- <!-- Full Width Image Header -->
-	<header class="header-image">
-        <div class="headline">
-            <div class="container">
-                <h2>기린대로 2층</h2>
-                <h2>Franchisee Management System</h2>
-            </div>
-        </div>
+	<!-- Full Width Image Header -->
+	<header>
+       <p id="header-image"><img src="/resources/image/logo_circle.jpg"/></p>
     </header> 
     
      <!-- Page Content -->
     <div class="container">
 		<br><br>
-        <a href="/index"><button class="btn btn-primary btn-lg btn-block">프로그램 시작하기</button></a>
+        <a href="/index"><button class="btn btn-primary btn-lg btn-block startBtn">프로그램 시작하기</button></a>
         <hr class="featurette-divider">
       
         <!-- First Featurette -->
         <div class="featurette" id="about">
-            <img class="featurette-image img-circle img-responsive pull-right" src="http://placehold.it/500x500">
+            <a href="/system"><img class="featurette-image img-circle img-responsive pull-right" src="/resources/image/system.PNG"></a>
             <h2 class="featurette-heading">본사-가맹 시스템 구조도
                 <span class="text-muted">System Configuration Map</span>
             </h2>
@@ -46,7 +41,7 @@
 
         <!-- Second Featurette -->
         <div class="featurette" id="services">
-            <a href="/viewERD"><img class="featurette-image img-circle img-responsive pull-left" src="http://i.imgur.com/LERsjuS.png"></a>
+            <a href="/viewERD"><img class="featurette-image img-circle img-responsive pull-left" src="resources/image/erd.png"></a>
             <h2 class="featurette-heading">개체-관계 모델
                 <span class="text-muted">(ERD)</span>
             </h2>
@@ -57,11 +52,11 @@
 
         <!-- Third Featurette -->
         <div class="featurette" id="contact">
-            <a href="/viewEnvironment"><img class="featurette-image img-circle img-responsive pull-right" src="https://s16.postimg.org/lkul9am7p/image.png"></a>
+            <a href="/viewEnvironment"><img class="featurette-image img-circle img-responsive pull-right" src="resources/image/logo_circle.jpg"></a>
             <h2 class="featurette-heading">개발 환경 및 팀 정보
                 <span class="text-muted">를 확인해보세요</span>
             </h2>
-            <p class="lead">5개월 교육 후 약 한달 간 진행한 프로젝트입니다. 본사와 가맹 간의 관리시스템을 설계했으나 작업 기간이 짧아서 설계한 부분 중 더 중요하다고 생각 되는 본사 시스템 만을 구현했습니다. 자세한 내용은 오른쪽 이미지를 클릭하시면 확인하실 수 있습니다</p>
+            <p class="lead">5개월 교육 후 약 두 달 간 진행한 프로젝트입니다. 본사와 가맹 간의 관리시스템을 설계했으나 작업 기간이 짧아서 설계한 부분 중 더 중요하다고 생각 되는 본사 시스템 만을 구현했습니다. 자세한 내용은 오른쪽 이미지를 클릭하시면 확인하실 수 있습니다</p>
         </div>
         <hr class="featurette-divider">
         
@@ -69,7 +64,7 @@
         <footer>
             <div class="row">
                 <div class="col-lg-12">
-                    <p>Copyright &copy; TEAM NAME 2016</p>
+                    <p>Copyright &copy; 기린대로2층 2016</p>
                 </div>
             </div>
         </footer>

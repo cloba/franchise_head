@@ -26,7 +26,7 @@
     <!-- Theme CSS -->
     <link href="/resources/bootstrap/css/agency.min.css" rel="stylesheet">
     
-<title>TEAM NAME - 개발환경</title>
+<title>기린대로 2층 - 개발환경</title>
 </head>
 <body id="page-top" class="index">
 <a href="/">돌아가기</a>
@@ -36,7 +36,7 @@
         <div class="container">
         	<div class="row">
                 <div class="col-lg-8 col-lg-offset-2 text-center">
-                	<h2 class="section-heading">Development Environment</h2>
+                	<h2 class="section-heading">개발환경</h2>
                     <p class="large text-muted">OS: windows</p>
                     <p class="large text-muted">개발언어: java, spring framework, jquery, bootstrap framework</p>
                     <p class="large text-muted"> mybatis, javascript, html, css, jsp</p>
@@ -48,8 +48,9 @@
             </div>
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Our Amazing Team</h2>
-                    <h3 class="section-subheading text-muted">기린대로 2층</h3>
+                    <h2 class="section-heading">팀 정보</h2>
+                    <img src="/resources/image/logo_circle.jpg"/>
+                    <!-- <h3 class="section-subheading text-muted"><img src="/resources/image/logo_circle.jpg"/></h3> -->
                 </div>
             </div>
             <div class="row">
@@ -58,6 +59,7 @@
                         <img src="/resources/image/ahn.jpg" class="img-responsive img-circle" alt="">
                         <h4>안소영</h4>
                         <p class="text-muted">So-Young Ahn</p>
+                        <p class="text-muted">soyoungahn2706@gmail.com</p>
                         <ul class="list-inline social-buttons">
                             <li><a href="http://nyn0133.blog.me/"><img src="/resources/image/blog.PNG"></a>
                         </ul>
@@ -68,6 +70,7 @@
                         <img src="/resources/image/ahn.jpg" class="img-responsive img-circle" alt="">
                         <h4>박종무</h4>
                         <p class="text-muted">Jong-Moo Park</p>
+                        <p class="text-muted">이메일 주소를 입력하세요</p>
                         <ul class="list-inline social-buttons">
                             <li><a href="http://blog.naver.com/pjm5111"><img src="/resources/image/blog.PNG"></a>
                         </ul>
