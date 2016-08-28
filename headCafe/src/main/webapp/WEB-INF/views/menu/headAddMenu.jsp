@@ -1,4 +1,3 @@
-							<!-- 본사 메뉴 입력  화면 -->
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <style>
 	#joinBtn {
@@ -123,6 +122,9 @@
 		});   
 	}
 </script>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+<script src="http://code.jquery.com/jquery-1.9.1.js" type="text/javascript"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js" type="text/javascript"></script>
 <script type="text/javascript" src="/resources/js/comma.js"></script>
 <div id="page-wrapper">
 	<div class="row">
