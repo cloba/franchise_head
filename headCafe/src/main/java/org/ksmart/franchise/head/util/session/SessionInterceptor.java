@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
+import org.ksmart.franchise.head.headStaff.model.HeadStaffLogin;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
@@ -17,16 +18,24 @@ public class SessionInterceptor extends HandlerInterceptorAdapter{
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		
-		
 		log.debug("sessionInterceptor 실행");
 		HttpSession session = request.getSession();
+		boolean re = false;
 		
 		if( session.getAttribute("login") == null ){
 			log.debug("세션없음");
 			response.sendRedirect("/login.go");
-			return false;
+		}else if( session.getAttribute("login") != null ){
+			HeadStaffLogin login = (HeadStaffLogin) session.getAttribute("login");
+			if( login.getHeadStaffId() == null ){
+				log.debug("세션없음");
+				response.sendRedirect("/login.go");
+			}else{
+				log.debug("세션있음: "+session.getAttribute("login"));
+				re = true;
+			}
 		}
-		log.debug("세션있음: "+session.getAttribute("login"));
-		return true;
+		
+		return re;
 	}
 }
