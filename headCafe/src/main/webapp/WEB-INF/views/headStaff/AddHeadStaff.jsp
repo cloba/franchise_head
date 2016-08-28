@@ -1,3 +1,4 @@
+							<!-- 신규 직원 등록 화면 -->
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <style>
 	.btns{

@@ -1,3 +1,4 @@
+							<!-- 거래처 입력 화면  -->
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <style>
 	#joinBtn {
@@ -9,6 +10,7 @@
 <script type="text/javascript" src="resources/js/addressAPI.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
+	
 	$(document).ready(function(){
 		//이름 유효성
 		$('#headClientName').blur(function(){

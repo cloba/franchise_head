@@ -1,3 +1,4 @@
+							<!-- 연체된 로얄티 납부 입력 화면  -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
