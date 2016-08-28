@@ -19,7 +19,7 @@
 <body>
 	<!-- Full Width Image Header -->
 	<header>
-       <p id="header-image"><img src="/resources/image/logo_circle.jpg"/></p>
+       <p id="header-p"><img id="header-image" src="/resources/image/logo_circle.jpg" /></p>
     </header> 
     
      <!-- Page Content -->

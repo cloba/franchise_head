@@ -48,9 +48,7 @@
             </div>
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">팀 정보</h2>
-                    <img src="/resources/image/logo_circle.jpg"/>
-                    <!-- <h3 class="section-subheading text-muted"><img src="/resources/image/logo_circle.jpg"/></h3> -->
+                    <img src="/resources/image/logo_square.jpg"/>
                 </div>
             </div>
             <div class="row">

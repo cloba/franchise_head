@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>erro...</h1>
-<a href="/"><img src="/resources/image/erro.png"></a>
+<h1>error...</h1>
+<a href="/"><img src="/resources/image/error.png"></a>
 </body>
 </html>
