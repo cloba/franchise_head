@@ -1,18 +1,14 @@
 							<!-- 가맹 리스트 화면  -->
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <style>
 	.nav nav-tabs:HOVER {
-		
 	}
-	
 	.form-control, .form-group {
 		width: 250px;
 		height: 31px;
 		display: inline;
 	}
-	
-	#p {
+	p {
 		text-align: center;
 	}
 	
@@ -142,6 +138,7 @@
 							</table>
 						</div>
 					</div>
+					<p><a id="more" href="#">더보기&nbsp;&nbsp;<i class="glyphicon glyphicon-chevron-down"></i></a></p>
 					<!-- /.panel-body -->
 				</div>
 				<!-- /.panel -->

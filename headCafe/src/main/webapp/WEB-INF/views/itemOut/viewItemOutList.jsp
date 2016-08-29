@@ -4,14 +4,12 @@
 <style>
 	.nav nav-tabs:HOVER {
 	}
-	
 	.form-control, .form-group {
 		width: 250px;
 		height: 31px;
 		display: inline;
 	}
-	
-	#p {
+	p {
 		text-align: center;
 	}
 </style>
@@ -166,6 +164,7 @@
 								</table>
 							</div>
 						</div>
+						<p><a id="more" href="#">더보기&nbsp;&nbsp;<i class="glyphicon glyphicon-chevron-down"></i></a></p>
 						<!-- /.panel-body -->
 					</div>
 					<!-- /.panel -->

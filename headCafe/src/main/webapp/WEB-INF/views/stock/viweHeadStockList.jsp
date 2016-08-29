@@ -1,6 +1,5 @@
 							<!-- 본사 재고 리스트 화면  -->
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <style>
 	.nav nav-tabs:HOVER {
 	}
@@ -9,7 +8,7 @@
 		height: 31px;
 		display: inline;
 	}
-	#p {
+	p {
 		text-align: center;
 	}
 </style>
@@ -161,6 +160,7 @@
 									</table>
 	                           </div>
 	                       </div>
+	                       <p><a id="more" href="#">더보기&nbsp;&nbsp;<i class="glyphicon glyphicon-chevron-down"></i></a></p>
                        <!-- /.panel-body -->
 	                   </div>
 	                   <!-- /.panel -->

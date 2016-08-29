@@ -8,7 +8,7 @@
 		height: 31px;
 		display: inline;
 	}
-	#p {
+	p {
 		text-align: center;
 	}
 	#addBtn {
@@ -17,7 +17,6 @@
 </style>
 <script>
 	$(document).ready(function(){
-		
 		//검색 유효성
 		$('#searchBtn').click(function(){
 			console.log("클릭");
@@ -92,7 +91,7 @@
                                </table>
                            </div>
                        </div>
-                       
+                       <p><a id="more" href="#">더보기&nbsp;&nbsp;<i class="glyphicon glyphicon-chevron-down"></i></a></p>
                        <!-- /.panel-body -->
                    </div>
                    <!-- /.panel -->
