@@ -67,6 +67,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="/index">CAFE Franchise System</a>
+                <a class="navbar-brand" href="/">&nbsp;&nbsp;&nbsp;본-지점 관리 프로그램 (본사측)&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;개발환경:&nbsp;jdk8, css, jsp, html, javascript, mysql5.5, jquery, ajax, spring framework, mybatis 등</a>
             </div>
             <!-- /.navbar-header -->
 

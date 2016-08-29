@@ -8,13 +8,8 @@ public class Search {
 	private String criteria;
 	private String upDown;
 	private String status;
-	
-	public String getStatus() {
-		return status;
-	}
-	public void setStatus(String status) {
-		this.status = status;
-	}
+	private int startPage;
+	private int pageLimit;
 	public String getRegitDateStart() {
 		return regitDateStart;
 	}
@@ -51,10 +46,29 @@ public class Search {
 	public void setUpDown(String upDown) {
 		this.upDown = upDown;
 	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	public int getStartPage() {
+		return startPage;
+	}
+	public void setStartPage(int startPage) {
+		this.startPage = startPage;
+	}
+	public int getPageLimit() {
+		return pageLimit;
+	}
+	public void setPageLimit(int pageLimit) {
+		this.pageLimit = pageLimit;
+	}
 	@Override
 	public String toString() {
 		return "Search [regitDateStart=" + regitDateStart + ", regitDateEnd=" + regitDateEnd + ", searchKey="
 				+ searchKey + ", searchItem=" + searchItem + ", criteria=" + criteria + ", upDown=" + upDown
-				+ ", status=" + status + "]";
+				+ ", status=" + status + ", startPage=" + startPage + ", pageLimit=" + pageLimit + "]";
 	}
+	
 }

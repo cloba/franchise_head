@@ -5,35 +5,70 @@
  */
 
 body {
-    margin-top: 100px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
-}
-
-.header-image {
-    display: block;
-    width: 100%;
-    text-align: center;
-    background: url('https://s9.postimg.org/hl1ve19gf/logo.jpg') no-repeat center center scroll;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;
-    margin-top: 50px;
+    /* margin-top: 100px;  *//* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+	margin-top: 5%;
+	/* text-align: center; */
 }
 
 #header-p{
 	text-align: center;
-}
-#header-image{
-	width: 700px;
-	height: auto;
 }
 
 .startBtn{
 	background-color: #EEE53C;	
 	color: black;
 	font-weight: bold;
+	font-size: xx-large;
+	/* width: 500px;
+	height: 300px; */
+}
+/* .img-circle{
+	
+	width: 200px;
+	height: 200px;
+} */
+#development_environment{
+	
+	 
+	width:100%;
+	width: 700px;
+	height: 300px; 
+}
+#img_circle{
+	text-align: inherit;
+	margin-left: 33%;
+}
+#project_description{
+	text-align:center;
+}
+#project_subject{
+	text-align:center;
+ 	/* text-decoration: underline; */
+}
+#row_project_subject{
+	/* border-width: 1px;
+	border-style:solid; */
+	color: #f00;
+	background-color: #f00;
+	height: 4px;
+	margin: 0 700px 0 700px;
+	
+}
+#team_name{
+	text-align: center;
+	margin-top:100px; 
+}
+.project_outline{
+	text-align: center;
 }
 
+#start{
+
+	}
+#menu_div{
+	width: 100%;
+	text-align: center;
+}
 .headline {
     padding: 120px 0;
 }

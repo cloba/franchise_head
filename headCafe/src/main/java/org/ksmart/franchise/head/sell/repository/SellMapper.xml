@@ -89,6 +89,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				${search.criteria} ${search.upDown}
 			</if>
 		</trim> 
+		LIMIT ${search.startPage}, ${search.pageLimit}
 	</select>
 	
 	<!-- 새롭게 들어온 주문 개수를 가져옵니다 -->
