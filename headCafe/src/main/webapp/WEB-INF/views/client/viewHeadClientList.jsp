@@ -1,6 +1,5 @@
 							<!-- 거래처 리스트 화면 -->
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- 검색과 정렬 유효성 검사하는 함수가 있는 js파일 -->
 <script type="text/javascript" src="resources/js/validation.js"></script>
 <style>
@@ -146,6 +145,10 @@ $(document).ready(function(){
 							</table>
 						</div>
 					</div>
+						<ul class="pager">
+							<li><a href="/viewSellList.do?startPage=1">Previous</a></li>
+							<li><a href="/viewSellList.do?pageLimit=30">Next</a></li>
+						</ul>
 					<!-- /.panel-body -->
 				</div>
 				<!-- /.panel -->
