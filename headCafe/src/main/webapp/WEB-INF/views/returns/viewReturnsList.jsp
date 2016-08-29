@@ -8,7 +8,7 @@
 		height: 31px;
 		display: inline;
 	}
-	#p {
+	p {
 		text-align: center;
 	}
 	#addBtn {
@@ -168,7 +168,7 @@ $(document).ready(function(){
                                </table>
                            </div>
                        </div>
-                       
+                       <p><a id="more" href="#">더보기&nbsp;&nbsp;<i class="glyphicon glyphicon-chevron-down"></i></a></p>
                        <!-- /.panel-body -->
                    </div>
                    <!-- /.panel -->

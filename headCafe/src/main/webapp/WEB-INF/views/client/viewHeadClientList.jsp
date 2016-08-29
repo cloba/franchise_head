@@ -13,7 +13,7 @@
 		display: inline;
 	}
 	
-	#p {
+	p {
 		text-align: center;
 	}
 	
@@ -110,7 +110,7 @@ $(document).ready(function(){
 						<!-- 검색어랑 검색버튼 -->
 						<input type="text" class="form-control" name="searchItem" id="searchItem" value="${search.searchItem}">
 					</div>
-					<input type="button" id="searchBtn" name="searchBtn" value="search">
+					<input type="button" id="searchBtn" class="btn btn-default" name="searchBtn" value="search">
 				</form>
 			</div>
 			<!-- /.panel-heading -->
@@ -145,10 +145,7 @@ $(document).ready(function(){
 							</table>
 						</div>
 					</div>
-						<ul class="pager">
-							<li><a href="/viewSellList.do?startPage=1">Previous</a></li>
-							<li><a href="/viewSellList.do?pageLimit=30">Next</a></li>
-						</ul>
+					<p><a id="more" href="#">더보기&nbsp;&nbsp;<i class="glyphicon glyphicon-chevron-down"></i></a></p>
 					<!-- /.panel-body -->
 				</div>
 				<!-- /.panel -->

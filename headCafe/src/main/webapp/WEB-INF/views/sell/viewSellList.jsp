@@ -8,7 +8,7 @@
 		height: 31px;
 		display: inline;
 	}
-	#p {
+	p {
 		text-align: center;
 	}
 </style>
@@ -183,10 +183,7 @@
                                </table>
                            </div>
                        </div>
-							<ul class="pager">
-								<li><a href="/viewSellList.do?startPage=1">Previous</a></li>
-								<li><a href="/viewSellList.do?pageLimit=30">Next</a></li>
-							</ul>
+                       <p><a id="more" href="#">더보기&nbsp;&nbsp;<i class="glyphicon glyphicon-chevron-down"></i></a></p>
                        <!-- /.panel-body -->
                    </div>
                    <!-- /.panel -->
