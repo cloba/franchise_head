@@ -54,7 +54,7 @@
             <div class="row">
                 <div class="col-sm-6">
                     <div class="team-member">
-                        <img src="/resources/image/ahn.jpg" class="img-responsive img-circle" alt="">
+                        <a href="http://nyn0133.blog.me/"><img src="/resources/image/ahn.jpg" class="img-responsive img-circle" alt=""></a>
                         <h4>안소영</h4>
                         <p class="text-muted">So-Young Ahn</p>
                         <p class="text-muted">soyoungahn2706@gmail.com</p>
@@ -65,7 +65,7 @@
                 </div>
                 <div class="col-sm-6">
                     <div class="team-member">
-                        <img src="/resources/image/ahn.jpg" class="img-responsive img-circle" alt="">
+                        <a href="http://blog.naver.com/pjm5111"><img src="/resources/image/ahn.jpg" class="img-responsive img-circle" alt=""></a>
                         <h4>박종무</h4>
                         <p class="text-muted">Jong-Moo Park</p>
                         <p class="text-muted">이메일 주소를 입력하세요</p>

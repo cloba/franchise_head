@@ -138,38 +138,19 @@ window.onclick = function(event) {
     <link href="/resources/bootstrap/css/one-page-wonder.css" rel="stylesheet">
 </head>
 <body>
-		<h1 id="project_subject" >franchise_head</h1>
+		<h1 id="project_subject" >본-지점 관리 프로그램 (본사측)</h1>
 		<hr id="row_project_subject">
 		<h2 id="team_name">팀명: 기린대로 2층</h2>
       
 		<!-- <button id="myBtn">Open Modal</button> -->
 		<div id="menu_div">
-			<img id="development_environment" src="/resources/image/development_environment.PNG"><!-- <br><br> -->
+			<img id="development_environment" src="/resources/image/development_environment.PNG">
 		</div><br>
 		<div id="project_description">
 				<h4 class="project_outline">본사가 가맹의 사업운영에 필요한 물품 및 서비스를</h4>
-				<h4 class="project_outline">조력해 그 대가로 계약에 정한 일정한 수익배분을 약속 받는 구조를 표현하였습니다. </h4>
+				<h4 class="project_outline">조력해 그 대가로 계약에 정한 일정한 수익배분을 약속 받는 시스템을 구현하였습니다. </h4>
 			<p class="lead">아래의 이미지를 클릭하시면 자세한 사항을 확인하실 수 있습니다</p><br><br>
 		</div>
-		<!-- <div id="img_circle">	
-			<a href="/system"><img class="img-circle col-md-4" src="/resources/image/system.PNG"></a>
-			<a href="/viewEnvironment"><img class=" img-circle col-md-4" src="resources/image/erd_circle.png"></a>
-			<a href="/viewERD"><img class=" img-circle col-md-4" src="resources/image/erd_circle.png"></a>
-			<a href="/system"><img class="featurette-image img-responsive pull-right col-md-4" src="/resources/image/coosto-thumb-1.png"></a>
-		</div> -->
-		 <!-- The Modal -->
-		<!--<div id="myModal" class="modal">
-		
-		Modal content
-		<div class="modal-content">
-			<span class="close">x</span>
-			<p>Some text in the Modal..</p>
-		</div>
-		
-		</div> -->
-		
-
-
  
     <!-- Page Content -->
     <div class="container">

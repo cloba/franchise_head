@@ -1,8 +1,6 @@
 package org.ksmart.franchise;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
 
 import org.ksmart.franchise.head.home.service.HomeService;
 import org.slf4j.Logger;
@@ -15,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.InternalResourceView;
 
-
 @Controller
 public class HomeController {
 	
@@ -25,7 +22,7 @@ public class HomeController {
 	private static final Logger log = LoggerFactory.getLogger(HomeController.class);
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public ModelAndView main(Locale locale, Model model) {
+	public ModelAndView main(Model model) {
 		log.debug("main 실행");
 		
 		InternalResourceView resourceView= new InternalResourceView("/WEB-INF/descriptionViews/main.jsp");
