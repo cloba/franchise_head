@@ -65,12 +65,12 @@
                 </div>
                 <div class="col-sm-6">
                     <div class="team-member">
-                        <a href="http://blog.naver.com/pjm5111"><img src="/resources/image/ahn.jpg" class="img-responsive img-circle" alt=""></a>
+                        <a href="http://blog.naver.com/pjm5111"><img src="/resources/image/park.jpg" class="img-responsive img-circle" alt="" style="height: 330px;"></a>
                         <h4>박종무</h4>
                         <p class="text-muted">Jong-Moo Park</p>
-                        <p class="text-muted">이메일 주소를 입력하세요</p>
+                        <p class="text-muted">pjm5111@naver.com</p>
                         <ul class="list-inline social-buttons">
-                            <li><a href="http://blog.naver.com/pjm5111"><img src="/resources/image/blog.PNG"></a>
+                            <li><a href="http://blog.naver.com/pjm5111"><img src="/resources/image/blog.PNG" ></a>
                         </ul>
                     </div>
                 </div>
