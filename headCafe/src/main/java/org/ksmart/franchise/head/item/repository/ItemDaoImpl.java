@@ -83,5 +83,11 @@ public class ItemDaoImpl implements ItemDao{
 		String result = sqlSessionItem.selectOne(NS+".getItemName", hItemCode);
 		return result;
 	}
+
+	@Override
+	public int checkItem(String hItemCode) {
+		log.debug("ItemDaoImpl의 checkItem 호출");		
+		return sqlSessionItem.selectOne(NS+".checkItem", hItemCode);
+	}
 	
 }

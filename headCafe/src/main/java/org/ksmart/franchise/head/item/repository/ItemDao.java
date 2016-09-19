@@ -21,4 +21,6 @@ public interface ItemDao {
 	int getOptimumStorage(String hItemCode);
 	// head_item의 아이템명을 가져오는 메서드입니다
 	String getItemName(String hItemCode);
+	// head_item에 등록된 데이터 중 입력값에 해당하는 데이터의 개수를 가져오는 메서드입니다
+	int checkItem(String hItemCode);
 }

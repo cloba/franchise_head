@@ -117,4 +117,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM head_item
 		WHERE inte_code = #{inteCode}
 	</select>
+	
+	<!-- 상품의 존재 여부를 알기 위해 검색어에 해당하는 상품의 개수를 구합니다 -->
+	<select id="checkItem" parameterType="java.lang.String" resultType="java.lang.Integer">
+		SELECT count(h_item_code) 
+		FROM head_item
+		WHERE h_item_code = #{hItemCode}
+	</select>
 </mapper>

@@ -3,7 +3,6 @@ package org.ksmart.franchise.head.item.controller;
 import java.util.List;
 
 import org.apache.log4j.Logger;
-import org.ksmart.franchise.head.headStaff.model.HeadStaffLogin;
 import org.ksmart.franchise.head.item.model.Item;
 import org.ksmart.franchise.head.item.model.ItemCommand;
 import org.ksmart.franchise.head.item.service.ItemService;
@@ -14,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class ItemController {
@@ -79,5 +79,15 @@ public class ItemController {
 		//log.debug("update 결과: "+result);
 		
 		return "redirect:/viewItemDetail.do?hItemCode="+itemCommand.gethItemCode();
+	}
+	
+	//상품을 검색하여 검색어와 일치하는 상품이 있는지 확인합니다
+	@RequestMapping(value="/searchItemForMenu.do", method=RequestMethod.GET)
+	@ResponseBody
+	public Integer checkItem(String hItemCode) {
+		log.debug("ItemController의 checkItem 메서드 호출");
+		int result = itemService.checkItemService(hItemCode);
+	//	log.debug("result===========> "+result );
+		return result;
 	}
 }
